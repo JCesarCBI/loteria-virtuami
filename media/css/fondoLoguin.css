@@ -1,4 +1,4 @@
-body
+.imagenes
 {
-	background-image:url('../img/nyan.gif');
+	background-image:url("../img/nyan.gif");
 }
