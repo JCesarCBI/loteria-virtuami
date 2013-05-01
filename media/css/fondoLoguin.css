@@ -1,4 +1,36 @@
-.imagenes
-{
-	background-image:url("../img/nyan.gif");
+.imagenes{
+	height: auto;
+	width: auto;
 }
+
+.cajonLateral{	
+	float: left;
+	background-image:url("../img/cajon_reg.png");
+	background-repeat:no-repeat;
+	width:262px;
+	height:188px;
+		
+}
+
+.mesa
+{
+	background-image:url("../img/mesa.png") !important;
+	background-repeat:no-repeat;
+	float: left;
+	width:432px;
+	height:354px;
+	
+}
+
+.cajon2{	
+	margin-top:10%;
+	float: left;
+		
+}
+
+.mesa2
+{
+	float: left;
+	
+}
+

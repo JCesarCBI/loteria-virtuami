@@ -12,6 +12,6 @@ class cpruebasLuisa extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('vloguin');
+		$this->load->view('vinicio');
 	}
 }
