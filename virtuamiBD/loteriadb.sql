@@ -267,7 +267,7 @@ CREATE TABLE `division` (
   `division` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   `iniciales` varchar(3) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idDivison`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +276,7 @@ CREATE TABLE `division` (
 
 LOCK TABLES `division` WRITE;
 /*!40000 ALTER TABLE `division` DISABLE KEYS */;
+INSERT INTO `division` VALUES (1,'Ciencias y Artes para el Diseño','CAD'),(2,'Ciencias Básicas e Ingeniería','CBI'),(3,'Ciencias Biológicas y de la Salud','CBS'),(4,'Ciencias de la Comunicación y Diseño','CCD'),(5,'Ciencias Naturales e Ingeniería','CNI'),(6,'Ciencias Sociales y Humanidades','CSH');
 /*!40000 ALTER TABLE `division` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +420,7 @@ CREATE TABLE `gradoAcademico` (
   `idGradoAcademico` int(11) NOT NULL AUTO_INCREMENT,
   `gradoAcademico` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idGradoAcademico`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -428,6 +429,7 @@ CREATE TABLE `gradoAcademico` (
 
 LOCK TABLES `gradoAcademico` WRITE;
 /*!40000 ALTER TABLE `gradoAcademico` DISABLE KEYS */;
+INSERT INTO `gradoAcademico` VALUES (1,'Licenciatura'),(2,'Especialidad'),(3,'Mestría'),(4,'Doctorado');
 /*!40000 ALTER TABLE `gradoAcademico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,7 +444,7 @@ CREATE TABLE `gradoActivo` (
   `idGradoActivo` int(11) NOT NULL AUTO_INCREMENT,
   `gradoActivo` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idGradoActivo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -451,6 +453,7 @@ CREATE TABLE `gradoActivo` (
 
 LOCK TABLES `gradoActivo` WRITE;
 /*!40000 ALTER TABLE `gradoActivo` DISABLE KEYS */;
+INSERT INTO `gradoActivo` VALUES (1,'Licenciatura'),(2,'Posgrado');
 /*!40000 ALTER TABLE `gradoActivo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -465,7 +468,7 @@ CREATE TABLE `juego` (
   `idJuego` int(11) NOT NULL AUTO_INCREMENT,
   `nombreJuego` varchar(30) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idJuego`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -474,6 +477,7 @@ CREATE TABLE `juego` (
 
 LOCK TABLES `juego` WRITE;
 /*!40000 ALTER TABLE `juego` DISABLE KEYS */;
+INSERT INTO `juego` VALUES (1,'lotería');
 /*!40000 ALTER TABLE `juego` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,8 +495,8 @@ CREATE TABLE `jugador` (
   PRIMARY KEY (`usuario_idUsr`,`juego_idJuego`),
   KEY `fk_usuario_has_juego1_juego1_idx` (`juego_idJuego`),
   KEY `fk_usuario_has_juego1_usuario1_idx` (`usuario_idUsr`),
-  CONSTRAINT `fk_usuario_has_juego1_juego1` FOREIGN KEY (`juego_idJuego`) REFERENCES `juego` (`idJuego`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_has_juego1_usuario1` FOREIGN KEY (`usuario_idUsr`) REFERENCES `usuario` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_usuario_has_juego1_usuario1` FOREIGN KEY (`usuario_idUsr`) REFERENCES `usuario` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_usuario_has_juego1_juego1` FOREIGN KEY (`juego_idJuego`) REFERENCES `juego` (`idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -516,7 +520,7 @@ CREATE TABLE `modalidad` (
   `idmodalidad` int(11) NOT NULL AUTO_INCREMENT,
   `nombreMod` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idmodalidad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,6 +529,7 @@ CREATE TABLE `modalidad` (
 
 LOCK TABLES `modalidad` WRITE;
 /*!40000 ALTER TABLE `modalidad` DISABLE KEYS */;
+INSERT INTO `modalidad` VALUES (1,'juego libre'),(2,'diminutivos'),(3,'derivación adjetivos'),(4,'derivación verbos'),(5,'sinónimos'),(6,'género'),(7,'plurales'),(8,'aumentativos'),(9,'peyorativos'),(10,'derivación sustantivos'),(11,'antónimos');
 /*!40000 ALTER TABLE `modalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,7 +544,7 @@ CREATE TABLE `nivel` (
   `idnivel` int(11) NOT NULL AUTO_INCREMENT,
   `nombreNivel` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idnivel`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -548,6 +553,7 @@ CREATE TABLE `nivel` (
 
 LOCK TABLES `nivel` WRITE;
 /*!40000 ALTER TABLE `nivel` DISABLE KEYS */;
+INSERT INTO `nivel` VALUES (1,'básico'),(2,'intermedio'),(3,'avanzado'),(4,'experto');
 /*!40000 ALTER TABLE `nivel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -654,9 +660,9 @@ CREATE TABLE `score` (
   KEY `fk_score_nivel1_idx` (`idNivel`),
   KEY `fk_score_modalidad1_idx` (`idModalidad`),
   KEY `fk_score_usuario_has_juego11_idx` (`idUsr`,`idJuego`),
-  CONSTRAINT `fk_score_modalidad1` FOREIGN KEY (`idModalidad`) REFERENCES `modalidad` (`idmodalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_score_nivel1` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idnivel`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_score_tipoPartida1` FOREIGN KEY (`idtipoPartida`) REFERENCES `tipoPartida` (`idtipoPartida`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_score_nivel1` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idnivel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_score_modalidad1` FOREIGN KEY (`idModalidad`) REFERENCES `modalidad` (`idmodalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_score_usuario_has_juego11` FOREIGN KEY (`idUsr`, `idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -709,7 +715,7 @@ CREATE TABLE `tipoPartida` (
   `idtipoPartida` int(11) NOT NULL AUTO_INCREMENT,
   `nombrePartida` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idtipoPartida`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -718,6 +724,7 @@ CREATE TABLE `tipoPartida` (
 
 LOCK TABLES `tipoPartida` WRITE;
 /*!40000 ALTER TABLE `tipoPartida` DISABLE KEYS */;
+INSERT INTO `tipoPartida` VALUES (1,'completa'),(2,'rápida');
 /*!40000 ALTER TABLE `tipoPartida` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -729,10 +736,10 @@ DROP TABLE IF EXISTS `tipoTrofeo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipoTrofeo` (
-  `idtipoTrofeo` int(11) NOT NULL,
-  `tipoTrofeo` varchar(15) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `idtipoTrofeo` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoTrofeo` varchar(30) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idtipoTrofeo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -741,6 +748,7 @@ CREATE TABLE `tipoTrofeo` (
 
 LOCK TABLES `tipoTrofeo` WRITE;
 /*!40000 ALTER TABLE `tipoTrofeo` DISABLE KEYS */;
+INSERT INTO `tipoTrofeo` VALUES (1,'Trofeos de habilidad'),(2,'Trofeos de habilidad'),(3,'Trofeos de constancia'),(4,'Eventos'),(5,'Easter Eggs'),(6,'Término');
 /*!40000 ALTER TABLE `tipoTrofeo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -755,7 +763,7 @@ CREATE TABLE `tipoUsuario` (
   `idTipoUsr` int(11) NOT NULL AUTO_INCREMENT,
   `tipoUsr` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idTipoUsr`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -764,6 +772,7 @@ CREATE TABLE `tipoUsuario` (
 
 LOCK TABLES `tipoUsuario` WRITE;
 /*!40000 ALTER TABLE `tipoUsuario` DISABLE KEYS */;
+INSERT INTO `tipoUsuario` VALUES (1,'Alumno'),(2,'Profesor'),(3,'Administrativo'),(4,'Otro');
 /*!40000 ALTER TABLE `tipoUsuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -775,16 +784,16 @@ DROP TABLE IF EXISTS `trofeo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trofeo` (
-  `idTrofeo` int(11) NOT NULL,
+  `idTrofeo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(55) COLLATE latin1_spanish_ci DEFAULT NULL,
   `imagen` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   `condicion` mediumtext COLLATE latin1_spanish_ci,
-  `descripcion` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `descripcion` mediumtext COLLATE latin1_spanish_ci,
   `idTipoTrofeo` int(11) NOT NULL,
   PRIMARY KEY (`idTrofeo`),
   KEY `fk_trofeo_tipoTrofeo1_idx` (`idTipoTrofeo`),
   CONSTRAINT `fk_trofeo_tipoTrofeo1` FOREIGN KEY (`idTipoTrofeo`) REFERENCES `tipoTrofeo` (`idtipoTrofeo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -793,6 +802,7 @@ CREATE TABLE `trofeo` (
 
 LOCK TABLES `trofeo` WRITE;
 /*!40000 ALTER TABLE `trofeo` DISABLE KEYS */;
+INSERT INTO `trofeo` VALUES (1,'Gigante en el recreo',NULL,'Alcancé 1000 puntos en una partida de la modalidad Juego Libre en el nivel Básico','Vine, vi, conquisté',1),(2,'Con los ojos cerrados',NULL,'Alcancé 3500 puntos en una partida de la modalidad Juego Libre en el nivel Avanzado','Y no fue casualidad',1),(3,'Chiquito pero...',NULL,'Alcancé 7500 puntos en una partida de la modalidad Diminutivos','Son aquellas pequeñas cosas',1),(4,'De colores',NULL,'Alcancé 15000 puntos en una partida de la modalidad Adjetivos','Los ojos se me fueron tras una morena que pasó',1),(5,'Triunfo al recuerdo',NULL,'Alcancé 21000 puntos en una partida de la modalidad Sinónimos','La memoria disminuye si no se la ejercita',1),(6,'Precisión quirúrgica',NULL,'Completé una partida sin errores','Conocer es resolver',1),(7,'Aprendiz de la lotería',NULL,'Acumulé 10 partidas ganadas','Así que de esto se trata',2),(8,'Veterano de la lotería',NULL,'Acumulé 25 partidas ganadas','Lo he visto todo',2),(9,'Experto de la lotería',NULL,'Acumulé 50 partidas ganadas','Bodas de oro',2),(10,'Maestro de la lotería',NULL,'Acumulé 75 partidas ganadas','Ningún misterio se me escapa',2),(11,'Lotería Wizard',NULL,'Acumulé 100 partidas ganadas','El primero de los epígonos',2),(12,'Tanteando las aguas',NULL,'Gané una partida en la modalidad Juego Libre en nivel Básico','¿Qué gané?',3),(13,'Marinero de agua dulce',NULL,'Gané una partida en la modalidad Juego Libre en nivel Avanzado','El día precedente enseña al que sigue',3),(14,'Marinero curtido',NULL,'Gané una partida en la modalidad Diminutivos','Se hace camino en la mar',3),(15,'Buzo',NULL,'Gané una partida en la modalidad Adjetivos','Quién fuera el batiscafo de tu abismo',3),(16,'Capitán',NULL,'Gané una partida en la modalidad Sinónimos','Yo no soy marinero',3),(17,'Lobo de mar',NULL,'Gané una partida en todas las modalidades','Antes de recorrer mi camino yo era mi camino',3),(18,'O fortuna',NULL,'Gané una partida con la bonificación máxima por suerte','La suerte juega con cartas sin marcar',3),(19,'El corazón de las tinieblas',NULL,'','Aquél que no será nombrado',4),(20,'Ph\'nglui mglw\'nafh Cthulhu R\'lyeh wgah\'nagl fhtagn',NULL,'','En su casa de R\'lyeh el difunto Cthulhu aguarda soñando',4),(21,'Coleccionista',NULL,'Acumulé 18 cartas en mi galería','Nadie tiene lo que no se merece',5),(22,'Galerista',NULL,'Acumulé 33 cartas en mi galería','Hay afectos de tan delicada honestidad',5),(23,'Museógrafo',NULL,'Acumulé 54 cartas en mi galería','El lenguaje no es el aya sino la madre del pensamiento',5),(24,'Leyenda',NULL,'He obtenido todos los trofeos disponibles','Vine, vi, conquisté',5);
 /*!40000 ALTER TABLE `trofeo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -810,8 +820,8 @@ CREATE TABLE `trofeo_has_jugador` (
   PRIMARY KEY (`trofeo_idTrofeo`,`jugador_usuario_idUsr`,`jugador_juego_idJuego`),
   KEY `fk_trofeo_has_jugador_jugador1_idx` (`jugador_usuario_idUsr`,`jugador_juego_idJuego`),
   KEY `fk_trofeo_has_jugador_trofeo1_idx` (`trofeo_idTrofeo`),
-  CONSTRAINT `fk_trofeo_has_jugador_jugador1` FOREIGN KEY (`jugador_usuario_idUsr`, `jugador_juego_idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_trofeo_has_jugador_trofeo1` FOREIGN KEY (`trofeo_idTrofeo`) REFERENCES `trofeo` (`idTrofeo`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_trofeo_has_jugador_trofeo1` FOREIGN KEY (`trofeo_idTrofeo`) REFERENCES `trofeo` (`idTrofeo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_trofeo_has_jugador_jugador1` FOREIGN KEY (`jugador_usuario_idUsr`, `jugador_juego_idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -844,8 +854,6 @@ CREATE TABLE `usuario` (
   `idTipoUsr` int(11) NOT NULL,
   `idDivison` int(11) NOT NULL,
   `idGradoAcademico` int(11) NOT NULL,
-  `idArea` int(11) NOT NULL,
-  `idCargo` int(11) NOT NULL,
   `idGradoActivo` int(11) NOT NULL,
   `avatar` varchar(150) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idUsr`),
@@ -853,15 +861,11 @@ CREATE TABLE `usuario` (
   KEY `fk_usuario_tipoUsuario_idx` (`idTipoUsr`),
   KEY `fk_usuario_division1_idx` (`idDivison`),
   KEY `fk_usuario_gradoAcademico1_idx` (`idGradoAcademico`),
-  KEY `fk_usuario_area1_idx` (`idArea`),
-  KEY `fk_usuario_cargo1_idx` (`idCargo`),
   KEY `fk_usuario_gradoActivo1_idx` (`idGradoActivo`),
-  CONSTRAINT `fk_usuario_area1` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_cargo1` FOREIGN KEY (`idCargo`) REFERENCES `cargo` (`idCargo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_usuario_tipoUsuario` FOREIGN KEY (`idTipoUsr`) REFERENCES `tipoUsuario` (`idTipoUsr`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_division1` FOREIGN KEY (`idDivison`) REFERENCES `division` (`idDivison`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_gradoAcademico1` FOREIGN KEY (`idGradoAcademico`) REFERENCES `gradoAcademico` (`idGradoAcademico`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_gradoActivo1` FOREIGN KEY (`idGradoActivo`) REFERENCES `gradoActivo` (`idGradoActivo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_tipoUsuario` FOREIGN KEY (`idTipoUsr`) REFERENCES `tipoUsuario` (`idTipoUsr`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_usuario_gradoActivo1` FOREIGN KEY (`idGradoActivo`) REFERENCES `gradoActivo` (`idGradoActivo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -883,4 +887,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-05-02  9:06:14
+-- Dump completed on 2013-05-02 15:18:49
