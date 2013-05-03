@@ -1,36 +1,37 @@
-.imagenes{
-	height: auto;
-	width: auto;
-}
-
 .cajonLateral{	
-	float: left;
 	background-image:url("../img/cajon_reg.png");
 	background-repeat:no-repeat;
+	margin-top:265px;
 	width:262px;
 	height:188px;
+	float: left;
 		
 }
 
 .mesa
 {
-	background-image:url("../img/mesa.png") !important;
+	background-image:url("../img/mesa.png");
 	background-repeat:no-repeat;
 	float: left;
 	width:432px;
 	height:354px;
+	margin-top:145px;
 	
 }
 
-.cajon2{	
-	margin-top:10%;
+.cajonSuperior{	
+	background-image:url("../img/cajon_login.png");
+	background-repeat:no-repeat;
+	margin-left:220PX;
+	height:240px;
+	width:177px;
+	padding-left; 170px;
+	position:absolute;
 	float: left;
-		
 }
 
-.mesa2
-{
-	float: left;
-	
+.centro{
+	margin-left:17%;
+	width: 90%;
 }
 
