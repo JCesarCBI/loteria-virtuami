@@ -39,6 +39,7 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
 	margin-top:30px;
 }
 
