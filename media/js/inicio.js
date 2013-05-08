@@ -44,4 +44,23 @@ $(document).ready(function() {
 		$('.cajonLateral-abierto').hide();
 		$('.cajonLateral-cerrado').show();
 	});
+	
+	//FUNCIONES AJAX
+    $('#usuario_nombreUsr').change(function(){ 
+    	liga = base+'index.php/cpruebasNaye/prueba'
+		$.ajax({
+			url: liga,
+			data: { usuario: $('#usuario_nombreUsr').val() },
+			dataType: "json",
+			type: "POST",
+			success:function(existe){
+				if(existe == 1){
+					alert("usuario ya existe")
+				}else{
+					alert("usuario no existe")
+				}
+			}
+		})
+	});
+	
 });

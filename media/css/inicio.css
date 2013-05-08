@@ -1,22 +1,15 @@
 /*CSS de la vista de vinicio*/
 
-/**General**/
-@font-face {
-  font-family: 'Gabriela';
-  font-style: normal;
-  font-weight: 400;
+/**GENERAL**/
+	
+@font-face {font-family: 'Gabriela'; font-style: normal; font-weight: 400;
   src: local('Gabriela'), local('Gabriela'), url(Gabriela-Regular.ttf) format('Gabriela');
 }
 
-body{
-	font-family:"Gabriela";
-	font-size:15px;
-	background:#B18904;
-}
+body{ font-family:"Gabriela";font-size:15px;background:#B18904;}
+label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 
-label, p, a, input, h1, h2, h3, h4, h5{
-  font-family: 'Gabriela';
-}
+/*Mesa del centro */
 
 .mesa{
 	background-image:url("../img/mesa.png");
@@ -28,14 +21,11 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	margin-left:40px
 }
 
-.centro{
-	margin-left:17%;
-	width: 90%;
-}
+.centro{ margin-left:17%;width: 90%;}
 
 /**CAJÓN LATERAL */
-	
-.rotar{
+
+.rotar{ /* Rota el texto registro en una orientación de 90 grados */
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
@@ -43,7 +33,7 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	margin-top:30px;
 }
 
-.amarillo-lat{
+.amarillo-lat{ /* Fondo amarillo del cajón lateral */
 	margin-top:-123.5px;
 	margin-right:25px;
 	background:#D9E021;
@@ -53,7 +43,7 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	padding: 7px 15px;
 }
 
-.cajonLateral-cerrado{
+.cajonLateral-cerrado{ /* Clase que define al cajón lateral en estado cerrado */
 	padding:20px 10px;
 	background-image:url("../img/cajon_reg.png");
 	background-repeat:no-repeat;
@@ -63,7 +53,7 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	height:188px;
 	float: left;	
 }
-.cajonLateral-abierto{	
+.cajonLateral-abierto{	/* Clase que define al cajón lateral en estado abierto */
 	padding:20px 10px;
 	background-image:url("../img/cajon_reg.png");
 	background-repeat:no-repeat;
@@ -73,31 +63,33 @@ label, p, a, input, h1, h2, h3, h4, h5{
 	float: left;
 }
 
-#sig1{
+#sig1{ /* primer botón que aparece en el registro */
 	background:#D9E021;
 	border-color: #D9E021;
 	margin-top:12px;
 	margin-left:-57px;
 	font-size:12px;
 }
-#sig2{
+#sig2{ /* segundo botón que aparece en el registro */
 	background:#D9E021;
 	border-color: #D9E021;
 	margin-top:12px;
 	margin-left:85px;
 	font-size:12px;
 }
-label.sexo{
+
+label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
 	color:#D9E021;
 	margin: 0px 0px 0px 10px; float: left;	
 	font-size:12px;
 }
 
-p.sexo{margin: 0px 0px 10px 0px; }
+p.sexo{margin: 0px 0px 10px 0px; } /* Acomoda los radio inputs y los label en una sola línea */
 
-input.sexo{ float: left; width: 40px;}
+input.sexo{ float: left; width: 40px;} /* Acomoda los radio inputs y los label en una sola línea */
 
-input[type="text"]{
+/* Estilo de los inputs */
+input[type="text"]{ 
 	background: #2E3116;
 	outline: none !important; 
 	border-color: #000000;
@@ -153,11 +145,8 @@ input.lateral{
 	border-radius:10px;
 }
 
-label.CL-cerrado{
-	color:#D9E021;
-	margin-top:260px;
-	margin-left:-230px;
-}
+/* Estilo para el label cuando el cajón lateral está cerrado */ 
+label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 
 /*CAJÓN SUPERIOR*/
 
