@@ -495,8 +495,8 @@ CREATE TABLE `jugador` (
   PRIMARY KEY (`usuario_idUsr`,`juego_idJuego`),
   KEY `fk_usuario_has_juego1_juego1_idx` (`juego_idJuego`),
   KEY `fk_usuario_has_juego1_usuario1_idx` (`usuario_idUsr`),
-  CONSTRAINT `fk_usuario_has_juego1_usuario1` FOREIGN KEY (`usuario_idUsr`) REFERENCES `usuario` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_has_juego1_juego1` FOREIGN KEY (`juego_idJuego`) REFERENCES `juego` (`idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_usuario_has_juego1_juego1` FOREIGN KEY (`juego_idJuego`) REFERENCES `juego` (`idJuego`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_usuario_has_juego1_usuario1` FOREIGN KEY (`usuario_idUsr`) REFERENCES `usuario` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -660,9 +660,9 @@ CREATE TABLE `score` (
   KEY `fk_score_nivel1_idx` (`idNivel`),
   KEY `fk_score_modalidad1_idx` (`idModalidad`),
   KEY `fk_score_usuario_has_juego11_idx` (`idUsr`,`idJuego`),
-  CONSTRAINT `fk_score_tipoPartida1` FOREIGN KEY (`idtipoPartida`) REFERENCES `tipoPartida` (`idtipoPartida`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_score_nivel1` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idnivel`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_score_modalidad1` FOREIGN KEY (`idModalidad`) REFERENCES `modalidad` (`idmodalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_score_nivel1` FOREIGN KEY (`idNivel`) REFERENCES `nivel` (`idnivel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_score_tipoPartida1` FOREIGN KEY (`idtipoPartida`) REFERENCES `tipoPartida` (`idtipoPartida`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_score_usuario_has_juego11` FOREIGN KEY (`idUsr`, `idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -763,7 +763,7 @@ CREATE TABLE `tipoUsuario` (
   `idTipoUsr` int(11) NOT NULL AUTO_INCREMENT,
   `tipoUsr` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idTipoUsr`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -820,8 +820,8 @@ CREATE TABLE `trofeo_has_jugador` (
   PRIMARY KEY (`trofeo_idTrofeo`,`jugador_usuario_idUsr`,`jugador_juego_idJuego`),
   KEY `fk_trofeo_has_jugador_jugador1_idx` (`jugador_usuario_idUsr`,`jugador_juego_idJuego`),
   KEY `fk_trofeo_has_jugador_trofeo1_idx` (`trofeo_idTrofeo`),
-  CONSTRAINT `fk_trofeo_has_jugador_trofeo1` FOREIGN KEY (`trofeo_idTrofeo`) REFERENCES `trofeo` (`idTrofeo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_trofeo_has_jugador_jugador1` FOREIGN KEY (`jugador_usuario_idUsr`, `jugador_juego_idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_trofeo_has_jugador_jugador1` FOREIGN KEY (`jugador_usuario_idUsr`, `jugador_juego_idJuego`) REFERENCES `jugador` (`usuario_idUsr`, `juego_idJuego`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_trofeo_has_jugador_trofeo1` FOREIGN KEY (`trofeo_idTrofeo`) REFERENCES `trofeo` (`idTrofeo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -847,7 +847,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
   `aPaterno` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
   `aMaterno` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `sexo` int(11) DEFAULT NULL,
+  `sexo` char(1) COLLATE latin1_spanish_ci DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `correo` varchar(40) COLLATE latin1_spanish_ci NOT NULL,
   `contrasena` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
@@ -856,16 +856,18 @@ CREATE TABLE `usuario` (
   `idGradoAcademico` int(11) NOT NULL,
   `idGradoActivo` int(11) NOT NULL,
   `avatar` varchar(150) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `cargo` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `area` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idUsr`),
   UNIQUE KEY `idUsr_UNIQUE` (`idUsr`),
   KEY `fk_usuario_tipoUsuario_idx` (`idTipoUsr`),
   KEY `fk_usuario_division1_idx` (`idDivison`),
   KEY `fk_usuario_gradoAcademico1_idx` (`idGradoAcademico`),
   KEY `fk_usuario_gradoActivo1_idx` (`idGradoActivo`),
-  CONSTRAINT `fk_usuario_tipoUsuario` FOREIGN KEY (`idTipoUsr`) REFERENCES `tipoUsuario` (`idTipoUsr`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_division1` FOREIGN KEY (`idDivison`) REFERENCES `division` (`idDivison`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_gradoAcademico1` FOREIGN KEY (`idGradoAcademico`) REFERENCES `gradoAcademico` (`idGradoAcademico`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_gradoActivo1` FOREIGN KEY (`idGradoActivo`) REFERENCES `gradoActivo` (`idGradoActivo`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_usuario_gradoActivo1` FOREIGN KEY (`idGradoActivo`) REFERENCES `gradoActivo` (`idGradoActivo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_usuario_tipoUsuario` FOREIGN KEY (`idTipoUsr`) REFERENCES `tipoUsuario` (`idTipoUsr`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -887,4 +889,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-05-02 15:18:49
+-- Dump completed on 2013-05-08 13:50:27
