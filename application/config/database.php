@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'admin';
-$db['default']['database'] = 'admin';
+$db['default']['password'] = '';
+$db['default']['database'] = 'loteriadb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
