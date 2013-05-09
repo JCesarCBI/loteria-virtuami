@@ -44,7 +44,7 @@ class Mregistro extends Model {
 		$query = $this->db->get();
 		
 		return $query->result();		
-	}
-}*/
+	}*/
+}
 
 ?>
