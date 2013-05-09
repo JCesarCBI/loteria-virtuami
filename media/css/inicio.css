@@ -8,9 +8,10 @@
 
 body{ font-family:"Gabriela";font-size:15px;background:#B18904;}
 label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
+/* Clase que define a todos los botones de la vista inicio */
+.boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
 
 /*Mesa del centro */
-
 .mesa{
 	background-image:url("../img/mesa.png");
 	background-repeat:no-repeat;
@@ -22,6 +23,7 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 }
 
 .centro{ margin-left:17%;width: 90%;}
+#atras1{margin-left:-140px;}
 
 /**CAJÓN LATERAL */
 
@@ -63,20 +65,10 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 	float: left;
 }
 
-#sig1{ /* primer botón que aparece en el registro */
-	background:#D9E021;
-	border-color: #D9E021;
-	margin-top:12px;
-	margin-left:-57px;
-	font-size:12px;
-}
-#sig2{ /* segundo botón que aparece en el registro */
-	background:#D9E021;
-	border-color: #D9E021;
-	margin-top:12px;
-	margin-left:85px;
-	font-size:12px;
-}
+/* posición del primer botón que aparece en el registro */
+#sig1{ margin-top:12px;	margin-left:-57px;}
+/* posición del segundo botón que aparece en el registro */
+#sig2{ margin-top:12px;	margin-left:85px;}
 
 label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
 	color:#D9E021;
@@ -193,14 +185,10 @@ input.superior{
 	padding: 7px 15px;	
 }
 
-.iSesion-form{
-	margin-top:70px;
-}
+.iSesion-form{margin-top:70px;}
 
-.i-sesion, .rotar, .CS-cerrado, .CL-cerrado{
-	font-size:19px;
-	font-weight:bold;
-}
+.i-sesion, .rotar, .CS-cerrado, .CL-cerrado{font-size:19px;	font-weight:bold;}
+
 .i-sesion{
 	margin-top:-2px;
 	margin-left:-12px;
@@ -210,13 +198,7 @@ input.superior{
 	float:left;
 }
 
-#iSesion-boton{
-	background:#D9E021;
-	border-color: #D9E021;
-	font-family:"Gabriela";
-	font-size:12px;	
-	margin-left:-55px;
-}
+#iSesion-boton{	margin-left:-55px;}
 
 label.recuperaContrasena{
 	width:160px;
