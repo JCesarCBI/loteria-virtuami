@@ -2,11 +2,11 @@
 /**
  * 
  */
-class Mregistro extends Model {
+class Mregistro extends CI_Model {
 	
 	function __construct() {
-		parent::Model();
-	}
+			parent::__construct();
+		}
 	
 	public function getTipoUsuario()
 	{
