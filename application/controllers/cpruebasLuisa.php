@@ -12,6 +12,19 @@ class cpruebasLuisa extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('vinicio');
+		
+		for ($i=0; $i <16 ; $i++) {
+						
+			$data["lote"][$i] = base_url()."/media/cardCaptor/Clow-".$i;
+						
+		}
+		
+		for ($j=0; $j < 46; $j++) {
+			 
+			$data["baraja"][$j]=base_url()."/media/cardCaptor/Clow-".$j;
+		}
+		
+		
+		$this->load->view('vPruebasCartas', $data);
 	}
 }
