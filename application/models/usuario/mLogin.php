@@ -16,7 +16,6 @@
 			$this->db->LIMIT(1);
 			
 			$query = $this->db->get();
-			
 			if ($query-> num_rows() == 1) {
 				return $query->result();
 			} else {
