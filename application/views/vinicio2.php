@@ -1,18 +1,13 @@
 <html>
-	
-<!-- 	Resta:
-	1. Fondo
-	2. Personalización del input radio
-	3. Validación de fomulario -->
+<!-- 	Resta: 	1. Fondo, 2. Personalización del input radio, 3. Validación de fomulario -->
 	<head>
-	<meta charset="utf-8">
-	
-	<title>Inicio</title>
-	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
-	<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
-	<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
-	<script> base = "<?= base_url() ?>"</script>
-	<script src="<?= base_url()?>media/js/inicio.js"></script>
+		<meta charset="utf-8">
+		<title>Inicio</title>
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
+		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
+		<script> base = "<?= base_url() ?>"</script>
+		<script src="<?= base_url()?>media/js/inicio.js"></script>
 	</head>
 
 	<body>
@@ -40,40 +35,47 @@
 			<div class="cajonLateral-cerrado">
 				<label class="rotar CL-cerrado">Registro</label>				
 			</div>
+			
 			<div div="cajonLatCerrado" class="cajonLateral-abierto">
 				<form method="post" action="">
-					
 					<!-- primera parte registro -->
-	                <input autofocus class="lateral" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="usuario"/>
-	                <input autofocus class="lateral" type="email" id="usuario_correo" name="usuario_correo" required placeholder="e-mail"/>
-	                <input autofocus class="lateral" type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="contraseña" />
+<!-- 					<input id="desbloquea" type="text" value="0"/> -->
+	                <input autofocus class="lateral vacio" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="usuario"/>
+	                <input autofocus class="lateral vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="e-mail"/>
+	                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="contraseña" />
 	                <p class="sexo">
-	                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h">
+	                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
 	                </p>
 	                <p class="sexo"> 
 	                	<label class="sexo" for="usuario_sexo">mujer</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
 	                </p><br>
 	                
 					<!-- segunda parte registro -->
-					<input autofocus class="lateral" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="nombre(s)" />
-					<input autofocus class="lateral" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="apellido paterno" />
-					<input autofocus class="lateral" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="apellido materno" />
+					<input autofocus class="lateral vacio" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="nombre(s)" />
+					<input autofocus class="lateral vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="apellido paterno" />
+					<input autofocus class="lateral vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="apellido materno" />
 					
 					<!--tercera parte registro-->
-					<input autofocus class="lateral" type="text" id="usuario_edad" name="usuario_edad" required placeholder="edad" />
-	                <input autofocus class="lateral" type="text" id="usuario_edad1" name="usuario_edad" required placeholder="edad" />
-	                <input autofocus class="lateral" type="text" id="usuario_edad2" name="usuario_edad" required placeholder="edad" />
+					<input autofocus class="lateral vacio" type="text" id="usuario_edad" name="usuario_edad" required placeholder="edad" />
+	                <input autofocus class="lateral vacio" type="text" id="usuario_edad1" name="usuario_edad" required placeholder="edad" />
+	                <input autofocus class="lateral vacio" type="text" id="usuario_edad2" name="usuario_edad" required placeholder="edad" />
+	        
 	                <!-- botones siguiente y submit -->
-	                <input type="button" class="boton" id="sig1" name="sig1" value="siguiente" />	                <input type="button" class="boton" id="sig2" name="sig2" value="siguiente" />
-	                <input type="button" class="boton" id="atras1" name="atras1" value="atrás" />
-					<input type="button" class="boton" id="atras2" name="atras2" value="atrás" />
+	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
+	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
+	                <input type="button" class="boton" id="atras1" value="atrás" />
+					<input type="button" class="boton" id="atras2" value="atrás" />
+					<input type="submit" class="boton" id="enviar" name="enviar" value="enviar" disabled />
+
 	                <div class="amarillo-lat">
 	                	<label class="rotar">Registro</label>
 	                </div>
                 </form>
 			</div> <!--canjonLateral-->			
 		</div><!-- nine columns-->
-		<div class="three columns"></div>
+		<div class="three columns"></div> <!-- completa las 12 columnas-->
+		
+		<!--Sección de ACERCA DEL JUEGO -->
 		<div class="twelve columns acerca">
 				<div class="nine columns">
 					<h2>Acerca del juego</h2>
@@ -87,6 +89,6 @@
 				<div class="three columns">
 					<img id="logoUAM" src="<?= base_url()?>media/img/uami.png"/>
 				</div>
-		</div>
+		</div> <!--termina sección ACERCA DEL JUEGO -->
 	</body>
 </html>

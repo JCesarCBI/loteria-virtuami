@@ -9,9 +9,17 @@
 body{ font-family:"Gabriela";font-size:15px;background:#B18904;}
 label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 /* Clase que define a todos los botones de la vista inicio */
+#atras1{margin-left:-140px;}
+
 .boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
 
 /*Mesa del centro */
+
+/* posición del primer botón que aparece en el registro */
+#sig1{ margin-top:12px;	margin-left:-57px;}
+/* posición del segundo botón que aparece en el registro */
+#sig2{ margin-top:12px;	margin-left:85px;}
+
 .mesa{
 	background-image:url("../img/mesa.png");
 	background-repeat:no-repeat;
@@ -23,9 +31,10 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 }
 
 .centro{ margin-left:17%;width: 90%;}
-#atras1{margin-left:-140px;}
 
 /**CAJÓN LATERAL */
+
+#iSesion-boton{	margin-left:-55px;}
 
 .rotar{ /* Rota el texto registro en una orientación de 90 grados */
 	-ms-transform: rotate(90deg);
@@ -55,6 +64,7 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 	height:188px;
 	float: left;	
 }
+
 .cajonLateral-abierto{	/* Clase que define al cajón lateral en estado abierto */
 	padding:20px 10px;
 	background-image:url("../img/cajon_reg.png");
@@ -65,10 +75,14 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 	float: left;
 }
 
-/* posición del primer botón que aparece en el registro */
-#sig1{ margin-top:12px;	margin-left:-57px;}
-/* posición del segundo botón que aparece en el registro */
-#sig2{ margin-top:12px;	margin-left:85px;}
+/** Clase que hará aparecer la palomita o el tache al validar el registro */
+.indica{
+	width:18px;
+	height:18px;
+	background:red;
+	margin-top:-142px;
+	margin-left:167px;
+}
 
 label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
 	color:#D9E021;
@@ -84,9 +98,16 @@ input.sexo{ float: left; width: 40px;} /* Acomoda los radio inputs y los label e
 input[type="text"]{ 
 	background: #2E3116;
 	outline: none !important; 
-	border-color: #000000;
+/*	border-color: #000000;*/
 	color:#D9E021;
 	font-size:10px;
+}
+input[type="text"]:focus {
+	background: #2E3116;  
+	outline: none !important; 
+/*	border-color: #000;*/
+	color:#D9E021;
+	font-weight:bold;
 }
 
 input[type="password"]:focus {
@@ -96,21 +117,12 @@ input[type="password"]:focus {
 	color:#D9E021;
 	font-weight:bold;
 }
-
 input[type="password"]{
 	background: #2E3116;
 	outline: none !important; 
 	border-color: #000000;
 	color:#D9E021;
 	font-size:10px;
-}
-
-input[type="text"]:focus {
-	background: #2E3116;  
-	outline: none !important; 
-	border-color: #000;
-	color:#D9E021;
-	font-weight:bold;
 }
 
 input[type="email"]{
@@ -120,7 +132,6 @@ input[type="email"]{
 	color:#D9E021;
 	font-size:10px;
 }
-
 input[type="email"]:focus {
 	background: #2E3116;  
 	outline: none !important; 
@@ -132,10 +143,15 @@ input[type="email"]:focus {
 input.lateral{
 	width:160px;
 	height:25px;
-	border: 1px solid #000; 
 	margin-top:-6px;
 	border-radius:10px;
 }
+
+/* Clases para la validación de los campos en le registro*/
+
+.vacio{	border-color: #000 !important;}
+.correcto {border-color: #005702 !important;}
+.incorrecto{border-color: #A70000 !important;}
 
 /* Estilo para el label cuando el cajón lateral está cerrado */ 
 label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
@@ -197,8 +213,6 @@ input.superior{
 	padding:2px;
 	float:left;
 }
-
-#iSesion-boton{	margin-left:-55px;}
 
 label.recuperaContrasena{
 	width:160px;
