@@ -26,7 +26,7 @@
 		
 		public function getContrasena($correo)
 		{
-			$this->db->SELECT('idUsr, contrasena');
+			$this->db->SELECT('idUsr, nombreUsr, contrasena');
 			$this->db->FROM('usuario');
 			$this->db->WHERE('correo', $correo);
 			$this->db->LIMIT(1);
