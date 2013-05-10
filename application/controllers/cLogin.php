@@ -16,15 +16,18 @@ class CLogin extends CI_Controller {
         }else{
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
-        	$usuario = $this->mLogin->login_usuario($usr, $psw);
-			if($usuario){
+        	$jugador = $this->mLogin->login_usuario($usr, $psw);
+			if($jugador){
 				$this->session->set_userdata('usuario', $usr);
+				$this->session->set_userdata('avatar', $jugador[0]->avatar);				
 				$this->load->view('vPruebaEfrenLogin');
 			}else{
 				echo "error, usuario no esta en la DB";
 				$this->load->view('vinicio2');
 			}
         }
+		
+		
 	}
 	
 	public function terminarSesion(){
