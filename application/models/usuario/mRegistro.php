@@ -39,7 +39,40 @@ class MRegistro extends CI_Model {
 	public function getGradoAcademico()
 	{
 		$consuta = $this->db->get('gradoAcademico');
-	}	
+	}
+	
+	public function getExisteUsuario($nombreUsr)
+	{
+		$this->db->SELECT('idUsr');
+		$this->db->FROM('usuario');
+		$this->db->WHERE('nombreUsr', $nombreUsr);
+		$this->db->LIMITI(1);
+		
+		$query = $this->db->get();
+		
+		if ($query-> num_rows() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public function getExisteCorreo($correo)
+	{
+		$this->db->SELECT('idUsr');
+		$this->db->FROM('usuario');
+		$this->db->WHERE('correo', $correo);
+		$this->db->LIMITI(1);
+		
+		$query = $this->db->get();
+		
+		if ($query-> num_rows() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>
