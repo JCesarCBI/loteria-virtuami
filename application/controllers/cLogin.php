@@ -5,22 +5,30 @@ class CLogin extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->library('form_validation');
-		//$this->load->library('session');
+		$this->load->model('usuario/mLogin');
 	}
 	
 	public function validarLogin(){
-		$this->form_validation->set_rules('Lusuario_nombreUsr','','trim|required|max_length[30]|xss_clean');
+		$this->form_validation->set_rules('Lusuario_nombreUsr','','trim|required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('Lusuario_contrasena', '', 'trim|required');
         if ($this->form_validation->run() == FALSE){
-        	//echo "fallo";
             $this->load->view('vinicio2');
         }else{
-        	        		
-				
-        	//echo "exito";
-            $this->load->view('vPruebaEfren');
+        	$usr = $this->input->post('Lusuario_nombreUsr');
+			$psw = $this->input->post('Lusuario_contrasena');
+        	$usuario = $this->mLogin->login_usuario($usr, $psw);
+			if($usuario){
+				$this->session->set_userdata('usuario', $usr);
+				$this->load->view('vPruebaEfrenLogin');
+			}else{
+				echo "error, usuario no esta en la DB";
+				$this->load->view('vinicio2');
+			}
         }
-		
-		//$this->load->view('cPruebaEfren');
+	}
+	
+	public function terminarSesion(){
+		$this->session->sess_destroy();
+		$this->load->view('vinicio2');
 	}
 }
