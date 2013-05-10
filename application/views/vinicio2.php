@@ -71,7 +71,6 @@
 					
 					<!--tercera parte registro-->
 					<input autofocus class="lateral vacio" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
-					<?php ?>
 					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 0, 'id=usuario_comunidadUniversitaria'); ?>
 					<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division'); ?>
 	        
