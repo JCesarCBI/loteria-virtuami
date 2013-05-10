@@ -1,0 +1,13 @@
+.carta{
+	width:107px;
+	height:238px;
+}
+
+.cartaReversa{
+	width: 215px;
+	height:477px;
+}
+
+.Escondido{
+	display: none;
+}
