@@ -7,10 +7,11 @@
 }
 
 body{ font-family:"Gabriela";font-size:15px;background:#B18904;}
-label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
+label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 /* Clase que define a todos los botones de la vista inicio */
 #atras1{margin-left:-140px;}
 
+.ins{font-size:10px; color: #D9E021; margin-top:-10px; margin-bottom:15px; width:150px;}
 .boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
 
 /*Mesa del centro */
@@ -34,6 +35,19 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 
 /**CAJÓN LATERAL */
 
+#atras2{
+	float:left;
+	margin-top:15px;
+}
+
+#usuario_division{
+	margin-right:119px;
+}
+
+#enviar{
+	margin-left:20px;
+	margin-top:15px;
+}
 #iSesion-boton{	margin-left:-55px;}
 
 .rotar{ /* Rota el texto registro en una orientación de 90 grados */
@@ -45,7 +59,7 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 }
 
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
-	margin-top:-123.5px;
+	margin-top:-138px;
 	margin-right:25px;
 	background:#D9E021;
 	height:180px;
@@ -73,15 +87,6 @@ label, p, a, input, h1, h2, h3, h4, h5{ font-family: 'Gabriela'; }
 	width:272px;
 	height:188px;
 	float: left;
-}
-
-/** Clase que hará aparecer la palomita o el tache al validar el registro */
-.indica{
-	width:18px;
-	height:18px;
-	background:red;
-	margin-top:-142px;
-	margin-left:167px;
 }
 
 label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
@@ -147,6 +152,7 @@ input.lateral{
 	border-radius:10px;
 }
 
+select {width: 162px; margin-top:2px; margin-bottom:8px; font-size:11px; }
 /* Clases para la validación de los campos en le registro*/
 
 .vacio{	border-color: #000 !important;}
@@ -158,6 +164,27 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 
 /*CAJÓN SUPERIOR*/
 
+#labelRecuperar{ /*Posición del texto "recuperar contraseña" */
+	margin-left:-160px;
+}
+
+#Isesion, #recuperaContrasena{
+	width:160px;
+	color:#D9E021;
+	margin-top:15px;
+	margin-left:-128px;
+	font-size:12px;
+}
+
+#Isesion:hover, #recuperaContrasena:hover{
+	text-decoration:underline;
+}
+#Isesion{
+	margin-left:-90px !important;
+}
+#recuperaContrasena-boton{
+	margin-left:-70px;
+}
 .cajonSuperior-abierto{	
 	background-image:url("../img/cajon_login.png");
 	background-repeat:no-repeat;
@@ -169,7 +196,15 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 	position:absolute;
 	float: left;
 }
-
+.Inisesion{
+	background:red;
+	width:176px;
+	height:239px;
+	margin-left:170px;
+	position:absolute;
+	float:left;
+	margin-top:5px;
+}
 .cajonSuperior-cerrado{	
 	background-image:url("../img/cajon_login.png");
 	background-repeat:no-repeat;
@@ -212,14 +247,6 @@ input.superior{
 	height:20px;
 	padding:2px;
 	float:left;
-}
-
-label.recuperaContrasena{
-	width:160px;
-	color:#D9E021;
-	margin-top:15px;
-	margin-left:-128px;
-	font-size:12px;
 }
 
 label.CS-cerrado{
