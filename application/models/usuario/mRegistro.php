@@ -10,41 +10,36 @@ class MRegistro extends CI_Model {
 	
 	public function getTipoUsuario()
 	{
-		$qSqlA = 'SELECT * FROM tipoUsuario;';
-		$eSqlA = $this->db->query($qSqlA);
-		return $eSqlA->result();		
+		$this->db->SELECT('*');
+		$this->db->FROM('tipoUsuario');
+		
+		$consulta = $this->db->get();
+		
+		if ($consulta->num_rows() > 0) {
+			foreach ($consulta->result_array() as $row) {
+				$datos['tipoUsuario'][] = $row;
+			}
+			return $datos;
+		} else {
+			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			return (isset($msj));
+		}
 	}
 	
 	public function getDivision()
 	{
-		$qSqlA = 'SELECT * FROM division;';
-		$eSqlA = $this->db->query($qSqlA);
-		return $eSqlA->result();		
+		$consuta = $this->db->get('division');
 	}
 	
 	public function getGradoActivo()
 	{
-		$qSqlA = 'SELECT * FROM gradoActivo;';
-		$eSqlA = $this->db->query($qSqlA);
-		return $eSqlA->result();		
+		$consuta = $this->db->get('gradoActivo');
 	}
 	
 	public function getGradoAcademico()
 	{
-		$qSqlA = 'SELECT * FROM gradoAcademico;';
-		$eSqlA = $this->db->query($qSqlA);
-		return $eSqlA->result();		
-	}
-	
-/*	public function getGradoAcademico()
-	{
-		$this->db->SELECT('*');
-		$this->db->FROM('gradoAcademico');
-		
-		$query = $this->db->get();
-		
-		return $query->result();		
-	}*/
+		$consuta = $this->db->get('gradoAcademico');
+	}	
 }
 
 ?>
