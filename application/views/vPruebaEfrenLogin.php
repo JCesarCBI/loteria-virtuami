@@ -7,11 +7,13 @@
 <body>
 	<h1 id="">Loteria</h1>
 	<h3>Bienvenido <?php print_r($this->session->userdata('usuario')); ?></h3>
-	<img src="<?php print_r($this->session->userdata('avatar')); ?>" alt="">
+	<img src="<?php print_r(base_url().$this->session->userdata('avatar')); ?>">
 	<form action="<?=base_url(); ?>index.php/cLogin/terminarSesion">
 		<input type="submit" id="" name="" value="salir">
 	</form>
-	<button>Jugar</button>
+	<form action="<?=base_url(); ?>index.php/cPruebaJuegoLibre/juegoLibre">
+		<input type="submit" id="" name="" value="jugar">
+	</form>
 	<pre>
 		
 	</pre>
