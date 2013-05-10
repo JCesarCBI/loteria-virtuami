@@ -2,7 +2,7 @@
 	/**
 	 * 
 	 */
-	class MJuegoLibre extends CI_Model {
+	class Mjuegolibre extends CI_Model {
 		
 		function __construct() {
 			parent::__construct();
