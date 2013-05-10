@@ -4,7 +4,7 @@ class CLogin extends CI_Controller {
 	function __construct() {    
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
-		$this->load->library('form_validation', 'email');
+		$this->load->library('form_validation');
 		$this->load->model('usuario/mLogin');
 	}
 	
@@ -38,12 +38,27 @@ class CLogin extends CI_Controller {
 		if ($this->form_validation->run() == FALSE){
             $this->load->view('vinicio2');
         }else{
-        	$pswUsuario = $this->mLogin->getContrasena($correo);
-			if($pswUsuario){
+        	$Usuario = $this->mLogin->getContrasena($correo);
+			if($Usuario){
+				$config = Array(
+					'useragent'      => 'CodeIgniter',
+					'mailpath'     => '/usr/bin/sendmail',// or "/usr/sbin/sendmail"
+					'protocol'     => 'mail',
+					'smtp_host'     => 'localhost',
+					'smtp_user'     => '',
+					'smtp_pass'      => '',
+					'smtp_port'  =>  '25', 
+					);
+				$this->load->library('email', $config);
+				
+				
+				
 				$this->email->from('tu_direccion@tu_sitio.com', 'LOTERIA UAMI');
-				$this->email->to($correo);
+				$this->email->to("jcesarcbi@gmail.com");
+				//$this->email->to($correo);
 				$this->email->subject('Te enviamos tu contraseña de LOTERIA UAMI');
-				$this->email->message('Tu contraseña es: '.$pswUsuario);
+				$this->email->message('Tu usuario es hola');
+				//$this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr.'y tu contraseña es '.$Usuario[0]->contrasena);
 				$this->email->send();
 				echo $this->email->print_debugger();
 			}else{

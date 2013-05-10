@@ -5,11 +5,15 @@ class CPruebaJuegoLibre extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->library('form_validation');
-		//$this->load->model('usuario/mLogin');
+		$this->load->model('juego/mJuegoLibre');
 	}
 	
 	public function juegoLibre(){
 		
-		$this->load->view('vPruebasCartas');
+		$baraja = $this->mJuegoLibre->getMazo();
+		echo "<pre>";
+		print_r($baraja);
+		echo"</pre>";
+		//$this->load->view('vPruebasCartas');
 	}
 }
