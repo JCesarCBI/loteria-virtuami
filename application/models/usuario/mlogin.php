@@ -12,7 +12,7 @@
 			$this->db->SELECT('idUsr, nombreUsr, contrasena, avatar');
 			$this->db->FROM('usuario');
 			$this->db->WHERE('nombreUsr', $nombreUsr);
-			$this->db->WHERE('contrasena', md5($contrasena));
+			$this->db->WHERE('contrasena', $contrasena);
 			$this->db->LIMIT(1);
 			
 			$query = $this->db->get();
