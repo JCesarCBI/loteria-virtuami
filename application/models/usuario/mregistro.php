@@ -28,17 +28,56 @@ class Mregistro extends CI_Model {
 	
 	public function getDivision()
 	{
-		$consuta = $this->db->get('division');
+		$this->db->SELECT('*');
+		$this->db->FROM('division');
+		
+		$consulta = $this->db->get();
+		
+		if ($consulta->num_rows() > 0) {
+			foreach ($consulta->result_array() as $row) {
+				$datos['division'][] = $row;
+			}
+			return $datos;
+		} else {
+			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			return (isset($msj));
+		}
 	}
 	
 	public function getGradoActivo()
 	{
-		$consuta = $this->db->get('gradoActivo');
+		$this->db->SELECT('*');
+		$this->db->FROM('gradoActivo');
+		
+		$consulta = $this->db->get();
+		
+		if ($consulta->num_rows() > 0) {
+			foreach ($consulta->result_array() as $row) {
+				$datos['gradoActivo'][] = $row;
+			}
+			return $datos;
+		} else {
+			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			return (isset($msj));
+		}
 	}
 	
 	public function getGradoAcademico()
 	{
-		$consuta = $this->db->get('gradoAcademico');
+		$this->db->SELECT('*');
+		$this->db->FROM('gradoAcademico');
+		
+		$consulta = $this->db->get();
+		
+		if ($consulta->num_rows() > 0) {
+			foreach ($consulta->result_array() as $row) {
+				$datos['gradoAcademico'][] = $row;
+			}
+			return $datos;
+		} else {
+			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			return (isset($msj));
+		}
 	}
 	
 	public function getExisteUsuario($nombreUsr)
