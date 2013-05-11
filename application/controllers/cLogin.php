@@ -34,12 +34,15 @@ class CLogin extends CI_Controller {
 		$this->load->view('vinicio2');
 	}
 	
-	public function recuperarContrasena($correo){
-		$this->form_validation->set_rules('correoUsr','','trim|required|xss_clean|valid_email');
+	public function recuperarContrasena(){
+		
+		$this->form_validation->set_rules('usuario_correo_recuperarContrena','','trim|required|valid_email');
 		if ($this->form_validation->run() == FALSE){
             $this->load->view('vinicio2');
+			echo "dentro de la funcion";
         }else{
-        	$Usuario = $this->mLogin->getContrasena($correo);
+        	$correo = $this->input->post('usuario_correo_recuperarContrena');
+        	$Usuario = $this->mlogin->getContrasena($correo);
 			if($Usuario){
 				$config = Array(
 					'useragent'      => 'CodeIgniter',
@@ -50,10 +53,7 @@ class CLogin extends CI_Controller {
 					'smtp_pass'      => '',
 					'smtp_port'  =>  '25', 
 					);
-				$this->load->library('email', $config);
-				
-				
-				
+				$this->load->library('email', $config);				
 				$this->email->from('tu_direccion@tu_sitio.com', 'LOTERIA UAMI');
 				$this->email->to("jcesarcbi@gmail.com");
 				//$this->email->to($correo);
@@ -62,6 +62,7 @@ class CLogin extends CI_Controller {
 				//$this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr.'y tu contraseña es '.$Usuario[0]->contrasena);
 				$this->email->send();
 				echo $this->email->print_debugger();
+				echo "CORREO ENVIADO";
 			}else{
 				echo "No tienes cuenta en Loteria UAM, registrate...";
 				$this->load->view('vinicio2');
