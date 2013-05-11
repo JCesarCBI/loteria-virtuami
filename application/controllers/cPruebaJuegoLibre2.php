@@ -31,7 +31,8 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 		for ($k=0; $k < 16; $k++) { 
 			srand ();  //Introducimos la "semilla"
 			$aleat = rand(0,53);    //rand(mínimo,máximo);
-			$data["lote"][$k] = $baraja[$aleat];
+			$r = $baraja[$aleat]->idCarta;
+			$data["lote"][$r] = $baraja[$aleat];
 		}
 		
 		// for ($i=0; $i <16 ; $i++) {
@@ -48,9 +49,9 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 		// }
 		
 		//$this->load->view('vPruebaEfrenJuego', $data);
-		
-		echo "<pre>";
-		print_r($data);
-		echo"</pre>";
+		$this->load->view('vPruebasCartas', $data);
+		// echo "<pre>";
+		// print_r($data);
+		// echo"</pre>";
 	}
 }
