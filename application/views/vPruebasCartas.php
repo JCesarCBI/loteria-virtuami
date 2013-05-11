@@ -28,16 +28,24 @@
 			}?>
 		
 		</div>
+		
+		<div id="contenido" name="contenido">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		
 		<div class="five columns">
 			
 			
-			<?php foreach ($baraja as $key => $cartas) {
-							
-				echo "<img class='Escondido cartaReversa' id='baraja-".$key."' src='".base_url().$cartas['imagen']."' />";
-				
+			<?php
+			$id=1; 
+			foreach ($baraja as $key => $cartas) {
+										
+				echo "<div value='".$cartas['imagen']."' id='baraja-".$id."'  class='Escondido'>";
+				echo "<img class='cartaReversa'src='".base_url().$cartas['imagen']."' />";
+				echo "</div>";
+				$id++;
 			}?>
 			
-			<input type="hidden"  id="IdCartaReversa"  name="IdCartaReversa" value="baraja-0" />
+			<input type="hidden"  id="IdCartaReversa"  name="IdCartaReversa" value="baraja-1" />
+			
 			
 			<img src="<?= base_url()?>media/img/mazo/reversa.jpg" onclick="cambiarCarta()" class="cartaReversa"/>
 			
