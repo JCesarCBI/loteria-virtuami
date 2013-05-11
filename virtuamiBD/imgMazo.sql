@@ -45,3 +45,10 @@ UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-43.jpg" WHERE idCarta="4
 UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-44.jpg" WHERE idCarta="45";
 UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-45.jpg" WHERE idCarta="46";
 UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-46.jpg" WHERE idCarta="47";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-1.jpg" WHERE idCarta="48";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-2.jpg" WHERE idCarta="49";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-3.jpg" WHERE idCarta="50";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-4.jpg" WHERE idCarta="51";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-5.jpg" WHERE idCarta="52";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-6.jpg" WHERE idCarta="53";
+UPDATE loteriadb.carta SET imagen="/media/img/mazo/Clow-7.jpg" WHERE idCarta="54";
