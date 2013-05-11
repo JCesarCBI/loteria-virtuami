@@ -46,7 +46,7 @@ class CLogin extends CI_Controller {
 			if($Usuario){
 				$config = Array(
 					'useragent'      => 'CodeIgniter',
-					'mailpath'     => '/usr/bin/sendmail',// or "/usr/sbin/sendmail"
+					'mailpath'     => '/usr/sbin/sendmail',// or "/usr/sbin/sendmail"
 					'protocol'     => 'mail',
 					'smtp_host'     => 'localhost',
 					'smtp_user'     => '',
