@@ -3,11 +3,27 @@
 class Welcome extends CI_Controller {
 	function __construct() {    
         parent::__construct();
-        $this->load->helper(array('html', 'url'));
-
+        $this->load->helper(array('html', 'url', 'form'));
+		$this->load->model('usuario/mregistro');
 	}
 	
 	public function index(){
-		$this->load->view('vinicio2');
+		$tipoUsuario = $this->mregistro->getTipoUsuario();
+		$division = $this->mregistro->getDivision();
+		$i = 0;
+		foreach ($tipoUsuario as $lugar) {
+			foreach ($lugar as $key) {
+				$datos['comunidad_universitaria'][$i] = $key['tipoUsr'];
+				$i++;
+			}			
+		}
+		$i = 0;
+		foreach ($division as $lugar) {
+			foreach ($lugar as $key) {
+				$datos['division'][$i] = $key['iniciales'];
+				$i++;
+			}
+		}
+		$this->load->view('vinicio2', $datos);
 	}
 }
