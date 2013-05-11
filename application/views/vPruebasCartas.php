@@ -14,15 +14,17 @@
 		
 		<div class="seven columns">
 			
-			<?php foreach ($lote as $key => $carta) {
-							
-				echo "<img class='carta' src='".$carta."' />";
+			<?php
+			
+			$cont=1;
+			 foreach ($lote as $key => $carta) {
 				
-				if ((($key+1) % 4)==0 && $key>0) {
+				echo "<img class='carta' src='".base_url().$carta['imagen']."' />";
 				
+				if (($cont % 4)==0 && $cont>1) 
 					echo "<br />";
-					
-				}
+				
+				$cont++;
 			}?>
 		
 		</div>
@@ -31,13 +33,13 @@
 			
 			<?php foreach ($baraja as $key => $cartas) {
 							
-				echo "<img class='Escondido cartaReversa' id='baraja-".$key."' src='".$cartas."' />";
+				echo "<img class='Escondido cartaReversa' id='baraja-".$key."' src='".base_url().$cartas['imagen']."' />";
 				
 			}?>
 			
 			<input type="hidden"  id="IdCartaReversa"  name="IdCartaReversa" value="baraja-0" />
 			
-			<img src="<?= base_url()?>media/cardCaptor/reversa.jpg" onclick="cambiarCarta()" class="cartaReversa"/>
+			<img src="<?= base_url()?>media/img/mazo/reversa.jpg" onclick="cambiarCarta()" class="cartaReversa"/>
 			
 		</div>
 				
