@@ -6,7 +6,7 @@ class CLogin extends CI_Controller {
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->model('usuario/mLogin');
+		$this->load->model('usuario/mlogin');
 	}
 	
 	public function validarLogin(){
@@ -17,7 +17,7 @@ class CLogin extends CI_Controller {
         }else{
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
-        	$jugador = $this->mLogin->login_usuario($usr, $psw);
+        	$jugador = $this->mlogin->login_usuario($usr, $psw);
 			if($jugador){
 				$this->session->set_userdata('usuario', $usr);
 				$this->session->set_userdata('avatar', $jugador[0]->avatar);				

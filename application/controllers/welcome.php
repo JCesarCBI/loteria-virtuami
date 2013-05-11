@@ -4,6 +4,7 @@ class Welcome extends CI_Controller {
 	function __construct() {    
         parent::__construct();
         $this->load->helper(array('html', 'url'));
+
 	}
 	
 	public function index(){
