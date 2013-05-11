@@ -11,11 +11,8 @@
 	<form action="<?=base_url(); ?>index.php/cLogin/terminarSesion">
 		<input type="submit" id="" name="" value="salir">
 	</form>
-	<form action="<?=base_url(); ?>index.php/cPruebaJuegoLibre/juegoLibre">
+	<form action="<?=base_url(); ?>index.php/cPruebaJuegoLibre2/juegoLibre">
 		<input type="submit" id="" name="" value="jugar">
-	</form>
-	<form action="<?=base_url(); ?>index.php/cLogin/recuperarContrasena">
-		<input type="submit" id="" name="" value="recuperar psw">
 	</form>
 	<pre>
 		

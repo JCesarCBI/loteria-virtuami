@@ -43,6 +43,7 @@ class CLogin extends CI_Controller {
         }else{
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
+			//echo print_r($Usuario);
 			if($Usuario){
 				$config = Array(
 					'useragent'      => 'CodeIgniter',
