@@ -4,12 +4,12 @@
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
         $this->load->library('form_validation');
-        $this->load->model('usuario/mRegistro');
+        $this->load->model('usuario/mregistro');
     }
-    /*public function index(){
+    public function index(){
         // Cargar vista de formulario
-        $this->load->view('mi_form');
-    }*/
+      //  $this->load->view('vPruebasGuillermo');
+    }
     
     /*public function registro()
     {
@@ -53,38 +53,36 @@
             }
             else
             {
-                $this->load->view('vinicio2');
+                //$this->load->view('vinicio2');
             }
         }
         
 		
 	
-		function existeUsuario($nombreUser){
-       	 $variable = $this->mRegistro->getExisteUsuario($nombreUser);
-        	if($variable == true)
-        	{
-            	return true;
-        	}
-        	else
-        	{
-            	return false;
-        	}
+		function existeUsuario(){
+       	
+        $term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
+		 $valor= $this->mregistro->getExisteUsuario($term);
+		//Envia respuesta a la vista si el usuario existe o no en la BD
+		if($valor){  
+			echo json_encode(1);	
+		}else{
+			echo json_encode(0);
+		}		
     	}
    
-    	function existeCorreo($correo){
-    		$variable = $this->mRegistro->getExisteCorreo($correo);
-        	if($variable == true)
-        	{
-            	return true;
-        	}
-        	else
-        	{
-            	return false;
-        	}
-    	}
+    	function existeCorreo(){
+    		$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$valor = $this->mregistro->getExisteCorreo($term);
+		//Envia la respuesta a la vista si el correo existe o no en la BD
+		if( $valor){  
+			echo json_encode(1);	
+		}else{
+			echo json_encode(0);
+		}					}
 	
 		function datosComUniv(){
-			$comUniv = $this->mRegistro->getTipoUsuario();
+			$comUniv = $this->mregistro->getTipoUsuario();
 			return $comUniv;
 		}
 
