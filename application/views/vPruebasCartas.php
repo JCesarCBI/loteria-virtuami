@@ -29,7 +29,7 @@
 		
 		</div>
 		
-		<div id="contenido" name="contenido">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+		<div id="contenido" name="contenido">aaa</div>
 		
 		<div class="five columns">
 			
