@@ -72,7 +72,7 @@ $(document).ready(function() {
 	//FUNCIONES AJAX
 	
 	//Validación de la existencia o no existencia del usuario y correo en la BD
-    $('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena').change(function(){
+    $('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena').keyup(function(){
 		var usr = $('#usuario_nombreUsr').val();
 		var correo = $('#usuario_correo').val();
 		var pass = $('#usuario_contrasena').val();
@@ -88,7 +88,7 @@ $(document).ready(function() {
 			$('#email_ok').val(0)
 		}     	
 		$.ajax({
-			url: base+'index.php/cRegistro/existeUsuario',
+			url: base+'index.php/cpruebasNaye/usuario',
 			data: { usuario: $('#usuario_nombreUsr').val() },
 			dataType: "json",
 			type: "POST",
@@ -118,7 +118,7 @@ $(document).ready(function() {
 		})
 		
 		$.ajax({
-			url: base+'index.php/cRegistro/existeCorreo',
+			url: base+'index.php/cpruebasNaye/correo',
 			data: { correo: $('#usuario_correo').val() },
 			dataType: "json",
 			type: "POST",
@@ -148,9 +148,9 @@ $(document).ready(function() {
 			}
 		})
 	})	
-	//Validación de la segunda parte del formulario
 	
-	$('#usuario_nombre, #usuario_aPaterno, #usuario_aMaterno').change(function(){
+	//Validación de la segunda parte del formulario
+	$('#usuario_nombre, #usuario_aPaterno, #usuario_aMaterno').keyup(function(){
 		var nombre = $('#usuario_nombre').val()
 		var apat = $('#usuario_aPaterno').val()
 		var amat = $('#usuario_aMaterno').val()
