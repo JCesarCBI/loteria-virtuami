@@ -88,7 +88,7 @@ $(document).ready(function() {
 			$('#email_ok').val(0)
 		}     	
 		$.ajax({
-			url: base+'index.php/cpruebasNaye/usuario',
+			url: base+'index.php/cRegistro/existeUsuario',
 			data: { usuario: $('#usuario_nombreUsr').val() },
 			dataType: "json",
 			type: "POST",
@@ -118,7 +118,7 @@ $(document).ready(function() {
 		})
 		
 		$.ajax({
-			url: base+'index.php/cpruebasNaye/correo',
+			url: base+'index.php/cRegistro/existeCorreo',
 			data: { correo: $('#usuario_correo').val() },
 			dataType: "json",
 			type: "POST",
