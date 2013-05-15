@@ -5,6 +5,7 @@
         $this->load->helper(array('html', 'url', 'form'));
         $this->load->library('form_validation');
         $this->load->model('usuario/mregistro');
+		
     }
     public function index(){
         // Cargar vista de formulario
