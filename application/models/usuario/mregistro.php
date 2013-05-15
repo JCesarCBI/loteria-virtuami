@@ -85,7 +85,7 @@ class Mregistro extends CI_Model {
 		$this->db->SELECT('idUsr');
 		$this->db->FROM('usuario');
 		$this->db->WHERE('nombreUsr', $nombreUsr);
-		$this->db->LIMITI(1);
+		$this->db->LIMIT(1);
 		
 		$query = $this->db->get();
 		
@@ -102,7 +102,7 @@ class Mregistro extends CI_Model {
 		$this->db->SELECT('idUsr');
 		$this->db->FROM('usuario');
 		$this->db->WHERE('correo', $correo);
-		$this->db->LIMITI(1);
+		$this->db->LIMIT(1);
 		
 		$query = $this->db->get();
 		
