@@ -56,7 +56,7 @@ class CLogin extends CI_Controller {
 		        $config['charset']    = 'iso-8859-1';
 		        $config['newline']    = "\r\n";
 		        $config['mailtype'] = 'html'; // or html
-		        $config['validation'] = TRUE; // bool whether to validate email or not      
+		        $config['validation'] = TRUE;    
 		
 		        $this->load->library('email', $config);
 		
