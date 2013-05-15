@@ -47,15 +47,6 @@ class CLogin extends CI_Controller {
 			//echo print_r($Usuario);
 			if($Usuario){
 				// Set SMTP Configuration
-				$config = Array(
-			    'protocol' => 'smtp',
-			    'smtp_host' => 'ssl://smtp.googlemail.com',
-			    'smtp_port' => 465,
-			    'smtp_user' => 'ludico@virtuami.izt.uam.mx',
-			    'smtp_pass' => '7Ud1C0u@m',
-			    'mailtype'  => 'html', 
-			    'charset'   => 'iso-8859-1'
-				);
 				$config['protocol']    = 'smtp';
 		        $config['smtp_host']    = 'ssl://smtp.googlemail.com';
 		        $config['smtp_port']    = '465';
