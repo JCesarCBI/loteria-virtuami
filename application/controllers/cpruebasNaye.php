@@ -8,71 +8,69 @@ class cpruebasNaye extends CI_Controller {
         
         $this->load->helper(array('html', 'url'));
 		$this->load->helper('form'); //Contiene funciones que ayuda a trabajar con formularios en html 
+		$this->load->model('usuario/mregistro');
+		$this->load->library('form_validation');
 	  }
 	
 	public function index()	{
-		$datos['comunidad_universitaria'] = array (
-			'0' => 'comunidad universitaria',
-			'1' => 'comunidad 1',
-			'2' => 'comunidad 2',
-			'3' => 'comunidad 2'
-		);
-		
-		$datos['area'] = array (
-			'0' => 'area',
-			'1' => 'area1',
-			'2' => 'area2',
-			'3' => 'area3'
-		);
-		
-		$datos['division'] = array (
-			'0' => 'division',
-			'1' => 'division1',
-			'2' => 'division2',
-			'3' => 'division3'
-		);
+			
+		$tipoUsuario = $this->mregistro->getTipoUsuario();
+		$division = $this->mregistro->getDivision();
+		$i = 0;
+		foreach ($tipoUsuario as $lugar) {
+			foreach ($lugar as $key) {
+				$datos['comunidad_universitaria'][$i] = $key['tipoUsr'];
+				$i++;
+			}			
+		}
+		$i = 0;
+		foreach ($division as $lugar) {
+			foreach ($lugar as $key) {
+				$datos['division'][$i] = $key['iniciales'];
+				$i++;
+			}
+		}
 		$this->load->view('vinicio2', $datos);
 	}
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
-	function usuario(){
-		$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
-		$usuarios = array( //Este array debería ser el creado por el modelo
-			'1' => "alejandro",
-			'2' => "mariana",
-			'3' => "lupe"
- 		);
-
-		//Envia respuesta a la vista si el usuario existe o no en la BD
-		if( array_search($term, $usuarios)){  
-			echo json_encode(1);	
-		}else{
-			echo json_encode(0);
-		}		
-	}
-	
-	function correo(){
-		$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
-		$correos = array( //Este array debería ser el creado por el modelo
-			'1' => "alejandro@gmail.com.mx",
-			'2' => "mariana@gmail.com.mx",
-			'3' => "lupe@gmail.com.mx"
-		);
-		//Envia la respuesta a la vista si el correo existe o no en la BD
-		if( array_search($term, $correos)){  
-			echo json_encode(1);	
-		}else{
-			echo json_encode(0);
-		}					
-	}
-	
-	function vacio($input){
-		$term = $this->input->post($input,TRUE);
-	
-		if($term == ""){
-			echo json_encode(1);	
-		}else{
-			echo json_encode(0);
+		function usuario(){
+			$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
+			
+			$valor= $this->mregistro->getExisteUsuario($term);//La función 'getExisteUsuario' regresa true si el ususario existe y false en caso contrario.
+			
+			//Envia respuesta a la vista si el usuario existe o no en la BD
+			if( $valor){
+				// echo "El usuario existe";  
+				echo json_encode(1);	
+			}else{
+				// echo "El usuario no existe";
+				echo json_encode(0);
+			}		
 		}
-	}
+	
+		function correo(){
+			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
+			$patron = "[0-9]";
+			$es_correo = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $term);
+			if( $valor || ($es_correo == FALSE)){
+				//Correo existe   
+				echo json_encode(1);	
+			}else{
+				//Correo no existe
+				echo json_encode(0);
+			}					
+		}
+		
+		function vacio($input){
+			$term = $this->input->post($input,TRUE);
+		
+			if($term == ""){
+				echo json_encode(1);	
+			}else{
+				echo json_encode(0);
+			}
+		}
+
 }
