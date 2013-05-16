@@ -15,6 +15,7 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 			$data["baraja"][$k+1] = $baraja[$k];
 			$k++;
 		}
+		shuffle($data);
 		$k = 0;
 		$conta = 0;
 		for ($k=0; $k < 16; $k++) { 
@@ -23,6 +24,30 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 			$r = $baraja[$aleat]['idCarta'];
 			$data["lote"][$r] = $baraja[$aleat];
 		}
-		$this->load->view('vPruebasCartas', $data);
+		echo "<pre>";
+		print_r($data[0]);
+		echo "</pre>";
+		//$this->load->view('vPruebasCartas', $data);
+	}
+	
+	/******Función que escribe la descripción una carta en la baraja********/
+	public function descripcion($id=-1){
+		
+		//Voy por el mazo de las cartas    
+		$baraja = $this->mJuegoLibre->getMazo();
+		
+		//Si el id es correcto y la carta existe busco la descripción
+		if ($id>-1 && isset($baraja[$id]['nombre'])) {
+			
+			$datos=$baraja[$id]['nombre'];
+			//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+			print_r($datos);
+	
+		}
+		//si no lo encuentra me manda una cadena vacía
+		else{
+			echo "";
+		}
+		
 	}
 }

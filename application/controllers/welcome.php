@@ -26,6 +26,9 @@ class Welcome extends CI_Controller {
 			}
 		}*/
 		$datos = $this->micombobox->datosComboBox();
+		/*echo "<pre>";
+		print_r($datos);
+		echo "<pre>";*/
 		$this->load->view('vinicio2', $datos);
 	}
 }

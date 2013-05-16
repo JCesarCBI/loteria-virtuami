@@ -10,6 +10,8 @@ class Micombobox{
 		$this->ci->load->model('usuario/mregistro');
 		$tipoUsuario = $this->ci->mregistro->getTipoUsuario();
 		$division = $this->ci->mregistro->getDivision();
+		$datos['comunidad_universitaria'][-1] = 'Comunidad Universitaria';
+		$datos['division'][-1] = 'Division';
 		$i = 0;
 		foreach ($tipoUsuario as $lugar) {
 			foreach ($lugar as $key) {
