@@ -6,8 +6,10 @@ class CLogin extends CI_Controller {
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		//$this->load->library('email');
 		$this->load->model('usuario/mlogin');
+		//$this->ci->load->model('usuario/mregistro');
+		$this->load->library('micombobox');
+		
 	}
 	
 	public function validarLogin(){
@@ -25,14 +27,14 @@ class CLogin extends CI_Controller {
 				$this->load->view('vPruebaEfrenLogin');
 			}else{
 				echo "error, usuario no esta en la DB";
-				$this->load->view('vinicio2');
+				$this->load->view('vinicio2', $this->micombobox->datosComboBox());
 			}
         }
 	}
 	
 	public function terminarSesion(){
 		$this->session->sess_destroy();
-		$this->load->view('vinicio2');
+		$this->load->view('vinicio2', $this->micombobox->datosComboBox());
 	}
 	
 	public function recuperarContrasena(){
@@ -44,9 +46,7 @@ class CLogin extends CI_Controller {
         }else{
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
-			//echo print_r($Usuario);
 			if($Usuario){
-				// Set SMTP Configuration
 				$config['protocol']    = 'smtp';
 		        $config['smtp_host']    = 'ssl://smtp.googlemail.com';
 		        $config['smtp_port']    = '465';
@@ -57,27 +57,16 @@ class CLogin extends CI_Controller {
 		        $config['newline']    = "\r\n";
 		        $config['mailtype'] = 'html'; // or html
 		        $config['validation'] = TRUE;    
-		
 		        $this->load->library('email', $config);
-		
 		        $this->email->from('ludico@virtuami.izt.uam.mx', 'myname');
-		        $this->email->to('jezrelmx1304@gmail.com'); 
-		
+		        $this->email->to($correo); 
 		        $this->email->subject('Email Test');
-		        $this->email->message('Testing the email class.');  
-		
-		        $this->email->send();
-		
+		        $this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr. 'y tu contraseña es'.$Usuario[0]->contrasena);  	
 		        echo $this->email->print_debugger();
-		
-		        $this->load->view('email_view');
-				
-							
 				}else{
 					echo "No tienes cuenta en Loteria UAM, registrate...";
-					
 			}        	
         }
-		$this->load->view('vinicio2');
+		$this->load->view('vinicio2',$this->micombobox->datosComboBox());
 	}
 }

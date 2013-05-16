@@ -5,10 +5,11 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->model('usuario/mregistro');
+		$this->load->library('micombobox');
 	}
 	
 	public function index(){
-		$tipoUsuario = $this->mregistro->getTipoUsuario();
+		/*$tipoUsuario = $this->mregistro->getTipoUsuario();
 		$division = $this->mregistro->getDivision();
 		$i = 0;
 		foreach ($tipoUsuario as $lugar) {
@@ -23,7 +24,8 @@ class Welcome extends CI_Controller {
 				$datos['division'][$i] = $key['iniciales'];
 				$i++;
 			}
-		}
+		}*/
+		$datos = $this->micombobox->datosComboBox();
 		$this->load->view('vinicio2', $datos);
 	}
 }
