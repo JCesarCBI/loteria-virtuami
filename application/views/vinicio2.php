@@ -1,5 +1,4 @@
 <html>
-<!-- 	Resta: 	1. Fondo, 2. Personalización del input radio, 3. Validación de fomulario -->
 	<head>
 		<meta charset="utf-8">
 		<title>Inicio</title>
@@ -40,7 +39,8 @@
 	    	        </form>
            	        <label id="Isesion">Iniciar sesión</label>
     	        </div>    	        
-			</div> <!--cajón superior-->
+			</div> 
+			<!--TERMINA cajón superior-->
 			
 			<!--CAJÓN LATERAL-->
 			<div class="cajonLateral-cerrado">
@@ -51,12 +51,11 @@
 				<form method="post" action="">
 					<label class="ins">Campos con * son obligatorios</label>
 					<!-- primera parte registro -->
-<!-- 					<input id="desbloquea" type="text" value="0"/> -->
-	                <input autofocus class="lateral vacio" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="* usuario"/>
-	                <input id="usr_ok" type="hidden" value="0">
-	                <input autofocus class="lateral vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
-	                <input id="email_ok" type="hidden" value="0">
-	                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
+	                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="* usuario"/>
+	                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
+	                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
+	                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
+	                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
 	                <p class="sexo">
 	                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
 	                </p>
@@ -65,14 +64,14 @@
 	                </p><br>
 	                
 					<!-- segunda parte registro -->
-					<input autofocus class="lateral vacio" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
-					<input autofocus class="lateral vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
-					<input autofocus class="lateral vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" />
+					<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
+					<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
+					<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" />
 					
 					<!--tercera parte registro-->
-					<input autofocus class="lateral vacio" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
-					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 0, 'id=usuario_comunidadUniversitaria'); ?>
-					<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division'); ?>
+					<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
+					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 0, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
+					<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
 	        
 	                <!-- botones siguiente y submit -->
 	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
