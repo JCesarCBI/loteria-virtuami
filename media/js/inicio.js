@@ -41,37 +41,37 @@ $(document).ready(function() {
 	});
 			
 	//REGISTRO
-	$('#usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division,#sig2, #atras1, #atras2, #enviar').hide();
+	$('.segundo, .tercero').hide();
+	$('#sig2, #atras1, #atras2, #enviar').hide();
 		
 	//Primera parte
 	$("#sig1").click(function() {
-		$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #sig1').hide();
-		$('p.sexo').hide();
-		$('#usuario_nombre, #usuario_aPaterno, #usuario_aMaterno, #sig2, #atras1').show();	
+		$('#sig1').hide();	$('.primero, p.sexo').hide();
+		$('#sig2, #atras1').show();	$('.segundo').show();	
 	});	
 	
 	//Segunda parte
 	$("#sig2").click(function(){
-		$('#sig2,#usuario_nombre,#usuario_aPaterno,#usuario_aMaterno, #atras1').hide();
-		$('#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #atras2, #enviar').show();	
+		$('.segundo, #atras1, #sig1, #sig2').hide();
+		$('.tercero, #atras2, #enviar, #enviar').show();	
 	});	
 
 	$('#atras1').click(function(){
-		$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #sig1').show();
-		$('p.sexo').show();
-		$('#usuario_nombre, #usuario_aPaterno, #usuario_aMaterno, #sig2, #atras1, #enviar').hide();	
+		$('#sig1').show(); $('.primero, p.sexo').show();
+		$('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
 	})
 	
 	//Tercera parte	
 	$("#atras2").click(function() {
-		$('#sig2,#usuario_nombre,#usuario_aPaterno,#usuario_aMaterno, #atras1').show();
-		$('#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #atras2, #enviar, #usuario_nombreUsr, #usuario_correo, #usuario_contrasena').hide();
+		$('.segundo, #atras1, #sig2').show();
+		$('.primero, .tercero, #atras2, #enviar, #sig1').hide();
 		$('p.sexo').hide();
 	});
 			
 	//FUNCIONES AJAX
 	
 	//Validación de la existencia o no existencia del usuario y correo en la BD
+	//Validación de la primera parte del formulario	
     $('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena').keyup(function(){
 		var usr = $('#usuario_nombreUsr').val();
 		var correo = $('#usuario_correo').val();
@@ -83,10 +83,7 @@ $(document).ready(function() {
 			$('#usuario_nombreUsr').removeClass("correcto incorrecto").addClass("vacio")
 			$('#usr_ok').val(0)
 		}
-		if(correo == ""){
-			$('#usuario_correo').removeClass("correcto incorrecto").addClass("vacio")
-			$('#email_ok').val(0)
-		}     	
+     	
 		$.ajax({
 			url: base+'index.php/cpruebasNaye/usuario',
 			data: { usuario: $('#usuario_nombreUsr').val() },
@@ -116,37 +113,44 @@ $(document).ready(function() {
 				}
 			}
 		})
-		
-		$.ajax({
-			url: base+'index.php/cpruebasNaye/correo',
-			data: { correo: $('#usuario_correo').val() },
-			dataType: "json",
-			type: "POST",
-			success:function(existe){ //Si el usuario existe, mostrará la clase incorrecto
-				if(existe == 1){
-					$('#usuario_correo').removeClass("vacio correcto").addClass("incorrecto")
-					$('#email_ok').val(0)
-				}else{
-					//Si el usuario no existe, se verifica primero que el campo no esté vacío para añadir la clase correcto
-					if(correo != ""){
-						$('#usuario_correo').removeClass("vacio incorrecto").addClass("correcto")
-						$('#email_ok').val(1)
-					}else{
+
+		if(correo == ""){
+			// alert("correo vaío if")
+			$('#email_ok').val(0)
+			$('#usuario_correo').removeClass("correcto incorrecto").addClass("vacio")
+		}else{   		
+			$.ajax({
+				url: base+'index.php/cpruebasNaye/correo',
+				data: { correo: $('#usuario_correo').val() },
+				dataType: "json",
+				type: "POST",
+				success:function(existe){ //Si el usuario existe, mostrará la clase incorrecto
+					if(existe == 1){
+						$('#usuario_correo').removeClass("vacio correcto").addClass("incorrecto")
 						$('#email_ok').val(0)
+					}else{
+						//Si el usuario no existe, se verifica primero que el campo no esté vacío para añadir la clase correcto
+						if(correo != ""){
+							$('#usuario_correo').removeClass("vacio incorrecto").addClass("correcto")
+							$('#email_ok').val(1)
+						}else{
+							alert("correo vacío")
+							$('#email_ok').val(0)
+						}
+	        		}
+					//Desbloqueo del primer botón siguiente sólo si los 3 campos están llenos correctamente
+					//Y si el usuario ni el correo existen en la BD
+					var pass = $('#usuario_contrasena').val();
+					var usr_ok = $('#usr_ok').val();
+					var email_ok = $('#email_ok').val();
+	        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
+						$("#sig1").removeAttr("disabled")
+					}else{
+						$("#sig1").attr("disabled","disabled")
 					}
-        		}
-				//Desbloqueo del primer botón siguiente sólo si los 3 campos están llenos correctamente
-				//Y si el usuario ni el correo existen en la BD
-				var pass = $('#usuario_contrasena').val();
-				var usr_ok = $('#usr_ok').val();
-				var email_ok = $('#email_ok').val();
-        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
-					$("#sig1").removeAttr("disabled")
-				}else{
-					$("#sig1").attr("disabled","disabled")
 				}
-			}
-		})
+			})
+		}
 	})	
 	
 	//Validación de la segunda parte del formulario
