@@ -10,12 +10,11 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 	
 	public function juegoLibre(){
 		$baraja = $this->mJuegoLibre->getMazo();
-		$k = 0;
+		shuffle($baraja);
 		foreach ($baraja as $key) {
-			$data["baraja"][$k+1] = $baraja[$k];
-			$k++;
+			$id = $key["idCarta"];
+			$data["baraja"][$id] = $key;
 		}
-		shuffle($data);
 		$k = 0;
 		$conta = 0;
 		for ($k=0; $k < 16; $k++) { 
@@ -24,10 +23,10 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 			$r = $baraja[$aleat]['idCarta'];
 			$data["lote"][$r] = $baraja[$aleat];
 		}
-		echo "<pre>";
-		print_r($data[0]);
-		echo "</pre>";
-		//$this->load->view('vPruebasCartas', $data);
+		/*echo "<pre>";
+		print_r($data);
+		echo "</pre>";*/
+		$this->load->view('vPruebasCartas', $data);
 	}
 	
 	/******Función que escribe la descripción una carta en la baraja********/
