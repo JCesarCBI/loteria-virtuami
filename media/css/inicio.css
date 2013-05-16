@@ -34,20 +34,9 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 .centro{ margin-left:17%;width: 90%;}
 
 /**CAJÓN LATERAL */
-
-#atras2{
-	float:left;
-	margin-top:15px;
-}
-
-#usuario_division{
-	margin-right:119px;
-}
-
-#enviar{
-	margin-left:20px;
-	margin-top:15px;
-}
+#atras2{float:left;	margin-top:15px;}
+#usuario_division{margin-right:119px;}
+#enviar{margin-left:20px;margin-top:15px;}
 #iSesion-boton{	margin-left:-55px;}
 
 .rotar{ /* Rota el texto registro en una orientación de 90 grados */
@@ -129,7 +118,6 @@ input[type="password"]{
 	color:#D9E021;
 	font-size:10px;
 }
-
 input[type="email"]{
 	background: #2E3116;
 	outline: none !important; 
@@ -152,7 +140,7 @@ input.lateral{
 	border-radius:10px;
 }
 
-select {width: 162px; margin-top:2px; margin-bottom:8px; font-size:11px; }
+select {width: 162px; margin-top:2.6px; margin-bottom:8px; font-size:11px; }
 /* Clases para la validación de los campos en le registro*/
 
 .vacio{	border-color: #000 !important;}
