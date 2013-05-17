@@ -52,7 +52,6 @@ class cpruebasNaye extends CI_Controller {
 		function correo(){
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
 			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
-			$patron = "[0-9]";
 			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
 			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
 			if( $valor || ($correo_xanum == FALSE && $correo_titlani==FALSE)){
@@ -64,6 +63,18 @@ class cpruebasNaye extends CI_Controller {
 			}					
 		}
 		
+		function dominio(){
+			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
+			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
+			//Comprobando si el dominio es correcto
+			if($correo_xanum == FALSE && $correo_titlani==FALSE){
+				echo json_encode(0);	
+			}else{
+				echo json_encode(1);
+			}					
+			
+		}
 		function vacio($input){
 			$term = $this->input->post($input,TRUE);
 		
