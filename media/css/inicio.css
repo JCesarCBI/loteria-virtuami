@@ -15,7 +15,6 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 .boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
 
 /*Mesa del centro */
-
 /* posición del primer botón que aparece en el registro */
 #sig1{ margin-top:12px;	margin-left:-57px;}
 /* posición del segundo botón que aparece en el registro */
@@ -39,6 +38,30 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 #enviar{margin-left:20px;margin-top:15px;}
 #iSesion-boton{	margin-left:-55px;}
 
+#usrError, #emailExisteError, #emailDominioError{
+	font-size:8px;
+	width:auto;
+	padding:5px;
+    background-color: rgba(215, 78, 42, 0.3);
+    background: rgba(215, 78, 42, 0.3);
+    color: rgba(215, 78, 42, 0.3);
+    -moz-box-shadow: 3px 2px 5px #000;
+    -webkit-box-shadow: 3px 2px 5px #000;
+    box-shadow: 3px 2px 5px #000;
+	margin-left:162px;
+	position: absolute;
+}
+
+#usrError{
+	margin-top:-35px;
+}
+
+#emailExisteError, #emailDominioError{
+	margin-top:-34px;
+}
+
+
+.error_validation{font-size:8px; color:#000 !important; margin-top:-10px;}
 .rotar{ /* Rota el texto registro en una orientación de 90 grados */
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
