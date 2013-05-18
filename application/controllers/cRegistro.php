@@ -67,17 +67,32 @@
 	
 	
 	function correo(){
-		$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
+			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
+			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
+			if( $valor || ($correo_xanum == FALSE && $correo_titlani==FALSE)){
+				//Correo existe   
+				echo json_encode(1);	
+			}else{
+				//Correo no existe
+				echo json_encode(0);
+			}					
+		}
 		
-		$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
-		//Envia la respuesta a la vista si el correo existe o no en la BD
-		if( $valor){  
-			echo json_encode(1);	
-		}else{
-			echo json_encode(0);
-		}					
-	}
-	
+		function dominio(){
+			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
+			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
+			//Comprobando si el dominio es correcto
+				if($correo_xanum == FALSE && $correo_titlani==FALSE){
+					echo json_encode(0);	
+				}else{
+					echo json_encode(1);
+				}
+		}	
+							
+			
 	function vacio($input){
 		$term = $this->input->post($input,TRUE);
 	
@@ -90,7 +105,4 @@
 	
 	
 		
-	}
-	
-	
-?>
+}
