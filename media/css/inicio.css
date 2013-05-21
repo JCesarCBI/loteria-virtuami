@@ -38,7 +38,7 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 #enviar{margin-left:20px;margin-top:15px;}
 #iSesion-boton{	margin-left:-55px;}
 
-#usrError, #emailExisteError, #emailDominioError{
+#usrError, #emailExisteError, #emailDominioError, #edadError{
 	font-size:8px;
 	width:auto;
 	padding:5px;
@@ -52,14 +52,9 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 	position: absolute;
 }
 
-#usrError{
-	margin-top:-35px;
-}
-
-#emailExisteError, #emailDominioError{
-	margin-top:-34px;
-}
-
+#usrError{margin-top:-39px;}
+#emailExisteError, #emailDominioError{margin-top:-34px;}
+#edadError{margin-top: -33px;}
 
 .error_validation{font-size:8px; color:#000 !important; margin-top:-10px;}
 .rotar{ /* Rota el texto registro en una orientación de 90 grados */
