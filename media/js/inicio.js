@@ -261,6 +261,9 @@ $(document).ready(function() {
 			success:function(exito){ 
 				if(exito == 1){
 					alert("Tu contraseña ha sido enviada a tu correo :D")
+					$('#Lusuario_nombreUsr, #Lusuario_contrasena, #recuperaContrasena, #iSesion-boton').show();
+					$('#usuario_correo_recuperarContrena').val('');
+					$('.recuperarContrasena').hide();
 				}else{ 
 					alert("Este correo no está registrado! >.<")
         		}
