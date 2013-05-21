@@ -22,10 +22,10 @@
 				<div class="amarillo-sup">				
 					<label class="i-sesion">Iniciar sesión</label>
 				</div>
-				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
+				<form class="iSesion-form" method="post" action="">
 	                <input autofocus class="superior vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
 	                <input autofocus class="superior vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
-	                <input class="sup boton" type="submit" id="iSesion-boton" name="iniciar-sesion" value="entrar">
+	                <input class="sup boton" type="submit" id="iSesion-boton" name="boton" value="entrar">
     	        </form>
     	        <label id="recuperaContrasena">recuperar contraseña</label>
 
@@ -33,9 +33,10 @@
     	        	Se mantiene oculto y se activa con jquery -->
     	        <div class="recuperarContrasena">
 	    	        <label id="labelRecuperar" class="ins">Ingresa el correo al que se enviará tu contraseña</label>
-					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin/recuperarContrasena">
+					<form class="recuperarContrasena-form" method="post" action="">
 		                <input autofocus class="superior vacio"  type="email" id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" required placeholder="correo"/>
-		                <input class="sup boton" type="submit" id="recuperaContrasena-boton" name="recuperaContrasena-boton" value="enviar">
+		                <label id="recuperarError" class="error_validation">Este correo no está registrado en la BD</label>
+		                <input class="sup boton" type="button" id="recuperaContrasena-boton" name="boton" value="enviar" disabled>
 	    	        </form>
            	        <label id="Isesion">Iniciar sesión</label>
     	        </div>    	        
@@ -61,6 +62,7 @@
 					<label id="emailDominioError" class="error_validation">El dominio no es válido, usa tu cuenta de titlani/xanum</label>
 					
 	                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
+
 	                <p class="sexo">
 	                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
 	                </p>
@@ -75,6 +77,7 @@
 					
 					<!--tercera parte registro-->
 					<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
+					<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
 					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 0, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
 					<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
 	        
