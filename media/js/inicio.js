@@ -1,8 +1,7 @@
-$(document).ready(function() {
-	
+$(document).ready(function() {	
 	//prepara campos para mostrar la primera parte del formulario
 	$('.cajonLateral-abierto, .cajonSuperior-abierto, .ok, .recuperarContrasena, .error_validation').hide();
-	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division').val("");
+	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #Lusuario_nombreUsr, #Lusuario_contrasena, #usuario_correo_recuperarContrena').val("");
 	$("#sig1, #sig2, #enviar").attr("disabled","disabled")
 
 	//Abrir y cerrar cajones
@@ -22,6 +21,7 @@ $(document).ready(function() {
 		$('.cajonLateral-abierto, .cajonSuperior-cerrado').show();
 		$('.cajonSuperior-abierto').hide();
 	});
+	
 	$(".amarillo-lat").click(function() {
 		$('.cajonLateral-abierto').hide();
 		$('.cajonLateral-cerrado').show();
@@ -45,8 +45,7 @@ $(document).ready(function() {
 	$('#sig2, #atras1, #atras2, #enviar').hide();
 		
 	//Primera parte
-	$("#sig1").click(function() {
-		$('#sig1').hide();	$('.primero, p.sexo').hide();
+	$("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
 		$('#sig2, #atras1').show();	$('.segundo').show();	
 	});	
 	
@@ -208,19 +207,65 @@ $(document).ready(function() {
 	});
 	
 	//Validación de la tercera parte del formulario
-	$('#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division').change(function(){
+	$('#usuario_comunidadUniversitaria, #usuario_division').change(function(){ //Valida que se seleccione una comunidad y una división
 		var edad = $('#usuario_edad').val()
 		var comunidad = $('#usuario_comunidadUniversitaria').val()
 		var division = $('#usuario_division').val()
 		
+		if(isNaN(edad)){$("#edadError").show();	}
+		if(edad == ""){	$("#edadError").hide();	}
 		//Desbloqueo del segundo botón siguiente
-		if(edad != '' && comunidad != 0 && division != 0){
+		if(edad != "" && !(isNaN(edad)) && comunidad != -1 && division != -1){
 			$("#enviar").removeAttr("disabled")
+			$("#edadError").hide();
+
 		}else{
 			$("#enviar").attr("disabled","disabled")
 		}
 	});	
 	
-	
+	$('#usuario_edad').keyup(function(){ //Valida que el campo edad esté correctamente lleno
+		var edad = $('#usuario_edad').val()
+		var comunidad = $('#usuario_comunidadUniversitaria').val()
+		var division = $('#usuario_division').val()
+		if(isNaN(edad)){$("#edadError").show();	}
+		if(edad == ""){	$("#edadError").hide();	}
+		//Desbloqueo del segundo botón siguiente
+		if(edad != "" && !(isNaN(edad)) && comunidad != -1 && division != -1){
+			$("#enviar").removeAttr("disabled")
+			$("#edadError").hide();
+		}else{
+			$("#enviar").attr("disabled","disabled")
+		}
+	});
 
+	$('#usuario_correo_recuperarContrena').keyup(function(){ //Valida que el campo edad esté correctamente lleno
+		var correo = $('#usuario_correo_recuperarContrena').val()
+		var titlani = /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/;
+		var xanum = /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/;
+		var docencia = /^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]docencia[.]uam[.]mx$/;
+		
+		if ((correo.match(titlani)||correo.match(xanum)||correo.match(docencia)) && correo !=''){
+			$('#recuperaContrasena-boton').removeAttr('disabled')
+		}else{
+			$('#recuperaContrasena-boton').attr('disabled','disabled')
+		}
+	});
+		
+	$('#recuperaContrasena-boton').click(function(){
+		$.ajax({
+			url: base+'index.php/cpruebasNaye/recuperarContrasena',
+			data: { correo: $('#usuario_correo_recuperarContrena').val() },
+			dataType: "json",
+			type: "POST",
+			success:function(exito){ 
+				if(exito == 1){
+					alert("Tu contraseña ha sido enviada a tu correo :D")
+				}else{ 
+					alert("Este correo no está registrado! >.<")
+        		}
+			}
+		})
+	})
+		
 });
