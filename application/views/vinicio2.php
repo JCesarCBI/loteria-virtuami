@@ -10,14 +10,15 @@
 	</head>
 
 	<body>
+		<div class="twelve header">
+			
+		</div>
 		<div class="nine columns">
 			<div class="mesa"></div>
-			
 			<!--CAJÓN SUPERIOR -->
 			<div id="cajonSupCerrado" class="cajonSuperior-cerrado">
 				<label class="CS-cerrado">Iniciar sesión</label>				
 			</div>			
-			
 			<div class="cajonSuperior-abierto">
 				<div class="amarillo-sup">				
 					<label class="i-sesion">Iniciar sesión</label>
@@ -101,18 +102,18 @@
 		
 		<!--Sección de ACERCA DEL JUEGO -->
 		<div class="twelve columns acerca">
-				<div class="nine columns">
-					<h2>Acerca del juego</h2>
-					<p>dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-					</p>
-				</div>
-				<div class="three columns">
-					<img id="logoUAM" src="<?= base_url()?>media/img/uami.png"/>
-				</div>
+			<div class="nine columns">
+				<h2>Acerca del juego</h2>
+				<p>dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
+					dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
+					dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
+					dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
+					dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
+				</p>
+			</div>
+			<div class="three columns">
+				<img id="logoUAM" src="<?= base_url()?>media/img/uami.png"/>
+			</div>
 		</div> <!--termina sección ACERCA DEL JUEGO -->
 	</body>
 </html>
