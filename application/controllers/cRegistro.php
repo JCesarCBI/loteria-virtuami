@@ -56,10 +56,10 @@
 		
 		//Envia respuesta a la vista si el usuario existe o no en la BD
 		if( $valor){
-			echo "El usuario existe";  
+			
 			echo json_encode(1);	
 		}else{
-			echo "El usuario no existe";
+			
 			echo json_encode(0);
 		}		
 	}
@@ -102,7 +102,5 @@
 			echo json_encode(0);
 		}
 	}
-	
-	
 		
 }
