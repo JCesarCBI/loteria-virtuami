@@ -6,8 +6,7 @@
         $this->load->helper(array('html', 'url', 'form'));
         $this->load->library('form_validation');
         $this->load->model('usuario/mregistro');
-		
-		
+				
 	}
 	
 	//Valida el registro y agrega los datos a la base de datos 
@@ -20,7 +19,7 @@
             $this->form_validation->set_rules('usuario_nombre','required|trim');		
 			$this->form_validation->set_rules('usuario_aPaterno','required|trim');
 			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
-			
+		
             
            
             $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
@@ -39,13 +38,19 @@
                             'sexo'=>$this->input->post('usuario_sexo',TRUE),
                             'nombre'=>$this->input->post('usuario_nombre',TRUE),
                             'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
-                            'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE));
-				//Regresar el arreglo con los datos del usuario para que el modelo los agregue a la base de datos e iniciar sesión	
+                            'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
+							'edad'=>$this->input->post('usuario_edad',TRUE),
+							'comunidadUni'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
+							'division'=>$this->input->post('usuario_division',TRUE));
+							
+				//Mando llamar al modelo para agregar usuario
+				$this->mregistro->agregarUsuario($datosUsuario);	
+				
             }
             else
             {
           
-                //Regresar al registro
+                
             }
         }
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
