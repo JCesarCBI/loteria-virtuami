@@ -1,13 +1,52 @@
-.carta{
-	width:107px;
-	height:238px;
-}
-
-.cartaReversa{
-	width: 215px;
-	height:477px;
-}
-
 .Escondido{
 	display: none;
+}
+
+.respuestaInput{
+	
+	background-color:gray !important;
+	min-height: 50px !important;
+	min-width:100px;
+	
+}
+.cartaVisible{
+	min-width: 180px;
+	min-height:294px;	
+	max-width: 180px;
+	max-height:334px;
+	
+}
+.mazoTemp{
+	margin:10px;
+	width: 107px;
+	height:107px;
+	
+}
+
+.barajaTemp{
+	width: 170px !important;
+	height:284px !important;
+	
+}
+
+
+.contenido{
+	width: 528px;
+	background-color: #003f3b;
+	min-height: 50px !important;
+	
+}
+.fondoMazo{
+	width: 528px;
+	height: 528px;
+	background-color: #00a69c;
+}
+.espacioSuperior{
+	margin-top:5%;
+}
+.contenidoSuperior{
+	width: 528px;
+	background-color: #007853;
+	min-height: 30px !important;
+	
 }

@@ -12,53 +12,59 @@
 
 	</head>
 	<body>
-		
-		<div class="seven columns">
+		<div class="row espacioSuperior">
 			
-			<?php
-			
-			$cont=1;
-			 foreach ($lote as $key => $carta) {
-				
-				echo "<img class='carta' src='".base_url().$carta['imagen']."' />";
-				
-				if (($cont % 4)==0 && $cont>1) 
-					echo "<br />";
-				
-				$cont++;
-			}
-			
-				echo '<input type="hidden"  id="IdloteReversa"  name="IdloteReversa" value="';
-			foreach ($lote as $key => $carta) {
+		<div class="three columns">
+			<div class="cartaVisible">
+					<div class="barajaTemp">
+						<?php foreach ($baraja as $key => $cartas) {
+											
+							echo "<img id='baraja-".$key."' onclick='compararCarta(".$key.")' class='Escondido barajaTemp'src='".base_url().$cartas['imagen']."' />";
+							
+						}
+							
+							echo '<input type="hidden"  id="IdCartaReversa"  name="IdCartaReversa" value="';
+						foreach ($baraja as $key => $cartas) {
+								
+								echo $key.'*'; 	
+						}
+						echo '-1" />';
+						?>
+					</div>
+					<div class="twelve columns respuestaInput"  id="respuestaInput"></div>
 					
-					echo $key.'*'; 	
-			}
-			echo '"/>';
-			?>
-		
+				<img src="<?= base_url()?>media/img/mazo/reversa.jpg" onclick="cambiarCarta()" class="barajaTemp"/>
+			</div>			
 		</div>
 		
-		<div class="two columns" id="contenido"></div>
-		
-		<div class="three columns">
+		<div class="nine columns">
 			
-			<?php foreach ($baraja as $key => $cartas) {
-								
-				echo "<img id='baraja-".$key."' onclick='compararCarta(".$key.")' class='Escondido cartaReversa'src='".base_url().$cartas['imagen']."' />";
-				
-			}
-				
-				echo '<input type="hidden"  id="IdCartaReversa"  name="IdCartaReversa" value="baraja-';
-			foreach ($baraja as $key => $cartas) {
+			<div class="contenidoSuperior" id="contenidoSuperior"></div>	
+			<div class="contenido" id="contenido"></div>	
+			<div class="fondoMazo" >	
+				<?php			
+				$cont=1;
+				 foreach ($lote as $key => $carta) {
 					
-					echo $key.'*'; 	
-			}
-			echo '-1" />';
-			?>
-			
-			<img src="<?= base_url()?>media/img/mazo/reversa.jpg" onclick="cambiarCarta()" class="cartaReversa"/>
-			
-			
+					echo "<img class='mazoTemp' src='".base_url().$carta['imagen']."' />";
+					
+					if (($cont % 4)==0 && $cont>1) 
+						echo "<br />";
+					
+					$cont++;
+				}
+				
+					echo '<input type="hidden"  id="IdloteReversa"  name="IdloteReversa" value="';
+				foreach ($lote as $key => $carta) {
+						
+						echo $key.'*'; 	
+				}
+				echo '"/>';
+				?>
+			</div>
+		</div>
+		
+		
 		</div>
 				
 

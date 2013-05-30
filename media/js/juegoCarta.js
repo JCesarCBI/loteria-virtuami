@@ -5,7 +5,7 @@ var cadenaId;
 
 function ajax_escribeRima(id){
 		
-		var url = base+'index.php/cPruebaJuegoLibre2/descripcion/'+id;
+		var url = base+'index.php/cpruebasLuisa/descripcion/'+id;
 	
 			$.ajax({
 	    
@@ -31,11 +31,11 @@ function cambiarCarta() {
 	//Obtengo el id de la carta que volteare por medio del value --(el value tiene el formato baraja-IdQueCambiar)--   
 	var carta=document.getElementById('IdCartaReversa').value;	
 
-	//Organizo en un arreglo el id que cambiare quitando el -
+	//Obtendre un arreglo con 2 cosas	
 	var n=carta.split("-");
 	
-	if(n[2]==1){
-		cadenaId=n[1].split("*");
+	if(n[1]==1){
+		cadenaId=n[0].split("*");
 		document.getElementById('IdCartaReversa').value="baraja-"+id+"-2";
 		$("#baraja-"+cadenaId[0]).removeClass("Escondido");
 			
@@ -62,7 +62,7 @@ function cambiarCarta() {
 		//Cambia la carta cada segundo
 		if (id<cantidad) {
 			
-			setTimeout("cambiarCarta()",100);	
+			setTimeout("cambiarCarta()",10000);	
 			
 		} else
 			$('#baraja-'+ultimaCarta).addClass("Escondido");
