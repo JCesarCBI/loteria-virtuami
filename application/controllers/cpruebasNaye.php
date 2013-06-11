@@ -32,7 +32,12 @@ class cpruebasNaye extends CI_Controller {
 				$i++;
 			}
 		}
-		$this->load->view('vinicio2', $datos);
+		$this->load->view('vinicio', $datos);
+	}
+	
+	public function lecciones(){
+		$this->load->view('vlecciones');
+		
 	}
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
