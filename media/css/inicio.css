@@ -2,12 +2,7 @@
 
 /**GENERAL**/
 	
-@font-face {font-family: 'Gabriela'; font-style: normal; font-weight: 400;
-  src: local('Gabriela'), local('Gabriela'), url(Gabriela-Regular.ttf) format('Gabriela');
-}
 
-body{ font-family:"Gabriela";font-size:15px;background:#B18904;}
-label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 /* Clase que define a todos los botones de la vista inicio */
 #atras1{margin-left:-140px;}
 
@@ -31,7 +26,6 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 }
 
 .centro{ margin-left:17%;width: 90%;}
-.header{background:#2E3116; height:45px;}
 /**CAJÓN LATERAL */
 #atras2{float:left;	margin-top:15px;}
 #usuario_division{margin-right:119px;}

@@ -1,0 +1,7 @@
+@font-face {font-family: 'Gabriela'; font-style: normal; font-weight: 400;
+  src: local('Gabriela'), local('Gabriela'), url(Gabriela-Regular.ttf) format('Gabriela');
+}
+
+body{ font-family:"Gabriela";font-size:15px;background-image:url("../img/fondo-general.jpg");}
+label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
+.header{background:#2E3116; height:38px;}
