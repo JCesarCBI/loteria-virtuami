@@ -8,6 +8,7 @@ class Mregistro extends CI_Model {
 			parent::__construct();
 		}
 	
+	//Tipo de Usuario
 	public function getTipoUsuario()
 	{
 		$this->db->SELECT('*');
@@ -26,6 +27,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
+	//Division
 	public function getDivision()
 	{
 		$this->db->SELECT('*');
@@ -39,11 +41,12 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			$msj = 'No hay datos en el catalodo "División"';
 			return (isset($msj));
 		}
 	}
 	
+	//Grado activo (Licenciatura/Posgrado)
 	public function getGradoActivo()
 	{
 		$this->db->SELECT('*');
@@ -57,11 +60,12 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			$msj = 'No hay datos en el catalodo "Grado activo"';
 			return (isset($msj));
 		}
 	}
 	
+	//Grado máximo de estudios
 	public function getGradoAcademico()
 	{
 		$this->db->SELECT('*');
@@ -75,11 +79,12 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			$msj = 'No hay datos en el catalodo "Grado académico"';
 			return (isset($msj));
 		}
 	}
 	
+	//Validación de usuario
 	public function getExisteUsuario($nombreUsr)
 	{
 		$this->db->SELECT('idUsr');
@@ -94,9 +99,9 @@ class Mregistro extends CI_Model {
 		} else {
 			return false;
 		}
-		
 	}
 	
+	//Validación de correo
 	public function getExisteCorreo($correo)
 	{
 		$this->db->SELECT('idUsr');
@@ -111,6 +116,28 @@ class Mregistro extends CI_Model {
 		} else {
 			return false;
 		}
+	}
+	
+	//Beta de agregar usuario y registro en Loteria
+	public function setAgregarUsuario($datos)
+	{
+		if (!empty($datos)) {
+			$this->db->insert('usuario', $datos);
+			$lastId = $this->db->select_max('idUsr')->from('usuario')->get();
+			if ($lastId->num_rows() > 0) {
+				foreach ($lastId->result_array as $row) {
+					$idUsr = $row['idUsr'];
+				}
+			}
+		}
+		
+		$player = array(
+			'usuario_idUsr' => $idUsr,
+			'juego_idJuego'=> 1,
+			'scoreTotal'=> 0
+		);
+		
+		$this->db->insert('jugador', $player);
 	}
 }
 
