@@ -1,8 +1,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Inicio</title>
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
@@ -10,6 +10,9 @@
 	</head>
 
 	<body>
+		<title>Inicio</title>
+		<div class="twelve header">
+
 		<div class="nine columns">
 			<div class="mesa"></div>
 			
