@@ -1,11 +1,99 @@
-.mueble{
-	background:#088A68;
-	margin-top:50px;
-	height:auto;
+h3{
+	color:#000;
+	margin-left:10px;
+	font-size:22px;
 }
 
-.mueble img{
+li{
+	color:#000;
+	list-style:none;
+
+}
+.mueble{
+	background:#088A68 !important;
+	margin-top:50px;
+	height:805px;
+}
+
+#mueble-img{
 	margin-left:10px;
 	margin-top:10px;
-	width:98%;
+	width:502px;
 }
+
+.rotar{ /* Rota el texto registro en una orientación de 90 grados */
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+}
+
+.libro{
+	color:#FFF;
+	font-weight:bold;
+	font-size:0.7em;
+}
+
+.cajas-txt-lecciones{
+	/*background:blue;*/
+	width:420px;
+	height:620px;
+	margin-top:-620px;
+	margin-left:49px;
+	position: absolute;	
+}
+
+#lb-reglas, #lb-lecciones, #lb-diminutivos, #lb-derivaciones, #lb-sinonimos{
+	margin-top:-694px;
+	position:absolute;
+}
+
+#lb-reglas{
+	margin-left:151px;
+	float:left;
+}
+#lb-lecciones{
+	margin-left:198px;
+	margin-top:-701px;
+	float:left;
+}
+#lb-diminutivos{
+	margin-left:277px;
+	margin-top:-702px;
+	float:left;
+}
+#lb-derivaciones{
+	margin-left:330px;
+	margin-top:-702px;
+	float:left;
+}
+#lb-sinonimos{
+	margin-left:438px;
+	margin-top:-702px;
+	float:left;
+}
+.plecciones{
+	margin-top:17px;
+	color:#000;
+	padding-left:40px;
+	font-size:1em;	
+	position:absolute;	
+}
+
+#flecha-izq, #flecha-der{
+	margin-top:-65px;
+	margin-right:20px;
+	position: absolute;
+}
+
+#flecha-izq{
+	margin-left:330px;
+	float:left;
+}
+#flecha-der{
+	margin-left:360px;
+	float: right;
+}
+
+
+
