@@ -38,13 +38,22 @@ class cpruebasLuisa extends CI_Controller {
 /******Función que escribe la descripción una carta en la baraja********/
 public function descripcion($id=-1){
 	
+
 	//Voy por el mazo de las cartas    
-	$baraja = $this->mJuegoLibre->getMazo();
-	
+	$barajas = $this->mJuegoLibre->getMazo();
+
+		$k = 0;
+		foreach ($barajas as $key) {
+
+			$baraja[$k+1] = $barajas[$k];
+			$k++;
+
+		}
+			
 	//Si el id es correcto y la carta existe busco la descripción
 	if ($id>-1 && isset($baraja[$id]['nombre'])) {
 		
-		$datos=$baraja[$id]['nombre'];
+		$datos=$baraja[$id]['nombre']."   ".$id."<img src='".base_url().$baraja[$id]['imagen']."' style='width:90px; height:80px'/>";
 		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
 		print_r($datos);
 

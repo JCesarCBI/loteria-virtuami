@@ -3,18 +3,31 @@
 }
 
 .respuestaInput{
-	
-	background-color:gray !important;
 	min-height: 50px !important;
-	min-width:100px;
+	color:#f9ec23;
 	
 }
-.cartaVisible{
+.BarajaResp{
+	margin-bottom:16px;
+	background-color:#1a1a1a !important;
+	width: 180px;
+	height:296px;
+	border:solid 3px #4d5b62;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.cartasColumnaIzq{
 	min-width: 180px;
 	min-height:294px;	
 	max-width: 180px;
 	max-height:334px;
 	
+}
+
+.cartaReversa{
+	width:100%;
+	margin: 0 auto;
 }
 .mazoTemp{
 	margin:10px;
@@ -24,8 +37,14 @@
 }
 
 .barajaTemp{
+	margin-left: 2px;
 	width: 170px !important;
-	height:284px !important;
+	height:214px !important;
+	border:solid 2px #000;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	
 	
 }
 
