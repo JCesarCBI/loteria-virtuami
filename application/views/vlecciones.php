@@ -24,12 +24,11 @@
 				<label id="lb-derivaciones" class="rotar libro">Derivaciones</label>
 				<label id="lb-sinonimos" class="rotar libro">Sinónimos</label>
 				<input id="seccion" type="hidden" value="reglas">
+				<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
+				<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>				
 				<div id="reglas-txt" class="cajas-txt-lecciones">
 					<h3>Reglas</h3>
-						<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig"/>
-						<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
-						
-						<ul>
+						<ul class="plecciones">
 							<li class="uno">
 								1. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
 								transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
@@ -47,7 +46,7 @@
 								pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
 							</li>
 							<li class="tres">
-								2. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
+								3. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
 								transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
 								he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
 								and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
@@ -59,9 +58,8 @@
 				
 				<div id="lecciones-txt" class="cajas-txt-lecciones">
 					<h3>Lecciones</h3>
-					<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png"/>
-					<img id="flecha-der" src="<?=base_url()?>/media/img/der.png"/>
-					<ul>
+					
+					<ul class="plecciones">
 						<li class="uno">
 							1. Lecciones Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
 							transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
@@ -83,16 +81,20 @@
 
 				<div id="diminutivos-txt" class="cajas-txt-lecciones">
 					<h3>Diminutivos</h3>
-					<p id="preglas" class="plecciones">
-						<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png"/>
-						<img id="flecha-der" src="<?=base_url()?>/media/img/der.png"/>
-						Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
-						transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
-						he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
-						and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
-						The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
-						pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 
-					</p>
+					<ul class="plecciones">
+						<li class="uno">
+							1. Lecciones Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
+							transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
+							he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
+							and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
+							The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
+							pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
+						</li>
+						<li class="dos">
+							2. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
+							transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
+						</li>
+					</ul>
 				</div>
 
 				<div id="derivaciones-txt" class="cajas-txt-lecciones">
