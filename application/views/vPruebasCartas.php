@@ -17,6 +17,7 @@
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
 				<input type="hidden"  id="cartaVisible"  name="cartaVisible" value="" />
+				<input type="hidden"  id="cartaClickPlantilla"  name="cartaClickPlantilla" value="" />
 				<div class="cartasColumnaIzq">
 						<div class="BarajaResp">
 							<div>
@@ -53,11 +54,13 @@
 				<div class="contenido" id="contenido"></div>	
 				<div class="fondoMazo" >	
 					<?php			
-					$cont=1;
+						$cont2=0;		
+						$cont=1;
 					 foreach ($lote as $key => $carta) {
 						
-						echo "<img class='mazoTemp' src='".base_url().$carta['imagen']."' onclick='clickPlantilla(".$key.")'/>";
+						echo "<img class='mazoTemp' id=plantilla-".$cont2." src='".base_url().$carta['imagen']."' onclick='clickPlantilla(".$cont2.")'/>";
 						
+						$cont2++;
 						if (($cont % 4)==0 && $cont>1) 
 							echo "<br />";
 						
