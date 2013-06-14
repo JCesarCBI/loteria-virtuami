@@ -37,8 +37,8 @@ li{
 .cajas-txt-lecciones{
 	/*background:blue;*/
 	width:420px;
-	height:620px;
-	margin-top:-620px;
+	height:520px;
+	margin-top:-590px;
 	margin-left:49px;
 	position: absolute;	
 }
@@ -76,22 +76,22 @@ li{
 	margin-top:17px;
 	color:#000;
 	padding-left:40px;
+	padding-right:15px;
 	font-size:1em;	
 	position:absolute;	
 }
 
 #flecha-izq, #flecha-der{
-	margin-top:-65px;
-	margin-right:20px;
+	margin-top:180px;
 	position: absolute;
 }
 
 #flecha-izq{
-	margin-left:330px;
+	margin-left:-130px;
 	float:left;
 }
 #flecha-der{
-	margin-left:360px;
+	margin-left:-110px;
 	float: right;
 }
 
