@@ -1,11 +1,19 @@
+var tiempo="";
 function obternerId(indice){
 	
-		//Obtengo todos los id de las cartas y los guardo en una arreglo
+		//Obtengo todos los id de las cartas dey los guardo en una arreglo
 		 var cartasArreglo=document.getElementById('IdCartaReversa').value;
 		 cartasId=cartasArreglo.split("*");
 		 return	cartasId[indice]; 
 }
 
+function obternerIdPlantilla(indice){
+	
+		//Obtengo todos los id de las cartas de la plantilla y los guardo en una arreglo
+		 var cartasArreglo=document.getElementById('IdMazoReversa').value;
+		 cartasId=cartasArreglo.split("*");
+		 return	cartasId[indice]; 
+}
 
 //Esta funcion se encarga de escribir las rimas y reproducir el audio de la carta que se muestr
 function audioRima(indice){
@@ -38,6 +46,7 @@ function ajax_escribeRima(id){
 			$.ajax({
 	    
 	        url: url,
+  			async: false,
 	               
 	        success: function(data){ 
 	               
@@ -54,7 +63,38 @@ function ajax_escribeRima(id){
 	
 }
 
-function cambiaCarta (numCarta) {
+//Esta funcion se encarga de traerme la respuesta correcta dependiendo del Id
+function ajax_validarRespuesta(id, respuesta){
+		
+		var respuestaCorrecta=1;
+		var url = base+'index.php/cpruebasLuisa/respuestaCorrecta/'+id;
+	
+			$.ajax({
+	    
+	        url: url,
+  			async: false,
+	               
+	        success: function(data){
+	        	
+			    if(data== respuesta){
+					
+						respuestaCorrecta=0; 
+				} 
+	            
+	        },
+	        
+	        error: function(){
+	           alert("Error al traer la respuesta");
+	        }
+	    
+	    });
+	    
+	    return respuestaCorrecta;
+	
+}
+
+
+function cambiaCarta(numCarta) {
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
 	$('#cartaReversaClick').removeAttr("onclick");
@@ -66,22 +106,27 @@ function cambiaCarta (numCarta) {
 		$("#baraja-"+numCarta).removeClass("Escondido");
 		
 	} else{
-		
 		//Quito la clase Escondido a la carta que me indiquen el id
 		var cartaAnt=numCarta-1;
 		$('#baraja-'+cartaAnt).addClass("Escondido");
 		
 		//Escondo la carta que estaba antes a la vista
 		$("#baraja-"+numCarta).removeClass("Escondido");
-						
+		if (tiempo!="") {						
+			clearInterval(tiempo);
+			tiempo="";
+		}
+				
 	}
 	
 	
 	if (continuar== 0) {
 			//Como se encontro la carta incremento numCarta para ir por la siguiente carta
 			numCarta++;
-			setTimeout("cambiaCarta("+numCarta+")",100000);
-		 
+
+			$('#cartaReversaClick').attr("onclick", "cambiaCarta("+ numCarta +");");
+			tiempo=setTimeout("cambiaCarta("+numCarta+")",5000);
+
 		} else{
 			//Si no se encontro la cart solo escondo la última que se mostró
 			numCarta--;
@@ -93,24 +138,34 @@ function cambiaCarta (numCarta) {
 
 function presionaEnter(evt, op) {
 
+	indice=document.getElementById('cartaVisible').value;
+	$('#baraja-'+indice).removeAttr("onclick");
 	 var charCode = (evt.which) ? evt.which : event.keyCode
 	 
 	 if (charCode == 13) {
 	//Presiond enter obtengo la respuesta escrita
 	 		 var respuesta=document.getElementById('respuestaBaraja').value;
+	 		 id=obternerId(indice);
+	 		 
+			var vOf = ajax_validarRespuesta(id, respuesta)
+			if (vOf==1) {
+				//rompo cadenas
+				//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
+				$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 2)" >');
+				
+				//pongo el curso en el input
+				$('#respuestaBaraja').focus();
 			
-			//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
-			$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 2)" >');
-			
-			//pongo el curso en el input
-			$('#respuestaBaraja').focus();
-		
-			if (op ==2){
-				indice=document.getElementById('cartaVisible').value;
-				$('#respuestaInput').html(' ');
-				$('#baraja-'+indice).removeAttr("onclick");
+				if (op ==2){
+					$('#respuestaInput').html(' ');
+					alert("perdiste tu segunda oportunidad en la baraja, TIENES UN ERROR");
+				}
 			}
-	
+			else{
+				
+				//Incremento multiplicador
+				
+			}
 		}
 
 	
@@ -124,8 +179,76 @@ function clickBaraja(id) {
 	
 }
 
-function clickPlantilla() {
+
+function presionaEnterPlantilla(evt, op) {
+
+	indice=document.getElementById('cartaClickPlantilla').value;
+	$('#plantilla-'+indice).removeAttr("onclick");
 	
+	 var charCode = (evt.which) ? evt.which : event.keyCode
+	 
+	 
+	 if (charCode == 13) {
+	//Presiond enter obtengo la respuesta escrita
+	 		 var respuesta=document.getElementById('respuestaBaraja').value;
+	 		 id=obternerIdPlantilla(indice);
+	 			 		 
+			var vOf = ajax_validarRespuesta(id, respuesta)
+			
+			if (vOf==1) {
+				//rompo cadenas
+				//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
+				$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnterPlantilla(event, 2)" >');
+				
+				//pongo el curso en el input
+				$('#respuestaBaraja').focus();
+			
+				if (op ==2){
+					$('#respuestaInput').html(' ');
+					alert("perdiste tu segunda oportunidad en la plantilla, TIENES UN ERROR");
+				}
+			}
+			else{
+				
+	        	 alert("respuesta correcta :D");
+				
+			}
+
+	
+		}
+}
+
+function validaPlantillaBaraja(indice){
+	document.getElementById('cartaClickPlantilla').value=indice;
+	indiceBaraja=document.getElementById('cartaVisible').value;
+	idCartaBaraja=obternerId(indiceBaraja);
+	idCartaPlantilla=obternerIdPlantilla(indice);
+	if(idCartaPlantilla==idCartaBaraja){
+		return 0;
+			
+	} else{
+		
+		return 1
+	}
+	
+	
+}
+
+function clickPlantilla(indice) {
+	
+	
+	var respuesta=validaPlantillaBaraja(indice);
+
+	if(respuesta==0){
+		//Escribo el input en el cual se escribirá la respuesta
+	    $('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnterPlantilla(event, 1)">');
+		//pongo el curso en el input
+	    $('#respuestaBaraja').focus();
+			
+	} else{
+		alert("la carta no coincide con la de la baraja, TIENES UN ERROR")		
+	}
+			
 }
 
 
@@ -142,5 +265,8 @@ function puntos() {
 }
 
 function comodines() {
+	
+}
+function rompeCadenas() {
 	
 }
