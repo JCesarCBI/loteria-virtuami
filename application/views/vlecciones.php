@@ -99,30 +99,30 @@
 
 				<div id="derivaciones-txt" class="cajas-txt-lecciones">
 					<h3>Derivaciones</h3>
-					<p id="preglas" class="plecciones">
-						<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png"/>
-						<img id="flecha-der" src="<?=base_url()?>/media/img/der.png"/>
-						Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
-						transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
-						he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
-						and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
-						The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
-						pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 
-					</p>
+					<ul class="plecciones">
+						<li class="uno">
+							1. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
+							transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
+							he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
+							and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
+							The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
+							pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
+						</li>
+					</ul>
 				</div>
 				
 				<div id="sinonimos-txt" class="cajas-txt-lecciones">
 					<h3>Sinónimos</h3>
-					<p id="preglas" class="plecciones">
-						<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png"/>
-						<img id="flecha-der" src="<?=base_url()?>/media/img/der.png"/>
-						Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
-						transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
-						he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
-						and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
-						The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
-						pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 
-					</p>
+					<ul class="plecciones">
+						<li class="uno">
+							1. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself 
+							transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little
+							he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, 
+							and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. 
+							The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, 
+							pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="three columns mesa"></div>
