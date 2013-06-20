@@ -80,9 +80,13 @@
 					<!--tercera parte registro-->
 					<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
 					<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
-					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 0, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
-					<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
-	        
+					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
+					<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
+					<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
+					<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
+	        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
+	        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
+	        		
 	                <!-- botones siguiente y submit -->
 	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
 	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
@@ -90,7 +94,7 @@
 					<input type="button" class="boton atras2" id="atras2" value="atrás" />
 					<input type="submit" class="boton" id="enviar" name="enviar" value="enviar" disabled />
 
-	                <div class="amarillo-lat">
+	                <div id="amarillo-lat" class="amarillo-lat">
 	                	<label class="rotar">Registro</label>
 	                </div>
                 </form>
