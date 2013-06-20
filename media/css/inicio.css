@@ -26,12 +26,12 @@
 }
 
 .centro{ margin-left:17%;width: 90%;}
-/**CAJÓN LATERAL */
-#atras2{float:left;	margin-top:15px;}
-#usuario_division{margin-right:119px;}
-#enviar{margin-left:20px;margin-top:15px;}
-#iSesion-boton{	margin-left:-55px;}
 
+/**CAJÓN LATERAL */
+
+#atras2{float:left;	margin-top:105px;}
+#enviar{margin-left:20px;margin-top:105px;}
+#iSesion-boton{	margin-left:-55px;}
 #usrError, #emailExisteError, #emailDominioError, #edadError{
 	font-size:8px;
 	width:auto;
@@ -60,14 +60,28 @@
 }
 
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
-	margin-top:-138px;
-	margin-right:25px;
+	margin-top:-169px;
+	margin-left:192.5px;
 	background:#D9E021;
 	height:180px;
 	width:25px;
 	float:right;
 	padding: 7px 15px;
+	position:absolute;
 }
+.amarillo-lat2{ /* Fondo amarillo del cajón lateral */
+	margin-top:-176px;
+}
+#usuario_edad{margin-top:-22px; margin-bottom:3px}
+
+#usuario_comunidadUniversitaria{
+	position:absolute;
+	margin-left:-46px;
+}
+
+#usuario_gradoActivo{margin-right:-46px; margin-top:30px; position:absolute}
+#usuario_division{margin-right:-46px; margin-top:60px; position:absolute}
+#usuario_posgrado{margin-right:-46px; margin-top:60px; position:absolute}
 
 .cajonLateral-cerrado{ /* Clase que define al cajón lateral en estado cerrado */
 	padding:20px 10px;
