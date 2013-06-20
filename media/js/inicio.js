@@ -41,31 +41,33 @@ $(document).ready(function() {
 	});
 			
 	//REGISTRO
-	$('.segundo, .tercero').hide();
-	$('#sig2, #atras1, #atras2, #enviar').hide();
-		
-	//Primera parte
-	$("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
-		$('#sig2, #atras1').show();	$('.segundo').show();	
-	});	
-	
-	//Segunda parte
-	$("#sig2").click(function(){
-		$('.segundo, #atras1, #sig1, #sig2').hide();
+	// $('.segundo, .tercero').hide();
+	// $('#sig2, #atras1, #atras2, #enviar').hide();
+// 		
+	// //Primera parte
+	// $("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
+		// $('#sig2, #atras1').show();	$('.segundo').show();	
+	// });	
+// 	
+	// //Segunda parte
+	// $("#sig2").click(function(){
+		$('.segundo, #atras1, #sig1, #sig2, #usuario_nombreUsr, #usuario_contrasena, #usuario_correo,.sexo').hide();
+		$('#amarillo-lat').addClass('amarillo-lat2')
 		$('.tercero, #atras2, #enviar, #enviar').show();	
-	});	
-
-	$('#atras1').click(function(){
-		$('#sig1').show(); $('.primero, p.sexo').show();
-		$('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
-	})
-	
-	//Tercera parte	
-	$("#atras2").click(function() {
-		$('.segundo, #atras1, #sig2').show();
-		$('.primero, .tercero, #atras2, #enviar, #sig1').hide();
-		$('p.sexo').hide();
-	});
+	// });	
+// 
+	// $('#atras1').click(function(){
+		// $('#sig1').show(); $('.primero, p.sexo').show();
+		// $('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
+	// })
+// 	
+	// //Tercera parte	
+	// $("#atras2").click(function() {
+		// $('.segundo, #atras1, #sig2').show();
+		// $('#amarillo-lat').removeClass('amarillo-lat2').addClass('amarillo-lat')
+		// $('.primero, .tercero, #atras2, #enviar, #sig1').hide();
+		// $('p.sexo').hide();
+	// });
 			
 	//FUNCIONES AJAX
 	
@@ -206,20 +208,58 @@ $(document).ready(function() {
 		}
 	});
 	
+	$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_division, #usuario_posgrado').hide()
 	//Validación de la tercera parte del formulario
-	$('#usuario_comunidadUniversitaria, #usuario_division').change(function(){ //Valida que se seleccione una comunidad y una división
-		var edad = $('#usuario_edad').val()
-		var comunidad = $('#usuario_comunidadUniversitaria').val()
-		var division = $('#usuario_division').val()
-		
-		if(isNaN(edad)){$("#edadError").show();	}
-		if(edad == ""){	$("#edadError").hide();	}
-		//Desbloqueo del segundo botón siguiente
-		if(edad != "" && !(isNaN(edad)) && comunidad != -1 && division != -1){
-			$("#enviar").removeAttr("disabled")
-			$("#edadError").hide();
-
+	$('#usuario_comunidadUniversitaria').change(function(){ //Valida que se seleccione una comunidad
+		$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').val(0)
+		if($('#usuario_comunidadUniversitaria').val() != -1){
+			var edad = $('#usuario_edad').val()
+			if(isNaN(edad)){$("#edadError").show();	}
+			if(edad == ""){	$("#edadError").hide();	}
+			
+			var comunidad = $('#usuario_comunidadUniversitaria').val()
+			switch(comunidad){
+				case "0":
+					// alert("Es alumno")
+					$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_posgrado').hide()
+					$('#usuario_gradoActivo').show();
+					$('#usuario_gradoActivo').change(function(){
+						if($('#usuario_gradoActivo').val()!=-1){
+							if($('#usuario_gradoActivo').val()==1){
+								$('#usuario_division').show()
+								$('#usuario_posgrado').hide();
+							}
+							if($('#usuario_gradoActivo').val()==2){
+								$('#usuario_posgrado').show();
+								$('#usuario_division').show();
+							}
+						}else{
+							$("#enviar").attr("disabled","disabled")
+						}
+					})
+					break;
+				case "1": 
+					alert("Es profesor")
+					break;
+				case "2": 
+					alert("Es administrativo")
+					break;
+				case "3":
+					alert("Es otro")
+					break;				
+			}
+			var division = $('#usuario_division').val()
+			//Desbloqueo del segundo botón siguiente
+			if(edad != "" && !(isNaN(edad)) && comunidad != -1 && division != -1){
+				$("#enviar").removeAttr("disabled")
+				$("#edadError").hide();
+	
+			}else{//Si el usuario no elige alguna comunidad universitaria, no se habilitará el botón enviar
+				
+				$("#enviar").attr("disabled","disabled")
+			}
 		}else{
+			$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_division, #usuario_posgrado').hide()
 			$("#enviar").attr("disabled","disabled")
 		}
 	});	
