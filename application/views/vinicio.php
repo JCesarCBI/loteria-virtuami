@@ -84,7 +84,7 @@
 					<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
 					<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
 					<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
-	        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
+	        		<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
 	        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
 	        		
 	                <!-- botones siguiente y submit -->
