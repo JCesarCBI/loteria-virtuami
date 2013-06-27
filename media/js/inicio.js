@@ -211,41 +211,67 @@ $(document).ready(function() {
 	$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_division, #usuario_posgrado').hide()
 	//Validación de la tercera parte del formulario
 	$('#usuario_comunidadUniversitaria').change(function(){ //Valida que se seleccione una comunidad
-		$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').val(0)
+		$('#usuario_gradoActivo, #usuario_division').val(-1)
 		if($('#usuario_comunidadUniversitaria').val() != -1){
-			var edad = $('#usuario_edad').val()
-			if(isNaN(edad)){$("#edadError").show();	}
-			if(edad == ""){	$("#edadError").hide();	}
-			
 			var comunidad = $('#usuario_comunidadUniversitaria').val()
 			switch(comunidad){
 				case "0":
-					// alert("Es alumno")
-					$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_posgrado').hide()
-					$('#usuario_gradoActivo').show();
+					$("#enviar").attr("disabled","disabled")
+					$('#usuario_cargo, #usuario_area, #usuario_posgrado').hide()
+					$('#usuario_gradoActivo').show().val(-1);
 					$('#usuario_gradoActivo').change(function(){
 						if($('#usuario_gradoActivo').val()!=-1){
-							if($('#usuario_gradoActivo').val()==1){
-								$('#usuario_division').show()
+							if($('#usuario_gradoActivo').val()==1){ //El alumno pertenece a licenciatura
+								$('#usuario_division').show().val(-1)
 								$('#usuario_posgrado').hide();
+								
+								$('#usuario_division').change(function(){
+									if($('#usuario_division').val()!=-1){
+										$("#enviar").removeAttr("disabled","disabled")
+									}else{
+										$("#enviar").attr("disabled","disabled")
+									}	
+								})
+								
 							}
-							if($('#usuario_gradoActivo').val()==2){
-								$('#usuario_posgrado').show();
-								$('#usuario_division').show();
+							if($('#usuario_gradoActivo').val()==2){ //El alumno pertenece a posgrado
+								$('#usuario_posgrado').show().val(1);
+									$("#enviar").removeAttr("disabled","disabled")
+
 							}
+						}else{
+							$("#enviar").attr("disabled","disabled")
+							$('#usuario_division, #usuario_posgrado').hide()
+						}
+					})
+					break;
+				case "1": 
+					$("#enviar").attr("disabled","disabled")
+					$('#usuario_area, #usuario_cargo').show().val("")
+					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').hide()
+					$('#usuario_area, #usuario_cargo').keyup(function(){
+						if($('#usuario_area').val()!= "" && $('#usuario_cargo').val() != ""){
+							$("#enviar").removeAttr("disabled")
 						}else{
 							$("#enviar").attr("disabled","disabled")
 						}
 					})
 					break;
-				case "1": 
-					alert("Es profesor")
-					break;
 				case "2": 
-					alert("Es administrativo")
+				 	$("#enviar").attr("disabled","disabled")
+					$('#usuario_area, #usuario_cargo').show().val("")
+					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').hide()
+					$('#usuario_area, #usuario_cargo').keyup(function(){
+						if($('#usuario_area').val()!= "" && $('#usuario_cargo').val() != ""){
+							$("#enviar").removeAttr("disabled")
+						}else{
+							$("#enviar").attr("disabled","disabled")
+						}
+					})					
 					break;
 				case "3":
-					alert("Es otro")
+					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado, #usuario_cargo, #usuario_area').hide()
+					$("#enviar").removeAttr("disabled")
 					break;				
 			}
 			var division = $('#usuario_division').val()
@@ -266,16 +292,15 @@ $(document).ready(function() {
 	
 	$('#usuario_edad').keyup(function(){ //Valida que el campo edad esté correctamente lleno
 		var edad = $('#usuario_edad').val()
-		var comunidad = $('#usuario_comunidadUniversitaria').val()
-		var division = $('#usuario_division').val()
-		if(isNaN(edad)){$("#edadError").show();	}
+		if(isNaN(edad)){$("#edadError").show(); $("#enviar").attr("disabled","disabled")}else{$("#edadError").hide()}
 		if(edad == ""){	$("#edadError").hide();	}
 		//Desbloqueo del segundo botón siguiente
-		if(edad != "" && !(isNaN(edad)) && comunidad != -1 && division != -1){
-			$("#enviar").removeAttr("disabled")
+		if(edad != "" && !(isNaN(edad))){
+			$("#usuario_comunidadUniversitaria").removeAttr("disabled")
 			$("#edadError").hide();
 		}else{
-			$("#enviar").attr("disabled","disabled")
+			$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_division, #usuario_posgrado').hide()
+			$("#usuario_comunidadUniversitaria").attr("disabled", "disabled").val(-1)
 		}
 	});
 
