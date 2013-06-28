@@ -41,33 +41,56 @@ $(document).ready(function() {
 	});
 			
 	//REGISTRO
-	// $('.segundo, .tercero').hide();
-	// $('#sig2, #atras1, #atras2, #enviar').hide();
-// 		
-	// //Primera parte
-	// $("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
-		// $('#sig2, #atras1').show();	$('.segundo').show();	
-	// });	
-// 	
-	// //Segunda parte
-	// $("#sig2").click(function(){
-		$('.segundo, #atras1, #sig1, #sig2, #usuario_nombreUsr, #usuario_contrasena, #usuario_correo,.sexo').hide();
+	$('.segundo, .tercero').hide();
+	$('#sig2, #atras1, #atras2, #enviar').hide();
+		
+	//Primera parte
+	$("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
+		$('#sig2, #atras1').show();	$('.segundo').show();	
+	});	
+	
+	//Segunda parte
+	$("#sig2").click(function(){
 		$('#amarillo-lat').addClass('amarillo-lat2')
-		$('.tercero, #atras2, #enviar, #enviar').show();	
-	// });	
-// 
-	// $('#atras1').click(function(){
-		// $('#sig1').show(); $('.primero, p.sexo').show();
-		// $('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
-	// })
-// 	
-	// //Tercera parte	
-	// $("#atras2").click(function() {
-		// $('.segundo, #atras1, #sig2').show();
-		// $('#amarillo-lat').removeClass('amarillo-lat2').addClass('amarillo-lat')
-		// $('.primero, .tercero, #atras2, #enviar, #sig1').hide();
-		// $('p.sexo').hide();
-	// });
+		$('#usuario_gradoActivo, #usuario_posgrado, #usuario_area, #usuario_cargo, #usuario_division, .segundo, #atras1, #sig1, #sig2, #usuario_nombreUsr, #usuario_contrasena, #usuario_correo').hide();
+
+		if($('#usuario_edad').val()== ""){
+			$('#usuario_comunidadUniversitaria').attr('disabled','disabled')
+		}
+		$('#usuario_edad, #usuario_comunidadUniversitaria, #atras2, #enviar').show();	
+		if($("#usuario_comunidadUniversitaria").val() == 0){
+			$('#usuario_gradoActivo').show();
+			if($("#usuario_gradoActivo").val() == 1){
+				$("#usuario_division").show()
+			}
+			if($("#usuario_gradoActivo").val() == 2){
+				$("#usuario_posgrado").show()
+			}	
+		}
+
+		if($("#usuario_comunidadUniversitaria").val() == 1){
+			$("#usuario_area").show()
+			$("#usuario_cargo").show()		
+		}
+		if($("#usuario_comunidadUniversitaria").val() == 2){
+			$("#usuario_area").show()
+			$("#usuario_cargo").show()
+		
+		}
+
+	});	
+
+	$('#atras1').click(function(){
+		$('#sig1, .primero, p.sexo,label.sexo, .sexo').show();
+		$('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
+	})
+	
+	//Tercera parte	
+	$("#atras2").click(function() {
+		$('.segundo, #atras1, #sig2').show();
+		$('#amarillo-lat').removeClass('amarillo-lat2').addClass('amarillo-lat')
+		$('.primero, .tercero, #atras2, #enviar, #sig1, p.sexo').hide();
+	});
 			
 	//FUNCIONES AJAX
 	

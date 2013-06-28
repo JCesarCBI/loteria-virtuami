@@ -12,6 +12,8 @@
 /*Mesa del centro */
 /* posición del primer botón que aparece en el registro */
 #sig1{ margin-top:12px;	margin-left:-57px;}
+.sig1-atras{ margin-top:12px;	margin-left:0px;}
+
 /* posición del segundo botón que aparece en el registro */
 #sig2{ margin-top:12px;	margin-left:85px;}
 
@@ -21,7 +23,7 @@
 	float: left;
 	width:432px;
 	height:354px;
-	margin-top:150px;
+	margin-top:190px;
 	margin-left:40px
 }
 
@@ -60,34 +62,36 @@
 }
 
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
-	margin-top:-169px;
+	margin-top:-166px;
 	margin-left:192.5px;
 	background:#D9E021;
-	height:180px;
+	height:175px;
 	width:25px;
 	float:right;
 	padding: 7px 15px;
 	position:absolute;
 }
 .amarillo-lat2{ /* Fondo amarillo del cajón lateral */
-	margin-top:-176px;
+	margin-top:-172px;
 }
 #usuario_edad{margin-top:-22px; margin-bottom:3px}
 
 #usuario_comunidadUniversitaria{
 	position:absolute;
-	margin-left:-46px;
+	
 }
 
 #usuario_gradoActivo{margin-right:-46px; margin-top:30px; position:absolute}
 #usuario_division{margin-right:-46px; margin-top:60px; position:absolute}
 #usuario_posgrado{margin-right:-46px; margin-top:60px; position:absolute}
+#usuario_area{margin-right:-46px; margin-top:30px; position:absolute}
+#usuario_cargo{margin-right:-46px; margin-top:60px; position:absolute}
 
 .cajonLateral-cerrado{ /* Clase que define al cajón lateral en estado cerrado */
 	padding:20px 10px;
 	background-image:url("../img/cajon_reg.png");
 	background-repeat:no-repeat;
-	margin-top:270px;
+	margin-top:310px;
 	background-position:-195px 0px;
 	width:272px;
 	height:188px;
@@ -98,7 +102,7 @@
 	padding:20px 10px;
 	background-image:url("../img/cajon_reg.png");
 	background-repeat:no-repeat;
-	margin-top:270px;
+	margin-top:310px;
 	width:272px;
 	height:188px;
 	float: left;
@@ -204,7 +208,7 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 	height:240px;
 	width:177px;
 	padding-left: 170px;
-	margin-top:5px;
+	margin-top:45px;
 	position:absolute;
 	float: left;
 }
@@ -215,7 +219,7 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 	margin-left:170px;
 	position:absolute;
 	float:left;
-	margin-top:5px;
+	margin-top:45px;
 }
 .cajonSuperior-cerrado{	
 	background-image:url("../img/cajon_login.png");
@@ -224,7 +228,7 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 	height:240px;
 	width:177px;
 	padding-left: 170px;
-	margin-top:5px;
+	margin-top:45px;
 	position:absolute;
 	float: left;
 	background-position:0px 175px;
@@ -272,9 +276,9 @@ label.CS-cerrado{
 /*ACERCA DEL JUEGO*/
 
 .acerca{
-	margin-top:60px;
+	margin-top:100px;
 	background: #2E3116;
-	height:250px;
+	height:auto;
 }
 
 #logoUAM{ margin-top:60px;}
