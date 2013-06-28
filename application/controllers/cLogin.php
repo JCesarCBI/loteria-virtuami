@@ -16,7 +16,7 @@ class CLogin extends CI_Controller {
 		$this->form_validation->set_rules('Lusuario_nombreUsr','','trim|required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('Lusuario_contrasena', '', 'trim|required');
         if ($this->form_validation->run() == FALSE){
-            $this->load->view('vinicio2');
+            $this->load->view('vinicio');
         }else{
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
@@ -27,21 +27,21 @@ class CLogin extends CI_Controller {
 				$this->load->view('vPruebaEfrenLogin');
 			}else{
 				echo "error, usuario no esta en la DB";
-				$this->load->view('vinicio2', $this->micombobox->datosComboBox());
+				$this->load->view('vinicio', $this->micombobox->datosComboBox());
 			}
         }
 	}
 	
 	public function terminarSesion(){
 		$this->session->sess_destroy();
-		$this->load->view('vinicio2', $this->micombobox->datosComboBox());
+		$this->load->view('vinicio', $this->micombobox->datosComboBox());
 	}
 	
 	public function recuperarContrasena(){
 		
 		$this->form_validation->set_rules('usuario_correo_recuperarContrena','','trim|required|valid_email');
 		if ($this->form_validation->run() == FALSE){
-            $this->load->view('vinicio2');
+            $this->load->view('vinicio');
 			echo "dentro de la funcion";
         }else{
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
@@ -67,6 +67,6 @@ class CLogin extends CI_Controller {
 					echo "No tienes cuenta en Loteria UAM, registrate...";
 			}        	
         }
-		$this->load->view('vinicio2',$this->micombobox->datosComboBox());
+		$this->load->view('vinicio',$this->micombobox->datosComboBox());
 	}
 }

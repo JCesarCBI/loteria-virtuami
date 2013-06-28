@@ -22,10 +22,19 @@ class CPruebaJuegoLibre2 extends CI_Controller {
 			$aleat = rand(0,53);
 			$r = $baraja[$aleat]['idCarta'];
 			$data["lote"][$r] = $baraja[$aleat];
+			$conteo = count($data["lote"]);
+			
+			if($conteo == $k){
+				$k--;
+			}
+			// echo "<pre>";
+			// print_r($k);
+			// print_r(count($data["lote"]));
+			// echo "</pre>";
 		}
-		/*echo "<pre>";
-		print_r($data);
-		echo "</pre>";*/
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
 		$this->load->view('vPruebasCartas', $data);
 	}
 	

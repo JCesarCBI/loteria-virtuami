@@ -29,6 +29,6 @@ class Welcome extends CI_Controller {
 		/*echo "<pre>";
 		print_r($datos);
 		echo "<pre>";*/
-		$this->load->view('vinicio2', $datos);
+		$this->load->view('vinicio', $datos);
 	}
 }
