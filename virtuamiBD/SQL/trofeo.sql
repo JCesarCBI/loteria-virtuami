@@ -1,0 +1,15 @@
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (1,1,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (12,1,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (8,1,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (10,2,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (1,2,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (20,3,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (21,3,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (4,3,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (1,4,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (2,4,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (3,4,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (22,4,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (18,4,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (1,5,1);
+INSERT INTO loteriadb.trofeo_has_jugador (trofeo_idTrofeo, jugador_usuario_idUsr, jugador_juego_idJuego) VALUES (9,5,1);
