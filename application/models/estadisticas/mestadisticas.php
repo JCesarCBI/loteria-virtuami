@@ -18,7 +18,7 @@
 			
 			$query = $this->db->get();
 			if ($query-> num_rows() >= 1) {
-				return $query->result();
+				return $query->result_array();
 			} else {
 				return 'El judor aun no ha obtendido ningun trofeo aun.';
 			}
