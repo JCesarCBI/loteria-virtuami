@@ -17,7 +17,7 @@
 			$this->db->WHERE('tr.idTipoTrofeo', 'tipo.idtipoTrofeo');
 			
 			$query = $this->db->get();
-			if ($query-> num_rows() >= 1) {
+			if ($query-> num_rows() != 0) {
 				return $query->result();
 			} else {
 				return 'El judor aun no ha obtendido ningun trofeo aun.';
