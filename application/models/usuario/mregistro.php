@@ -22,7 +22,7 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Tipo de Usuarios"';
+			$msj = 'No hay datos en el catalogo "Tipo de Usuarios"';
 			return (isset($msj));
 		}
 	}
@@ -41,7 +41,7 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "División"';
+			$msj = 'No hay datos en el catalogo "División"';
 			return (isset($msj));
 		}
 	}
@@ -60,7 +60,7 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Grado activo"';
+			$msj = 'No hay datos en el catalogo "Grado activo"';
 			return (isset($msj));
 		}
 	}
@@ -79,7 +79,7 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalodo "Grado académico"';
+			$msj = 'No hay datos en el catalogo "Grado académico"';
 			return (isset($msj));
 		}
 	}
