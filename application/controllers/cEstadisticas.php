@@ -11,19 +11,20 @@ class CEstadisticas extends CI_Controller {
 	}
 	
 	public function getTrofeos(){  //posiblemente reciba como parametros el id de usuario y el id de juego
-		$idUsuario = 5; //este dato lo traere posteriormente del formulario
+		$idUsuario = 3; //ests dos datos los traere posteriormente del formulario
 		$idJuego = 1;
 		
+		if($idJuego != 0 && $idUsuario != 0){
+			$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
+			echo $idJuego;
+			echo $idUsuario;
+			echo "<pre>";
+			print_r($trofeosJugador);
+			echo "<pre>";
+		}else{
+			return FALSE;
+		}
 		
 		
-		
-		$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
-		//$datos = $this->micombobox->datosComboBox();
-		echo $idJuego;
-		echo $idUsuario;
-		echo "<pre>";
-		print_r($trofeosJugador);
-		echo "<pre>";
-		echo "HOLA";
 	}
 }
