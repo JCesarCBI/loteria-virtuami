@@ -6,6 +6,7 @@
         $this->load->helper(array('html', 'url', 'form'));
         $this->load->library('form_validation');
         $this->load->model('usuario/mregistro');
+		
 				
 	}
 	
@@ -21,7 +22,7 @@
 			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
 		
             
-           
+          
             $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
             $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
             $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
@@ -41,7 +42,12 @@
                             'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
 							'edad'=>$this->input->post('usuario_edad',TRUE),
 							'comunidadUni'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
-							'division'=>$this->input->post('usuario_division',TRUE));
+							'division'=>$this->input->post('usuario_division',TRUE),
+							'gradoAcademico'=>1,//checar en vista,
+							'gradoActivo'=>1,//checar en vista
+							'avatar'=>"/media/img/default_avatar.jpeg",
+							'cargo'=>"NA",
+							'area'=>"NA");
 							
 				//Mando llamar al modelo para agregar usuario
 				$this->mregistro->agregarUsuario($datosUsuario);	
@@ -107,5 +113,32 @@
 			echo json_encode(0);
 		}
 	}
+	
+	
+	public function recuperarContrasena(){
+			$correo = $this->input->post('correo',TRUE);
+			$Usuario = $this->mlogin->getContrasena($correo);
+			if($Usuario){ 
+				$config['protocol']    = 'smtp';
+		        $config['smtp_host']    = 'ssl://smtp.googlemail.com';
+		        $config['smtp_port']    = '465';
+		        $config['smtp_timeout'] = '7';
+		        $config['smtp_user']    = 'ludico@virtuami.izt.uam.mx';
+		        $config['smtp_pass']    = '7Ud1C0u@m';
+		        $config['charset']    = 'iso-8859-1';
+		        $config['newline']    = "\r\n";
+		        $config['mailtype'] = 'html'; 
+		        $config['validation'] = TRUE;    
+		        $this->load->library('email', $config);
+		        $this->email->from('ludico@virtuami.izt.uam.mx', 'myname');
+		        $this->email->to($correo); 
+		        $this->email->subject('Email Test');
+		        $this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr. 'y tu contraseña es'.$Usuario[0]->contrasena);  	
+				echo json_encode(1);	
+			}else{ //El correo no existe
+				echo json_encode(0);
+			}        	
+        }
+		
 		
 }
