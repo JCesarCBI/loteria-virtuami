@@ -11,33 +11,17 @@ class cpruebasNaye extends CI_Controller {
 		$this->load->model('usuario/mregistro');
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mlogin');
-		
+		$this->load->library('micombobox');	
 	  }
 	
 	public function index()	{
-			
-		$tipoUsuario = $this->mregistro->getTipoUsuario();
-		$division = $this->mregistro->getDivision();
-		$i = 0;
-		foreach ($tipoUsuario as $lugar) {
-			foreach ($lugar as $key) {
-				$datos['comunidad_universitaria'][$i] = $key['tipoUsr'];
-				$i++;
-			}			
-		}
-		$i = 0;
-		foreach ($division as $lugar) {
-			foreach ($lugar as $key) {
-				$datos['division'][$i] = $key['iniciales'];
-				$i++;
-			}
-		}
+		$datos = $this->micombobox->datosComboBox();
+		$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
+		$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
+		// echo "<pre>";
+		// print_r($datos);
+		// echo "</pre>";
 		$this->load->view('vinicio', $datos);
-	}
-	
-	public function lecciones(){
-		$this->load->view('vlecciones');
-		
 	}
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
@@ -72,7 +56,6 @@ class cpruebasNaye extends CI_Controller {
 		function dominio(){
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
 			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
-			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
 			$correo_docencia = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]docencia[.]uam[.]mx$/', $term);
 			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
 			
@@ -110,4 +93,13 @@ class cpruebasNaye extends CI_Controller {
 				echo json_encode(0);
 			}        	
         }
+		
+		public function lecciones(){
+			$this->load->view('vlecciones');
+			
+		}
+	
 	}
+
+
+
