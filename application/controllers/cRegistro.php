@@ -6,12 +6,29 @@
         $this->load->helper(array('html', 'url', 'form'));
         $this->load->library('form_validation');
         $this->load->model('usuario/mregistro');
-		
 				
 	}
 	
 	//Valida el registro y agrega los datos a la base de datos 
 	public function validarRegistro(){
+    // Reglas de validacion
+    	
+        $this->form_validation->set_rules('usuario_nombreUsr','','required');
+        $this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
+		$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
+        $this->form_validation->set_rules('usuario_nombre','required|trim');		
+		$this->form_validation->set_rules('usuario_aPaterno','required|trim');
+		$this->form_validation->set_rules('usuario_aMaterno','required|trim');
+		
+        
+       
+        $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
+        $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
+        $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
+        $this->form_validation->set_message('min_length','El Campo %s debe tener como minimo 6 caracteres');
+       
+        if($this->form_validation->run() != FALSE)
+        {
         // Reglas de validacion
         	
             $this->form_validation->set_rules('usuario_nombreUsr','','required');
@@ -22,12 +39,28 @@
 			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
 		
             
-          
+           
             $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
             $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
             $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
             $this->form_validation->set_message('min_length','El Campo %s debe tener como minimo 6 caracteres');
            
+            $data = array('mensaje'=>'El usuario se registro correctamente');
+            $datosUsuario= array(
+                'usuario'=>$this->input->post('usuario_nombreUsr',TRUE),
+                'correo'=>$this->input->post('usuario_correo',TRUE),
+                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
+                'sexo'=>$this->input->post('usuario_sexo',TRUE),
+                'nombre'=>$this->input->post('usuario_nombre',TRUE),
+                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
+                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE)
+			);
+			//Regresar el arreglo con los datos del usuario para que el modelo los agregue a la base de datos e iniciar sesión	
+        }else
+        {
+      
+            //Regresar al registro
+
             if($this->form_validation->run() != FALSE)
             {
                
@@ -42,12 +75,7 @@
                             'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
 							'edad'=>$this->input->post('usuario_edad',TRUE),
 							'comunidadUni'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
-							'division'=>$this->input->post('usuario_division',TRUE),
-							'gradoAcademico'=>1,//checar en vista,
-							'gradoActivo'=>1,//checar en vista
-							'avatar'=>"/media/img/default_avatar.jpeg",
-							'cargo'=>"NA",
-							'area'=>"NA");
+							'division'=>$this->input->post('usuario_division',TRUE));
 							
 				//Mando llamar al modelo para agregar usuario
 				$this->mregistro->agregarUsuario($datosUsuario);	
@@ -59,6 +87,7 @@
                 
             }
         }
+       }
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
 		$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
@@ -113,32 +142,5 @@
 			echo json_encode(0);
 		}
 	}
-	
-	
-	public function recuperarContrasena(){
-			$correo = $this->input->post('correo',TRUE);
-			$Usuario = $this->mlogin->getContrasena($correo);
-			if($Usuario){ 
-				$config['protocol']    = 'smtp';
-		        $config['smtp_host']    = 'ssl://smtp.googlemail.com';
-		        $config['smtp_port']    = '465';
-		        $config['smtp_timeout'] = '7';
-		        $config['smtp_user']    = 'ludico@virtuami.izt.uam.mx';
-		        $config['smtp_pass']    = '7Ud1C0u@m';
-		        $config['charset']    = 'iso-8859-1';
-		        $config['newline']    = "\r\n";
-		        $config['mailtype'] = 'html'; 
-		        $config['validation'] = TRUE;    
-		        $this->load->library('email', $config);
-		        $this->email->from('ludico@virtuami.izt.uam.mx', 'myname');
-		        $this->email->to($correo); 
-		        $this->email->subject('Email Test');
-		        $this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr. 'y tu contraseña es'.$Usuario[0]->contrasena);  	
-				echo json_encode(1);	
-			}else{ //El correo no existe
-				echo json_encode(0);
-			}        	
-        }
-		
 		
 }
