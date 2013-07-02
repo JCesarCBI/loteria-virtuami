@@ -16,11 +16,15 @@ class CEstadisticas extends CI_Controller {
 		
 		if($idJuego != 0 && $idUsuario != 0){
 			$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
-			echo $idJuego;
-			echo $idUsuario;
-			echo "<pre>";
-			print_r($trofeosJugador);
-			echo "<pre>";
+			for($i=0; $i<count($trofeosJugador); $i++){
+				$trofeosJugadorOrdenados[$i+1] = $trofeosJugador[$i];
+			}
+			// echo $idJuego;
+			// echo $idUsuario;
+			// echo "<pre>";
+			// print_r($trofeosJugadorOrdenados);
+			// echo "<pre>";
+			return $trofeosJugadorOrdenados;
 		}else{
 			return FALSE;
 		}

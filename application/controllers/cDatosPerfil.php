@@ -11,11 +11,7 @@ class CDatosPerfil extends CI_Controller {
 	}
 	
 	public function getTrofeos(){
-		$idUsuario = 1; //este dato lo traere posteriormente del formulario
-		
-		
-		
-		
+		$idUsuario = 1; //este dato lo traere posteriormente del formulario		
 		if($idUsuario == 0){
 			$idUsuario = "Usuario no existente";
 			echo $idUsuario;
@@ -27,10 +23,16 @@ class CDatosPerfil extends CI_Controller {
 				echo $idUsuario;
 				return $idUsuario;
 			}else{
-				echo $idUsuario;
-				echo "<pre>";
-				print_r($datosPerfil);
-				echo "<pre>";
+				$datosPerfilOrdenados = $datosPerfil[0];
+				$datosPerfilOrdenados["Sexo"][1] = "Hombre";
+				$datosPerfilOrdenados["Sexo"][2] = "Mujer";
+				for($i=1; $i<45; $i++){
+					$datosPerfilOrdenados["Edades"][$i] = $i+16;	
+				}
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "<pre>";
+				return $datosPerfilOrdenados;
 			}
 		}
 	}
