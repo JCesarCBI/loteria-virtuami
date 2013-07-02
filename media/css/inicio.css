@@ -2,8 +2,6 @@
 
 /**GENERAL**/
 	
-
-body{ font-family:"Gabriela";font-size:15px;background-image:url("../img/fondo-general.jpeg");}
 label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 
 /* Clase que define a todos los botones de la vista inicio */
