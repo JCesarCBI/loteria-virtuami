@@ -15,6 +15,24 @@ function obternerIdPlantilla(indice){
 		 return	cartasId[indice]; 
 }
 
+function barajaPlantilla(num){
+	
+	var cartasArreglo=document.getElementById('IdMazoReversa').value;
+		 cartasId=cartasArreglo.split("*");
+	
+		 num=num+"";
+	
+		var voF=cartasId.indexOf(num);
+		
+	if (voF > -1) {
+		
+		return 1;
+		
+	} else{
+		return 0;
+	};
+}
+
 //Esta funcion se encarga de escribir las rimas y reproducir el audio de la carta que se muestr
 function audioRima(indice){
 	
@@ -94,14 +112,24 @@ function ajax_validarRespuesta(id, respuesta){
 }
 
 
-function cambiaCarta(numCarta) {
+function cambiaCarta(numCarta, mult) {
+	
+	if (mult!= 1) {
+		
+		rompeCadenas();
+				
+	};
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
 	$('#cartaReversaClick').removeAttr("onclick");
+	var url=document.getElementById('baraja-'+numCarta).value
+	$("#baraja-"+numCarta).removeAttr("id");
+	
 	//En esta función regreso 0 si la carta fue encontrada, en caso contrario regreso 0
 	var continuar= audioRima(numCarta);
   	
   	//si el numero de la carta es 0, quiere decir que es la primeravez que volteare una carta
+  		$("#cartaBvisible").html("<img id='baraja-"+numCarta+"' onclick='clickBaraja("+numCarta+")' class='Escondido barajaTemp'src='"+url+"' />");
   	if(numCarta==0){
 		$("#baraja-"+numCarta).removeClass("Escondido");
 		
@@ -125,7 +153,8 @@ function cambiaCarta(numCarta) {
 			numCarta++;
 
 			$('#cartaReversaClick').attr("onclick", "cambiaCarta("+ numCarta +");");
-			tiempo=setTimeout("cambiaCarta("+numCarta+")",5000);
+			document.getElementById('numeroCarta').value=numCarta;
+			tiempo=setTimeout("cambiaCarta("+numCarta+")",20000);
 
 		} else{
 			//Si no se encontro la cart solo escondo la última que se mostró
@@ -137,7 +166,6 @@ function cambiaCarta(numCarta) {
 }
 
 function presionaEnter(evt, op) {
-
 	indice=document.getElementById('cartaVisible').value;
 	$('#baraja-'+indice).removeAttr("onclick");
 	 var charCode = (evt.which) ? evt.which : event.keyCode
@@ -145,25 +173,30 @@ function presionaEnter(evt, op) {
 	 if (charCode == 13) {
 	//Presiond enter obtengo la respuesta escrita
 	 		 var respuesta=document.getElementById('respuestaBaraja').value;
+	 		 respuesta =  $.trim(respuesta);
+	 		 respuesta =  respuesta.toLowerCase();
 	 		 id=obternerId(indice);
 	 		 
 			var vOf = ajax_validarRespuesta(id, respuesta)
 			if (vOf==1) {
 				//rompo cadenas
+				rompeCadenas();
 				//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
 				$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 2)" >');
+				alert("perdiste tu primer oportunida");
 				
 				//pongo el curso en el input
 				$('#respuestaBaraja').focus();
 			
 				if (op ==2){
-					$('#respuestaInput').html(' ');
-					alert("perdiste tu segunda oportunidad en la baraja, TIENES UN ERROR");
+					borrarInputCambiarCarta();
+					rompeCadenas();
 				}
 			}
 			else{
-				
-				//Incremento multiplicador
+					//Incremento multiplicador
+					borrarInputCambiarCarta();		
+					multiplicadores();
 				
 			}
 		}
@@ -172,10 +205,20 @@ function presionaEnter(evt, op) {
 }
 
 function clickBaraja(id) {
-	//Escribo el input en el cual se escribirá la respuesta
-    $('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 1)">');
-	//pongo el curso en el input
-    $('#respuestaBaraja').focus();
+	
+	indice=obternerId(id)
+	resultado=barajaPlantilla(indice);
+	
+	if (resultado==0) {
+		//Escribo el input en el cual se escribirá la respuesta
+	    $('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 1)">');
+		//pongo el curso en el input
+	    $('#respuestaBaraja').focus();
+		
+	} else{
+		errores();
+		rompeCadenas();
+	};
 	
 }
 
@@ -197,6 +240,7 @@ function presionaEnterPlantilla(evt, op) {
 			
 			if (vOf==1) {
 				//rompo cadenas
+				rompeCadenas();
 				//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
 				$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnterPlantilla(event, 2)" >');
 				
@@ -205,13 +249,14 @@ function presionaEnterPlantilla(evt, op) {
 			
 				if (op ==2){
 					$('#respuestaInput').html(' ');
-					alert("perdiste tu segunda oportunidad en la plantilla, TIENES UN ERROR");
+					errores(indice);
+					rompeCadenas() 
+					$('#plantilla-'+indice).addClass("cartaError");
 				}
 			}
 			else{
-				
-	        	 alert("respuesta correcta :D");
-				
+	        	 puntos();	
+	        	 borrarInputCambiarCarta();			
 			}
 
 	
@@ -224,11 +269,11 @@ function validaPlantillaBaraja(indice){
 	idCartaBaraja=obternerId(indiceBaraja);
 	idCartaPlantilla=obternerIdPlantilla(indice);
 	if(idCartaPlantilla==idCartaBaraja){
-		return 0;
+		return idCartaBaraja;
 			
 	} else{
 		
-		return 1
+		return -1;
 	}
 	
 	
@@ -238,15 +283,17 @@ function clickPlantilla(indice) {
 	
 	
 	var respuesta=validaPlantillaBaraja(indice);
+	
 
-	if(respuesta==0){
+	if(respuesta > 0){
 		//Escribo el input en el cual se escribirá la respuesta
 	    $('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnterPlantilla(event, 1)">');
 		//pongo el curso en el input
 	    $('#respuestaBaraja').focus();
 			
 	} else{
-		alert("la carta no coincide con la de la baraja, TIENES UN ERROR")		
+			errores(respuesta);
+			rompeCadenas();		
 	}
 			
 }
@@ -254,19 +301,125 @@ function clickPlantilla(indice) {
 
 function multiplicadores() {
 	
+	var cont=document.getElementById('multiplicadorValor').value;
+	
+	cont++;
+	
+	document.getElementById('multiplicadorValor').value=cont;
+	
+	$('#multiplicadorVisible').html('<h3>'+cont+'<h3>');
+	
+	if (cont >= 1) {
+		
+		comodines(cont);
+	}
 }
 
-function errores() {
+function validarComodines(tipo){
+	var comodines=document.getElementById('comodinesTotales').value;
+	var erroresTotales=document.getElementById('errorValor').value;
 	
+	if ((comodines > 0) && (erroresTotales > 0)) {
+		
+		
+		if (tipo==1) {
+			//se actualizarán los comodines y se regresará el valor del nuevo número de errores
+			comodines--;
+			document.getElementById('comodinesTotales').value= comodines;
+			$('#comodinesVisibles').html('<h3>'+comodines +' <h3>');
+			return erroresTotales--; 
+			
+		} else{
+			erroresTotales--
+			document.getElementById('errorValor').value=erroresTotales;
+			$('#erroresVisibles').html('<h3>'+erroresTotales+'<h3>');
+			comodines--;
+			document.getElementById('comodinesTotales').value= comodines;
+			$('#comodinesVisibles').html('<h3>'+comodines +' <h3>');
+			alert('desde comodín');
+		};
+		
+	}else{
+		return -1;
+	}
+	
+}
+
+function errores(id) {
+
+	var cadena=document.getElementById('errorCadena').value;
+	cadena=cadena+ id + "*"; 
+	document.getElementById('errorCadena').value=cadena;
+	//alert(cadena.split('*'));
+	var errorTotal=document.getElementById('errorValor').value;
+	errorTotal++;
+	document.getElementById('errorValor').value= errorTotal;
+
+	var otroError=validarComodines(1);
+	
+	if (otroError>=0) {
+		errorTotal=otroError;
+	};
+
+	$('#erroresVisibles').html('<h3>'+errorTotal+'<h3>');
+	if (errorTotal==5) {
+		alert('fin del juego X-X');
+	};
+
 }
 
 function puntos() {
+	var m=document.getElementById('multiplicadorValor').value;
+	var cont=document.getElementById('puntos').value;
+	var puntosTotales=parseInt(cont);
+	var mult=parseInt(m)
+	var puntos=20*mult;
+	var puntos=puntosTotales+puntos;
+	document.getElementById('puntos').value=puntos;
+	
+	$('#puntosTotalesVisibles').html('<h3>'+puntos+'<h3>');
+		
+}
+
+
+function comodines(cont) {
+	
+	var otroComodin=0;
+	switch(cont)
+			{
+			case 2:
+			  alert("Primer Comodín");
+			  $('#comodinesVisibles').html('<h3> * <h3>');
+			  otroComodin=1;
+			  
+			  break;
+			case 8:
+			  alert("Segundo Comodín");
+			  $('#comodinesVisibles').html('<h3>* *<h3>');
+			  otroComodin=1;
+			  break;
+			default:
+			  alert("Ya casi tienes otro comodín :D");
+			}
+		
+	if (otroComodin==1) {
+		var aux=document.getElementById('comodinesTotales').value
+		document.getElementById('comodinesTotales').value=aux+1;
+		validarComodines(2);
+	};
+}
+
+function rompeCadenas() {
+	
+	document.getElementById('multiplicadorValor').value=1;
+	$('#multiplicadorVisible').html('<h3>1<h3>');
 	
 }
 
-function comodines() {
+function borrarInputCambiarCarta(){
+	$('#respuestaInput').html(' ');
+	var numCarta=document.getElementById('numeroCarta').value;
+	cambiaCarta(numCarta,1);
 	
-}
-function rompeCadenas() {
 	
 }

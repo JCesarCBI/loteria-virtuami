@@ -53,6 +53,7 @@
 	width: 528px;
 	background-color: #003f3b;
 	min-height: 50px !important;
+	color:white;
 	
 }
 .fondoMazo{
@@ -61,11 +62,47 @@
 	background-color: #00a69c;
 }
 .espacioSuperior{
-	margin-top:5%;
+	margin-top:3%;
 }
 .contenidoSuperior{
 	width: 528px;
 	background-color: #007853;
 	min-height: 30px !important;
 	
+}
+.fondosup{
+	width: 528px;
+	background-color: #000;
+	min-height: 11px !important;
+	font-size: 87%;
+	color: white;
+	
+}
+.multiplicador {
+	float: right;
+	width: 140px;
+	font-size: 100%;
+}
+
+.errores {
+	float: right;
+	width: 85px;
+	font-size: 100%;
+}
+.comodines {
+	float: right;
+	width: 105px;
+	font-size: 100%;
+}
+
+.puntosTotal {
+	float: right;
+	width: 120px;
+	font-size: 100%;
+}
+
+.cartaError{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+
 }
