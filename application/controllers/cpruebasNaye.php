@@ -12,6 +12,8 @@ class cpruebasNaye extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mlogin');
 		$this->load->library('micombobox');	
+		$this->load->model('usuario/mdatosperfil');		
+		
 	  }
 	
 	public function index()	{
@@ -98,8 +100,54 @@ class cpruebasNaye extends CI_Controller {
 			$this->load->view('vlecciones');
 			
 		}
+
+		public function editarPerfilJugador($idUsuario){
+			if($idUsuario == 0){
+					$idUsuario = "Usuario no existente";
+					return $idUsuario;
+				}else{
+					$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
+					if(!$datosPerfil){
+						$idUsuario = "Usuario no existente";
+						return $idUsuario;
+					}else{
+						$datosPerfil;
+
+						echo "<pre>";
+						print_r($datosPerfil[0]);
+						echo "</pre>";
+					}
+			}			
+			$this->load->view('veditarPerfilJugador', $datosPerfil[0]);			
+		}
+		
+		public function getTrofeos($idUsuario){
+			if($idUsuario == 0){
+				$idUsuario = "Usuario no existente";
+				echo "<script>
+					alert('usuario no existe')
+				</script>";
+			}else{
+				$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
+				if(!$datosPerfil){
+					$idUsuario = "Usuario no existente";
+					echo $idUsuario;
+				}else{
+					$datosPerfilOrdenados = $datosPerfil[0];
+					$datosPerfilOrdenados["Sexo"][1] = "Hombre";
+					$datosPerfilOrdenados["Sexo"][2] = "Mujer";
+					for($i=1; $i<45; $i++){
+						$datosPerfilOrdenados["Edades"][$i] = $i+16;	
+					}
+				}
+					echo "<pre>";
+					print_r($datosPerfilOrdenados);
+					echo "</pre>";
+				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
+			}
+		}
 	
-	}
+} //Fin de la clase
 
 
 
