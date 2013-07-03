@@ -18,11 +18,17 @@
 			<div class="three columns foto">
 				<img src="<?= base_url() ?><?= $avatar ?>" title="kawaii"/>
 			</div>	
-			<div class="nine columns informacion">
-				<div class="row">
-					<label for="usuario_nombreUsuario">Nombre de usuario:</label>
-					<input type="text" id="usuario_nombreUSuario" name="usuario_nombreUSuario" value="<?= $nombreUsr?>" autofocus>
+			<h1 class="nombreUsr nine columns"><?= $nombreUsr?></h1>
+			<div class="row">
+				<div class="twelve columns navegacion">
+					<ul>
+						<li id="nav-informacion" class="offset-by-six two column">Información</li>
+						<li id="nav-estadistica"class="two column">Estadísticas</li>
+						<li id="nav-galeria" class="two column">Galería</li>
+					</ul>
 				</div>
+			</div>
+			<div class="twelve columns informacion">
 				<div class="row">
 					<div class="four columns">
 						<label for="usuario_nombreUsuario">Nombre(s):</label>
@@ -42,14 +48,12 @@
 					<div class="four columns">
 						<label for="usuario_nombreUsuario">Sexo:</label>
 			        	<?php  
-			        	$sexo = Array('1' => "Hombre", '2' => "Mujer");
-			        	echo form_dropdown('usuario_sexo', $sexo, 1, 'id=usuario_sexo'); ?>
+			        	echo form_dropdown('usuario_sexo', $Sexo, 1, 'id=usuario_sexo'); ?>
 					</div>
 					<div class="four columns">
 						<label for="usuario_nombreUsuario">Edad:</label>
 			        	<?php  
-			        	$sexo = Array('1' => "Hombre", '2' => "Mujer");
-			        	echo form_dropdown('usuario_sexo', $sexo, 1, 'id=usuario_sexo'); ?>
+			        	echo form_dropdown('usuario_sexo', $Edades, 1, 'id=usuario_sexo'); ?>
 					</div>
 					<div class="four columns"></div>
 				</div>
