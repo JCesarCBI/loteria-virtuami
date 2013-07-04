@@ -7,6 +7,7 @@
 	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
 	<script>var base = "<?=base_url(); ?>"</script> 
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
+	<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/fondoLoguin.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/cartas.css">
 
@@ -47,21 +48,23 @@
 					<div class="fondosup" id="fondosup">
 						<div class="puntosTotal">
 							PUNTOS TOTAL<br />
-							<span id="puntosTotalesVisibles" > <h3>0</h3> </span>
 						</div>
 						<div class="multiplicador">
 							MULTIPLICADORES<br />
-							<span id="multiplicadorVisible" ><h3>1</h3></span>
 						</div>
 						<div class="comodines">
 							COMODINES<br />
-							<span id="comodinesVisibles" ><h3>0</h3></span>
 						</div>
 						<div class="errores">
 							ERRORES<br />
-							<span id="erroresVisibles" ><h3>0</h3></span>
 						</div>
 					</div>	
+					<div class="textoLetra">
+							<center><span class="puntosTotal centro" id="puntosTotalesVisibles" style="font-size: 25px !important; margin-top:-4px !important;">0</span></center>
+							<center><span class="multiplicador centro" id="multiplicadorVisible" >1</span></center>
+							<center><span class="comodines centro" id="comodinesVisibles" >0</span></center>
+							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
+					</div>
 					
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
@@ -70,7 +73,7 @@
 							$cont=1;
 						 foreach ($lote as $key => $carta) {
 							
-							echo "<img class='mazoTemp' id=plantilla-".$cont2." src='".base_url().$carta['imagen']."' onclick='clickPlantilla(".$cont2.")'/>";
+							echo "<img class='mazoTemp' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/>";
 							
 							$cont2++;
 							if (($cont % 4)==0 && $cont>1) 
@@ -89,26 +92,26 @@
 			
 					</div>
 			</div>
-			<!--Termina la columnaCentral-->
 			
-			<div id="audio"> </div>
+				<div id="audio"> </div>
 		
-		</div>
+			</div>
+			<!--Termina la columnaCentral-->
 				<!--Columna derecha, aquí ira la la opción para gritar loteria -->
 		<div class="three columns" id="ColumnaDer">
-							<?php 
-							$contId=0;
-							foreach ($baraja as $key => $cartas) {
-												
-								echo "id= ".$key." rima= ".$cartas['nombre'],"<br />";
-								
-							} 
-							?>	
-				<div id="UrlCartas">
+				<div class="centro" id="contenidoDerecho">
+							<img src="<?= base_url()?>media/img/boton.png"  />
+				</div>
+				
+		</div>	
+			<!--Termina la columnaDer-->
+			
+		</div>
+		<div id="UrlCartas">
 					<?php 
 						$contId=0;
 						foreach ($baraja as $key => $cartas) {
-							echo '<input type="hidden"  id="baraja-'.$contId.'"  value="'.base_url().$cartas['imagen'].'"/>';		
+							echo '<input type="hidden"  id="baraja-'.$contId.'"  value="'.base_url().$cartas['imgMazo'].'"/>';		
 							//echo "<img id='baraja-".$contId."' onclick='clickBaraja(".$contId.")' class='Escondido barajaTemp'src='".base_url().$cartas['imagen']."' alt='".$key."'/>";
 							
 							
@@ -122,9 +125,6 @@
 						echo '" />';
 						?>
 				</div>
-		</div>	
-			<!--Termina la columnaDer-->
-		</div>
 	</body>	
 
 </html>

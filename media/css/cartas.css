@@ -22,6 +22,7 @@
 	min-height:294px;	
 	max-width: 180px;
 	max-height:334px;
+	margin: 0px auto;
 	
 }
 
@@ -53,7 +54,8 @@
 	width: 528px;
 	background-color: #003f3b;
 	min-height: 50px !important;
-	color:white;
+	color:#f9ec23;
+	margin: auto;
 	
 }
 .fondoMazo{
@@ -64,10 +66,12 @@
 .espacioSuperior{
 	margin-top:3%;
 }
+
 .contenidoSuperior{
 	width: 528px;
 	background-color: #007853;
 	min-height: 30px !important;
+	margin:0px auto;
 	
 }
 .fondosup{
@@ -105,4 +109,17 @@
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
 
+}
+
+.centro{
+	margin:0px auto;
+}
+
+.textoLetra{
+	color:#f9ec23;
+	background-color:#007853;
+	min-height: 20px;
+	margin-top: 7px;
+	font-size: 20px;
+	
 }
