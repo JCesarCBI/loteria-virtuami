@@ -20,9 +20,6 @@ class cpruebasNaye extends CI_Controller {
 		$datos = $this->micombobox->datosComboBox();
 		$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
 		$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
-		// echo "<pre>";
-		// print_r($datos);
-		// echo "</pre>";
 		$this->load->view('vinicio', $datos);
 	}
 	
@@ -121,7 +118,7 @@ class cpruebasNaye extends CI_Controller {
 			$this->load->view('veditarPerfilJugador', $datosPerfil[0]);			
 		}
 		
-		public function getTrofeos($idUsuario){
+		public function perfilUsuario($idUsuario){
 			if($idUsuario == 0){
 				$idUsuario = "Usuario no existente";
 				echo "<script>
@@ -139,13 +136,27 @@ class cpruebasNaye extends CI_Controller {
 					for($i=1; $i<45; $i++){
 						$datosPerfilOrdenados["Edades"][$i] = $i+16;	
 					}
+					$datosPerfilOrdenados['datos'] = $this->micombobox->datosComboBox();
+					$datosPerfilOrdenados['datos']['comunidad_universitaria'] = array('1'=>'Alumno', '2'=>'Profe', '3'=>'Admin', '4'=>'Otro');
+					$datosPerfilOrdenados['datos']['gradoActivo'] = array('1'=>'Licenciatura', '2'=>'Posgrado');
+					$datosPerfilOrdenados['datos']['pos'] = array('1'=>'Maestría', '2'=> 'Doctorado');	
 				}
-					echo "<pre>";
-					print_r($datosPerfilOrdenados);
-					echo "</pre>";
+				
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "</pre>";
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 			}
 		}
+
+		public function confirmaContrasena($contrasena){
+			$contrasenaUsuario = "a1b1c2d3";
+			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
+		}
+
+		public function cambiaContrasena($contrasena){
+			echo json_encode("contraseña cambiada!");	
+		}		
 	
 } //Fin de la clase
 
