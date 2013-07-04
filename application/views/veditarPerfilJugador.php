@@ -6,13 +6,16 @@
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/perfil.css">
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
-		<script src="<?= base_url()?>media/js/inicio.js"></script>
+		<script src="<?= base_url()?>media/js/perfil.js"></script>
 	</head>
 
 	<body>
 		<title>Editar perfil</title>
 		<div class="twelve columns">
-		<div class="twelve columns header"></div>
+		<div class="twelve columns header">
+			<img src="<?= base_url() ?><?= $avatar ?>" title="avatar"/>
+			<a href="#" id="usuario"><?=$nombreUsr?></a>
+		</div>
 
 		<div class="row">
 			<div class="three columns foto">
@@ -29,34 +32,86 @@
 				</div>
 			</div>
 			<div class="twelve columns informacion">
-				<div class="row">
-					<div class="four columns">
-						<label for="usuario_nombreUsuario">Nombre(s):</label>
-						<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $nombre?>" autofocus>
+				<form action="" method="post">
+					<div class="row">
+						<div class="four columns">
+							<label for="usuario_nombreUsuario">Nombre(s):</label>
+							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $nombre?>" autofocus>
+						</div>
+						<div class="four columns">
+							<label for="usuario_nombreUsuario">Apellido paterno:</label>
+							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aPaterno?>" autofocus>
+						</div>
+						<div class="four columns">
+							<label for="usuario_nombreUsuario">Apellido materno:</label>
+							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aMaterno?>" autofocus>
+						</div>
 					</div>
-					<div class="four columns">
-						<label for="usuario_nombreUsuario">Apellido paterno:</label>
-						<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aPaterno?>" autofocus>
+					
+					<div class="row"> <!--Datos personales -->
+						<div class="four columns">
+							<label for="usr_correo">Correo:</label>
+							<input type="email" id="usr_correo" name="usr_correo" value="<?= $correo?>" autofocus>
+						</div>
+						<div class="four columns">
+							<label for="usuario_nombreUsuario">Sexo:</label>
+				        	<?php  
+				        	echo form_dropdown('usuario_sexo', $Sexo, 1, 'id=usuario_sexo'); ?>
+						</div>
+						<div class="four columns">
+							<label for="usuario_nombreUsuario">Edad:</label>
+				        	<?php  
+				        	echo form_dropdown('usuario_sexo', $Edades, 1, 'id=usuario_sexo'); ?>
+						</div>
 					</div>
-					<div class="four columns">
-						<label for="usuario_nombreUsuario">Apellido materno:</label>
-						<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aMaterno?>" autofocus>
+					<hr>
+					<div class="row"> <!--Datos académicos -->
+						<div class="four columns">
+							<label for="usuario_comunidadUniversitaria">Comunidad Universitaria:</label>
+				        	<?php  
+				        	echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idTipoUsr, 'id=usuario_comunidadUniversitaria'); ?>
+						</div>
+						<div id="area" class="four columns">
+							<label for="usuario_area">Área:</label>
+					        <input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área">
+					    </div>
+						<div id="cargo" class="four columns">
+							<label for="usuario_cargo">Cargo:</label>
+							<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo">
+						</div>
+						<div id="gradoActivo" class="four columns">
+							<label for="usuario_gradoActivo">Grado Activo:</label>
+							<?php  echo form_dropdown('usuario_gradoActivo', $datos['gradoActivo'], $idGradoActivo, 'id=usuario_gradoActivo'); ?>
+						</div>
+						<div id="division" class="four columns">
+							<label for="usuario_division">División:</label>
+			        		<?php  echo form_dropdown('usuario_division', $datos['division'], $idDivision, 'id=usuario_division'); ?>
+			        	</div>
+			        	<div id="posgrado" class="four columns">
+							<label for="usuario_posgrado">Posgrado:</label>
+			        		<?php  echo form_dropdown('usuario_posgrado', $datos['pos'], -1, 'id=usuario_posgrado'); ?>
+			        	</div>						
 					</div>
-				</div>
-				
-				<div class="row">
-					<div class="four columns">
-						<label for="usuario_nombreUsuario">Sexo:</label>
-			        	<?php  
-			        	echo form_dropdown('usuario_sexo', $Sexo, 1, 'id=usuario_sexo'); ?>
+					<hr>
+					<div class="row"> <!--Seguridad -->
+						<div id="cambiarContrasena" class="four columns">
+							<input type="button" id="BtnCambiarContrasena" value="Cambiar contraseña">
+						</div>
+						<div id="contrasenaActual" class="four columns">
+							<input type="password" id="usuario_contrasenaActual" placeholder="Confirma contraseña actual" name="usuario_contrasenaActual" >
+						</div>
+						<div id="cancelarCambiarContrasena" class="four columns">
+							<input type="button" id="BtnConfirmContrasena" value="Confirmar">
+							<input type="button" id="BtnCancelarCambiarContrasena" value="Cancelar" >
+						</div>
 					</div>
-					<div class="four columns">
-						<label for="usuario_nombreUsuario">Edad:</label>
-			        	<?php  
-			        	echo form_dropdown('usuario_sexo', $Edades, 1, 'id=usuario_sexo'); ?>
+					<hr>
+					<div class="row"> <!--botones-->
+						<div class="twelve columns">
+							<input type="submit" id="BtnGuardaCambiosDatosUsr" value="Guardar cambios">
+						</div>
 					</div>
-					<div class="four columns"></div>
-				</div>
+			</form>
 			</div>
 		</div>
 		</div>
