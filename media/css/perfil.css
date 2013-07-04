@@ -1,32 +1,18 @@
-.foto img{
-	margin-top:15px;
-	width:200px;
-	height:200px;
-	float:left;
-}
-
-label{
-	color:#D9E021;
-}
-
-.nombreUsr{
-	color:#FFF;
-}
-
+.foto img{	margin-top:15px; width:200px; height:200px;	float:left;}
+label{color:#D9E021;margin-bottom:20px;} 
+.nombreUsr{	color:#FFF;}
 .informacion{
 	background-image:url("../img/azulLecciones.png") !important;
 	margin-top:30px;
-	padding: 30px 10px;
-
+	padding: 40px 40px;
 }
-
 .navegacion ul>li{
 	display:inline;
 	background:#FFF;
 	padding:10px;
 }
-
-.navegacion ul>li:hover{
-	font-size:20px;
-}
-
+.navegacion ul>li:hover{font-size:20px;}
+#BtnGuardaCambiosDatosUsr{height:50px;float:right;}
+.header{height:50px}
+.header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
+.header img{padding:2px 2px; width:40px; height:40px; float:right;}
