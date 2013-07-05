@@ -10,7 +10,7 @@ class CDatosPerfil extends CI_Controller {
 		
 	}
 	
-	public function getTrofeos(){
+	public function perfilUsuario(){
 		$idUsuario = 1; //este dato lo traere posteriormente del formulario		
 		if($idUsuario == 0){
 			$idUsuario = "Usuario no existente";
@@ -24,15 +24,17 @@ class CDatosPerfil extends CI_Controller {
 				return $idUsuario;
 			}else{
 				$datosPerfilOrdenados = $datosPerfil[0];
-				$datosPerfilOrdenados["Sexo"][1] = "Hombre";
-				$datosPerfilOrdenados["Sexo"][2] = "Mujer";
+				$datosPerfilOrdenados["idUsuario"] = $idUsuario;
+				$datosPerfilOrdenados["Sexo"]["H"] = "Hombre";
+				$datosPerfilOrdenados["Sexo"]["M"] = "Mujer";
 				for($i=1; $i<45; $i++){
-					$datosPerfilOrdenados["Edades"][$i] = $i+16;	
+					$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 				}
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "<pre>";
-				return $datosPerfilOrdenados;
+				//return $datosPerfilOrdenados;
+				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
 	}
