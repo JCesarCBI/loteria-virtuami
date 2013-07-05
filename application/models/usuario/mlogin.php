@@ -9,8 +9,9 @@
 		}
 	
 		function login_usuario($nombreUsr, $contrasena){
-			$this->db->SELECT('idUsr, nombreUsr, contrasena, avatar');
+			$this->db->SELECT('usuario.idUsr, usuario.nombreUsr, usuario.contrasena, avatar.avatar');
 			$this->db->FROM('usuario');
+			$this->db->JOIN('avatar','avatar.idAvatar = usuario.idAvatar');
 			$this->db->WHERE('nombreUsr', $nombreUsr);
 			$this->db->WHERE('contrasena', $contrasena);
 			$this->db->LIMIT(1);
@@ -38,6 +39,5 @@
 				return false;
 			}
 		}
-	
 	}
 ?>

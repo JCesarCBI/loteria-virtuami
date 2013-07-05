@@ -66,10 +66,10 @@ class Mregistro extends CI_Model {
 	}
 	
 	//Grado máximo de estudios
-	public function getGradoAcademico()
+	public function getGradoPosgrado()
 	{
 		$this->db->SELECT('*');
-		$this->db->FROM('gradoAcademico');
+		$this->db->FROM('gradoPosgrado');
 		
 		$consulta = $this->db->get();
 		
@@ -79,7 +79,7 @@ class Mregistro extends CI_Model {
 			}
 			return $datos;
 		} else {
-			$msj = 'No hay datos en el catalogo "Grado académico"';
+			$msj = 'No hay datos en el catalogo "Grado posgrado"';
 			return (isset($msj));
 		}
 	}
@@ -132,8 +132,8 @@ class Mregistro extends CI_Model {
 		}
 		
 		$player = array(
-			'usuario_idUsr' => $idUsr,
-			'juego_idJuego'=> 1,
+			'idUsr' => $idUsr,
+			'idJuego'=> 1,
 			'scoreTotal'=> 0
 		);
 		

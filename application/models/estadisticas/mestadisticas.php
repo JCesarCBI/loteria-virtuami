@@ -8,19 +8,50 @@
 			parent::__construct();
 		}
 		
-		function getTrofeos($idUsr, $idJuego){
-			$this->db->SELECT('trofeo.nombre, trofeo.imagen, trofeo.condicion, trofeo.descripcion, tipoTrofeo.tipoTrofeo');
-			$this->db->FROM('trofeo_has_jugador');
-			$this->db->JOIN('trofeo','trofeo.idTrofeo = trofeo_has_jugador.trofeo_idTrofeo');
-			$this->db->JOIN('tipoTrofeo','tipoTrofeo.idtipoTrofeo = trofeo.idTipoTrofeo');
-			$this->db->WHERE('trofeo_has_jugador.jugador_usuario_idUsr', $idUsr);
-			$this->db->WHERE('trofeo_has_jugador.jugador_juego_idJuego', $idJuego);
+		public function getTrofeos($idUsr, $idJuego){
+			$this->db->SELECT('trofeo.*, tipoTrofeo.tipoTrofeo');
+			$this->db->FROM('vitrina');
+			$this->db->JOIN('trofeo','trofeo.idTrofeo = vitrina.idTrofeo');
+			$this->db->JOIN('tipoTrofeo','tipoTrofeo.idTipoTrofeo = trofeo.idTipoTrofeo');
+			$this->db->WHERE('vitrina.idUsr', $idUsr);
+			$this->db->WHERE('vitrina.idJuego', $idJuego);
 			
 			$query = $this->db->get();
-			if ($query-> num_rows() >= 1) {
+			
+			if ($query->num_rows() != 0) {
 				return $query->result_array();
 			} else {
-				return 'El judor aun no ha obtendido ningun trofeo aun.';
+				return FALSE;
+			}
+		}
+		
+		public function getCartas()
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('carta');
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				return FALSE;
+			}
+		}
+		
+		public function getGaleria($idUsr, $idJuego)
+		{
+			$this->db->SELECT('idCarta');
+			$this->db->FROM('galeria');
+			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->WHERE('idJuego', $idJuego);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				return FALSE;
 			}
 		}
 	}

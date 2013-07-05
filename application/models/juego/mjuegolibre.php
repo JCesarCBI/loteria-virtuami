@@ -18,7 +18,36 @@
 			if ($query->num_rows()>0) {
 				return $query->result_array();
 			} else {
-				return false;
+				return FALSE;
+			}
+		}
+		
+		public function getFrase()
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('frase');
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()>0) {
+				return $query->result_array();
+			} else {
+				return FALSE;
+			}
+		}
+		
+		public function getCartas($value='')
+		{
+			$this->db->SELECT('carta.*, frase.frase');
+			$this->db->FROM('carta');
+			$this->db->JOIN('frase', 'frase.idCarta = carta.idCarta');
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				return FALSE;
 			}
 		}
 	}

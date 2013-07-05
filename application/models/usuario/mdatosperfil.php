@@ -10,9 +10,14 @@
 		}
 		
 		function getDatosUsuario($idUsr){
-			$this->db->SELECT('nombreUsr, nombre, aPaterno, aMaterno, sexo, edad, correo, contrasena, idTipoUsr, idDivision, idGradoPosgrado, idGradoActivo, avatar, cargo, area');
-			// $this->db->SELECT('*');
+			$this->db->SELECT('usuario.idUsr, usuario.nombreUsr, usuario.nombre, 
+								usuario.aPaterno, usuario.aMaterno, usuario.sexo, 
+								usuario.edad, usuario.correo, usuario.contrasena, 
+								usuario.idTipoUsuario, usuario.idDivision, 
+								usuario.idGradoPosgrado, usuario.idGradoActivo, 
+								avatar.avatar, usuario.cargo, usuario.area');
 			$this->db->FROM('usuario');
+			$this->db->JOIN('avatar','avatar.idAvatar = usuario.idAvatar');
 			$this->db->WHERE('idUsr', $idUsr);
 			$this->db->LIMIT(1);
 			
@@ -20,7 +25,7 @@
 			if ($query-> num_rows() == 1) {
 				return $query->result_array();
 			} else {
-				return false;
+				return FALSE;
 			}
 		}
 	}
