@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mjuegolibre');
+					$this->load->model('juego/mseleccionjuego');
 				}
 				
 				public function getDatos(){
@@ -23,7 +23,7 @@
 					$mail = 'jcesarcbi@xanum.uam.mx';
 					
 					if ($idUser != 0) {
-						$datos = $this->mjuegolibre->getCartas();
+						$datos = $this->mseleccionjuego->getModalidad();
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';
