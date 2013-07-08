@@ -1,6 +1,6 @@
 $(document).ready(function() {	
 	comunidad = $('#usuario_comunidadUniversitaria').val()
-	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena').hide()
+	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #estadisticas').hide()
 	switch(comunidad){
 		case "1":
 			// alert("Es alumno")
@@ -130,7 +130,17 @@ $(document).ready(function() {
 		}
 	})
 
+	//Si el usuario da click en "Estadísticas" en la barra de navegación
+	$("#nav-informacion").click(function(){
+		$("#informacion").show()
+		$("#estadisticas, #galeria").hide()
+	})	
+	$("#nav-estadistica").click(function(){
+		$("#informacion, #galeria").hide()
+		$("#estadisticas").show()
+	})
 	
+
 }); //Fin Document Ready
 
 // function abreCambiarContrasena(){

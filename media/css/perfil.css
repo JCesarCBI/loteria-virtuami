@@ -1,8 +1,9 @@
 .foto img{	margin-top:15px; width:200px; height:200px;	float:left;}
 label{color:#D9E021;margin-bottom:20px;} 
 .nombreUsr{	color:#FFF;}
-.informacion{
+.informacion, .caja-estadisticas{
 	background-image:url("../img/azulLecciones.png") !important;
+	
 	margin-top:30px;
 	padding: 40px 40px;
 }
