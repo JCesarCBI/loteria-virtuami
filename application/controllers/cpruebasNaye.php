@@ -13,6 +13,7 @@ class cpruebasNaye extends CI_Controller {
 		$this->load->model('usuario/mlogin');
 		$this->load->library('micombobox');	
 		$this->load->model('usuario/mdatosperfil');		
+		$this->load->model('estadisticas/mestadisticas');
 		
 	  }
 	
@@ -133,6 +134,56 @@ class cpruebasNaye extends CI_Controller {
 					$datosPerfilOrdenados = $datosPerfil[0];
 					$datosPerfilOrdenados["Sexo"][1] = "Hombre";
 					$datosPerfilOrdenados["Sexo"][2] = "Mujer";
+					$datosPerfilOrdenados['trofeos'] = Array(
+						1 => Array (
+							'idTrofeo' => 1,
+							'nombreTrofeo' =>'Trofeo1',
+							'Descripción' => 'Este es el trofeo1',
+							'Estado' => 1, //Trofeo ganado
+							'url-chico' => 'media/img/trofeo/trofeo01.png',
+							'url-grande' => 'media/img/trofeo/trofeo01.png'
+						),
+						2 => Array (
+							'idTrofeo' => 2,
+							'nombreTrofeo' =>'Trofeo2',
+							'Descripción' => 'Este es el trofeo2',
+							'Estado' => 1, //Trofeo ganado
+							'url-chico' => 'media/img/trofeo/trofeo02.png',
+							'url-grande' => 'media/img/trofeo/trofeo02.png'
+						),
+						3 => Array (
+							'idTrofeo' => 3,
+							'nombreTrofeo' =>'Trofeo3',
+							'Descripción' => 'Este es el trofeo3',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo03.png',
+							'url-grande' => 'media/img/trofeo/trofeo03.png'
+						),
+						4 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+						5 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+						6 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+					);
 					for($i=1; $i<45; $i++){
 						$datosPerfilOrdenados["Edades"][$i] = $i+16;	
 					}
@@ -149,14 +200,13 @@ class cpruebasNaye extends CI_Controller {
 			}
 		}
 
+		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
+		//Se recibe mediante AJAX	 
 		public function confirmaContrasena($contrasena){
 			$contrasenaUsuario = "a1b1c2d3";
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
 		}
 
-		public function cambiaContrasena($contrasena){
-			echo json_encode("contraseña cambiada!");	
-		}		
 	
 } //Fin de la clase
 
