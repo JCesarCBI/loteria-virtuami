@@ -31,7 +31,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="twelve columns informacion">
+			<div id="informacion" class="twelve columns informacion">
 				<form action="" method="post">
 					<div class="row">
 						<div class="four columns">
@@ -111,7 +111,40 @@
 							<input type="submit" id="BtnGuardaCambiosDatosUsr" value="Guardar cambios">
 						</div>
 					</div>
-			</form>
+				</form>
+			</div> <!--información-->
+		
+			<div id="estadisticas" class="row">
+				<div class="trofeos three columns">
+					<?php
+						$i = 1;
+						foreach ($trofeos as $trofeo) { ?>
+							<div class="four columns">
+								<img id = "<?= $i ?>" class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+							</div>
+					<?php
+						$i++;	
+						if($i==4){
+							echo "<br><br><br><br><br><br>";
+							$i=1;
+						}
+					}
+ 
+					?>
+				</div>
+				<div class="nine columns">
+					<div id="partidas" class="caja-estadisticas">
+						<h3>Partidas</h3>
+					</div>
+					
+					<div id="niveles" class="caja-estadisticas">
+						<h3>Niveles</h3>
+					</div>
+					
+					<div id="modalidades" class="caja-estadisticas">
+						<h3>Modalidades</h3>
+					</div>				
+				</div>
 			</div>
 		</div>
 		</div>
