@@ -32,7 +32,7 @@ function cambiarCarta() {
 	var carta=document.getElementById('IdCartaReversa').value;	
 	$(cartaReversaClick).removeAttr("onclick");
 	//Obtendre un arreglo con 2 cosas	
-	var n=carta.split("-");
+	var n=carta.split("-");1
 	
 	if(n[1]==1){
 		cadenaId=n[0].split("*");
@@ -113,4 +113,16 @@ function compararCartaMazo(id) {
 		auxiliar=0;
 	}
 	
+}
+
+function temporizador(tiempo){
+	
+	if (tiempo<10) {
+		data="0:0"tiempo	
+	}else{
+		data="0:"tiempo
+	}
+	tiempo--;
+	$('#tiempo').html(data);  
+	setTimeout("temporizador("+tiempo+")",1000);
 }

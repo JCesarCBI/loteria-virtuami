@@ -1,4 +1,5 @@
 var tiempo="";
+var tiempo2="";
 function obternerId(indice){
 	
 		//Obtengo todos los id de las cartas dey los guardo en una arreglo
@@ -115,10 +116,11 @@ function ajax_validarRespuesta(id, respuesta){
 function cambiaCarta(numCarta, mult) {
 	
 	if (mult!= 1) {
-		
 		rompeCadenas();
-				
 	};
+	//Temporizador 
+	tiempo2=temporizador(10);
+	
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
 	$('#cartaReversaClick').removeAttr("onclick");
@@ -154,7 +156,7 @@ function cambiaCarta(numCarta, mult) {
 
 			$('#cartaReversaClick').attr("onclick", "cambiaCarta("+ numCarta +");");
 			document.getElementById('numeroCarta').value=numCarta;
-			tiempo=setTimeout("cambiaCarta("+numCarta+")",20000);
+			tiempo=setTimeout("cambiaCarta("+numCarta+")",10000);
 
 		} else{
 			//Si no se encontro la cart solo escondo la última que se mostró
@@ -183,7 +185,7 @@ function presionaEnter(evt, op) {
 				rompeCadenas();
 				//Reescribo el input e indico que la siguiente vez que presione enter sera la ultima
 				$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 2)" >');
-				alert("perdiste tu primer oportunida");
+				
 				
 				//pongo el curso en el input
 				$('#respuestaBaraja').focus();
@@ -307,9 +309,9 @@ function multiplicadores() {
 	
 	document.getElementById('multiplicadorValor').value=cont;
 	
-	$('#multiplicadorVisible').html('<h3>'+cont+'<h3>');
-	
-	if (cont >= 1) {
+	multiplicadorPrueba(cont);
+		
+	if (cont >= 4) {
 		
 		comodines(cont);
 	}
@@ -326,16 +328,17 @@ function validarComodines(tipo){
 			//se actualizarán los comodines y se regresará el valor del nuevo número de errores
 			comodines--;
 			document.getElementById('comodinesTotales').value= comodines;
-			$('#comodinesVisibles').html('<h3>'+comodines +' <h3>');
+			pintaComodin(comodines);
+			$('#comodinesVisibles').html(comodines);
 			return erroresTotales--; 
 			
 		} else{
 			erroresTotales--
 			document.getElementById('errorValor').value=erroresTotales;
-			$('#erroresVisibles').html('<h3>'+erroresTotales+'<h3>');
+			$('#erroresVisibles').html(erroresTotales);
 			comodines--;
 			document.getElementById('comodinesTotales').value= comodines;
-			$('#comodinesVisibles').html('<h3>'+comodines +' <h3>');
+			$('#comodinesVisibles').html(comodines);
 			alert('desde comodín');
 		};
 		
@@ -343,6 +346,18 @@ function validarComodines(tipo){
 		return -1;
 	}
 	
+}
+
+function pintaComodines (cantidad) {
+  
+  if ((cantidad>=4) && (cantidad < 7)) {
+  		document.getElementById('comodinesTotales').value= comodines;
+  };
+  if ((cantidad>=7) && (cantidad < 7)) {
+  	  	document.getElementById('comodinesTotales').value= comodines;
+  };
+
+			
 }
 
 function errores(id) {
@@ -361,7 +376,7 @@ function errores(id) {
 		errorTotal=otroError;
 	};
 
-	$('#erroresVisibles').html('<h3>'+errorTotal+'<h3>');
+	$('#erroresVisibles').html(errorTotal);
 	if (errorTotal==5) {
 		alert('fin del juego X-X');
 	};
@@ -369,15 +384,16 @@ function errores(id) {
 }
 
 function puntos() {
+	var valor=document.getElementById('puntajeCarta').value;
 	var m=document.getElementById('multiplicadorValor').value;
 	var cont=document.getElementById('puntos').value;
 	var puntosTotales=parseInt(cont);
 	var mult=parseInt(m)
-	var puntos=20*mult;
+	var puntos=valor*mult;
 	var puntos=puntosTotales+puntos;
 	document.getElementById('puntos').value=puntos;
 	
-	$('#puntosTotalesVisibles').html('<h3>'+puntos+'<h3>');
+	$('#puntosTotalesVisibles').html(puntos);
 		
 }
 
@@ -387,19 +403,29 @@ function comodines(cont) {
 	var otroComodin=0;
 	switch(cont)
 			{
-			case 2:
+			case 4:
+			  $('#comodinesVisibles').html('<img src="'+base+'media/img/star.png" />');
 			  alert("Primer Comodín");
-			  $('#comodinesVisibles').html('<h3> * <h3>');
 			  otroComodin=1;
 			  
 			  break;
 			case 8:
 			  alert("Segundo Comodín");
-			  $('#comodinesVisibles').html('<h3>* *<h3>');
+			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
+			  otroComodin=1;
+			  break;
+			case 10:
+			  alert("Segundo Comodín");
+			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
+			  otroComodin=1;
+			  break;
+			case 13:
+			  alert("Segundo Comodín");
+			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
 			  otroComodin=1;
 			  break;
 			default:
-			  alert("Ya casi tienes otro comodín :D");
+			  //alert("Ya casi tienes otro comodín :D");
 			}
 		
 	if (otroComodin==1) {
@@ -412,7 +438,7 @@ function comodines(cont) {
 function rompeCadenas() {
 	
 	document.getElementById('multiplicadorValor').value=1;
-	$('#multiplicadorVisible').html('<h3>1<h3>');
+	$('#multiplicadorVisible').html('1');
 	
 }
 
@@ -422,4 +448,22 @@ function borrarInputCambiarCarta(){
 	cambiaCarta(numCarta,1);
 	
 	
+}
+
+function temporizador(tempo){
+	clearInterval(tiempo2);
+	
+	if (tempo < 10) {
+		
+		data="0:0"+tempo;
+			
+	} else	{
+		
+		data="0:"+tempo;
+	}
+	tempo--;
+	
+	$('#tiempo').html(data);  
+	
+	tiempo2=setTimeout("temporizador("+tempo+")",1000);
 }

@@ -95,4 +95,11 @@ public function respuestaCorrecta($id=-1){
 	
 }
 
+
+public function seleccionJuego(){
+
+		$this->load->view('vModalidad');	
+
+}
+
 }

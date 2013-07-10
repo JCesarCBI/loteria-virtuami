@@ -4,6 +4,7 @@
 	
 	<title>Inicio</title>
 	<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/tipoMultiplicador.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
 	<script>var base = "<?=base_url(); ?>"</script> 
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
@@ -18,6 +19,8 @@
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
 				<input type="hidden"  id="cartaVisible"  value="" />
+				<input type="hidden"  id="puntajeCarta"  value="<?= $puntuaje=20?>" />
+				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo=10000?>" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
 				<input type="hidden"  id="errorValor" value="0" />
 				<input type="hidden"  id="numeroCarta" value="1" />
@@ -60,7 +63,8 @@
 						</div>
 					</div>	
 					<div class="textoLetra">
-							<center><span class="puntosTotal centro" id="puntosTotalesVisibles" style="font-size: 25px !important; margin-top:-4px !important;">0</span></center>
+							<center><div class="espacioReloj"><img class="reloj" src="<?= base_url()?>media/img/reloj.png" /><span class="hora" id="tiempo"></span></div></center>
+							<center><span class="puntosTotal centro" id="puntosTotalesVisibles" style="font-size: 23pt !important; margin-top:-4px !important;">0</span></center>
 							<center><span class="multiplicador centro" id="multiplicadorVisible" >1</span></center>
 							<center><span class="comodines centro" id="comodinesVisibles" >0</span></center>
 							<center><span class="errores centro" id="erroresVisibles" >0</span></center>

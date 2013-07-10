@@ -1,3 +1,5 @@
+}
+
 .Escondido{
 	display: none;
 }
@@ -70,38 +72,42 @@
 .contenidoSuperior{
 	width: 528px;
 	background-color: #007853;
-	min-height: 30px !important;
+	min-height: 20px !important;
 	margin:0px auto;
+	font-family:Helvetica;
+	font-size:10pt;
 	
 }
 .fondosup{
 	width: 528px;
 	background-color: #000;
-	min-height: 11px !important;
+	min-height: 15px !important;
 	font-size: 87%;
 	color: white;
+	margin-bottom: 5px;
+	padding:2px;
 	
 }
 .multiplicador {
 	float: right;
-	width: 140px;
+	width: 130px;
 	font-size: 100%;
 }
 
 .errores {
 	float: right;
-	width: 85px;
+	width: 70px;
 	font-size: 100%;
 }
 .comodines {
 	float: right;
-	width: 105px;
+	width: 90px;
 	font-size: 100%;
 }
 
 .puntosTotal {
 	float: right;
-	width: 120px;
+	width: 105px;
 	font-size: 100%;
 }
 
@@ -118,8 +124,22 @@
 .textoLetra{
 	color:#f9ec23;
 	background-color:#007853;
-	min-height: 20px;
-	margin-top: 7px;
-	font-size: 20px;
+	min-height: 28px;
+	margin-top: 3px;
+	font-size: 18pt;
+	
+}
+
+
+.hora{
+	margin-left:15px;
+}
+
+.espacioReloj{
+	margin-top:-3px;
+	margin-left:5px;
+	float: left;
+	width: 95px;
+	font-size:20pt;
 	
 }
