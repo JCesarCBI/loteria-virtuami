@@ -138,10 +138,10 @@ class cpruebasNaye extends CI_Controller {
 						1 => Array (
 							'idTrofeo' => 1,
 							'nombreTrofeo' =>'Trofeo1',
-							'Descripción' => 'Este es el trofeo1',
+							'Descripción' => 'Este es el trofeo1. Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción ',
 							'Estado' => 1, //Trofeo ganado
-							'url-chico' => 'media/img/trofeo/trofeo01.png',
-							'url-grande' => 'media/img/trofeo/trofeo01.png'
+							'url-chico' => 'media/img/trofeo/kawaii.png',
+							'url-grande' => 'media/img/trofeo/kawaii.png'
 						),
 						2 => Array (
 							'idTrofeo' => 2,
@@ -155,7 +155,7 @@ class cpruebasNaye extends CI_Controller {
 							'idTrofeo' => 3,
 							'nombreTrofeo' =>'Trofeo3',
 							'Descripción' => 'Este es el trofeo3',
-							'Estado' => 0, //Trofeo no ganado
+							'Estado' => 1, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo03.png',
 							'url-grande' => 'media/img/trofeo/trofeo03.png'
 						),
@@ -179,7 +179,7 @@ class cpruebasNaye extends CI_Controller {
 							'idTrofeo' => 4,
 							'nombreTrofeo' =>'Trofeo4',
 							'Descripción' => 'Este es el trofeo4',
-							'Estado' => 0, //Trofeo no ganado
+							'Estado' => 1, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo04.png',
 							'url-grande' => 'media/img/trofeo/trofeo04.png'
 						),
@@ -201,7 +201,7 @@ class cpruebasNaye extends CI_Controller {
 		}
 
 		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
-		//Se recibe mediante AJAX	 
+		//Se recibe mediante AJAX 
 		public function confirmaContrasena($contrasena){
 			$contrasenaUsuario = "a1b1c2d3";
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
