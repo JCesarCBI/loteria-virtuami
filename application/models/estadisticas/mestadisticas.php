@@ -25,6 +25,20 @@
 			}
 		}
 		
+		public function getTodosTrofeos()
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('trofeo');
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				FALSE;
+			}
+		}
+		
 		public function getCartas()
 		{
 			$this->db->SELECT('*');
@@ -45,6 +59,28 @@
 			$this->db->FROM('galeria');
 			$this->db->WHERE('idUsr', $idUsr);
 			$this->db->WHERE('idJuego', $idJuego);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				return FALSE;
+			}
+		}
+		
+		public function getPartidas($idUsr, $idJuego, $idPartida, $idEstadoPartida)
+		{
+			$this->db->SELECT('score.*,record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->WHERE('score.idPartida',$idPartida);
+			$this->db->WHERE('score.idJuego',$idJuego);
+			$this->db->WHERE('record.idEstadoPartida',$idEstadoPartida);
+			
+			// $query = $this->db->count_all_results();
+			// return $query;
 			
 			$query = $this->db->get();
 			

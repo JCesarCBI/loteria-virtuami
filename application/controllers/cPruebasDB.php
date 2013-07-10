@@ -12,18 +12,21 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mseleccionjuego');
+					$this->load->model('estadisticas/mestadisticas');
 				}
 				
 				public function getDatos(){
 					$idJuego = 1;
-					$idUser = 3;
+					$idUser = 1;
+					$idPartida = 1; //1 es completa | 2 es rapida
+					$idEstadoPartida = 3; //1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$userName = 'jcesarcbi';
-					$password = 'a1b2c3d4e5';
+					$password = '123456s';
 					$mail = 'jcesarcbi@xanum.uam.mx';
 					
 					if ($idUser != 0) {
-						$datos = $this->mseleccionjuego->getModalidad();
+						$datos = $this->mestadisticas->getPartidas($idUser, $idJuego, $idPartida, $idEstadoPartida);
+						//echo $datos;
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';
