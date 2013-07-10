@@ -1,3 +1,13 @@
+jQuery(document).ready(function($) {
+
+  document.getElementById('multiplicadorValor').value=1;
+  document.getElementById('errorValor').value=0;
+  document.getElementById('numeroCarta').value=1;
+  document.getElementById('cartaClickPlantilla').value="";
+  document.getElementById('puntos').value=0;
+  document.getElementById('comodinesTotales').value=0;
+  document.getElementById('errorCadena').value="";
+});
 var tiempo="";
 var tiempo2="";
 function obternerId(indice){
@@ -328,18 +338,18 @@ function validarComodines(tipo){
 			//se actualizarán los comodines y se regresará el valor del nuevo número de errores
 			comodines--;
 			document.getElementById('comodinesTotales').value= comodines;
-			pintaComodin(comodines);
-			$('#comodinesVisibles').html(comodines);
-			return erroresTotales--; 
+			pintaComodines(comodines);
+			erroresTotales--
+			document.getElementById('errorValor').value=erroresTotales;
+			$('#erroresVisibles').html(erroresTotales); 
 			
 		} else{
+			comodines--;
+			document.getElementById('comodinesTotales').value= comodines;
+			pintaComodines(comodines);
 			erroresTotales--
 			document.getElementById('errorValor').value=erroresTotales;
 			$('#erroresVisibles').html(erroresTotales);
-			comodines--;
-			document.getElementById('comodinesTotales').value= comodines;
-			$('#comodinesVisibles').html(comodines);
-			alert('desde comodín');
 		};
 		
 	}else{
@@ -348,13 +358,10 @@ function validarComodines(tipo){
 	
 }
 
-function pintaComodines (cantidad) {
+function pintaComodines(cantidad) {
   
-  if ((cantidad>=4) && (cantidad < 7)) {
-  		document.getElementById('comodinesTotales').value= comodines;
-  };
-  if ((cantidad>=7) && (cantidad < 7)) {
-  	  	document.getElementById('comodinesTotales').value= comodines;
+  for (var i=0; i < cantidad; i++) {
+    $('#comodinesVisibles').html('<img src="'+base+'media/img/star.png" />');
   };
 
 			
@@ -405,6 +412,7 @@ function comodines(cont) {
 			{
 			case 4:
 			  $('#comodinesVisibles').html('<img src="'+base+'media/img/star.png" />');
+			  document.getElementById('comodinesTotales').value=1;
 			  alert("Primer Comodín");
 			  otroComodin=1;
 			  
@@ -412,16 +420,19 @@ function comodines(cont) {
 			case 8:
 			  alert("Segundo Comodín");
 			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
+			  document.getElementById('comodinesTotales').value=2;
 			  otroComodin=1;
 			  break;
 			case 10:
 			  alert("Segundo Comodín");
 			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
+			  document.getElementById('comodinesTotales').value=3;
 			  otroComodin=1;
 			  break;
 			case 13:
 			  alert("Segundo Comodín");
 			  $('#comodinesVisibles').html('<img src="'+base+'"media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />'+'<img src="'+base+'media/img/star.png" />');
+			  document.getElementById('comodinesTotales').value=4;
 			  otroComodin=1;
 			  break;
 			default:
@@ -429,8 +440,7 @@ function comodines(cont) {
 			}
 		
 	if (otroComodin==1) {
-		var aux=document.getElementById('comodinesTotales').value
-		document.getElementById('comodinesTotales').value=aux+1;
+		var aux=document.getElementById('comodinesTotales').value;
 		validarComodines(2);
 	};
 }
