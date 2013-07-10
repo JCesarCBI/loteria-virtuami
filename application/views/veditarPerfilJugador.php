@@ -9,7 +9,7 @@
 		<script src="<?= base_url()?>media/js/perfil.js"></script>
 	</head>
 
-	<body>
+	<body>						
 		<title>Editar perfil</title>
 		<div class="twelve columns">
 		<div class="twelve columns header">
@@ -114,24 +114,62 @@
 				</form>
 			</div> <!--información-->
 		
-			<div id="estadisticas" class="row">
-				<div class="trofeos three columns">
+
+			<div class="row" id="estadisticas">
+				<div id="lightbox">
 					<?php
-						$i = 1;
-						foreach ($trofeos as $trofeo) { ?>
-							<div class="four columns">
-								<img id = "<?= $i ?>" class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
-							</div>
-					<?php
-						$i++;	
-						if($i==4){
-							echo "<br><br><br><br><br><br>";
-							$i=1;
-						}
-					}
- 
-					?>
+						foreach ($trofeos as $indice=>$trofeo) {
+							if($trofeo['Estado'] == 1){ ?>
+								<center><div id="trofeo<?=$indice?>" class="">
+									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
+									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
+									<p class="descripcionTrofeo"><?= $trofeo['Descripción']?></p>
+									<a class="close" href="#"></a>
+								</div></center>
+							<?php }else{ ?>
+								<center><div id="trofeo<?=$indice?>" class="gris">
+									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
+									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
+									<p class="descripcionTrofeo"><?= $trofeo['Descripción']?></p>
+									<a class="close" href="#"></a>
+								</div></center>
+						<?php }
+							}
+	 
+						?>
 				</div>
+				<div class="trofeos three columns">
+					<div>
+						<ul id="gallery">
+						<?php
+							$i = 1;
+							foreach ($trofeos as $indice=>$trofeo) {
+								
+								if($trofeo['Estado'] == 1){ ?>
+									<li>
+										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
+											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+										</a>
+									</li>
+								<?php }else{ ?>
+									<li>
+										<a class="four columns clearfix gris" href="#trofeo<?=$indice?>">
+											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+										</a>	
+									</li>
+						<?php }
+							$i++;	
+							if($i==4){
+								echo "<br><br><br><br><br><br>";
+								$i=1;
+							}
+						}
+	 
+						?>
+						</ul>
+					</div>
+				</div> <!--trofeos-->
+				
 				<div class="nine columns">
 					<div id="partidas" class="caja-estadisticas">
 						<h3>Partidas</h3>
@@ -145,7 +183,7 @@
 						<h3>Modalidades</h3>
 					</div>				
 				</div>
-			</div>
+			</div> <!--estadísticas -->
 		</div>
 		</div>
 	</body>

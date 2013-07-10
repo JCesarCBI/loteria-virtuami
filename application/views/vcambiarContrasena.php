@@ -1,26 +1,36 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/perfil.css">
-		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
-		<script> base = "<?= base_url() ?>"</script>
-		<script src="<?= base_url()?>media/js/cambiarContrasena.js"></script>
-		<style>
-			form{
-				margin-top:20px;
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="twelve columns">
-			<form action="" metho="post">
-				<label for="usuario_contrasena">Contraseña actual:</label>
-				<input type="hidden" name="id_usuario">
-				<input type="text" id="usuario_contrasena" placeholder="Contraseña">
-			</form>
+<div id="page-wrap">
+	<div id="lightbox">
+		<div id="img1">
+				<img src="images/beatles.gif" width="920" alt="" />
+				<a class="close" href="#"></a>
 		</div>
-	</body>
-</html>
+		<div id="img2">
+				<img src="images/brand-new.jpg" width="520" alt="" />
+				<a class="close" href="#"></a>
+		</div>
+		<div id="img3">
+				<img src="images/the-killers.jpg" width="920" alt="" />
+				<a class="close" href="#"></a>
+		</div>
+	</div>
+	<ul id="gallery">
+		<li>
+			<a class="clearfix" href="#img1">
+				<img src="images/beatles.gif" alt="The Beatles" width="200" />
+				<span>The Beatles</span>
+			</a>
+		</li>
+		<li>
+			<a class="clearfix" href="#img2">
+				<img src="images/brand-new.jpg" alt="Brand New" width="200" />
+				<span>Brand New</span>
+			</a>
+		</li>
+		<li>
+			<a class="clearfix" href="#img3">
+				<img src="images/the-killers.jpg" alt="The Killers" width="200" />
+				<span>The Killers</span>
+			</a>
+		</li>
+	</ul>
+</div>
