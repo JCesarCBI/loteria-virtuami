@@ -12,32 +12,40 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('estadisticas/mestadisticas');
+					$this->load->model('juego/mscore');
 				}
 				
 				public function getDatos(){
 					$idJuego = 1;
 					$idUser = 1;
 					$idPartida = 1; //1 es completa | 2 es rapida
-					$idEstadoPartida = 3; //1 es Ganado | 2 es Perfecto | 3 es Perdido
+					// $idEstadoPartida = 3; //1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$userName = 'jcesarcbi';
 					$password = '123456s';
 					$mail = 'jcesarcbi@xanum.uam.mx';
+					$score = array(
+							'idPartida'=>1,
+							'idNivel'=>3,
+							'idModalidad'=>1,
+							'idUsr'=>3,
+							'idJuego'=>1
+							);
+					$record = 696969;
+					$idEstadoPartida = 2;
 					
 					if ($idUser != 0) {
-						$datos = $this->mestadisticas->getPartidas($idUser, $idJuego, $idPartida, $idEstadoPartida);
-						//echo $datos;
+						$datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';
-						for ($i = 0; $i < count($datos) ; $i++) { 
-							$datosOrdenados[$i+1] = $datos[$i];
-						}
-						echo'<pre>';
-							print_r($datosOrdenados);
-						echo'</pre>';
-					} else {
-						return FALSE;
+						// for ($i = 0; $i < count($datos) ; $i++) { 
+							// $datosOrdenados[$i+1] = $datos[$i];
+						// }
+						// echo'<pre>';
+							// print_r($datosOrdenados);
+						// echo'</pre>';
+					// } else {
+						// return FALSE;
 					}
 				}
 			}
