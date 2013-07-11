@@ -239,9 +239,9 @@ class cpruebasNaye extends CI_Controller {
 					$datosPerfilOrdenados['datos']['division'] = array('1'=>'CAD', '2'=>'CBI', '3'=>'CBS','4'=>'CCD','5'=>'CNI','6'=>'CSH');
 					$datosPerfilOrdenados['datos']['pos'] = array('1'=>'Maestría', '2'=> 'Doctorado');	
 					
-					// echo "<pre>";
-					// print_r($datosPerfilOrdenados);
-					// echo "</pre>";
+					echo "<pre>";
+					print_r($datosPerfilOrdenados);
+					echo "</pre>";
 					$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 
 				}
