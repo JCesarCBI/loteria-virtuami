@@ -28,5 +28,27 @@
 				return FALSE;
 			}
 		}
+		
+		public function getContrasena($idUsr)
+		{
+			$this->db->SELECT('nombreUsr, contrasena');
+			$this->db->FROM('usuario');
+			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()==1) {
+				return $query->result_array();
+			} else {
+				return FALSE;
+			}
+		}
+		
+		public function setActualizaUsuario($idUsr, $usuario)
+		{
+			$this->db->where('idUsr', $idUsr);
+			$this->db->update('usuario', $usuario);
+		}
 	}
 ?>

@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mscore');
+					$this->load->model('usuario/mregistro');
 				}
 				
 				public function getDatos(){
@@ -30,22 +30,39 @@
 							'idUsr'=>3,
 							'idJuego'=>1
 							);
+					$usuario = array(
+								'nombreUsr'=> 'conejo73',
+								'nombre'=> 'Oscar',
+								'aPaterno'=> 'Peréz',
+								'aMaterno'=> 'Rojas',
+								'sexo'=> 'H',
+								'edad'=> 40,
+								'correo'=> 'conejo73@xanum.uam.mx',
+								'contrasena'=> '123456',
+								'cargo'=> null,
+								'area'=> null,
+								'idTipoUsuario'=> 1,
+								'idDivision'=> 3,
+								'idGradoActivo'=> 1,
+								'idGradoPosgrado'=> null,
+								'idAvatar'=> 5,
+								);
 					$record = 696969;
 					$idEstadoPartida = 2;
 					
 					if ($idUser != 0) {
-						$datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
+						$datos = $this->mregistro->getContrasena($idUser);
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';
-						// for ($i = 0; $i < count($datos) ; $i++) { 
-							// $datosOrdenados[$i+1] = $datos[$i];
-						// }
-						// echo'<pre>';
-							// print_r($datosOrdenados);
-						// echo'</pre>';
-					// } else {
-						// return FALSE;
+						for ($i = 0; $i < count($datos) ; $i++) { 
+							$datosOrdenados[$i+1] = $datos[$i];
+						}
+						echo'<pre>';
+							print_r($datosOrdenados);
+						echo'</pre>';
+					} else {
+						return FALSE;
 					}
 				}
 			}
