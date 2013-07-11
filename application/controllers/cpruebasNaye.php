@@ -120,20 +120,16 @@ class cpruebasNaye extends CI_Controller {
 		}
 		
 		public function perfilUsuario($idUsuario){
-			if($idUsuario == 0){
-				$idUsuario = "Usuario no existente";
-				echo "<script>
-					alert('usuario no existe')
-				</script>";
+			if($idUsuario == 0 || $idUsuario==NULL){
+				redirect('http://google.com.mx/');
 			}else{
 				$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
 				if(!$datosPerfil){
-					$idUsuario = "Usuario no existente";
-					echo $idUsuario;
+					echo "<script>alert('Usuario no existe')</script>";
 				}else{
 					$datosPerfilOrdenados = $datosPerfil[0];
-					$datosPerfilOrdenados["Sexo"][1] = "Hombre";
-					$datosPerfilOrdenados["Sexo"][2] = "Mujer";
+					$datosPerfilOrdenados["Sexo"]['H'] = "Hombre";
+					$datosPerfilOrdenados["Sexo"]['M'] = "Mujer";
 					$datosPerfilOrdenados['trofeos'] = Array(
 						1 => Array (
 							'idTrofeo' => 1,
@@ -185,25 +181,78 @@ class cpruebasNaye extends CI_Controller {
 						),
 					);
 					for($i=1; $i<45; $i++){
-						$datosPerfilOrdenados["Edades"][$i] = $i+16;	
+						$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 					}
+					$datosPerfilOrdenados['galeria'] = Array(
+						1 => Array (
+							'idTrofeo' => 1,
+							'nombreTrofeo' =>'Trofeo1',
+							'Descripción' => 'Este es el trofeo1. Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción ',
+							'Estado' => 1, //Trofeo ganado
+							'url-chico' => 'media/img/trofeo/kawaii.png',
+							'url-grande' => 'media/img/trofeo/kawaii.png'
+						),
+						2 => Array (
+							'idTrofeo' => 2,
+							'nombreTrofeo' =>'Trofeo2',
+							'Descripción' => 'Este es el trofeo2',
+							'Estado' => 1, //Trofeo ganado
+							'url-chico' => 'media/img/trofeo/trofeo02.png',
+							'url-grande' => 'media/img/trofeo/trofeo02.png'
+						),
+						3 => Array (
+							'idTrofeo' => 3,
+							'nombreTrofeo' =>'Trofeo3',
+							'Descripción' => 'Este es el trofeo3',
+							'Estado' => 1, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo03.png',
+							'url-grande' => 'media/img/trofeo/trofeo03.png'
+						),
+						4 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+						5 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 0, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+						6 => Array (
+							'idTrofeo' => 4,
+							'nombreTrofeo' =>'Trofeo4',
+							'Descripción' => 'Este es el trofeo4',
+							'Estado' => 1, //Trofeo no ganado
+							'url-chico' => 'media/img/trofeo/trofeo04.png',
+							'url-grande' => 'media/img/trofeo/trofeo04.png'
+						),
+					);
 					$datosPerfilOrdenados['datos'] = $this->micombobox->datosComboBox();
 					$datosPerfilOrdenados['datos']['comunidad_universitaria'] = array('1'=>'Alumno', '2'=>'Profe', '3'=>'Admin', '4'=>'Otro');
 					$datosPerfilOrdenados['datos']['gradoActivo'] = array('1'=>'Licenciatura', '2'=>'Posgrado');
+					$datosPerfilOrdenados['datos']['division'] = array('1'=>'CAD', '2'=>'CBI', '3'=>'CBS','4'=>'CCD','5'=>'CNI','6'=>'CSH');
 					$datosPerfilOrdenados['datos']['pos'] = array('1'=>'Maestría', '2'=> 'Doctorado');	
+					
+					// echo "<pre>";
+					// print_r($datosPerfilOrdenados);
+					// echo "</pre>";
+					$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
+
 				}
-				
-				// echo "<pre>";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
-				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 			}
 		}
 
 		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
 		//Se recibe mediante AJAX 
-		public function confirmaContrasena($contrasena){
-			$contrasenaUsuario = "a1b1c2d3";
+		public function confirmaContrasena($contrasena,$idusuario){
+			//Mandas a llamar el modelo y recibes la contraseña actual del usuario
+			$contrasenaUsuario = "a1b1c2d3"; //suponiendo que se recibe esto del modelo
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
 		}
 
