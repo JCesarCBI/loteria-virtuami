@@ -5,13 +5,14 @@ class CDatosPerfil extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->model('usuario/mdatosperfil');
-		//$this->ci->load->model('usuario/mregistro');
-		// $this->load->library('micombobox');
+		$this->load->model('estadisticas/mestadisticas');
+		$this->load->model('usuario/mregistro');
 		
 	}
 	
 	public function perfilUsuario(){
-		$idUsuario = 1; //este dato lo traere posteriormente del formulario		
+		$idJuego = 1;
+		$idUsuario = 5; //estos datos los traere posteriormente del formulario		
 		if($idUsuario == 0){
 			$idUsuario = "Usuario no existente";
 			echo $idUsuario;
@@ -24,16 +25,76 @@ class CDatosPerfil extends CI_Controller {
 				return $idUsuario;
 			}else{
 				$datosPerfilOrdenados = $datosPerfil[0];
-				$datosPerfilOrdenados["idUsuario"] = $idUsuario;
+				$datosPerfilOrdenados["idTipoUsr"] = $idUsuario;
 				$datosPerfilOrdenados["Sexo"]["H"] = "Hombre";
 				$datosPerfilOrdenados["Sexo"]["M"] = "Mujer";
+				if($idJuego != 0 && $idUsuario != 0){
+					$trofeos = $this->mestadisticas->getTodosTrofeos();
+					$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
+					for($i=0; $i<count($trofeos); $i++){
+						$datosPerfilOrdenados["trofeos"][$i+1] = $trofeos[$i];
+						$datosPerfilOrdenados["trofeos"][$i+1]["Estado"] = 0;
+						$datosPerfilOrdenados["trofeos"][$i+1]['nombreTrofeo'] = $datosPerfilOrdenados["trofeos"][$i+1]['nombre'];
+						unset($datosPerfilOrdenados["trofeos"][$i+1]['nombre']);
+						$datosPerfilOrdenados["trofeos"][$i+1]['Descripcion'] = $datosPerfilOrdenados["trofeos"][$i+1]['descripcion'];
+						unset($datosPerfilOrdenados["trofeos"][$i+1]['descripcion']);
+						$datosPerfilOrdenados["trofeos"][$i+1]['url-chico'] = $datosPerfilOrdenados["trofeos"][$i+1]['imagenIcon'];
+						unset($datosPerfilOrdenados["trofeos"][$i+1]['imagenIcon']);
+						$datosPerfilOrdenados["trofeos"][$i+1]['url-grande'] = $datosPerfilOrdenados["trofeos"][$i+1]['imagen'];
+						unset($datosPerfilOrdenados["trofeos"][$i+1]['imagen']);
+					}
+					for ($i=0; $i < count($trofeosJugador); $i++) { 
+						$auxId = $trofeosJugador[$i]['idTrofeo'];
+						$datosPerfilOrdenados["trofeos"][$auxId]["Estado"] = 1;
+					}
+					// echo "<pre>";
+					// print_r($datosPerfilOrdenados);
+					// echo "<pre>";	
+					
+					
+					
+					// echo "<pre>";
+					// print_r($trofeos);
+					// echo "<pre>";	
+					
+				}else{
+					return FALSE;
+				}
 				for($i=1; $i<45; $i++){
 					$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 				}
+				//Aqui saco el tipo de usuario
+				$aux = $this->mregistro->getTipoUsuario();
+				foreach ($aux['tipoUsuario'] as $key) {
+					$comunidad_universitaria[$key['idTipoUsuario']] = $key['tipoUsr']; 
+				}
+				//Aqui saco el tipo de division
+				$aux = $this->mregistro->getDivision();
+				foreach ($aux['division'] as $key) {
+					$division[$key['idDivision']] = $key['iniciales']; 
+				}
+				//Aqui saco el grado activo
+				$aux = $this->mregistro->getGradoActivo();
+				foreach ($aux['gradoActivo'] as $key) {
+					$gradoActivo[$key['idGradoActivo']] = $key['gradoActivo']; 
+				}
+				//Aqui saco el grado pos
+				$aux = $this->mregistro->getGradoPosgrado();
+				foreach ($aux['gradoAcademico'] as $key) {
+					$gradoPos[$key['idGradoPosgrado']] = $key['gradoPosgrado']; 
+				}
+				$datosPerfilOrdenados['datos']['comunidad_universitaria'] = $comunidad_universitaria;
+				$datosPerfilOrdenados['datos']['division'] = $division;
+				$datosPerfilOrdenados['datos']['gradoActivo'] = $gradoActivo;
+				$datosPerfilOrdenados['datos']['gradoActivo'] = $gradoActivo;
+				$datosPerfilOrdenados['datos']['pos'] = $gradoPos;
+				$datosPerfilOrdenados['idTipoUsr'] = $datosPerfilOrdenados['idTipoUsuario'];
+				unset($datosPerfilOrdenados['idTipoUsuario']);
+				
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "<pre>";
-				//return $datosPerfilOrdenados;
+				// return $datosPerfilOrdenados;
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}

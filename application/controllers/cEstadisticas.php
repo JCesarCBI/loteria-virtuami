@@ -19,11 +19,11 @@ class CEstadisticas extends CI_Controller {
 			for($i=0; $i<count($trofeosJugador); $i++){
 				$trofeosJugadorOrdenados[$i+1] = $trofeosJugador[$i];
 			}
-			// echo $idJuego;
-			// echo $idUsuario;
-			// echo "<pre>";
-			// print_r($trofeosJugadorOrdenados);
-			// echo "<pre>";
+			echo $idJuego;
+			echo $idUsuario;
+			echo "<pre>";
+			print_r($trofeosJugadorOrdenados);
+			echo "<pre>";
 			return $trofeosJugadorOrdenados;
 		}else{
 			return FALSE;
