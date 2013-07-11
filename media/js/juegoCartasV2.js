@@ -228,7 +228,7 @@ function clickBaraja(id) {
 	    $('#respuestaBaraja').focus();
 		
 	} else{
-		errores();
+		errores(id);
 		rompeCadenas();
 	};
 	
@@ -304,7 +304,7 @@ function clickPlantilla(indice) {
 	    $('#respuestaBaraja').focus();
 			
 	} else{
-			errores(respuesta);
+			errores(indice);
 			rompeCadenas();		
 	}
 			
@@ -327,31 +327,20 @@ function multiplicadores() {
 	}
 }
 
-function validarComodines(tipo){
+function validarComodines(){
 	var comodines=document.getElementById('comodinesTotales').value;
 	var erroresTotales=document.getElementById('errorValor').value;
 	
 	if ((comodines > 0) && (erroresTotales > 0)) {
 		
-		
-		if (tipo==1) {
-			//se actualizarán los comodines y se regresará el valor del nuevo número de errores
 			comodines--;
-			document.getElementById('comodinesTotales').value= comodines;
-			pintaComodines(comodines);
 			erroresTotales--
-			document.getElementById('errorValor').value=erroresTotales;
-			$('#erroresVisibles').html(erroresTotales); 
-			
-		} else{
-			comodines--;
 			document.getElementById('comodinesTotales').value= comodines;
-			pintaComodines(comodines);
-			erroresTotales--
 			document.getElementById('errorValor').value=erroresTotales;
-			$('#erroresVisibles').html(erroresTotales);
-		};
-		
+			pintaComodines(comodines);
+			$('#erroresVisibles').html(errorTotal);
+			alert(" errores= "+erroresTotales+" comodines = "+comodines);
+			return erroresTotales;
 	}else{
 		return -1;
 	}
@@ -360,30 +349,32 @@ function validarComodines(tipo){
 
 function pintaComodines(cantidad) {
   
+  var comodines="";
   for (var i=0; i < cantidad; i++) {
-    $('#comodinesVisibles').html('<img src="'+base+'media/img/star.png" />');
+    comodines= comodines+'<img src="'+base+'media/img/star.png" />';
   };
-
+if (comodines=="") {
+	comodines=0;
+};
+	$('#comodinesVisibles').html(comodines);
 			
 }
 
 function errores(id) {
 
-	var cadena=document.getElementById('errorCadena').value;
-	cadena=cadena+ id + "*"; 
+	cadena2=document.getElementById('cartaVisible').value;
+	cadena=document.getElementById('errorCadena').value;
+	cadena=cadena+ cadena2 + "*"; 
 	document.getElementById('errorCadena').value=cadena;
-	//alert(cadena.split('*'));
+	alert(cadena.split('*'));
 	var errorTotal=document.getElementById('errorValor').value;
 	errorTotal++;
 	document.getElementById('errorValor').value= errorTotal;
-
-	var otroError=validarComodines(1);
 	
-	if (otroError>=0) {
-		errorTotal=otroError;
-	};
-
-	$('#erroresVisibles').html(errorTotal);
+	var cantidadErrores=validarComodines();
+	if (cantidadErrores==0) {
+		$('#erroresVisibles').html(errorTotal);
+	} 
 	if (errorTotal==5) {
 		alert('fin del juego X-X');
 	};
@@ -440,8 +431,7 @@ function comodines(cont) {
 			}
 		
 	if (otroComodin==1) {
-		var aux=document.getElementById('comodinesTotales').value;
-		validarComodines(2);
+		validarComodines();
 	};
 }
 
