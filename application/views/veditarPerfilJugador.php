@@ -56,12 +56,12 @@
 						<div class="four columns">
 							<label for="usuario_nombreUsuario">Sexo:</label>
 				        	<?php  
-				        	echo form_dropdown('usuario_sexo', $Sexo, 1, 'id=usuario_sexo'); ?>
+				        	echo form_dropdown('usuario_sexo', $Sexo, $sexo, 'id=usuario_sexo'); ?>
 						</div>
 						<div class="four columns">
 							<label for="usuario_nombreUsuario">Edad:</label>
 				        	<?php  
-				        	echo form_dropdown('usuario_sexo', $Edades, 1, 'id=usuario_sexo'); ?>
+				        	echo form_dropdown('usuario_sexo', $Edades, $edad, 'id=usuario_sexo'); ?>
 						</div>
 					</div>
 					<hr>
@@ -69,7 +69,7 @@
 						<div class="four columns">
 							<label for="usuario_comunidadUniversitaria">Comunidad Universitaria:</label>
 				        	<?php  
-				        	echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idTipoUsr, 'id=usuario_comunidadUniversitaria'); ?>
+				        	echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idUsr, 'id=usuario_comunidadUniversitaria'); ?>
 						</div>
 						<div id="area" class="four columns">
 							<label for="usuario_area">Área:</label>
@@ -113,7 +113,6 @@
 					</div>
 				</form>
 			</div> <!--información-->
-		
 
 			<div class="row" id="estadisticas">
 				<div id="lightbox">
@@ -123,14 +122,14 @@
 								<center><div id="trofeo<?=$indice?>" class="">
 									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
 									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
-									<p class="descripcionTrofeo"><?= $trofeo['Descripción']?></p>
+									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
 									<a class="close" href="#"></a>
 								</div></center>
 							<?php }else{ ?>
 								<center><div id="trofeo<?=$indice?>" class="gris">
 									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
 									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
-									<p class="descripcionTrofeo"><?= $trofeo['Descripción']?></p>
+									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
 									<a class="close" href="#"></a>
 								</div></center>
 						<?php }
