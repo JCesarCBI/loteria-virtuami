@@ -10,19 +10,15 @@ class CDatosPerfil extends CI_Controller {
 		
 	}
 	
-	public function perfilUsuario(){
-		$idJuego = 1;
-		$idUsuario = 5; //estos datos los traere posteriormente del formulario		
+	public function PerfilUsuario($idJuego, $idUsuario){
+		// $idJuego = 1;
+		// $idUsuario = 5; //estos datos los traere posteriormente del formulario		
 		if($idUsuario == 0){
-			$idUsuario = "Usuario no existente";
-			echo $idUsuario;
-			return $idUsuario;
+			echo "<script>alert('Usuario no existe')</script>";
 		}else{
 			$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
 			if(!$datosPerfil){
-				$idUsuario = "Usuario no existente";
-				echo $idUsuario;
-				return $idUsuario;
+				echo "<script>alert('Usuario no existe')</script>";
 			}else{
 				$datosPerfilOrdenados = $datosPerfil[0];
 				$datosPerfilOrdenados["idTipoUsr"] = $idUsuario;
@@ -99,4 +95,12 @@ class CDatosPerfil extends CI_Controller {
 			}
 		}
 	}
+		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
+		//Se recibe mediante AJAX 
+		public function confirmaContrasena($contrasena,$idusuario){
+			//Mandas a llamar el modelo y recibes la contraseña actual del usuario
+			$contrasenaUsuario = $this->mdatosperfil->getContrasena($idusuario);//"a1b1c2d3"; //suponiendo que se recibe esto del modelo
+			$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
+			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
+		}
 }
