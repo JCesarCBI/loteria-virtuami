@@ -16,6 +16,10 @@ class CDatosPerfil extends CI_Controller {
 		if($idUsuario == 0){
 			echo "<script>alert('Usuario no existe')</script>";
 		}else{
+			if ($idUsuario == -1) {
+				$idUsuario = $this->session->userdata('idUsuario');
+				$idJuego == $this->session->userdata('idJuego');
+			}
 			$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
 			if(!$datosPerfil){
 				echo "<script>alert('Usuario no existe')</script>";

@@ -13,6 +13,7 @@ class CLogin extends CI_Controller {
 	}
 	
 	public function validarLogin(){
+		$this->session->set_userdata('idUsuario', 0);
 		$this->form_validation->set_rules('Lusuario_nombreUsr','','trim|required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('Lusuario_contrasena', '', 'trim|required');
         if ($this->form_validation->run() == FALSE){
@@ -23,8 +24,10 @@ class CLogin extends CI_Controller {
         	$jugador = $this->mlogin->login_usuario($usr, $psw);
 			if($jugador){
 				$this->session->set_userdata('usuario', $usr);
-				$this->session->set_userdata('avatar', $jugador[0]->avatar);				
-				$this->load->view('vPruebaEfrenLogin');
+				$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
+				$this->session->set_userdata('idJuego', 1);
+				$this->session->set_userdata('avatar', $jugador[0]->avatar);			
+				$this->load->view('vPruebaEfrenLogin');  //aqui se cargara vModalidad
 			}else{
 				echo "error, usuario no esta en la DB";
 				$this->load->view('vinicio', $this->micombobox->datosComboBox());

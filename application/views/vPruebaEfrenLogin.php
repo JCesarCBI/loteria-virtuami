@@ -98,7 +98,7 @@
 				</div>
 				<div align="right"  class="span3">
 					<br /><br /><br /><br />
-					<p><a href="<?=base_url(); ?>index.php/cPruebaJuegoLibre2/juegoLibre" class="btn-warning btn btn-block btn-primary btn-large">Jugar  &raquo;</a></p>
+					<p><a href="<?=base_url(); ?>index.php/cJuego/configuracionJuego" class="btn-warning btn btn-block btn-primary btn-large">Jugar  &raquo;</a></p>
 					<p><a href="<?=base_url(); ?>index.php/cLogin/terminarSesion" class="btn btn-block btn-large">Salir  &raquo;</a></p>
 					
 					
