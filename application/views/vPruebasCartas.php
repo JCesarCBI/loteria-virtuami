@@ -22,6 +22,7 @@
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntuaje=20?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo=10000?>" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
+				<input type="hidden"  id="multiplicadorValorAux" value="1" />
 				<input type="hidden"  id="errorValor" value="0" />
 				<input type="hidden"  id="numeroCarta" value="1" />
 				<input type="hidden"  id="cartaClickPlantilla" value="" />

@@ -35,23 +35,23 @@ class CJuego extends CI_Controller {
 		if ($idPartida == 1) {  //Configuración para las partidas completas
 			if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre
 				$puntaje = 20;
-				$tiempo = 540000;
+				$tiempo = 10000;
 			}
 			if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
 				$puntaje = 60;
-				$tiempo = 270000;
+				$tiempo = 6000;
 			}
 			if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
 				$puntaje = 120;
-				$tiempo = 270000;
+				$tiempo = 6000;
 			}
 			if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
 				$puntaje = 240;
-				$tiempo = 270000;
+				$tiempo = 6000;
 			}
 			if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
 				$puntaje = 360;
-				$tiempo = 270000;
+				$tiempo = 6000;
 			}
 		} else {  //Configuración para las partidas rapidas
 			$puntaje = 1;
@@ -84,24 +84,68 @@ class CJuego extends CI_Controller {
 		
 	}
 	
-	/******Función que escribe la descripción una carta en la baraja********/
-	public function descripcion($id=-1){
-		
-		//Voy por el mazo de las cartas    
-		$baraja = $this->mJuegoLibre->getMazo();
-		
-		//Si el id es correcto y la carta existe busco la descripción
-		if ($id>-1 && isset($baraja[$id]['nombre'])) {
-			
-			$datos=$baraja[$id]['nombre'];
-			//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
-			print_r($datos);
+
+
+/******Función que escribe la descripción una carta en la baraja********/
+public function descripcion($id=-1){
 	
+
+	//Voy por el mazo de las cartas    
+	$barajas = $this->mJuegoLibre->getMazo();
+
+		$k = 0;
+		foreach ($barajas as $key) {
+
+			$baraja[$k+1] = $barajas[$k];
+			$k++;
+
 		}
-		//si no lo encuentra me manda una cadena vacía
-		else{
-			echo "";
-		}
+			
+	//Si el id es correcto y la carta existe busco la descripción
+	if ($id>-1 && isset($baraja[$id]['nombre'])) {
 		
+		//$datos=$baraja[$id]['nombre']."   ".$id."<img src='".base_url().$baraja[$id]['imagen']."' style='width:90px; height:80px'/>";
+		$datos=$baraja[$id]['nombre'];
+		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+		print_r($datos);
+
 	}
+	//si no lo encuentra me manda una cadena vacía
+	else{
+		echo "";
+	}
+	
+}
+
+//******Función que escribe la trae larespuesta correcta********/
+public function respuestaCorrecta($id=-1){
+	
+
+	//Voy por el mazo de las cartas    
+	$barajas = $this->mJuegoLibre->getMazo();
+
+		$k = 0;
+		foreach ($barajas as $key) {
+
+			$baraja[$k+1] = $barajas[$k];
+			$k++;
+
+		}
+			
+	//Si el id es correcto y la carta existe busco la descripción
+	if ($id>-1 && isset($baraja[$id]['nombre'])) {
+		
+		$datos=$baraja[$id]['nombre'];
+		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+		print_r($datos);
+
+	}
+	//si no lo encuentra me manda una cadena vacía
+	else{
+		echo 0;
+	}
+	
+}
+
+
 }
