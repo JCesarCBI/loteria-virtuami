@@ -44,25 +44,25 @@
 								'idTipoUsuario'=> 1,
 								'idDivision'=> 3,
 								'idGradoActivo'=> 1,
-								'idGradoPosgrado'=> null,
-								'idAvatar'=> 5,
+								'idGradoPosgrado'=> 1,
+								'idAvatar'=> 5
 								);
 					$record = 696969;
 					$idEstadoPartida = 2;
 					
 					if ($idUser != 0) {
-						$datos = $this->mregistro->getContrasena($idUser);
+						$datos = $this->mregistro->setAgregarUsuario($usuario);
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';
-						for ($i = 0; $i < count($datos) ; $i++) { 
-							$datosOrdenados[$i+1] = $datos[$i];
-						}
-						echo'<pre>';
-							print_r($datosOrdenados);
-						echo'</pre>';
-					} else {
-						return FALSE;
+						// for ($i = 0; $i < count($datos) ; $i++) { 
+							// $datosOrdenados[$i+1] = $datos[$i];
+						// }
+						// echo'<pre>';
+							// print_r($datosOrdenados);
+						// echo'</pre>';
+					// } else {
+						// return FALSE;
 					}
 				}
 			}

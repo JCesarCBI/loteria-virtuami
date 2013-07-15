@@ -118,19 +118,17 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Beta de agregar usuario y registro en Loteria
 	public function setAgregarUsuario($datos)
 	{
 		if (!empty($datos)) {
 			$this->db->insert('usuario', $datos);
 			$lastId = $this->db->select_max('idUsr')->from('usuario')->get();
 			if ($lastId->num_rows() > 0) {
-				foreach ($lastId->result_array as $row) {
+				foreach ($lastId->result_array() as $row) {
 					$idUsr = $row['idUsr'];
 				}
-			}
+			}	
 		}
-		
 		$player = array(
 			'idUsr' => $idUsr,
 			'idJuego'=> 1,
