@@ -258,6 +258,7 @@ function presionaEnterPlantilla(evt, op) {
 		} else {
 			puntos();
 			borrarInputCambiarCarta();
+			cartaCorrecta(indice);
 		}
 
 	}
@@ -292,6 +293,9 @@ function clickPlantilla(indice) {
 		errores(indice);
 		rompeCadenas();
 	}
+	
+	$('#plantilla-' + indice).addClass("cartaClick", 95, "easeOutQuart");
+	setTimeout("quitarMarco(" + indice + ")", 1000);
 
 }
 
@@ -323,7 +327,7 @@ function validarComodines() {
 		document.getElementById('errorValor').value = erroresTotales;
 		pintaComodines(comodines);
 		$('#erroresVisibles').html(erroresTotales);
-		alert(" errores= " + erroresTotales + " comodines = " + comodines);
+		//alert(" errores= " + erroresTotales + " comodines = " + comodines);
 		return erroresTotales;
 	} else {
 		return -1;
@@ -355,7 +359,7 @@ function errores(id) {
 	document.getElementById('errorValor').value = errorTotal;
 
 	var cantidadErrores = validarComodines();
-	alert(cadena.split('*'));
+	//alert(cadena.split('*'));
 	if (cantidadErrores == -1) {
 		$('#erroresVisibles').html(errorTotal);
 	}
@@ -376,6 +380,7 @@ function puntos() {
 	document.getElementById('puntos').value = puntos;
 
 	$('#puntosTotalesVisibles').html(puntos);
+	
 
 }
 
@@ -383,10 +388,8 @@ function comodines(cont) {
 
 	var numComodines=document.getElementById('comodinesTotales').value;
 	numComodines=parseInt(numComodines)
-		alert(cont);
 	
 	if ((cont==4) || (cont==8) || (cont==10) || (cont==13)) {
-		alert(cont);
 			document.getElementById('comodinesTotales').value = numComodines+1;
 			numComodines++;
 			if (numComodines>5) {
@@ -429,4 +432,12 @@ function temporizador(tempo) {
 	$('#tiempo').html(data);
 
 	tiempo2 = setTimeout("temporizador(" + tempo + ")", 1000);
+}
+
+function cartaCorrecta(indice){
+	$('#plantilla-' + indice).addClass("cartaCorrecta");
+}
+
+function quitarMarco(indice){
+	$('#plantilla-' + indice).removeClass("cartaClick", 105, "easeOutQuart");
 }

@@ -4,6 +4,7 @@
 	
 	<title>Inicio</title>
 	<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="<?=base_url(); ?>media/js/tipoMultiplicador.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
 	<script>var base = "<?=base_url(); ?>"</script> 
@@ -19,6 +20,7 @@
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
 				<input type="hidden"  id="cartaVisible"  value="" />
+				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntuaje=20?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo=10000?>" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
