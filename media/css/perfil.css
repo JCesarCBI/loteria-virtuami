@@ -18,10 +18,10 @@ label{color:#D9E021;margin-bottom:20px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
 .header img{padding:2px 2px; width:40px; height:40px; float:right;}
 
-/*.gris{
+.gris{
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
-}*/
+}
 
 #gallery li{
 	position: relative;
@@ -96,7 +96,4 @@ label{color:#D9E021;margin-bottom:20px;}
 
 p.descripcionTrofeo{color:#D9E021;}
 h3{color:#fff; font-weight:bold;}
-#imgCarta{
-	width:400px;
-	height:350px;
-}
+#imgCarta{width:400px;height:350px;}
