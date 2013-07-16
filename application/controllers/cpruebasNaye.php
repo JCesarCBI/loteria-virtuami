@@ -121,7 +121,7 @@ class cpruebasNaye extends CI_Controller {
 		
 		public function perfilUsuario($idUsuario){
 			if($idUsuario == 0 || $idUsuario==NULL){
-				redirect('http://google.com.mx/');
+				// redirect('http://google.com.mx/');
 			}else{
 				$datosPerfil = $this->mdatosperfil->getDatosUsuario($idUsuario);
 				if(!$datosPerfil){
@@ -134,7 +134,7 @@ class cpruebasNaye extends CI_Controller {
 						1 => Array (
 							'idTrofeo' => 1,
 							'nombreTrofeo' =>'Trofeo1',
-							'Descripción' => 'Este es el trofeo1. Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción ',
+							'Descripcion' => 'Este es el trofeo1. Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción ',
 							'Estado' => 1, //Trofeo ganado
 							'url-chico' => 'media/img/trofeo/kawaii.png',
 							'url-grande' => 'media/img/trofeo/kawaii.png'
@@ -142,7 +142,7 @@ class cpruebasNaye extends CI_Controller {
 						2 => Array (
 							'idTrofeo' => 2,
 							'nombreTrofeo' =>'Trofeo2',
-							'Descripción' => 'Este es el trofeo2',
+							'Descripcion' => 'Este es el trofeo2',
 							'Estado' => 1, //Trofeo ganado
 							'url-chico' => 'media/img/trofeo/trofeo02.png',
 							'url-grande' => 'media/img/trofeo/trofeo02.png'
@@ -150,7 +150,7 @@ class cpruebasNaye extends CI_Controller {
 						3 => Array (
 							'idTrofeo' => 3,
 							'nombreTrofeo' =>'Trofeo3',
-							'Descripción' => 'Este es el trofeo3',
+							'Descripcion' => 'Este es el trofeo3',
 							'Estado' => 1, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo03.png',
 							'url-grande' => 'media/img/trofeo/trofeo03.png'
@@ -158,15 +158,15 @@ class cpruebasNaye extends CI_Controller {
 						4 => Array (
 							'idTrofeo' => 4,
 							'nombreTrofeo' =>'Trofeo4',
-							'Descripción' => 'Este es el trofeo4',
+							'Descripcion' => 'Este es el trofeo4',
 							'Estado' => 0, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo04.png',
 							'url-grande' => 'media/img/trofeo/trofeo04.png'
 						),
 						5 => Array (
 							'idTrofeo' => 4,
-							'nombreTrofeo' =>'Trofeo4',
-							'Descripción' => 'Este es el trofeo4',
+							'nombreTrofeo' =>'Trofeo5',
+							'Descripcion' => 'Este es el trofeo4',
 							'Estado' => 0, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo04.png',
 							'url-grande' => 'media/img/trofeo/trofeo04.png'
@@ -174,7 +174,7 @@ class cpruebasNaye extends CI_Controller {
 						6 => Array (
 							'idTrofeo' => 4,
 							'nombreTrofeo' =>'Trofeo4',
-							'Descripción' => 'Este es el trofeo4',
+							'Descripcion' => 'Este es el trofeo4',
 							'Estado' => 1, //Trofeo no ganado
 							'url-chico' => 'media/img/trofeo/trofeo04.png',
 							'url-grande' => 'media/img/trofeo/trofeo04.png'
@@ -239,9 +239,49 @@ class cpruebasNaye extends CI_Controller {
 					$datosPerfilOrdenados['datos']['division'] = array('1'=>'CAD', '2'=>'CBI', '3'=>'CBS','4'=>'CCD','5'=>'CNI','6'=>'CSH');
 					$datosPerfilOrdenados['datos']['pos'] = array('1'=>'Maestría', '2'=> 'Doctorado');	
 					
-					echo "<pre>";
-					print_r($datosPerfilOrdenados);
-					echo "</pre>";
+
+					for($i=1; $i<45; $i++){
+						$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
+					}
+					$datosPerfilOrdenados['galeria'] = Array(
+						1 => Array (
+							'idImagen' => 1,
+							'nombreImagen' =>'El Gallo',
+							// 'Descripción/Rima' => 'Kikiriki',
+							// 'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'media/img/mazo/h_01_gallo.jpg',
+							'grande' => 'media/img/cargas/h_01_gallo.jpg'
+						),
+						2 => Array (
+							'idImagen' => 2,
+							'nombreImagen' =>'El diablo',
+							// 'Descripción/Rima' => 'Muajajajaja',
+							// 'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'media/img/mazo/h_02_diablo.jpg',
+							'grande' => 'media/img/cargas/h_02_diablo.jpg'
+						),
+						3 => Array (
+							'idImagen' => 3,
+							// 'nombreImagen' =>'La botella',
+							// 'Descripción/Rima' => 'es una botella',	
+							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'media/img/mazo/h_08_botella.jpg',
+							'grande' => 'media/img/cargas/h_08_botella.jpg'
+						),
+						4 => Array (
+							'idImagen' => 4,
+							// 'nombreImagen' =>'La muerte',
+							// 'Descripción/Rima' => 'Buuuuuuuuu',
+							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'media/img/mazo/h_14_muerte.jpg',
+							'grande' => 'media/img/cargas/h_14_muerte.jpg'
+						),
+						
+						
+					);					
+					// echo "<pre>";
+					// print_r($datosPerfilOrdenados);
+					// echo "</pre>";
 					$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 
 				}
@@ -256,7 +296,45 @@ class cpruebasNaye extends CI_Controller {
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
 		}
 
-	
+		public function traeDatosCarta($idcarta){
+					$cartas = Array(
+						1 => Array (
+							'idImagen' => 1,
+							'nombreImagen' =>'El Gallo',
+							'Descripcion/Rima' => 'Kikiriki',
+							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'h_01_gallo.jpg',
+							'grande' => 'h_01_gallo.jpg'
+						),
+						2 => Array (
+							'idImagen' => 2,
+							'nombreImagen' =>'El diablo',
+							'Descripcion/Rima' => 'Muajajajaja',
+							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'h_02_diablo.jpg',
+							'grande' => 'h_02_diablo.jpg'
+						),
+						3 => Array (
+							'idImagen' => 3,
+							'nombreImagen' =>'La botella',
+							'Descripcion/Rima' => 'es una botella',
+							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'h_08_botella.jpg',
+							'grande' => 'h_08_botella.jpg'
+						),
+						4 => Array (
+							'idImagen' => 4,
+							'nombreImagen' =>'La muerte',
+							'Descripcion/Rima' => 'Buuuuuuuuu',
+							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+							'url-chico' => 'h_14_muerte.jpg',
+							'grande' => 'h_14_muerte.jpg'
+						),
+						
+					);
+					echo json_encode($cartas[$idcarta]);
+		}
+
 } //Fin de la clase
 
 
