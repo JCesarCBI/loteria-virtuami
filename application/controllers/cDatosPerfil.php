@@ -115,11 +115,11 @@ class CDatosPerfil extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
 				
-				echo "<pre>";
-				print_r($datosPerfilOrdenados);
-				echo "<pre>";
-				return $datosPerfilOrdenados;
-				// $this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "<pre>";
+				// return $datosPerfilOrdenados;
+				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
 	}
