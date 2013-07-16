@@ -23,10 +23,6 @@ label{color:#D9E021;margin-bottom:20px;}
 	filter:alpha(opacity=40); /* For IE8 and earlier */
 }*/
 
-#imgCarta{
-	width:400px;
-	height:350px;
-}
 #gallery li{
 	position: relative;
 	list-style: none;
@@ -98,6 +94,9 @@ label{color:#D9E021;margin-bottom:20px;}
 	-webkit-border-radius: 3px;
 }
 
-//Galeria
-.descripcionTrofeo{color:#D9E021;}
+p.descripcionTrofeo{color:#D9E021;}
 h3{color:#fff; font-weight:bold;}
+#imgCarta{
+	width:400px;
+	height:350px;
+}
