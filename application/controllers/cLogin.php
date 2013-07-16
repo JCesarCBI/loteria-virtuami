@@ -27,7 +27,7 @@ class CLogin extends CI_Controller {
 				$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
 				$this->session->set_userdata('idJuego', 1);
 				$this->session->set_userdata('avatar', $jugador[0]->avatar);			
-				$this->load->view('vPruebaEfrenLogin');  //aqui se cargara vModalidad
+				$this->load->view('vModalidad');  //aqui se cargara vPruebaEfrenLogin
 			}else{
 				echo "error, usuario no esta en la DB";
 				$this->load->view('vinicio', $this->micombobox->datosComboBox());

@@ -31,7 +31,7 @@
 		<a href="#" id="mDyA" class="button round">Derivados y adjetivos</a>	
 		<a href="#" id="mSinonimos" class="button round">Sinonimos</a><br /> <br />
 		
-		<a href="<?=base_url()?>index.php/cDatosPerfil/PerfilUsuario/<?=$idJuego=1?>/<?=$idUsuario=2?>" id="bPerfil" class="large button round">Perfil</a>
+		<a href="<?=base_url()?>index.php/cDatosPerfil/PerfilUsuario/<?=$idJuego=1?>/<?=$idUsuario=-1?>" id="bPerfil" class="large button round">Perfil</a>
 		<a id="bJuego" class="large button round">Juego</a>
 		 </center>
 		 
