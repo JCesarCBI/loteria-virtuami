@@ -1,6 +1,6 @@
 $(document).ready(function() {	
 	comunidad = $('#usuario_comunidadUniversitaria').val()
-	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #estadisticas').hide()
+	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #estadisticas, #galeria').hide()
 	switch(comunidad){
 		case "1":
 			// alert("Es alumno")
@@ -130,7 +130,8 @@ $(document).ready(function() {
 		}
 	})
 
-	//Si el usuario da click en "Estadísticas" en la barra de navegación
+
+	//Navegación del usuario
 	$("#nav-informacion").click(function(){
 		$("#informacion").show()
 		$("#estadisticas, #galeria").hide()
@@ -139,10 +140,27 @@ $(document).ready(function() {
 		$("#informacion, #galeria").hide()
 		$("#estadisticas").show()
 	})
-	
+	$("#nav-galeria").click(function(){
+		$("#informacion, #estadisticas").hide()
+		$("#galeria").show()
+	})	
 
 }); //Fin Document Ready
 
+
+function muestraInfoCarta($idcarta){
+	// alert("carta"+$idcarta)
+	//Llama al AJAX para traer la información de la carta
+	$.ajax({
+		url: base+'index.php/cpruebasNaye/traeDatosCarta/'+$idcarta,
+		dataType: "json",
+		type: "POST",
+		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
+			// alert(base+correcto.grande)
+			$("#imgCarta").removeAttr('src').attr('src',base+"media/img/mazo/"+correcto.grande)
+		}
+	})	
+}
 // function abreCambiarContrasena(){
 	// liga=base+'index.php/cpruebasNaye/cambiarContrasena/1';
 	// window.open(liga, 'Cambiar contraseña', 'status=1,width=410,height=410, resizable=0') 
