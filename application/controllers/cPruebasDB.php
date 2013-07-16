@@ -12,49 +12,23 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('usuario/mregistro');
+					$this->load->model('estadisticas/mestadisticas');
 				}
 				
 				public function getDatos(){
-					$idJuego = 1;
 					$idUser = 1;
-					$idPartida = 1; //1 es completa | 2 es rapida
-					// $idEstadoPartida = 3; //1 es Ganado | 2 es Perfecto | 3 es Perdido
-					$userName = 'jcesarcbi';
-					$password = '123456s';
-					$mail = 'jcesarcbi@xanum.uam.mx';
-					$score = array(
-							'idPartida'=>1,
-							'idNivel'=>3,
-							'idModalidad'=>1,
-							'idUsr'=>3,
-							'idJuego'=>1
-							);
-					$usuario = array(
-								'nombreUsr'=> 'conejo73',
-								'nombre'=> 'Oscar',
-								'aPaterno'=> 'Peréz',
-								'aMaterno'=> 'Rojas',
-								'sexo'=> 'H',
-								'edad'=> 40,
-								'correo'=> 'conejo73@xanum.uam.mx',
-								'contrasena'=> '123456',
-								'cargo'=> null,
-								'area'=> null,
-								'idTipoUsuario'=> 1,
-								'idDivision'=> 3,
-								'idGradoActivo'=> 1,
-								'idGradoPosgrado'=> 1,
-								'idAvatar'=> 5
-								);
-					$record = 696969;
-					$idEstadoPartida = 2;
+					$idJuego = 1;
+					$idPartida = 1; 		//1 Completa | 2 Rapida
+					$idNivel = 1; 			//1 Basico| 2 Intermedio | 3 Avanzado| 4 Experto
+					$idModalidad = 1;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
+					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
+					
 					
 					if ($idUser != 0) {
-						$datos = $this->mregistro->setAgregarUsuario($usuario);
-						// echo'<pre>';
-							// print_r($datos);
-						// echo'</pre>';
+						$datos = $this->mestadisticas->getModalidades($idUser, $idJuego, $idModalidad, $idEstadoPartida);
+						echo'<pre>';
+							print_r($datos);
+						echo'</pre>';
 						// for ($i = 0; $i < count($datos) ; $i++) { 
 							// $datosOrdenados[$i+1] = $datos[$i];
 						// }
