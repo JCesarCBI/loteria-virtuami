@@ -20,7 +20,7 @@
 					$idJuego = 1;
 					$idPartida = 1; 		//1 Completa | 2 Rapida
 					$idNivel = 1; 			//1 Basico| 2 Intermedio | 3 Avanzado| 4 Experto
-					$idModalidad = 1;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
+					$idModalidad = 7;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
 					
 					
