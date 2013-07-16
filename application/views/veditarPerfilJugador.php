@@ -120,14 +120,14 @@
 						foreach ($trofeos as $indice=>$trofeo) {
 							if($trofeo['Estado'] == 1){ ?>
 								<center><div id="trofeo<?=$indice?>" class="">
-									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
+									<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
 									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
 									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
 									<a class="close" href="#"></a>
 								</div></center>
 							<?php }else{ ?>
-								<center><div id="trofeo<?=$indice?>" class="gris">
-									<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
+								<center><div id="trofeo<?=$indice?>" class="">
+									<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
 									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
 									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
 									<a class="close" href="#"></a>
@@ -152,8 +152,8 @@
 									</li>
 								<?php }else{ ?>
 									<li>
-										<a class="four columns clearfix gris" href="#trofeo<?=$indice?>">
-											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
+											<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
 										</a>	
 									</li>
 						<?php }
@@ -172,17 +172,59 @@
 				<div class="nine columns">
 					<div id="partidas" class="caja-estadisticas">
 						<h3>Partidas</h3>
+						<ul>
+							<li><b>Partidas "rápidas" ganadas:</b> <?= $estadisticas['partida']['rapidasGanadas']?></li>
+							<li><b>Partidas "rápidas" perdidas:</b> <?= $estadisticas['partida']['rapidasPerdidas']?></li>
+							<li><b>Partidas "completas" ganadas:</b> <?= $estadisticas['partida']['completasGanadas']?></li>
+							<li><b>Partidas "completas" perdidas:</b> <?= $estadisticas['partida']['completasPerdidas']?></li>
+						</ul>
 					</div>
 					
 					<div id="niveles" class="caja-estadisticas">
-						<h3>Niveles</h3>
+						<h3>Níveles</h3>
+						<ul>
+							<li><b>Níveles "básico" ganados:</b> <?= $estadisticas['juego']['basicoGanados']?></li>
+							<li><b>Níveles "básico" perdidos:</b> <?= $estadisticas['juego']['basicoPerdidos']?></li>
+							<li><b>Níveles "intermedio" ganados:</b> <?= $estadisticas['juego']['intermedioGanados']?></li>
+							<li><b>Níveles "intermedio" perdidos:</b> <?= $estadisticas['juego']['intermedioPerdidos']?></li>
+							<li><b>Níveles "avanzado" ganados:</b> <?= $estadisticas['juego']['avanzadoGanados']?></li>
+							<li><b>Níveles "avanzado" perdidos:</b> <?= $estadisticas['juego']['avanzadoPerdidos']?></li>
+						</ul>
 					</div>
 					
 					<div id="modalidades" class="caja-estadisticas">
 						<h3>Modalidades</h3>
+						<ul>
+							<li><b>Modalidad "Juego libre" ganados:</b> <?= $estadisticas['modalidad']['juegoLibreGanados']?></li>
+							<li><b>Modalidad "Juego libre" perdidos:</b> <?= $estadisticas['modalidad']['juegoLibrePerdidos']?></li>
+							<li><b>Modalidad "Diminutivos" ganados:</b> <?= $estadisticas['modalidad']['diminutivosGanados']?></li>
+							<li><b>Modalidad "Diminutivos" perdidos:</b> <?= $estadisticas['modalidad']['diminutivosPerdidos']?></li>
+							<li><b>Modalidad "Adjetivos" ganados:</b> <?= $estadisticas['modalidad']['adjetivosGanados']?></li>
+							<li><b>Modalidad "Adjetivos" perdidos:</b> <?= $estadisticas['modalidad']['adjetivosPerdidos']?></li>
+							<li><b>Modalidad "Sinónimos" ganados:</b> <?= $estadisticas['modalidad']['sinonimosGanados']?></li>
+							<li><b>Modalidad "Sinónimos" perdidos:</b> <?= $estadisticas['modalidad']['sinonimosPerdidos']?></li>
+						</ul>
 					</div>				
 				</div>
 			</div> <!--estadísticas -->
+			
+			<div class="row" id="galeria">
+				<h3>Galería</h3>
+				<div class="row" id="infCarta">
+					<img id="imgCarta" class="six columns" src="<?=base_url()?>media/img/mazo/reversa.png"/>
+					
+					<div id="datosCarta" class="six columns">
+						<h2 id="nombreCarta"></h2>
+						<p id="descripcionCarta"></p>
+					</div>
+				</div>
+				<div class="row" id="carrusel">
+					<?php 
+						foreach ($galeria as $imagen) { ?>
+						<img width="80px" height="80px" src="<?php print_r(base_url().$imagen['url-chico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>)"/>
+					<?php	} ?>
+				</div>
+			</div>
 		</div>
 		</div>
 	</body>
