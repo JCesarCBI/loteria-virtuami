@@ -20,7 +20,7 @@ class cpruebasNaye extends CI_Controller {
 	public function index()	{
 		$datos = $this->micombobox->datosComboBox();
 		$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
-		$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
+		$datos['posgrado'] = array('1'=>'posgrado', '2'=> 'doctorado');	
 		$this->load->view('vinicio', $datos);
 	}
 	
@@ -243,45 +243,45 @@ class cpruebasNaye extends CI_Controller {
 					for($i=1; $i<45; $i++){
 						$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 					}
-					$datosPerfilOrdenados['galeria'] = Array(
+					$datosPerfilOrdenados['galeriaCartas'] = Array(
 						1 => Array (
 							'idImagen' => 1,
 							'nombreImagen' =>'El Gallo',
 							// 'Descripción/Rima' => 'Kikiriki',
 							// 'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'media/img/mazo/h_01_gallo.jpg',
-							'grande' => 'media/img/cargas/h_01_gallo.jpg'
+							'urlChico' => 'h_01_gallo.jpg',
+							'urlGrande' => 'h_01_gallo.jpg'
 						),
 						2 => Array (
 							'idImagen' => 2,
 							'nombreImagen' =>'El diablo',
 							// 'Descripción/Rima' => 'Muajajajaja',
 							// 'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'media/img/mazo/h_02_diablo.jpg',
-							'grande' => 'media/img/cargas/h_02_diablo.jpg'
+							'urlChico' => 'h_02_diablo.jpg',
+							'urlGrande' => 'h_02_diablo.jpg'
 						),
 						3 => Array (
 							'idImagen' => 3,
 							// 'nombreImagen' =>'La botella',
 							// 'Descripción/Rima' => 'es una botella',	
 							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'media/img/mazo/h_08_botella.jpg',
-							'grande' => 'media/img/cargas/h_08_botella.jpg'
+							'urlChico' => 'h_08_botella.jpg',
+							'urlGrande' => 'h_08_botella.jpg'
 						),
 						4 => Array (
 							'idImagen' => 4,
 							// 'nombreImagen' =>'La muerte',
 							// 'Descripción/Rima' => 'Buuuuuuuuu',
 							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'media/img/mazo/h_14_muerte.jpg',
-							'grande' => 'media/img/cargas/h_14_muerte.jpg'
+							'urlChico' => 'h_14_muerte.jpg',
+							'urlGrande' => 'h_14_muerte.jpg'
 						),
 						
 						
 					);					
-					// echo "<pre>";
-					// print_r($datosPerfilOrdenados);
-					// echo "</pre>";
+					echo "<pre>";
+					print_r($datosPerfilOrdenados);
+					echo "</pre>";
 					$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 
 				}
@@ -297,42 +297,48 @@ class cpruebasNaye extends CI_Controller {
 		}
 
 		public function traeDatosCarta($idcarta){
-					$cartas = Array(
-						1 => Array (
-							'idImagen' => 1,
-							'nombreImagen' =>'El Gallo',
-							'Descripcion/Rima' => 'Kikiriki',
-							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'h_01_gallo.jpg',
-							'grande' => 'h_01_gallo.jpg'
-						),
-						2 => Array (
-							'idImagen' => 2,
-							'nombreImagen' =>'El diablo',
-							'Descripcion/Rima' => 'Muajajajaja',
-							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'h_02_diablo.jpg',
-							'grande' => 'h_02_diablo.jpg'
-						),
-						3 => Array (
-							'idImagen' => 3,
-							'nombreImagen' =>'La botella',
-							'Descripcion/Rima' => 'es una botella',
-							'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'h_08_botella.jpg',
-							'grande' => 'h_08_botella.jpg'
-						),
-						4 => Array (
-							'idImagen' => 4,
-							'nombreImagen' =>'La muerte',
-							'Descripcion/Rima' => 'Buuuuuuuuu',
-							'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-							'url-chico' => 'h_14_muerte.jpg',
-							'grande' => 'h_14_muerte.jpg'
-						),
-						
-					);
-					echo json_encode($cartas[$idcarta]);
+			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
+			//El siguiente arreglo deberá ser traído desde la BD
+			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
+			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
+			
+			$cartas = Array( 
+				1 => Array (
+					'idImagen' => 1,
+					'nombreImagen' =>'El Gallo',
+					'Descripcion/Rima' => 'Kikiriki',
+					'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+					'url-chico' => 'h_01_gallo.jpg',
+					'grande' => 'h_01_gallo.jpg'
+				),
+				2 => Array (
+					'idImagen' => 2,
+					'nombreImagen' =>'El diablo',
+					'Descripcion/Rima' => 'Muajajajaja',
+					'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+					'url-chico' => 'h_02_diablo.jpg',
+					'grande' => 'h_02_diablo.jpg'
+				),
+				3 => Array (
+					'idImagen' => 3,
+					'nombreImagen' =>'La botella',
+					'Descripcion/Rima' => 'es una botella',
+					'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+					'url-chico' => 'h_08_botella.jpg',
+					'grande' => 'h_08_botella.jpg'
+				),
+				4 => Array (
+					'idImagen' => 4,
+					'nombreImagen' =>'La muerte',
+					'Descripcion/Rima' => 'Buuuuuuuuu',
+					'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
+					'url-chico' => 'h_14_muerte.jpg',
+					'grande' => 'h_14_muerte.jpg'
+				),
+				
+			);
+			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
+			echo json_encode($cartas[$idcarta]);
 		}
 
 } //Fin de la clase
