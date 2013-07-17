@@ -220,8 +220,8 @@
 				</div>
 				<div class="row" id="carrusel">
 					<?php 
-						foreach ($galeria as $imagen) { ?>
-						<img width="80px" height="80px" src="<?php print_r(base_url().$imagen['url-chico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>)"/>
+						foreach ($galeriaCartas as $imagen) { ?>
+						<img width="80px" height="80px" src="<?php print_r(base_url().'media/img/mazo/'.$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>)"/>
 					<?php	} ?>
 				</div>
 			</div>

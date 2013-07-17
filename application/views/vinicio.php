@@ -54,39 +54,42 @@
 				<form method="post" action="">
 					<label class="ins">Campos con * son obligatorios</label>
 					<!-- primera parte registro -->
-	                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="* usuario"/>
-	                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
-					<label id="usrError" class="error_validation">El alias ya existe</label>
-
-	                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
-	                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
-   					<label id="emailExisteError" class="error_validation">El correo ya está registrado</label>
-					<label id="emailDominioError" class="error_validation">El dominio no es válido, usa tu cuenta de titlani/xanum</label>
-					
-	                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
-
-	                <p class="sexo">
-	                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
-	                </p>
-	                <p class="sexo"> 
-	                	<label class="sexo" for="usuario_sexo">mujer</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
-	                </p><br>
-	                
+					<div id="paso1">
+		                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="* usuario"/>
+		                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
+						<label id="usrError" class="error_validation">El alias ya existe</label>
+	
+		                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
+		                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
+	   					<label id="emailExisteError" class="error_validation">El correo ya está registrado</label>
+						<label id="emailDominioError" class="error_validation">El dominio no es válido, usa tu cuenta de titlani/xanum</label>
+						
+		                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
+	
+		                <p class="sexo">
+		                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
+		                </p>
+		                <p class="sexo"> 
+		                	<label class="sexo" for="usuario_sexo">mujer</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
+		                </p><br>
+	                </div>
 					<!-- segunda parte registro -->
-					<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
-					<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
-					<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" />
-					
+					<div id="paso2">
+						<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
+						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
+						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" />
+					</div>
 					<!--tercera parte registro-->
-					<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
-					<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
-					<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
-					<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
-					<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
-					<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
-	        		<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
-	        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
-	        		
+					<div id="paso3">
+						<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
+						<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
+						<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
+						<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
+						<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
+						<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
+		        		<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
+		        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
+	        		</div>
 	                <!-- botones siguiente y submit -->
 	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
 	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
