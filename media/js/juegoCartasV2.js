@@ -8,6 +8,7 @@ jQuery(document).ready(function($) {
 	document.getElementById('puntos').value = 0;
 	document.getElementById('comodinesTotales').value = 0;
 	document.getElementById('errorCadena').value = "";
+	document.getElementById('loteriaCadena').value = "";
 });
 var tiempo = "";
 var tiempo2 = "";
@@ -208,9 +209,9 @@ function presionaEnter(evt, op) {
 
 }
 
-function clickBaraja(id) {
+function clickBaraja(indice) {
 
-	indice = obternerId(id)
+	id = obternerId(indice)
 	resultado = barajaPlantilla(indice);
 
 	if (resultado == 0) {
@@ -220,7 +221,7 @@ function clickBaraja(id) {
 		$('#respuestaBaraja').focus();
 
 	} else {
-		errores(id);
+		errores(indice);
 		rompeCadenas();
 	};
 
@@ -236,6 +237,8 @@ function presionaEnterPlantilla(evt, op) {
 	if (charCode == 13) {
 		//Presiond enter obtengo la respuesta escrita
 		var respuesta = document.getElementById('respuestaBaraja').value;
+		respuesta = $.trim(respuesta);
+		respuesta = respuesta.toLowerCase();
 		id = obternerIdPlantilla(indice);
 
 		var vOf = ajax_validarRespuesta(id, respuesta)
@@ -295,7 +298,6 @@ function clickPlantilla(indice) {
 	}
 	
 	$('#plantilla-' + indice).addClass("cartaClick", 95, "easeOutQuart");
-	$('#plantilla-' + indice).addClass("frijolito");
 	setTimeout("quitarMarco(" + indice + ")", 1000);
 
 }
@@ -436,9 +438,21 @@ function temporizador(tempo) {
 }
 
 function cartaCorrecta(indice){
-	$('#plantilla-' + indice).addClass("cartaCorrecta");
+	$('#plantilla-frijolito-' + indice).addClass("frijolito");
+	loteria(indice);
 }
 
 function quitarMarco(indice){
 	$('#plantilla-' + indice).removeClass("cartaClick", 105, "easeOutQuart");
+}
+
+function loteria(indice){
+	cartas=document.getElementById('loteriaCadena').value;
+	cartas=cartas+indice+"*";
+	document.getElementById('loteriaCadena').value=cartas;
+	arreglo=cartas.split('*');
+	if (arreglo.length) {
+		alert("LOTERIAAAAAA!!!");
+	};
+	
 }

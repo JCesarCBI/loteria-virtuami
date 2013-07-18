@@ -100,6 +100,7 @@ public function seleccionJuego($respuesta="neko"){
 		$id=1;
 		//$respuesta="neko";
 		$baraja[$id]['respuesta'][1]="gato";
+		$baraja[$id]['id']="gato";
 		$baraja[$id]['respuesta'][2]="felino";
 		$baraja[$id]['respuesta'][3]="neko";
 		$baraja[$id]['respuesta'][4]="cat";

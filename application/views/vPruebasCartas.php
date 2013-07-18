@@ -31,6 +31,7 @@
 				<input type="hidden"  id="puntos" value="0" />
 				<input type="hidden"  id="comodinesTotales" value="0" />
 				<input type="hidden"  id="errorCadena" value="" />
+				<input type="hidden"  id="loteriaCadena" value="" />
 				<div class="cartasColumnaIzq">
 						<div class="BarajaResp">
 							<div>
@@ -80,7 +81,7 @@
 							$cont=1;
 						 foreach ($lote as $key => $carta) {
 							
-							echo "<div class='mazoTemp' ><img class='cartaMazo' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/> <span class='frijolito'></span></div> " ;
+							echo "<div class='mazoTemp' ><span id='plantilla-frijolito-".$cont2."' class=''></span><img class='cartaMazo' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/> </div> " ;
 							
 							$cont2++;
 							if (($cont % 4)==0 && $cont>1) 

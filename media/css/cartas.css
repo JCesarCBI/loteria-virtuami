@@ -169,17 +169,16 @@
 }
 
 .mazoTemp .frijolito {
-	z-index: 5 !important;
-    background:transparent url(close.png) no-repeat scroll 0pt 50% !important;
+	z-index: 2 !important;
+    background:transparent url(close.png) no-repeat !important;
     cursor:pointer;
     color:#000000;
-    display:block !important;
     height:35px;
     position:absolute;
     text-align:center;
     text-decoration:none;
-    vertical-align:bottom !important;
     width:34px;
     opacity: 0.8;
-    margin: 0px auto;
+    left: 37px;
+    top: 42px;
 }
