@@ -295,6 +295,7 @@ function clickPlantilla(indice) {
 	}
 	
 	$('#plantilla-' + indice).addClass("cartaClick", 95, "easeOutQuart");
+	$('#plantilla-' + indice).addClass("frijolito");
 	setTimeout("quitarMarco(" + indice + ")", 1000);
 
 }

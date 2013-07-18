@@ -96,9 +96,69 @@ public function respuestaCorrecta($id=-1){
 }
 
 
-public function seleccionJuego(){
+public function seleccionJuego($respuesta="neko"){
+		$id=1;
+		//$respuesta="neko";
+		$baraja[$id]['respuesta'][1]="gato";
+		$baraja[$id]['respuesta'][2]="felino";
+		$baraja[$id]['respuesta'][3]="neko";
+		$baraja[$id]['respuesta'][4]="cat";
+		
+		print_r($baraja[$id]);
+		
+			echo "<pre>";
+		foreach ($baraja[$id]['respuesta'] as $value) {
+			print_r($value);
+			echo "<br />";
+		}
+			echo "</pre>";
+		
+		 echo "************************";
+		
+		foreach ($baraja[$id]['respuesta'] as $value) {
+			
+			echo "<br />";
+			if ($respuesta==$value) {
+				echo "******Respuesta Correcta*******";
+			echo "<br />";
+				
+			}
+			
+		}
+				
 
-		$this->load->view('vModalidad');	
+}
+
+public function seleccionarPosibleRespuesta($respuesta="neko"){
+		$id=1;
+		//$respuesta="neko";
+		$baraja[$id]['respuesta'][1]="gato";
+		$baraja[$id]['respuesta'][2]="felino";
+		$baraja[$id]['respuesta'][3]="neko";
+		$baraja[$id]['respuesta'][4]="cat";
+		
+		print_r($baraja[$id]);
+		
+			echo "<pre>";
+		foreach ($baraja[$id]['respuesta'] as $value) {
+			print_r($value);
+			echo "<br />";
+		}
+			echo "</pre>";
+		
+		 echo "************************";
+		
+		foreach ($baraja[$id]['respuesta'] as $value) {
+			
+			echo "<br />";
+			if ($respuesta==$value) {
+				echo "******Respuesta Correcta*******";
+			echo "<br />";
+				
+			}
+			
+		}
+				
 
 }
 

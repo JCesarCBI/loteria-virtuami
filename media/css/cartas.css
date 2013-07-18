@@ -33,10 +33,17 @@
 	margin: 0 auto;
 }
 .mazoTemp{
+	float:left;
+	position:relative;
 	margin:10px;
 	width: 107px;
 	height:107px;
+	z-index: 1;
+}
+
+.mazoTemp .cartaMazo{
 	
+	z-index: 1;
 }
 
 .barajaTemp{
@@ -159,4 +166,20 @@
 	border-color: none;
 	border-width: 0px;
 	border-style: solid;
+}
+
+.mazoTemp .frijolito {
+	z-index: 5 !important;
+    background:transparent url(close.png) no-repeat scroll 0pt 50% !important;
+    cursor:pointer;
+    color:#000000;
+    display:block !important;
+    height:35px;
+    position:absolute;
+    text-align:center;
+    text-decoration:none;
+    vertical-align:bottom !important;
+    width:34px;
+    opacity: 0.8;
+    margin: 0px auto;
 }

@@ -80,7 +80,7 @@
 							$cont=1;
 						 foreach ($lote as $key => $carta) {
 							
-							echo "<img class='mazoTemp' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/>";
+							echo "<div class='mazoTemp' ><img class='cartaMazo' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/> <span class='frijolito'></span></div> " ;
 							
 							$cont2++;
 							if (($cont % 4)==0 && $cont>1) 
@@ -119,8 +119,6 @@
 						$contId=0;
 						foreach ($baraja as $key => $cartas) {
 							echo '<input type="hidden"  id="baraja-'.$contId.'"  value="'.base_url().$cartas['imgMazo'].'"/>';		
-							//echo "<img id='baraja-".$contId."' onclick='clickBaraja(".$contId.")' class='Escondido barajaTemp'src='".base_url().$cartas['imagen']."' alt='".$key."'/>";
-							
 							
 							$contId++;
 						}
