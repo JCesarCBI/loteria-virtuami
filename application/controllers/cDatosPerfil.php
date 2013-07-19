@@ -150,4 +150,19 @@ class CDatosPerfil extends CI_Controller {
 			$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
 		}
+		
+		public function traeDatosCarta($idcarta){
+			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
+			//El siguiente arreglo deberá ser traído desde la BD
+			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
+			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
+			
+			$cartas = $this->mJuegoLibre->getMazo();
+			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
+			echo json_encode($cartas[$idcarta + 1]);
+		}
+		
+		
+		
+		
 }
