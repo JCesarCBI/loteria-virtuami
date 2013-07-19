@@ -219,10 +219,14 @@
 					</div>
 				</div>
 				<div class="row" id="carrusel">
+					<input id="carrusel-inicio" type="hidden" value="11"><input id="carrusel-final" type="hidden" value="54">
 					<?php 
 						foreach ($galeriaCartas as $imagen) { ?>
-						<img width="80px" height="80px" src="<?php print_r(base_url().'media/img/mazo/'.$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>)"/>
+							<img id="carrusel-img<?=$imagen['idImagen']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>);"/>
 					<?php	} ?>
+					<br><br>
+					<a href="#" id="carrusel-ant">Atras</a>
+					<a href="#" id="carrusel-sig">Siguiente</a>
 				</div>
 			</div>
 		</div>
