@@ -141,26 +141,31 @@ $(document).ready(function() {
 		$("#estadisticas").show()
 	})
 	$("#nav-galeria").click(function(){
+		//Traigo galería de cartas con AJAX
 		$("#informacion, #estadisticas").hide()
 		$("#galeria").show()
+		inicio=$("#carrusel-inicio").val();
+		fin = $("#carrusel-final").val();
+		for(i=inicio; i<=fin; i++){
+			x="#carrusel-img"+i
+			$(x).hide()
+		}
 	})	
 
 }); //Fin Document Ready
 
-
 function muestraInfoCarta($idcarta){
-	// alert("carta"+$idcarta)
 	//Llama al AJAX para traer la información de la carta
 	$.ajax({
-		url: base+'index.php/cpruebasNaye/traeDatosCarta/'+$idcarta,
+		url: base+'index.php/cDatosPerfil2/traeDatosCarta/'+$idcarta,
 		dataType: "json",
 		type: "POST",
 		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
-			// alert(base+correcto.grande)
-			$("#imgCarta").removeAttr('src').attr('src',base+"media/img/mazo/"+correcto.grande)
+			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo)
 		}
 	})	
 }
+
 // function abreCambiarContrasena(){
 	// liga=base+'index.php/cpruebasNaye/cambiarContrasena/1';
 	// window.open(liga, 'Cambiar contraseña', 'status=1,width=410,height=410, resizable=0') 

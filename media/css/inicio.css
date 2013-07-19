@@ -254,9 +254,7 @@ input.superior{
 }
 
 .iSesion-form{margin-top:70px;}
-
 .i-sesion, .rotar, .CS-cerrado, .CL-cerrado{font-size:19px;	font-weight:bold;}
-
 .i-sesion{
 	margin-top:-2px;
 	margin-left:-12px;
@@ -276,11 +274,6 @@ label.CS-cerrado{
 
 /*ACERCA DEL JUEGO*/
 
-.acerca{
-	margin-top:100px;
-	background: #2E3116;
-	height:auto;
-}
-
+.acerca{margin-top:100px;background: #2E3116;height:auto;}
 #logoUAM{ margin-top:60px;}
 .acerca p, h2{ color: #D9E021;}
