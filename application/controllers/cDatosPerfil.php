@@ -7,6 +7,7 @@ class CDatosPerfil extends CI_Controller {
 		$this->load->model('usuario/mdatosperfil');
 		$this->load->model('estadisticas/mestadisticas');
 		$this->load->model('usuario/mregistro');
+		$this->load->model('juego/mJuegoLibre');
 		
 	}
 	
@@ -114,7 +115,25 @@ class CDatosPerfil extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 3); //Perdidas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
-				
+				//Datos para la galeria de cartas
+				$baraja = $this->mJuegoLibre->getMazo();
+				foreach ($baraja as $key) {
+					$id = $key["idCarta"];
+					$data["galeriaCartas"][$id] = $key;
+					unset($data["galeriaCartas"][$id]['descripcion']);
+					unset($data["galeriaCartas"][$id]['audio']);
+					unset($data["galeriaCartas"][$id]['longitud']);
+					unset($data["galeriaCartas"][$id]['imgIcon']);
+					$data["galeriaCartas"][$id]['idImagen'] = $key["idCarta"];
+					unset($data["galeriaCartas"][$id]['idCarta']);
+					$data["galeriaCartas"][$id]['nombreImagen'] = $key["nombre"];
+					unset($data["galeriaCartas"][$id]['nombre']);
+					$data["galeriaCartas"][$id]['urlChico'] = $key["imgPlantilla"];
+					unset($data["galeriaCartas"][$id]['imgPlantilla']);
+					$data["galeriaCartas"][$id]['urlGrande'] = $key["imgMazo"];
+					unset($data["galeriaCartas"][$id]['imgMazo']);
+				}
+				$datosPerfilOrdenados['galeriaCartas'] = $data['galeriaCartas'];	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "<pre>";
