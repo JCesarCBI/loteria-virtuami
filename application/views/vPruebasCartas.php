@@ -17,6 +17,18 @@
 	<body>
 		<div class="espacioSuperior">
 			
+				<div id="lightbox">
+					<center>
+					<div id="loteria-FancyBox" class="">
+						<h3>Hoja de resultados</h3>
+						<span id="resultadosJuego" >
+							
+						</span>
+
+						<a class="close" href="#"></a>
+					</div>
+					</center>
+				</div>
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
 				<input type="hidden"  id="cartaVisible"  value="" />
@@ -107,9 +119,18 @@
 			<!--Termina la columnaCentral-->
 				<!--Columna derecha, aquí ira la la opción para gritar loteria -->
 		<div class="three columns" id="ColumnaDer">
-				<div class="centro" id="contenidoDerecho">
-							<img src="<?= base_url()?>media/img/boton.png"  />
+				
+				<div  id="contenidoDerecho">
+					
+					<ul id="gallery">
+						<li>
+							<a class="clearfix" href="#loteria-FancyBox">
+								<img src="<?= base_url()?>media/img/boton.png"  />
+							</a>
+						</li>
+					</ul>
 				</div>
+				
 				
 		</div>	
 			<!--Termina la columnaDer-->
@@ -128,7 +149,7 @@
 						foreach ($baraja as $key => $cartas) {							
 							echo $key.'*';
 						}
-						echo '" />';
+						echo 'undefined" />';
 						?>
 				</div>
 	</body>	

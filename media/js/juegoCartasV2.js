@@ -52,7 +52,7 @@ function audioRima(indice) {
 	document.getElementById('cartaVisible').value = indice;
 	idCarta = obternerId(indice)
 	//Cuando se llegue al ultimo elemento del arreglo se regresará una elemento vacio.
-	if (idCarta != "") {
+	if (idCarta != 'undefined') {
 
 		//llamo a la función ajax_escribeRima() y le mando su correspondiente Id)
 		ajax_escribeRima(cartasId[indice]);
@@ -132,11 +132,13 @@ function cambiaCarta(numCarta, mult) {
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
 	$('#cartaReversaClick').removeAttr("onclick");
+	var continuar = audioRima(numCarta);
+
+	if (continuar == 0) {
+	//En esta función regreso 0 si la carta fue encontrada, en caso contrario regreso 0
 	var url = document.getElementById('baraja-' + numCarta).value
 	$("#baraja-" + numCarta).removeAttr("id");
 
-	//En esta función regreso 0 si la carta fue encontrada, en caso contrario regreso 0
-	var continuar = audioRima(numCarta);
 
 	//si el numero de la carta es 0, quiere decir que es la primeravez que volteare una carta
 	$("#cartaBvisible").html("<img id='baraja-" + numCarta + "' onclick='clickBaraja(" + numCarta + ")' class='Escondido barajaTemp'src='" + url + "' />");
@@ -156,19 +158,18 @@ function cambiaCarta(numCarta, mult) {
 		}
 
 	}
-
-	if (continuar == 0) {
 		//Como se encontro la carta incremento numCarta para ir por la siguiente carta
 		numCarta++;
 
 		$('#cartaReversaClick').attr("onclick", "cambiaCarta(" + numCarta + ");");
 		document.getElementById('numeroCarta').value = numCarta;
-		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", 10000);
+		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", 50);
 
 	} else {
 		//Si no se encontro la cart solo escondo la última que se mostró
 		numCarta--;
 		$('#baraja-' + numCarta).addClass("Escondido");
+		hojaResultados()
 	};
 
 }
@@ -342,7 +343,7 @@ function pintaComodines(cantidad) {
 
 	var comodines = "";
 	for (var i = 0; i < cantidad; i++) {
-		comodines = comodines + '<img src="' + base + 'media/img/star.png" />';
+		comodines = comodines + '<img class="estrella" src="' + base + 'media/img/star.png" />';
 	};
 	if (comodines == "") {
 		comodines = 0;
@@ -451,8 +452,24 @@ function loteria(indice){
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
 	arreglo=cartas.split('*');
-	if (arreglo.length) {
+	if (arreglo.length == 11) {
 		alert("LOTERIAAAAAA!!!");
 	};
 	
 }
+
+function nuevoJuego(){
+	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
+}
+
+function hojaResultados(){
+	// puntos=document.getElementById('puntos').value;
+	puntos=0;
+	self.location="#loteria-FancyBox";
+	
+	$('#resultadosJuego').html("<label>Puntuación: </label>"+puntos+'<br /><button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>')
+	
+
+}
+
+
