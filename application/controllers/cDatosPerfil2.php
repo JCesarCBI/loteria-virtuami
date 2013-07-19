@@ -7,6 +7,7 @@ class CDatosPerfil2 extends CI_Controller {
 		$this->load->model('usuario/mdatosperfil');
 		$this->load->model('estadisticas/mestadisticas');
 		$this->load->model('usuario/mregistro');
+		$this->load->model('juego/mJuegoLibre');
 		
 	}
 	
@@ -114,45 +115,28 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 3); //Perdidas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
-				$datosPerfilOrdenados['galeria'] = Array(
-					1 => Array (
-						'idImagen' => 1,
-						'nombreImagen' =>'El Gallo',
-						// 'Descripción/Rima' => 'Kikiriki',
-						// 'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'media/img/mazo/h_01_gallo.jpg',
-						'grande' => 'media/img/cargas/h_01_gallo.jpg'
-					),
-					2 => Array (
-						'idImagen' => 2,
-						'nombreImagen' =>'El diablo',
-						// 'Descripción/Rima' => 'Muajajajaja',
-						// 'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'media/img/mazo/h_02_diablo.jpg',
-						'grande' => 'media/img/cargas/h_02_diablo.jpg'
-					),
-					3 => Array (
-						'idImagen' => 3,
-						// 'nombreImagen' =>'La botella',
-						// 'Descripción/Rima' => 'es una botella',	
-						'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'media/img/mazo/h_08_botella.jpg',
-						'grande' => 'media/img/cargas/h_08_botella.jpg'
-					),
-					4 => Array (
-						'idImagen' => 4,
-						// 'nombreImagen' =>'La muerte',
-						// 'Descripción/Rima' => 'Buuuuuuuuu',
-						'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'media/img/mazo/h_14_muerte.jpg',
-						'grande' => 'media/img/cargas/h_14_muerte.jpg'
-					),
-					
-					
-				);					
+				//Datos para la galeria de cartas
+				$baraja = $this->mJuegoLibre->getMazo();
+				foreach ($baraja as $key) {
+					$id = $key["idCarta"];
+					$data["galeriaCartas"][$id] = $key;
+					unset($data["galeriaCartas"][$id]['descripcion']);
+					unset($data["galeriaCartas"][$id]['audio']);
+					unset($data["galeriaCartas"][$id]['longitud']);
+					unset($data["galeriaCartas"][$id]['imgIcon']);
+					$data["galeriaCartas"][$id]['idImagen'] = $key["idCarta"];
+					unset($data["galeriaCartas"][$id]['idCarta']);
+					$data["galeriaCartas"][$id]['nombreImagen'] = $key["nombre"];
+					unset($data["galeriaCartas"][$id]['nombre']);
+					$data["galeriaCartas"][$id]['urlChico'] = $key["imgPlantilla"];
+					unset($data["galeriaCartas"][$id]['imgPlantilla']);
+					$data["galeriaCartas"][$id]['urlGrande'] = $key["imgMazo"];
+					unset($data["galeriaCartas"][$id]['imgMazo']);
+				}
+				$datosPerfilOrdenados['galeriaCartas'] = $data['galeriaCartas'];	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
-				// echo "<pre>";
+				echo "</pre>";
 				// return $datosPerfilOrdenados;
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
@@ -167,42 +151,53 @@ class CDatosPerfil2 extends CI_Controller {
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
 		}
 		
-			public function traeDatosCarta($idcarta){
-				$cartas = Array(
-					1 => Array (
-						'idImagen' => 1,
-						'nombreImagen' =>'El Gallo',
-						'Descripcion/Rima' => 'Kikiriki',
-						'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'h_01_gallo.jpg',
-						'grande' => 'h_01_gallo.jpg'
-					),
-					2 => Array (
-						'idImagen' => 2,
-						'nombreImagen' =>'El diablo',
-						'Descripcion/Rima' => 'Muajajajaja',
-						'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'h_02_diablo.jpg',
-						'grande' => 'h_02_diablo.jpg'
-					),
-					3 => Array (
-						'idImagen' => 3,
-						'nombreImagen' =>'La botella',
-						'Descripcion/Rima' => 'es una botella',
-						'Estado' => 0, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'h_08_botella.jpg',
-						'grande' => 'h_08_botella.jpg'
-					),
-					4 => Array (
-						'idImagen' => 4,
-						'nombreImagen' =>'La muerte',
-						'Descripcion/Rima' => 'Buuuuuuuuu',
-						'Estado' => 1, //imagen desbloqueada. Si la imagen no ha sido desbloqueda, el valor debe ser 0
-						'url-chico' => 'h_14_muerte.jpg',
-						'grande' => 'h_14_muerte.jpg'
-					),
-					
-				);
-				echo json_encode($cartas[$idcarta]);
-	}
+		
+		public function creaCarrusel($idCartaI, $idCartaF){
+			$baraja = $this->mJuegoLibre->getMazo();
+			foreach ($baraja as $key) {
+				$id = $key["idCarta"];
+				$carrusel[$id] = $key;
+				unset($carrusel[$id]['descripcion']);
+				unset($carrusel[$id]['audio']);
+				unset($carrusel[$id]['longitud']);
+				unset($carrusel[$id]['imgIcon']);
+				$carrusel[$id]['idImagen'] = $key["idCarta"];
+				unset($carrusel[$id]['idCarta']);
+				$carrusel[$id]['nombreImagen'] = $key["nombre"];
+				unset($carrusel[$id]['nombre']);
+				$carrusel[$id]['urlChico'] = $key["imgPlantilla"];
+				unset($carrusel[$id]['imgPlantilla']);
+				$carrusel[$id]['urlGrande'] = $key["imgMazo"];
+				unset($carrusel[$id]['imgMazo']);
+			}
+			$cont = 0;
+			for ($i=$idCartaI; $i <= $idCartaF; $i++) { 
+				$arreglo[$i] = $carrusel[$i];
+				$cont++;
+			}
+			$arreglo['long'] = $cont; 
+			echo "<pre>";
+			print_r($arreglo);
+			echo "</pre>";
+			// echo json_encode($arreglo);
+
+		}
+		
+		public function traeDatosCarta($idcarta){
+			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
+			//El siguiente arreglo deberá ser traído desde la BD
+			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
+			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
+			
+			$cartas = $this->mJuegoLibre->getMazo();
+			// echo "<pre>";
+			// print_r($cartas);
+			// echo "</pre>";
+			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
+			echo json_encode($cartas[$idcarta-1]);
+		}
+		
+		
+		
+		
 }

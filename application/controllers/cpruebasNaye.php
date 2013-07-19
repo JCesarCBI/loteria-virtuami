@@ -279,9 +279,9 @@ class cpruebasNaye extends CI_Controller {
 						
 						
 					);					
-					echo "<pre>";
-					print_r($datosPerfilOrdenados);
-					echo "</pre>";
+					// echo "<pre>";
+					// print_r($datosPerfilOrdenados);
+					// echo "</pre>";
 					$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);			
 
 				}
