@@ -73,9 +73,6 @@ label{color:#D9E021;margin-bottom:20px;}
 	/*margin-top:-200px;
 	margin-left:-200px;*/
 }
-#carrusel-ant, #carrusel-sig{
-	color:#000000;
-}
 
 #lightbox div:target {opacity: 10;	z-index:1}
 
@@ -100,3 +97,21 @@ label{color:#D9E021;margin-bottom:20px;}
 p.descripcionTrofeo{color:#D9E021;}
 h3{color:#fff; font-weight:bold;}
 #imgCarta{width:400px;height:350px;}
+
+/*CARRUSEL*/
+#carrusel-ant, #carrusel-sig{
+	color:#000000;
+}
+
+.carrusel-apaga{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */	
+}
+.carrusel-ilumina2{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */	
+}
+#carrusel>img{
+	width:100px;
+	height:100px;
+}

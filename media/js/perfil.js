@@ -1,6 +1,8 @@
 $(document).ready(function() {	
 	comunidad = $('#usuario_comunidadUniversitaria').val()
 	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #estadisticas, #galeria').hide()
+	$("#carrusel>img").hide()
+
 	switch(comunidad){
 		case "1":
 			// alert("Es alumno")
@@ -147,10 +149,57 @@ $(document).ready(function() {
 		inicio=$("#carrusel-inicio").val();
 		fin = $("#carrusel-final").val();
 		for(i=inicio; i<=fin; i++){
-			x="#carrusel-img"+i
-			$(x).hide()
+			$("#carrusel-img"+i).show()
 		}
 	})	
+
+	$("#carrusel>img").bind({
+		click: function(){
+			$(this).unbind('mouseleave');
+			$(this).removeClass('carrusel-apaga')
+			$('.imgCarrusel').not(this).addClass('carrusel-apaga')
+		},
+		mouseenter:function(){
+			$(this).removeClass('carrusel-apaga')
+		},
+		mouseleave: function(){
+			$(this).addClass('carrusel-apaga')
+		}
+	})
+	//Navegación del carrusel
+	$("#carrusel-ant").click(function(){
+		$("#carrusel>img").hide()
+		inicio = parseInt($("#carrusel-inicio").val())-1
+		fin = parseInt($("#carrusel-final").val())-1
+		if(inicio>0){
+			$("#carrusel-inicio").val(inicio)
+			$("#carrusel-final").val(fin)
+			for(i=inicio; i<=fin; i++){
+				$("#carrusel-img"+i).show()
+			}
+		}else{
+			for(i=1; i<=8; i++){
+				$("#carrusel-img"+i).show()
+			}			
+		}		
+	})
+
+	$("#carrusel-sig").click(function(){
+		$("#carrusel>img").hide()
+		inicio = parseInt($("#carrusel-inicio").val())+1
+		fin = parseInt($("#carrusel-final").val())+1
+		if(fin<=54){
+			$("#carrusel-final").val(fin)
+			$("#carrusel-inicio").val(inicio)
+			for(i=inicio; i<=fin; i++){
+				$("#carrusel-img"+i).show()
+			}
+		}else{
+			for(i=47; i<=54; i++){
+				$("#carrusel-img"+i).show()
+			}				
+		}
+	})
 
 }); //Fin Document Ready
 
@@ -162,6 +211,9 @@ function muestraInfoCarta($idcarta){
 		type: "POST",
 		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
 			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo)
+			$("#nombreCarta").html(correcto.nombre)
+			$("#descripcionCarta").html(correcto.descripcion)
+
 		}
 	})	
 }
