@@ -1,11 +1,10 @@
-.foto img{	margin-top:15px; width:200px; height:200px;	float:left;}
+.foto img{	margin-top:15px; width:150px; height:150px;	float:left;}
 label{color:#D9E021;margin-bottom:20px;} 
 .nombreUsr{	color:#FFF;}
 .informacion, .caja-estadisticas, #carrusel{
 	background-image:url("../img/azulLecciones.png") !important;
-	
 	margin-top:30px;
-	padding: 40px 40px;
+	padding: 5px 40px;
 }
 .navegacion ul>li{
 	display:inline;
@@ -13,11 +12,15 @@ label{color:#D9E021;margin-bottom:20px;}
 	padding:10px;
 }
 .navegacion ul>li:hover{font-size:20px;}
-#BtnGuardaCambiosDatosUsr{height:50px;float:right;}
-.header{height:50px}
+#BtnGuardaCambios, #cancelarGuardaCambios{height:50px;float:right;}
+.header{height:50px; margin-bottom:80px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
 .header img{padding:2px 2px; width:40px; height:40px; float:right;}
-
+#BtnEditar{
+	width:200px;
+	height:60px;
+}
+/*******************/
 .gris{
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
@@ -96,7 +99,9 @@ label{color:#D9E021;margin-bottom:20px;}
 
 p.descripcionTrofeo{color:#D9E021;}
 h3{color:#fff; font-weight:bold;}
-#imgCarta{width:400px;height:350px;}
+#imgCarta{width:450px;height:450px; padding:5px}
+.borde-amarillo{border: 5px solid #D9E021;}
+.fondo-amarillo{background-color:#D9E021}
 
 /*CARRUSEL*/
 #carrusel-ant, #carrusel-sig{
@@ -112,6 +117,6 @@ h3{color:#fff; font-weight:bold;}
 	filter:alpha(opacity=40); /* For IE8 and earlier */	
 }
 #carrusel>img{
-	width:100px;
-	height:100px;
+	width:88px;
+	height:88px;
 }

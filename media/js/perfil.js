@@ -1,6 +1,7 @@
 $(document).ready(function() {	
 	comunidad = $('#usuario_comunidadUniversitaria').val()
-	$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #estadisticas, #galeria').hide()
+	$('#contrasenaActual, #guardaCambios, #estadisticas, #galeria').hide()
+	$("form").find(':input:not(:disabled)').prop('disabled',true);
 	$("#carrusel>img").hide()
 
 	switch(comunidad){
@@ -99,17 +100,27 @@ $(document).ready(function() {
 		}
 	})
 	
-	//Eventos del botón cambiar contraseña
-	$("#BtnCambiarContrasena").click(function(){
-		$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena').show()
-		$('#usuario_contrasenaActual, #usuario_nuevaContrasena').val("")
-		$('#usuario_nuevaContrasena').removeAttr('placeholder').attr('placeholder','Confirma contraseña').removeAttr('id').attr('id','usuario_contrasenaActual')
+	//Desenmascarar contraseña
+	checked=0;
+	$("#desenmascarar").click(function(){
+		if(checked==0){
+			$("#usuario_contrasena").removeAttr("type").attr("type","text")
+			checked=1
+		}else{
+			$("#usuario_contrasena").removeAttr("type").attr("type","password")
+			checked=0;
+		}	
+	})
+	
+	//Seguridad
+	$("#BtnEditar").click(function(){
+		$('#contrasenaActual').show()
+		$('#usuario_contrasenaActual').val("")
 	})
 	
 	//Eventos del botón cancelar cambiar contraseña
-	$("#BtnCancelarCambiarContrasena").click(function(){
-		$('#usuario_contrasenaActual, #BtnCancelarCambiarContrasena, #BtnConfirmContrasena, #usuario_nuevaContrasena').hide()
-		$('#usuario_nuevaContrasena').removeAttr('id placeholder name').attr('id', 'usuario_contrasenaActual').attr('placeholder', 'Confirma contraseña')
+	$("#BtnCancelarEditar").click(function(){
+		$('#contrasenaActual').hide()
 	})
 	$("#BtnConfirmContrasena").click(function(){
 		if($("#usuario_contrasenaActual").val()==""){
@@ -117,13 +128,15 @@ $(document).ready(function() {
 		}else{
 			//Enviará la contraseña vía AJAX para validarla
 			$.ajax({
-				url: base+'index.php/cpruebasNaye/confirmaContrasena/'+$("#usuario_contrasenaActual").val(),
+				url: base+'index.php/cDatosPerfil2/confirmaContrasena/'+$("#usuario_contrasenaActual").val()+'/'+$("#usuario_id").val(),
 				dataType: "json",
 				type: "POST",
 				success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
 					if(correcto == 0){
-						$("#usuario_contrasenaActual").val("").removeAttr('id placeholder').attr('id','usuario_nuevaContrasena').attr('placeholder', 'Ingresa nueva contraseña').attr('name', 'usuario_nuevaContrasena')
-						$("#BtnConfirmContrasena").hide()
+						$("form").find(':input:disabled').prop('disabled',false);
+						$("#BtnEditar,#contrasenaActual").hide()
+						$("#guardaCambios").show()
+						
 					}else{
 						alert("contraseña incorrecta")
 					}
@@ -131,7 +144,12 @@ $(document).ready(function() {
 			})	
 		}
 	})
+	$("#cancelarGuardaCambios").click(function(){
+		$('#guardaCambios').hide()
+		$('#BtnEditar').show()
+		$("form").find(':input:not(:disabled)').prop('disabled',true);
 
+	})	
 
 	//Navegación del usuario
 	$("#nav-informacion").click(function(){
@@ -151,13 +169,14 @@ $(document).ready(function() {
 		for(i=inicio; i<=fin; i++){
 			$("#carrusel-img"+i).show()
 		}
+		$("#carrusel-sig, #carrusel-ant").show()
 	})	
 
 	$("#carrusel>img").bind({
 		click: function(){
 			$(this).unbind('mouseleave');
-			$(this).removeClass('carrusel-apaga')
-			$('.imgCarrusel').not(this).addClass('carrusel-apaga')
+			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo')
+			$('.imgCarrusel').not(this).addClass('carrusel-apaga').removeClass('borde-amarillo')
 		},
 		mouseenter:function(){
 			$(this).removeClass('carrusel-apaga')
@@ -210,7 +229,7 @@ function muestraInfoCarta($idcarta){
 		dataType: "json",
 		type: "POST",
 		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
-			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo)
+			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo).addClass('fondo-amarillo')
 			$("#nombreCarta").html(correcto.nombre)
 			$("#descripcionCarta").html(correcto.descripcion)
 
