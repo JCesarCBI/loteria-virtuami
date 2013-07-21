@@ -15,13 +15,10 @@
 		<div class="twelve columns header">
 			<img src="<?= base_url() ?><?= $avatar ?>" title="avatar"/>
 			<a href="#" id="usuario"><?=$nombreUsr?></a>
+			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
 		</div>
 
 		<div class="row">
-			<div class="three columns foto">
-				<img src="<?= base_url() ?><?= $avatar ?>" title="kawaii"/>
-			</div>	
-			<h1 class="nombreUsr nine columns"><?= $nombreUsr?></h1>
 			<div class="row">
 				<div class="twelve columns navegacion">
 					<ul>
@@ -32,7 +29,14 @@
 				</div>
 			</div>
 			<div id="informacion" class="twelve columns informacion">
-				<form action="" method="post">
+				<form action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
+					<div class="row">
+						<div class="six colums foto">
+							<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
+						</div>
+						<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>	
+					</div><br>
+					
 					<div class="row">
 						<div class="four columns">
 							<label for="usuario_nombreUsuario">Nombre(s):</label>
@@ -73,11 +77,11 @@
 						</div>
 						<div id="area" class="four columns">
 							<label for="usuario_area">Área:</label>
-					        <input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área">
+					        <input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
 					    </div>
 						<div id="cargo" class="four columns">
 							<label for="usuario_cargo">Cargo:</label>
-							<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo">
+							<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
 						</div>
 						<div id="gradoActivo" class="four columns">
 							<label for="usuario_gradoActivo">Grado Activo:</label>
@@ -94,24 +98,31 @@
 					</div>
 					<hr>
 					<div class="row"> <!--Seguridad -->
-						<div id="cambiarContrasena" class="four columns">
-							<input type="button" id="BtnCambiarContrasena" value="Cambiar contraseña">
-						</div>
-						<div id="contrasenaActual" class="four columns">
-							<input type="password" id="usuario_contrasenaActual" placeholder="Confirma contraseña actual" name="usuario_contrasenaActual" >
-						</div>
-						<div id="cancelarCambiarContrasena" class="four columns">
-							<input type="button" id="BtnConfirmContrasena" value="Confirmar">
-							<input type="button" id="BtnCancelarCambiarContrasena" value="Cancelar" >
-						</div>
+						<label for="usuario_contrasena">Contraseña:</label>
+						<input class="four columns" id="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
+						<input id="desenmascarar" class="four columns" type="checkbox" />
+						<label for="desenmascarar">Desenmascarar</label>
+						<div class="four columns"></div>
 					</div>
 					<hr>
-					<div class="row"> <!--botones-->
-						<div class="twelve columns">
-							<input type="submit" id="BtnGuardaCambiosDatosUsr" value="Guardar cambios">
-						</div>
+					
+					<div id="guardaCambios" class="row"> <!--submit-->
+						<input type="button" id="cancelarGuardaCambios" value="Cancelar">
+						<input type="submit" id="BtnGuardaCambios" value="Guardar cambios">
 					</div>
 				</form>
+				<div class="row"> <!--Editar información-->
+					<div class="four columns">
+						<input type="button" id="BtnEditar" value="Editar información">
+					</div>
+					<div id="contrasenaActual" class="four columns offset-by-one">
+						<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual" >
+						<input type="button" id="BtnConfirmContrasena" value="Confirmar">
+						<input type="button" id="BtnCancelarEditar" value="Cancelar" >
+					</div>
+					<div class="three columns"></div>
+
+				</div>
 			</div> <!--información-->
 
 			<div class="row" id="estadisticas">
@@ -219,14 +230,16 @@
 					</div>
 				</div>
 				<div class="row" id="carrusel">
-					<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="8">
+					<input class="recorre" id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="8">
+					<img id="carrusel-ant" src="<?=base_url()?>media/img/cback.png">
 					<?php 
 						foreach ($galeriaCartas as $imagen) { ?>
 							<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idImagen']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>);"/>
 					<?php	} ?>
+					<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">
 					<br><br>
-					<label id="carrusel-ant">Atras</label>
-					<label id="carrusel-sig">Siguiente</label>
+					<!-- <label id="carrusel-ant">Atras</label>
+					<label id="carrusel-sig">Siguiente</label> -->
 				</div>
 			</div>
 		</div>

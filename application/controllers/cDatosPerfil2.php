@@ -136,7 +136,7 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados['galeriaCartas'] = $data['galeriaCartas'];	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
-				echo "</pre>";
+				// echo "</pre>";
 				// return $datosPerfilOrdenados;
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
@@ -149,38 +149,6 @@ class CDatosPerfil2 extends CI_Controller {
 			$contrasenaUsuario = $this->mdatosperfil->getContrasena($idusuario);//"a1b1c2d3"; //suponiendo que se recibe esto del modelo
 			$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
 			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
-		}
-		
-		
-		public function creaCarrusel($idCartaI, $idCartaF){
-			$baraja = $this->mJuegoLibre->getMazo();
-			foreach ($baraja as $key) {
-				$id = $key["idCarta"];
-				$carrusel[$id] = $key;
-				unset($carrusel[$id]['descripcion']);
-				unset($carrusel[$id]['audio']);
-				unset($carrusel[$id]['longitud']);
-				unset($carrusel[$id]['imgIcon']);
-				$carrusel[$id]['idImagen'] = $key["idCarta"];
-				unset($carrusel[$id]['idCarta']);
-				$carrusel[$id]['nombreImagen'] = $key["nombre"];
-				unset($carrusel[$id]['nombre']);
-				$carrusel[$id]['urlChico'] = $key["imgPlantilla"];
-				unset($carrusel[$id]['imgPlantilla']);
-				$carrusel[$id]['urlGrande'] = $key["imgMazo"];
-				unset($carrusel[$id]['imgMazo']);
-			}
-			$cont = 0;
-			for ($i=$idCartaI; $i <= $idCartaF; $i++) { 
-				$arreglo[$i] = $carrusel[$i];
-				$cont++;
-			}
-			$arreglo['long'] = $cont; 
-			echo "<pre>";
-			print_r($arreglo);
-			echo "</pre>";
-			// echo json_encode($arreglo);
-
 		}
 		
 		public function traeDatosCarta($idcarta){
@@ -197,7 +165,11 @@ class CDatosPerfil2 extends CI_Controller {
 			echo json_encode($cartas[$idcarta-1]);
 		}
 		
-		
+		public function editaInformacionUsuario(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
+		}
 		
 		
 }
