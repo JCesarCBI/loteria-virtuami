@@ -116,32 +116,39 @@ class CDatosPerfil extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
 				//Datos para la galeria de cartas
-				$baraja = $this->mJuegoLibre->getMazo();
-				foreach ($baraja as $key) {
-					$id = $key["idCarta"];
-					$data["galeriaCartas"][$id] = $key;
-					unset($data["galeriaCartas"][$id]['descripcion']);
-					unset($data["galeriaCartas"][$id]['audio']);
-					unset($data["galeriaCartas"][$id]['longitud']);
-					unset($data["galeriaCartas"][$id]['imgIcon']);
-					$data["galeriaCartas"][$id]['idImagen'] = $key["idCarta"];
-					unset($data["galeriaCartas"][$id]['idCarta']);
-					$data["galeriaCartas"][$id]['nombreImagen'] = $key["nombre"];
-					unset($data["galeriaCartas"][$id]['nombre']);
-					$data["galeriaCartas"][$id]['urlChico'] = $key["imgPlantilla"];
-					unset($data["galeriaCartas"][$id]['imgPlantilla']);
-					$data["galeriaCartas"][$id]['urlGrande'] = $key["imgMazo"];
-					unset($data["galeriaCartas"][$id]['imgMazo']);
+				$idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
+				$mazoCartas = $this->mestadisticas->getCartas();
+				foreach ($mazoCartas as $key) {
+					unset($key["audio"]);
+					unset($key["imgIcon"]);
+					unset($key["longitud"]);
+					$key['idImagen'] = $key["idCarta"];
+					unset($key["idCarta"]);
+					unset($key["descripcion"]);
+					$key['nombreImagen'] = $key["nombre"];
+					unset($key["nombre"]);
+					$key['urlChico'] = $key["imgPlantilla"];
+					unset($key["imgPlantilla"]);
+					$key['urlGrande'] = $key["imgMazo"];
+					unset($key["imgMazo"]);
+					$key['Estado'] = 0;
+					// echo "<pre>";
+					// print_r($key);
+					// echo "<pre>";
+					$datosPerfilOrdenados['galeriaCartas'][$key["idImagen"]] = $key;
 				}
-				$datosPerfilOrdenados['galeriaCartas'] = $data['galeriaCartas'];	
+				foreach ($idGaleria as $key) {
+					$datosPerfilOrdenados["galeriaCartas"][$key["idCarta"]]["Estado"] = 1;
+				}
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "<pre>";
-				// return $datosPerfilOrdenados;
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
 	}
+
+
 		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
 		//Se recibe mediante AJAX 
 		public function confirmaContrasena($contrasena,$idusuario){
@@ -157,9 +164,26 @@ class CDatosPerfil extends CI_Controller {
 			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
 			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
 			
-			$cartas = $this->mJuegoLibre->getMazo();
+			$idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
+			$mazoCartas = $this->mestadisticas->getCartas();
+			
+			foreach ($mazoCartas as $key) {
+				unset($key["audio"]);
+				unset($key["longitud"]);
+				$key['Estado'] = 0;
+				$cartas[$key["idCarta"]] = $key;
+			}
+			foreach ($idGaleria as $key) {
+				$cartas[$key["idCarta"]]["Estado"] = 1;
+			}
+			// echo "<pre>";
+			// print_r($cartas);
+			// echo "</pre>";
+			// echo "<pre>";
+			// print_r($idGaleria);
+			// echo "</pre>";
 			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
-			echo json_encode($cartas[$idcarta + 1]);
+			echo json_encode($cartas[$idcarta]);
 		}
 		
 		
