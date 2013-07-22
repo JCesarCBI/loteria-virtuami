@@ -25,18 +25,19 @@
 					
 					
 					if ($idUser != 0) {
-						$datos = $this->mestadisticas->getModalidades($idUser, $idJuego, $idModalidad, $idEstadoPartida);
-						echo'<pre>';
-							print_r($datos);
-						echo'</pre>';
-						// for ($i = 0; $i < count($datos) ; $i++) { 
-							// $datosOrdenados[$i+1] = $datos[$i];
-						// }
+						// $datos = $this->mestadisticas->getGaleria(1,1);
+						$datos = $this->mestadisticas->getCartas();
 						// echo'<pre>';
-							// print_r($datosOrdenados);
+							// print_r($datos);
 						// echo'</pre>';
-					// } else {
-						// return FALSE;
+						for ($i = 0; $i < count($datos) ; $i++) { 
+							$datosOrdenados[$i+1] = $datos[$i];
+						}
+						echo'<pre>';
+							print_r($datosOrdenados);
+						echo'</pre>';
+					} else {
+						return FALSE;
 					}
 				}
 			}

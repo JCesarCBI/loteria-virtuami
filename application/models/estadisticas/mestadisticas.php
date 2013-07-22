@@ -41,7 +41,7 @@
 		
 		public function getCartas()
 		{
-			$this->db->SELECT('*');
+			$this->db->SELECT('idCarta, nombre, descripcion, imgMazo, imgPlantilla, imgIcon');
 			$this->db->FROM('carta');
 			
 			$query = $this->db->get();

@@ -562,7 +562,7 @@ INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('descuidero
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('chorizo',18,7);
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('mangante',18,8);
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('saqueador',18,9);
-INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('timador',18,7)
+INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('timador',18,7);
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('bandido',18,7);
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('atracador',18,9);
 INSERT INTO loteriadb.sinonimo (sinonimo, idCarta, longitud) VALUES ('maleante',18,8);
@@ -1268,7 +1268,7 @@ UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_45_gato.jpg" WHERE idCarta
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_46_sol.jpg" WHERE idCarta="46";
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_47_corona.jpg" WHERE idCarta="47";
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_48_chalupa.jpg" WHERE idCarta="48";
-UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_49_niño.jpg" WHERE idCarta="49";
+UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_49_nino.jpg" WHERE idCarta="49";
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_50_pescado.jpg" WHERE idCarta="50";
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_51_ciudad.jpg" WHERE idCarta="51";
 UPDATE loteriadb.carta SET imgMazo="/media/img/mazo/h_52_bailarina.jpg" WHERE idCarta="52";
@@ -1324,7 +1324,7 @@ UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/45_gato.jpg" WHERE
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/46_sol.jpg" WHERE idCarta="46";
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/47_corona.jpg" WHERE idCarta="47";
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/48_chalupa.jpg" WHERE idCarta="48";
-UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/49_niño.jpg" WHERE idCarta="49";
+UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/49_nino.jpg" WHERE idCarta="49";
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/50_pescado.jpg" WHERE idCarta="50";
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/51_ciudad.jpg" WHERE idCarta="51";
 UPDATE loteriadb.carta SET imgPlantilla="/media/img/plantilla/52_bailarina.jpg" WHERE idCarta="52";
