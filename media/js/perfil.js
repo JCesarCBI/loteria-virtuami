@@ -187,7 +187,7 @@ $(document).ready(function() {
 	})
 	//Navegación del carrusel
 	$("#carrusel-ant").click(function(){
-		$("#carrusel>img").hide()
+		$("#carrusel>img:not(.recorre)").hide()
 		inicio = parseInt($("#carrusel-inicio").val())-1
 		fin = parseInt($("#carrusel-final").val())-1
 		if(inicio>0){
@@ -204,7 +204,7 @@ $(document).ready(function() {
 	})
 
 	$("#carrusel-sig").click(function(){
-		$("#carrusel>img").hide()
+		$("#carrusel>img:not(.recorre)").hide()
 		inicio = parseInt($("#carrusel-inicio").val())+1
 		fin = parseInt($("#carrusel-final").val())+1
 		if(fin<=54){
