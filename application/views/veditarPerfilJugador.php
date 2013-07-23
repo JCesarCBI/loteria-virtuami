@@ -230,8 +230,8 @@
 					</div>
 				</div>
 				<div class="row" id="carrusel">
-					<input class="recorre" id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="8">
-					<img id="carrusel-ant" src="<?=base_url()?>media/img/cback.png">
+					<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="8">
+					<img id="carrusel-ant" class="recorre" src="<?=base_url()?>media/img/cback.png">
 					<?php 
 						foreach ($galeriaCartas as $imagen) { ?>
 							<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idImagen']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>);"/>
