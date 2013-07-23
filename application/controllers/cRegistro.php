@@ -16,9 +16,9 @@
 	
 	public function index(){
 		$datos = $this->micombobox->datosComboBox();
-		$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
-		$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
-		$this->load->view('vinicio', $datos);
+		//$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
+		//$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
+		$this->load->view('vPruebasGuillermo', $datos);
 		//print_r($datos);
 	}
 	
@@ -27,15 +27,19 @@
 		//$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
 		//$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	//sexo, 
 		//
-		$datos['gradoActivo']=$this->gradoActivo();
+		//$datos['gradoActivo']=$this->gradoActivo();
+		echo '<pre>';
 		print_r($datos);
+		echo '</pre>';
 		}
 	
 	//Valida el registro y agrega los datos a la base de datos 
 	public function validarRegistro(){
     // Reglas de validacion
-    	
-        $this->form_validation->set_rules('usuario_nombreUsr','','required');
+    	echo "VALIDAR REGISTRO...";
+		$datos=validarAreaYCargo();
+    	print_r($datos);
+        /*$this->form_validation->set_rules('usuario_nombreUsr','','required');
         $this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
 		$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
         $this->form_validation->set_rules('usuario_nombre','required|trim');		
@@ -66,8 +70,9 @@
             $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
             $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
             $this->form_validation->set_message('min_length','El Campo %s debe tener como minimo 6 caracteres');
-           
-            $data = array('mensaje'=>'El usuario se registro correctamente');
+           */
+          //  $data = array('mensaje'=>'El usuario se registro correctamente');
+            /*
             $datosUsuario= array(
                 'usuario'=>$this->input->post('usuario_nombreUsr',TRUE),
                 'correo'=>$this->input->post('usuario_correo',TRUE),
@@ -75,17 +80,31 @@
                 'sexo'=>$this->input->post('usuario_sexo',TRUE),
                 'nombre'=>$this->input->post('usuario_nombre',TRUE),
                 'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
-                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE)
+                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
+				'edad'=>$this->input->post('usuario_edad',TRUE),
+				'cargo'=>$this->input->post('usuario_cargo',TRUE),
+				'area'=>$this->input->post('usuario_area',TRUE),
+				'comunidad'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
+				'division'=>$this->input->post('usuario_division',TRUE),
+				'gradoActivo'=>$this->input('usuario_gradoActivo',TRUE),
+				'posgrado'=>$this->input('usuario_posdrado',TRUE),
+				'avatar'=>$this->input->post(1,TRUE),
 			);
-			$this->mregistro->agregarUsuario($datosUsuario);
+		    $this->load->view('welcome_message');
+			echo "Imprimir arreglo";
+			echo '<pre>';
+		    print_r($array);
+			echo '</pre>';
+			}*/
+			//$this->mregistro->agregarUsuario($datosUsuario);
 			//Regresar el arreglo con los datos del usuario para que el modelo los agregue a la base de datos e iniciar sesión	
-        }else
+        /*}else
         {
-      
+      		echo "ERROR...";
             //Regresar al registro
 
            
-        }
+        }*/
        }
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
@@ -143,6 +162,15 @@
 		}
 	}
 	
+	function validarAreaYCargo(){
+		//$datos;	
+		$area=$this->input->post('usuario_area',TRUE);
+		$cargo=$this->input->post('usuario_cargo',TRUE);
+		if($area==""){$datos['area']="NULL";}
+		if($cargo=="")$datos['cargo']="NULL";
+		
+		return $datos;
+		}
 	
 	//----------------------------Funciones de prueba Borrar -------------------------------------------------------------------
 	public function tipoUsuario(){
