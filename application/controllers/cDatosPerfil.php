@@ -185,8 +185,9 @@ class CDatosPerfil extends CI_Controller {
 			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
 			echo json_encode($cartas[$idcarta]);
 		}
-		
-		
-		
-		
 }
+
+
+
+
+

@@ -10,8 +10,12 @@ class Micombobox{
 		$this->ci->load->model('usuario/mregistro');
 		$tipoUsuario = $this->ci->mregistro->getTipoUsuario();
 		$division = $this->ci->mregistro->getDivision();
+		$gradoActivo = $this->ci->mregistro->getGradoActivo();
+		$posgrado = $this->ci->mregistro->getGradoPosgrado();
 		$datos['comunidad_universitaria'][-1] = 'Comunidad Universitaria';
 		$datos['division'][-1] = 'Division';
+		$datos['gradoActivo'][-1] = 'gradoActivo';
+		$datos['pos'][-1] = 'pos';
 		$i = 0;
 		foreach ($tipoUsuario as $lugar) {
 			foreach ($lugar as $key) {
@@ -26,7 +30,27 @@ class Micombobox{
 				$i++;
 			}
 		}
+		$i = 0;
+		foreach ($gradoActivo as $key) {
+			foreach ($key as $keyl) {
+				$datos['gradoActivo'][$i] = $keyl["gradoActivo"];
+				$i++;
+			}
+		}
+		$i = 0;
+		foreach ($posgrado as $key) {
+			foreach ($key as $keyl) {
+				$datos['pos'][$i] = $keyl["gradoPosgrado"];
+				$i++;
+			}
+		}
 		return $datos;
+		// echo "<pre>";
+		// print_r($datos);
+		// echo "</pre>";
+		// echo "<pre>";
+		// print_r($posgrado);
+		// echo "</pre>";
 	}
    
 }
