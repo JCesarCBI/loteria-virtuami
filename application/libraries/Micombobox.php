@@ -16,28 +16,28 @@ class Micombobox{
 		$datos['division'][-1] = 'Division';
 		$datos['gradoActivo'][-1] = 'gradoActivo';
 		$datos['pos'][-1] = 'pos';
-		$i = 0;
+		$i = 1;
 		foreach ($tipoUsuario as $lugar) {
 			foreach ($lugar as $key) {
 				$datos['comunidad_universitaria'][$i] = $key['tipoUsr'];
 				$i++;
 			}			
 		}
-		$i = 0;
+		$i = 1;
 		foreach ($division as $lugar) {
 			foreach ($lugar as $key) {
 				$datos['division'][$i] = $key['iniciales'];
 				$i++;
 			}
 		}
-		$i = 0;
+		$i = 1;
 		foreach ($gradoActivo as $key) {
 			foreach ($key as $keyl) {
 				$datos['gradoActivo'][$i] = $keyl["gradoActivo"];
 				$i++;
 			}
 		}
-		$i = 0;
+		$i = 1;
 		foreach ($posgrado as $key) {
 			foreach ($key as $keyl) {
 				$datos['pos'][$i] = $keyl["gradoPosgrado"];
