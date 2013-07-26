@@ -3,21 +3,19 @@
 /**GENERAL**/
 	
 label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
-
+form{
+	width:190px;
+	height:170px;
+	padding-left:5px;
+	position:absolute;
+}
 /* Clase que define a todos los botones de la vista inicio */
-#atras1{margin-left:-140px;}
-
+#atras1{margin-left:-150px;}
 .ins{font-size:10px; color: #D9E021; margin-top:-10px; margin-bottom:15px; width:150px;}
 .boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
 
 /*Mesa del centro */
 /* posición del primer botón que aparece en el registro */
-#sig1{ margin-top:12px;	margin-left:-57px;}
-.sig1-atras{ margin-top:12px;	margin-left:0px;}
-
-/* posición del segundo botón que aparece en el registro */
-#sig2{ margin-top:12px;	margin-left:85px;}
-
 .mesa{
 	background-image:url("../img/mesa.png");
 	background-repeat:no-repeat;
@@ -27,7 +25,14 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 	margin-top:190px;
 	margin-left:40px
 }
+#sig1{ margin-top:12px;
+	float:right;
+	margin-right:25px;
+	}
+.sig1-atras{ margin-top:22px;	margin-left:0px;}
 
+/* posición del segundo botón que aparece en el registro */
+#sig2{ margin-top:12px;	margin-left:85px;}
 .centro{ margin-left:17%;width: 90%;}
 
 /**CAJÓN LATERAL */
@@ -63,10 +68,10 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 }
 
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
-	margin-top:-166px;
-	margin-left:192.5px;
+	margin-top:-138px;
+	margin-left:193px;
 	background:#D9E021;
-	height:175px;
+	height:179px;
 	width:25px;
 	float:right;
 	padding: 7px 15px;
@@ -75,7 +80,7 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
 .amarillo-lat2{ /* Fondo amarillo del cajón lateral */
 	margin-top:-172px;
 }
-#usuario_edad{margin-top:-22px; margin-bottom:3px}
+#usuario_edad{margin-bottom:3px}
 
 #usuario_comunidadUniversitaria{
 	position:absolute;

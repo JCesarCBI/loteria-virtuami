@@ -3,14 +3,13 @@ $(document).ready(function() {
 	$('.cajonLateral-abierto, .cajonSuperior-abierto, .ok, .recuperarContrasena, .error_validation').hide();
 	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #Lusuario_nombreUsr, #Lusuario_contrasena, #usuario_correo_recuperarContrena').val("");
 	$("#sig1, #sig2, #enviar").attr("disabled","disabled")
-
+	$("#paso2, #paso3, #sig2, #atras2, #atras1, #enviar").hide()
 	//Abrir y cerrar cajones
 	$(".cajonSuperior-cerrado").click(function() {
 		$(this).hide();
 		$('.cajonSuperior-abierto, .cajonLateral-cerrado').show();
 		$('.cajonLateral-abierto').hide();
 	});
-
 	$(".amarillo-sup").click(function() {
 		$('.cajonSuperior-abierto').hide();
 		$('.cajonSuperior-cerrado').show();
@@ -41,23 +40,24 @@ $(document).ready(function() {
 	});
 			
 	//REGISTRO
-	$('.segundo, .tercero').hide();
-	$('#sig2, #atras1, #atras2, #enviar').hide();
+	$('#paso2, #paso3').hide();
 		
 	//Primera parte
-	$("#sig1").click(function() { $('#sig1').hide();	$('.primero, p.sexo').hide();
-		$('#sig2, #atras1').show();	$('.segundo').show();	
+	$("#sig1").click(function() { $('#sig1, #paso1').hide();
+		$("#amarillo-lat").css('margin-top',"-169px")
+		$('#sig2, #atras1, #paso2').show();
+	
 	});	
 	
 	//Segunda parte
 	$("#sig2").click(function(){
-		$('#amarillo-lat').addClass('amarillo-lat2')
-		$('#usuario_gradoActivo, #usuario_posgrado, #usuario_area, #usuario_cargo, #usuario_division, .segundo, #atras1, #sig1, #sig2, #usuario_nombreUsr, #usuario_contrasena, #usuario_correo').hide();
+		$('#amarillo-lat').css('margin-top',"-177px")
+		$('#paso1, #paso2, #sig1, #atras1, #sig2').hide();
 
 		if($('#usuario_edad').val()== ""){
 			$('#usuario_comunidadUniversitaria').attr('disabled','disabled')
 		}
-		$('#usuario_edad, #usuario_comunidadUniversitaria, #atras2, #enviar').show();	
+		$('#paso3, #atras2, #enviar').show();	
 		if($("#usuario_comunidadUniversitaria").val() == 0){
 			$('#usuario_gradoActivo').show();
 			if($("#usuario_gradoActivo").val() == 1){
@@ -81,15 +81,17 @@ $(document).ready(function() {
 	});	
 
 	$('#atras1').click(function(){
-		$('#sig1, .primero, p.sexo,label.sexo, .sexo').show();
-		$('#sig2, #atras1, #enviar').hide(); $('.segundo, .tercero').hide();
+		$("#amarillo-lat").css('margin-top',"-138px")
+		$('#sig1, #paso1').show();
+		$('#sig2, #atras1, #enviar, #paso2, #paso3').hide();
 	})
 	
 	//Tercera parte	
 	$("#atras2").click(function() {
-		$('.segundo, #atras1, #sig2').show();
+		$("#amarillo-lat").css('margin-top',"-169px")
+		$('#paso2, #atras1, #sig2').show();
 		$('#amarillo-lat').removeClass('amarillo-lat2').addClass('amarillo-lat')
-		$('.primero, .tercero, #atras2, #enviar, #sig1, p.sexo').hide();
+		$('#paso1, #paso3, #atras2, #enviar').hide();
 	});
 			
 	//FUNCIONES AJAX
