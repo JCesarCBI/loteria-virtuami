@@ -50,7 +50,7 @@
 				<label class="rotar CL-cerrado">Registro</label>				
 			</div>
 			
-			<div div="cajonLatCerrado" class="cajonLateral-abierto">
+			<div class="cajonLateral-abierto">
 				<form method="post" action="">
 					<label class="ins">Campos con * son obligatorios</label>
 					<!-- primera parte registro -->
@@ -77,7 +77,7 @@
 					<div id="paso2">
 						<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
 						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" />
+						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
 					</div>
 					<!--tercera parte registro-->
 					<div id="paso3">
@@ -101,7 +101,7 @@
 	                	<label class="rotar">Registro</label>
 	                </div>
                 </form>
-			</div> <!--canjonLateral-->			
+			</div> <!--canjonLateral-abierto-->			
 
 		</div><!-- nine columns-->
 		
