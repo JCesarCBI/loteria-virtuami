@@ -4,6 +4,7 @@ $(document).ready(function() {
 	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #Lusuario_nombreUsr, #Lusuario_contrasena, #usuario_correo_recuperarContrena').val("");
 	$("#sig1, #sig2, #enviar").attr("disabled","disabled")
 	$("#paso2, #paso3, #sig2, #atras2, #atras1, #enviar").hide()
+
 	//Abrir y cerrar cajones
 	$(".cajonSuperior-cerrado").click(function() {
 		$(this).hide();
@@ -53,12 +54,12 @@ $(document).ready(function() {
 	$("#sig2").click(function(){
 		$('#amarillo-lat').css('margin-top',"-177px")
 		$('#paso1, #paso2, #sig1, #atras1, #sig2').hide();
-
+		$('#paso3, #atras2, #enviar').show();
 		if($('#usuario_edad').val()== ""){
 			$('#usuario_comunidadUniversitaria').attr('disabled','disabled')
 		}
-		$('#paso3, #atras2, #enviar').show();	
-		if($("#usuario_comunidadUniversitaria").val() == 0){
+			
+		if($("#usuario_comunidadUniversitaria").val() == 1){
 			$('#usuario_gradoActivo').show();
 			if($("#usuario_gradoActivo").val() == 1){
 				$("#usuario_division").show()
@@ -67,8 +68,7 @@ $(document).ready(function() {
 				$("#usuario_posgrado").show()
 			}	
 		}
-
-		if($("#usuario_comunidadUniversitaria").val() == 1){
+		if($("#usuario_comunidadUniversitaria").val() == 1){ //Alumno
 			$("#usuario_area").show()
 			$("#usuario_cargo").show()		
 		}
@@ -77,7 +77,6 @@ $(document).ready(function() {
 			$("#usuario_cargo").show()
 		
 		}
-
 	});	
 
 	$('#atras1').click(function(){
@@ -240,15 +239,16 @@ $(document).ready(function() {
 		if($('#usuario_comunidadUniversitaria').val() != -1){
 			var comunidad = $('#usuario_comunidadUniversitaria').val()
 			switch(comunidad){
-				case "0":
+				case "1": //Alumno
 					$("#enviar").attr("disabled","disabled")
-					$('#usuario_cargo, #usuario_area, #usuario_posgrado').hide()
+					$('#usuario_cargo, #usuario_area, #usuario_posgrado').hide().removeAttr('required').val("")
 					$('#usuario_gradoActivo').show().val(-1);
 					$('#usuario_gradoActivo').change(function(){
 						if($('#usuario_gradoActivo').val()!=-1){
 							if($('#usuario_gradoActivo').val()==1){ //El alumno pertenece a licenciatura
 								$('#usuario_division').show().val(-1)
 								$('#usuario_posgrado').hide();
+								$("#enviar").attr("disabled","disabled")
 								
 								$('#usuario_division').change(function(){
 									if($('#usuario_division').val()!=-1){
@@ -260,19 +260,28 @@ $(document).ready(function() {
 								
 							}
 							if($('#usuario_gradoActivo').val()==2){ //El alumno pertenece a posgrado
-								$('#usuario_posgrado').show().val(1);
-									$("#enviar").removeAttr("disabled","disabled")
-
+								$('#usuario_posgrado').show().val(-1);
+								$("#enviar").attr("disabled","disabled")
 							}
+							
+							$('#usuario_posgrado').change(function(){
+								if($('#usuario_posgrado').val()!=-1){
+									$("#enviar").removeAttr("disabled","disabled")
+								}else{
+									$("#enviar").attr("disabled","disabled")
+
+								}
+							})
+
 						}else{
 							$("#enviar").attr("disabled","disabled")
 							$('#usuario_division, #usuario_posgrado').hide()
 						}
 					})
 					break;
-				case "1": 
+				case "2": //Profesor
 					$("#enviar").attr("disabled","disabled")
-					$('#usuario_area, #usuario_cargo').show().val("")
+					$('#usuario_area, #usuario_cargo').show().val("").attr('required','required')
 					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').hide()
 					$('#usuario_area, #usuario_cargo').keyup(function(){
 						if($('#usuario_area').val()!= "" && $('#usuario_cargo').val() != ""){
@@ -282,9 +291,9 @@ $(document).ready(function() {
 						}
 					})
 					break;
-				case "2": 
+				case "3": //Administrativo
 				 	$("#enviar").attr("disabled","disabled")
-					$('#usuario_area, #usuario_cargo').show().val("")
+					$('#usuario_area, #usuario_cargo').show().val("").attr('required','required')
 					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado').hide()
 					$('#usuario_area, #usuario_cargo').keyup(function(){
 						if($('#usuario_area').val()!= "" && $('#usuario_cargo').val() != ""){
@@ -294,8 +303,8 @@ $(document).ready(function() {
 						}
 					})					
 					break;
-				case "3":
-					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado, #usuario_cargo, #usuario_area').hide()
+				case "4": //Otro
+					$('#usuario_gradoActivo, #usuario_division, #usuario_posgrado, #usuario_cargo, #usuario_area').hide().removeAttr('required').val("")
 					$("#enviar").removeAttr("disabled")
 					break;				
 			}
@@ -360,5 +369,26 @@ $(document).ready(function() {
 			}
 		})
 	})
+
+	//LOGIN
+	
+	$('#recuperaContrasena-boton').click(function(){
+			$.ajax({
+				url: base+'index.php/cpruebasNaye/recuperarContrasena',
+				data: { correo: $('#usuario_correo_recuperarContrena').val() },
+				dataType: "json",
+				type: "POST",
+				success:function(exito){ 
+					if(exito == 1){
+						alert("Tu contraseña ha sido enviada a tu correo :D")
+						$('#Lusuario_nombreUsr, #Lusuario_contrasena, #recuperaContrasena, #iSesion-boton').show();
+						$('#usuario_correo_recuperarContrena').val('');
+						$('.recuperarContrasena').hide();
+					}else{ 
+						alert("Este correo no está registrado! >.<")
+	        		}
+				}
+			})
+		})	
 		
 });
