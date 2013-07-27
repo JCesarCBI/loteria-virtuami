@@ -10,6 +10,13 @@
 	</head>
 
 	<body>
+		<script>
+			$(document).ready(function() {	
+				if(<?=$noExiste?>==1){
+					alert('Usuario o contraseña incorrecto')
+				}
+			})
+		</script>
 		<title>Inicio</title>
 		<div class="twelve header">
 
@@ -25,7 +32,7 @@
 				<div class="amarillo-sup">				
 					<label class="i-sesion">Iniciar sesión</label>
 				</div>
-				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
+				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin2/validarLogin">
 	                <input autofocus class="superior vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
 	                <input autofocus class="superior vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
 	                <input class="sup boton" type="submit" id="iSesion-boton" name="iniciar-sesion" value="entrar">
@@ -36,7 +43,7 @@
     	        	Se mantiene oculto y se activa con jquery -->
     	        <div class="recuperarContrasena">
 	    	        <label id="labelRecuperar" class="ins">Ingresa el correo al que se enviará tu contraseña</label>
-					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin/recuperarContrasena">
+					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin2/recuperarContrasena">
 		                <input autofocus class="superior vacio"  type="email" id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" required placeholder="correo"/>
 		                <input class="sup boton" type="submit" id="recuperaContrasena-boton" name="recuperaContrasena-boton" value="enviar">
 	    	        </form>
@@ -51,18 +58,18 @@
 			</div>
 			
 			<div class="cajonLateral-abierto">
-				<form method="post" action="">
+				<form id="formRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro2/RegistraUsuario">
 					<label class="ins">Campos con * son obligatorios</label>
 					<!-- primera parte registro -->
 					<div id="paso1">
-		                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" oname="usuario_nombreUsr" required placeholder="* usuario"/>
+		                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="* usuario"/>
 		                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
 						<label id="usrError" class="error_validation">El alias ya existe</label>
 	
 		                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
 		                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
 	   					<label id="emailExisteError" class="error_validation">El correo ya está registrado</label>
-						<label id="emailDominioError" class="error_validation">El dominio no es válido, usa tu cuenta de titlani/xanum</label>
+						<label id="emailDominioError" class="error_validation">El dominio no es válido,<br> usa tu cuenta de titlani/xanum/docencia</label>
 						
 		                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
 	
@@ -87,7 +94,7 @@
 						<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
 						<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
 						<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
-		        		<?php  echo form_dropdown('usuario_division', $division, 0, 'id=usuario_division class="tercero"'); ?>
+		        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
 		        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
 	        		</div>
 	                <!-- botones siguiente y submit -->
@@ -95,8 +102,10 @@
 	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
 	                <input type="button" class="boton" id="atras1" value="atrás" />
 					<input type="button" class="boton atras2" id="atras2" value="atrás" />
-					<input type="submit" class="boton" id="enviar" name="enviar" value="enviar" disabled />
-
+					<input type="submit" class="boton" id="enviar" value="enviar" disabled />
+					
+					<!-- envio de correo de confirmación -->
+					<input type="hidden" value="0" id="seEnvioCorreoRegistro">
 	                <div id="amarillo-lat" class="amarillo-lat">
 	                	<label class="rotar">Registro</label>
 	                </div>
