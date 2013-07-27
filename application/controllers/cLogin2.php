@@ -48,8 +48,8 @@ class CLogin2 extends CI_Controller {
 		
 		$this->form_validation->set_rules('usuario_correo_recuperarContrena','','trim|required|valid_email');
 		if ($this->form_validation->run() == FALSE){
-            $this->load->view('vinicio');
-			echo "dentro de la funcion";
+            redirect('welcome');
+			// echo "dentro de la funcion";
         }else{
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
@@ -71,7 +71,7 @@ class CLogin2 extends CI_Controller {
 		        $this->email->message('Tu usuario es '.$Usuario[0]->nombreUsr. 'y tu contraseña es'.$Usuario[0]->contrasena);  	
 		        echo $this->email->print_debugger();
 				}else{
-					echo "No tienes cuenta en Loteria UAM, registrate...";
+					echo "<script>alert('No tienes cuenta en Loteria UAM')</script>";
 			}        	
         }
 		// $this->load->view('vinicio',$this->micombobox->datosComboBox());
