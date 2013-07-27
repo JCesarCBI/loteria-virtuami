@@ -3,7 +3,7 @@
 /**GENERAL**/
 	
 label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
-form{
+form:not("iSesion-form"){
 	width:190px;
 	height:170px;
 	padding-left:5px;
@@ -27,7 +27,7 @@ form{
 }
 #sig1{ margin-top:12px;
 	float:right;
-	margin-right:25px;
+	margin-right:90px;
 	}
 .sig1-atras{ margin-top:22px;	margin-left:0px;}
 
@@ -41,19 +41,18 @@ form{
 #enviar{margin-left:20px;margin-top:105px;}
 #iSesion-boton{	margin-left:-55px;}
 #usrError, #emailExisteError, #emailDominioError, #edadError{
-	font-size:8px;
+	font-size:11px;
 	width:auto;
 	padding:5px;
-    background-color: rgba(215, 78, 42, 0.3);
-    background: rgba(215, 78, 42, 0.3);
-    color: rgba(215, 78, 42, 0.3);
+	height:auto;
+    background-color: #D9E021;
     -moz-box-shadow: 3px 2px 5px #000;
     -webkit-box-shadow: 3px 2px 5px #000;
     box-shadow: 3px 2px 5px #000;
 	margin-left:162px;
 	position: absolute;
+	z-index:4;
 }
-
 #usrError{margin-top:-39px;}
 #emailExisteError, #emailDominioError{margin-top:-34px;}
 #edadError{margin-top: -33px;}
@@ -66,7 +65,6 @@ form{
 	-webkit-transform: rotate(90deg);
 	margin-top:30px;
 }
-
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
 	margin-top:-138px;
 	margin-left:193px;
@@ -182,8 +180,7 @@ select {width: 162px; margin-top:2.6px; margin-bottom:8px; font-size:11px; }
 .incorrecto{border-color: #A70000 !important;}
 
 /* Estilo para el label cuando el cajón lateral está cerrado */ 
-label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
-
+label.CL-cerrado{ color:#D9E021; margin-top:75px; margin-left:-40px; width:100px;}
 /*CAJÓN SUPERIOR*/
 
 #labelRecuperar{ /*Posición del texto "recuperar contraseña" */
@@ -198,15 +195,9 @@ label.CL-cerrado{ color:#D9E021; margin-top:260px; margin-left:-230px;}
 	font-size:12px;
 }
 
-#Isesion:hover, #recuperaContrasena:hover{
-	text-decoration:underline;
-}
-#Isesion{
-	margin-left:-90px !important;
-}
-#recuperaContrasena-boton{
-	margin-left:-70px;
-}
+#Isesion:hover, #recuperaContrasena:hover{text-decoration:underline;}
+#Isesion{margin-left:-90px !important;}
+#recuperaContrasena-boton{margin-left:-70px;}
 .cajonSuperior-abierto{	
 	background-image:url("../img/cajon_login.png");
 	background-repeat:no-repeat;
@@ -259,7 +250,7 @@ input.superior{
 }
 
 .iSesion-form{margin-top:70px;}
-.i-sesion, .rotar, .CS-cerrado, .CL-cerrado{font-size:19px;	font-weight:bold;}
+.i-sesion, .rotar, .CS-cerrado, .CL-cerrado, .CL-cerrado2{font-size:19px;	font-weight:bold;}
 .i-sesion{
 	margin-top:-2px;
 	margin-left:-12px;
@@ -282,3 +273,78 @@ label.CS-cerrado{
 .acerca{margin-top:100px;background: #2E3116;height:auto;}
 #logoUAM{ margin-top:60px;}
 .acerca p, h2{ color: #D9E021;}
+
+/*MediaQuerys*/
+
+@media screen and (max-width: 1100px) {
+	label.CL-cerrado{color:#D9E021; margin-top:190px; margin-left:20px; width:100px;}
+	.cajonLateral-cerrado{
+		padding:20px 10px;
+		background-image:url("../img/cajon_login.png");
+		background-repeat:no-repeat;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+		margin-top:517px;
+		margin-left:-208px;
+		background-position:0px 175px;
+		width:177px;
+		height:240px;
+		float: left;
+		z-index:2;		
+	}
+	.rotar{ /* Rota el texto registro en una orientación de 90 grados */
+		-ms-transform: rotate(-180deg);
+		-o-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);
+		margin-top:30px;
+	}
+
+	.cajonLateral-abierto{
+		background-image:url("../img/cajon_login.png");
+		background-repeat:no-repeat;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+		margin-left:260PX;
+		height:240px;
+		width:177px;
+		padding-left: 170px;
+		margin-top:517px;
+		position:absolute;
+		float: left;		
+	}	
+	
+	.amarillo-lat{
+		float:left;
+		height:30px;
+		width:162px;
+		background:none repeat scroll 0 0 #D9E021;
+		margin-top:90px;
+	}
+	
+	#formRegistro{
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);		
+		margin-top:95px;
+	}
+	
+	.acerca{
+		margin-top:300px;
+	}
+
+	p.sexo{margin: 0px 0px -15px 0px;} /* Acomoda los radio inputs y los label en una sola línea */
+	label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
+		color:#D9E021;
+		margin: -10px 0px -5px 0px; float: left;	
+		font-size:12px;
+	}
+}

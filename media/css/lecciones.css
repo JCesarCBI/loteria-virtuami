@@ -84,7 +84,7 @@ li{	color:#000;	list-style:none;}
 }
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1350px) {
 	.seven{		width:70% !important;	}
 	h3{margin-left:40px; color:red;}
 	.cajas-txt-lecciones{margin-left:79px}
