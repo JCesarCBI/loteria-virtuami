@@ -26,6 +26,7 @@ class Welcome extends CI_Controller {
 			}
 		}*/
 		$datos = $this->micombobox->datosComboBox();
+		$datos['noExiste'] = 0;
 		// echo "<pre>";
 		// print_r($datos);
 		// echo "<pre>";
