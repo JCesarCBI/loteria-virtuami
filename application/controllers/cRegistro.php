@@ -13,117 +13,28 @@
 		//Filename: views/vinicio.php
 				
 	}
-	
-	public function index(){
-		$datos = $this->micombobox->datosComboBox();
-		//$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
-		//$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	
-		$this->load->view('vPruebasGuillermo', $datos);
-		//print_r($datos);
-	}
-	
-	public function imprimeArreglo(){
-		$datos=$this->micombobox->datosComboBox();
-		//$datos['gradoActivo'] = array('1'=>'Maestría', '2'=>'Doctorado');
-		//$datos['pos'] = array('1'=>'posgrado', '2'=> 'doctorado');	//sexo, 
-		//
-		//$datos['gradoActivo']=$this->gradoActivo();
-		echo '<pre>';
-		print_r($datos);
-		echo '</pre>';
-		}
-	
-	//Valida el registro y agrega los datos a la base de datos 
-	public function validarRegistro(){
-    // Reglas de validacion
-    	echo "VALIDAR REGISTRO...";
-		$datos=validarAreaYCargo();
-    	print_r($datos);
-        /*$this->form_validation->set_rules('usuario_nombreUsr','','required');
-        $this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
-		$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
-        $this->form_validation->set_rules('usuario_nombre','required|trim');		
-		$this->form_validation->set_rules('usuario_aPaterno','required|trim');
-		$this->form_validation->set_rules('usuario_aMaterno','required|trim');
-		
-        
-       
-        $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
-        $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
-        $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
-        $this->form_validation->set_message('min_length','El Campo %s debe tener como minimo 6 caracteres');
-       
-        if($this->form_validation->run() != FALSE)
-        {
-        // Reglas de validacion
-        	
-            $this->form_validation->set_rules('usuario_nombreUsr','','required');
-            $this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
-			$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
-            $this->form_validation->set_rules('usuario_nombre','required|trim');		
-			$this->form_validation->set_rules('usuario_aPaterno','required|trim');
-			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
-		
-            
-           
-            $this->form_validation->set_message('required','El Campo %s Es Obligatorio');
-            $this->form_validation->set_message('valid_email','Ingrese un %s Válido');
-            $this->form_validation->set_message('matches','El Campo %s no es igual que el campos %s');
-            $this->form_validation->set_message('min_length','El Campo %s debe tener como minimo 6 caracteres');
-           */
-          //  $data = array('mensaje'=>'El usuario se registro correctamente');
-            /*
-            $datosUsuario= array(
-                'usuario'=>$this->input->post('usuario_nombreUsr',TRUE),
-                'correo'=>$this->input->post('usuario_correo',TRUE),
-                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
-                'sexo'=>$this->input->post('usuario_sexo',TRUE),
-                'nombre'=>$this->input->post('usuario_nombre',TRUE),
-                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
-                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
-				'edad'=>$this->input->post('usuario_edad',TRUE),
-				'cargo'=>$this->input->post('usuario_cargo',TRUE),
-				'area'=>$this->input->post('usuario_area',TRUE),
-				'comunidad'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
-				'division'=>$this->input->post('usuario_division',TRUE),
-				'gradoActivo'=>$this->input('usuario_gradoActivo',TRUE),
-				'posgrado'=>$this->input('usuario_posdrado',TRUE),
-				'avatar'=>$this->input->post(1,TRUE),
-			);
-		    $this->load->view('welcome_message');
-			echo "Imprimir arreglo";
-			echo '<pre>';
-		    print_r($array);
-			echo '</pre>';
-			}*/
-			//$this->mregistro->agregarUsuario($datosUsuario);
-			//Regresar el arreglo con los datos del usuario para que el modelo los agregue a la base de datos e iniciar sesión	
-        /*}else
-        {
-      		echo "ERROR...";
-            //Regresar al registro
 
-           
-        }*/
-       }
+	//Esta función ya no es necesaria, ya que el controlador que se carga desde
+	//El inicio es welcome.php
+	 public function index(){
+	 	echo '<h1>';
+	 	echo 'Mis pruebas';
+	 	echo '</h1>';
+		 $datos = $this->micombobox->datosComboBox();
+		 $this->load->view('vpruebasGuillermo', $datos);
+	 }
+	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
-		
 		$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
-		
 		$valor= $this->mregistro->getExisteUsuario($term);//La función 'getExisteUsuario' regresa true si el ususario existe y false en caso contrario.
-		
 		//Envia respuesta a la vista si el usuario existe o no en la BD
 		if( $valor){
-			
 			echo json_encode(1);	
 		}else{
-			
 			echo json_encode(0);
 		}		
 	}
-	
-	
 	
 	function correo(){
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
@@ -143,15 +54,76 @@
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
 			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
 			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
+			$correo_docencia = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]docencia[.]uam[.]mx$/', $term);
 			//Comprobando si el dominio es correcto
-				if($correo_xanum == FALSE && $correo_titlani==FALSE){
+				if($correo_xanum == FALSE && $correo_titlani==FALSE && $correo_docencia == FALSE){
 					echo json_encode(0);	
 				}else{
 					echo json_encode(1);
 				}
-		}	
-							
+		}
+
+		/**Aquí harás todas las validaciones correspondientes de todos los campos.
+		 * No hagas validaciones por separado, al menos que yo pida que así sean.
+		 * Te enviaré la información vía POST. Tú las recibirás y manejarás para enviar
+		 * los datos a la BD. Si crees que necesito enviarte alguna cosa extra, me dices por favor */		
+		function RegistraUsuario(){
+			//Recibe arreglo
 			
+			//Realiza validaciones
+			$this->form_validation->set_rules('usuario_nombreUsr','','required');
+        	$this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
+			$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
+        	$this->form_validation->set_rules('usuario_nombre','required|trim');		
+			$this->form_validation->set_rules('usuario_aPaterno','required|trim');
+			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
+			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[3]');
+		    if($this->form_validation->run() != FALSE){
+			//echo "<pre>";
+			//print_r($_POST);
+			//echo "</pre>";
+			$datosUsuario= array(
+                'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
+                'correo'=>$this->input->post('usuario_correo',TRUE),
+                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
+                'sexo'=>$this->input->post('usuario_sexo',TRUE),
+                'nombre'=>$this->input->post('usuario_nombre',TRUE),
+                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
+                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
+				'edad'=>$this->input->post('usuario_edad',TRUE),
+				'cargo'=>$this->input->post('usuario_cargo',TRUE),
+				'area'=>$this->input->post('usuario_area',TRUE),
+				'idTipoUsuario'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
+				'idDivision'=>$this->input->post('usuario_division',TRUE),
+				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
+				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
+				'idAvatar'=>1		
+			);
+			
+			//Si la validación es correcta, me enviarás esto:
+			echo "<script>
+				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
+			</script>";	
+			echo "<pre>";
+			print_r($datosUsuario);
+			echo "</pre>";
+			$this->mregistro->setAgregarUsuario($datosUsuario);
+			}
+			
+			//En otro caso, esto:
+			else{
+			echo "<script>
+			alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
+			</script>";
+			
+			//Mandas a llamar nuevamente a la vista vinicio					
+			$datos = $this->micombobox->datosComboBox();
+			$this->load->view('vinicio', $datos);			
+			}	
+		}	
+		
+							
+		
 	function vacio($input){
 		$term = $this->input->post($input,TRUE);
 	
@@ -171,28 +143,6 @@
 		
 		return $datos;
 		}
-	
-	//----------------------------Funciones de prueba Borrar -------------------------------------------------------------------
-	public function tipoUsuario(){
-		$datos[-1]= $this->mregistro->getTipoUsuario();
-		//print_r ($datos);	 
-		return $datos;
-	}
-	
-	public function division(){
-		$datos[-1]=$this->mregistro->getivision();
-		
-	 return $datos; 
-	}
-	public function gradoActivo(){
-		$datos[-1]=$this->mregistro->getgradoActivo();
-	 	return $datos;
-	}
-	
-	public function gradoPosgrado(){
-		$datos[-1]= $this->mregistro->getGradoposgrado();
-		
-	 return $datos;
-	}
+
 	
 }
