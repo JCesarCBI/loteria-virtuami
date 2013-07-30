@@ -12,15 +12,15 @@
 		//Filename: views/vinicio.php
 				
 	}
-	/*
+	
 	//Esta función ya no es necesaria, ya que el controlador que se carga desde
 	//El inicio es welcome.php
-	 public function index(){
+	 /*public function index(){
 	 	
 		 $datos = $this->micombobox->datosComboBox();
 		 $this->load->view('vpruebasGuillermo', $datos);
-	 }
-	*/
+	 }*/
+	
 	
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
@@ -97,11 +97,11 @@
 				'idDivision'=>$this->input->post('usuario_division',TRUE),
 				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
-				'idAvatar'=>1
-				//'codigoActivacion'=>uniqid(),
-				//'estatus'=>0
-					
-			);
+				'idAvatar'=>1,
+				'codigoActivacion'=>uniqid(),
+				'estatus'=>0
+				);
+				
 			//Valido casos especiales de registro.
 				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
 				if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
@@ -116,7 +116,14 @@
 			//echo "<pre>";
 			//print_r($datosUsuario);//Imprimo datos antes de enviarlos al modelo
 			//echo "</pre>";
+			$this->correoConfirmacion($datosUsuario);
 			$this->mregistro->setAgregarUsuario($datosUsuario);//Registrando datos en la BD
+			
+			
+			$datos = $this->micombobox->datosComboBox();
+			$this->load->view('vpruebasGuillermo', $datos);
+			
+			//$this->load->view('vinicio', $datos);	
 			}
 			
 			else{
@@ -142,9 +149,13 @@
 		}
 	}
 	
-	function correoConfirmacion($correom, $codigo){
-		
+	function correoConfirmacion($datosUsr){
+		echo "Dentro de correoConfirmacion";	
+		echo "<pre>";
+		print_r($datosUsr);//Imprimo datos 
+		echo "</pre>";
 		require_once 'class.phpmailer.php';
+		
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->Host = 'ssl://smtp.gmail.com';
@@ -155,8 +166,10 @@
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
 		$mail->Subject = "Test phpMailer";
-		$mail->AddAddress($correo);
-		$body = "Tu código de activación es: ".$codigo."Ve a esta liga para comenzar a jugar: <LINK...>";
+		echo "CORREO------------->".$datosUsr['correo'];
+		echo "<br>";
+		$mail->AddAddress($datosUsr['correo']);
+		$body = "Tu código de activación es: ".$datosUsr['codigoActivacion'];//"Ve a esta liga para comenzar a jugar:"."<a href="."http://www.google.com/>Visit W3Schools</a";
 		$mail->Body = $body;
 		if( ! $mail->Send() )
 		{
