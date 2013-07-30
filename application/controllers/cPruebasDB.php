@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mjuegoavanzado');
+					$this->load->model('usuario/mregistro');
 				}
 				
 				public function getDatos(){
@@ -23,6 +23,7 @@
 					$idModalidad = 7;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$idCarta = 1;
+					$nombreUsr = 'JCesarCBI';
 					
 					$aleatorio = uniqid();
 					
@@ -30,10 +31,10 @@
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mjuegoavanzado->getCartaSinonimo($idCarta);
-						// echo'<pre>';
-							// print_r($datos);
-						// echo'</pre>';
+						$datos = $this->mregistro->setEstatus($nombreUsr);
+						echo'<pre>';
+							print_r($datos);
+						echo'</pre>';
 						for ($i = 0; $i < count($datos) ; $i++) { 
 							$datosOrdenados[$i+1] = $datos[$i];
 						}
