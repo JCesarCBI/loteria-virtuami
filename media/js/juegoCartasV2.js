@@ -34,7 +34,6 @@ function barajaPlantilla(num) {
 	cartasId = cartasArreglo.split("*");
 
 	num = num + "";
-
 	var voF = cartasId.indexOf(num);
 
 	if (voF > -1) {
@@ -163,10 +162,11 @@ function cambiaCarta(numCarta, mult) {
 
 		$('#cartaReversaClick').attr("onclick", "cambiaCarta(" + numCarta + ");");
 		document.getElementById('numeroCarta').value = numCarta;
-		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", 50);
+		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", 10000);
 
 	} else {
 		//Si no se encontro la cart solo escondo la última que se mostró
+		clearInterval(tiempo2);
 		numCarta--;
 		$('#baraja-' + numCarta).addClass("Escondido");
 		hojaResultados()
@@ -213,7 +213,7 @@ function presionaEnter(evt, op) {
 function clickBaraja(indice) {
 
 	id = obternerId(indice)
-	resultado = barajaPlantilla(indice);
+	resultado = barajaPlantilla(id);
 
 	if (resultado == 0) {
 		//Escribo el input en el cual se escribirá la respuesta
@@ -353,7 +353,8 @@ function pintaComodines(cantidad) {
 }
 
 function errores(id) {
-
+	
+	document.getElementById('estadoPartida').value=0;
 	cadena2 = document.getElementById('cartaVisible').value;
 	cadena = document.getElementById('errorCadena').value;
 	cadena = cadena + cadena2 + "*";
@@ -421,16 +422,18 @@ function borrarInputCambiarCarta() {
 }
 
 function temporizador(tempo) {
-	clearInterval(tiempo2);
+		clearInterval(tiempo2);
 
-	if (tempo < 10) {
-
-		data = "0:0" + tempo;
-
-	} else {
-
-		data = "0:" + tempo;
-	}
+	if (tempo >= 0) {	
+		if (tempo < 10) {
+	
+			data = "0:0" + tempo;
+	
+		} else {
+	
+			data = "0:" + tempo;
+		}
+	};
 	tempo--;
 
 	$('#tiempo').html(data);
@@ -451,9 +454,17 @@ function loteria(indice){
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
+	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');
-	if (arreglo.length == 11) {
+	alert(arreglo);
+	if (arreglo.length == 5) {
+		
+		if (estadoPartida!=2) {
+			estadoPartida= 1;
+		};
+
 		alert("LOTERIAAAAAA!!!");
+		document.getElementById('estadoPartida').value=1;
 	};
 	
 }
@@ -462,14 +473,40 @@ function nuevoJuego(){
 	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
 }
 
+function reintentar(){
+	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
+}
+
 function hojaResultados(){
-	// puntos=document.getElementById('puntos').value;
-	puntos=0;
-	self.location="#loteria-FancyBox";
 	
-	$('#resultadosJuego').html("<label>Puntuación: </label>"+puntos+'<br /><button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>')
+	puntos=document.getElementById('puntos').value;
+	estadoPartida=document.getElementById('estadoPartida').value;
+	if (estadoPartida!=1 || estadoPartida!=0) {
+		estadoPartida= 3;
+	};
+	
+	switch(estadoPartida)
+		{
+			case 1:
+				estado="GANASTE";	
+			  break;
+			case 2:
+				estado="PERDISTE";
+			  break;
+			case 3:
+				estado="PERFECTO";	
+			  break;
+			default:		
+					  
+		}
+	self.location="#loteria-FancyBox";
+
+	botonNuevo='<button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>'
+	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
+	$('#resultadosJuego').html('<label>Puntuación: </label>'+puntos+'<br />'+
+								'<label>Estado: </label>'+estado+'<br />'+
+								'<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
+							)
 	
 
 }
-
-

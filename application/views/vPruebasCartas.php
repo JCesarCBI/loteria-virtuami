@@ -41,6 +41,7 @@
 				<input type="hidden"  id="numeroCarta" value="1" />
 				<input type="hidden"  id="cartaClickPlantilla" value="" />
 				<input type="hidden"  id="puntos" value="0" />
+				<input type="hidden"  id="estadoPartida" value="2" />
 				<input type="hidden"  id="comodinesTotales" value="0" />
 				<input type="hidden"  id="errorCadena" value="" />
 				<input type="hidden"  id="loteriaCadena" value="" />
