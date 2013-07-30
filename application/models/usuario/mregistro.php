@@ -85,7 +85,7 @@ class Mregistro extends CI_Model {
 	}
 	
 	//Validación de usuario
-	function getExisteUsuario($nombreUsr)
+	public function getExisteUsuario($nombreUsr)
 	{
 		$this->db->SELECT('idUsr');
 		$this->db->FROM('usuario');
@@ -137,41 +137,6 @@ class Mregistro extends CI_Model {
 		);
 		
 		$this->db->insert('jugador', $player);
-	}
-	
-	//Obtiene el codigo de activacion
-	public function getCodigoActivacion($nombreUsr)
-	{
-		$this->db->SELECT('codigoActivacion');
-		$this->db->FROM('usuario');
-		$this->db->WHERE('nombreUsr', $nombreUsr);
-		$this->db->LIMIT(1);
-		
-		$query = $this->db->get();
-		
-		if ($query-> num_rows() == 1) {
-			return $query->result_array();
-		} else {
-			return FALSE;
-		}
-	}
-	
-	//Actualiza el estado del usuario a Activo
-	public function setEstatus($nombreUsr, $activo = 1)
-	{
-		if ($this->getExisteUsuario($nombreUsr)==TRUE) {
-		
-			$data = array(
-				'estatus' => $activo
-			);
-				
-			$this->db->WHERE('nombreUsr', $nombreUsr);
-			$this->db->UPDATE('usuario', $data);
-		
-			return TRUE;
-		} else {
-			return FALSE;
-		}
 	}
 }
 
