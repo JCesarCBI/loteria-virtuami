@@ -99,7 +99,11 @@
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
 				'idAvatar'=>1		
 			);
-			
+			if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
+			if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
+		    if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
+			if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
+			if($datosUsuario['area']=="")$datosUsuario['area']=null;
 			//Si la validación es correcta, me enviarás esto:
 			echo "<script>
 				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
@@ -108,6 +112,7 @@
 			print_r($datosUsuario);
 			echo "</pre>";
 			$this->mregistro->setAgregarUsuario($datosUsuario);
+			//Qué vista mostrar?
 			}
 			
 			//En otro caso, esto:
