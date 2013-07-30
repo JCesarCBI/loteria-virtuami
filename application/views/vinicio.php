@@ -58,7 +58,7 @@
 			</div>
 			
 			<div class="cajonLateral-abierto">
-				<form id="formRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro2/RegistraUsuario">
+				<form id="formRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro/RegistraUsuario">
 					<label class="ins">Campos con * son obligatorios</label>
 					<!-- primera parte registro -->
 					<div id="paso1">
