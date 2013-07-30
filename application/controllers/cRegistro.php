@@ -5,24 +5,23 @@
         parent::__construct();
         $this->load->helper(array('html', 'url'));
 		$this->load->helper('form'); //Contiene funciones que ayuda a trabajar con formularios en html 
-		$this->load->model('usuario/mregistro');
+		$this->load->model('usuario/mregistro');//Carga funciones para agregar usuarios a la base de datos
 		$this->load->library('form_validation');
-		$this->load->library('micombobox');	
-		$this->load->model('usuario/mdatosperfil');		
-		$this->load->model('estadisticas/mestadisticas');
+		$this->load->library('micombobox');	//Libreria para cargar datos del comboBox de la vista vinicio
+		
 		//Filename: views/vinicio.php
 				
 	}
-
+	/*
 	//Esta función ya no es necesaria, ya que el controlador que se carga desde
 	//El inicio es welcome.php
 	 public function index(){
-	 	echo '<h1>';
-	 	echo 'Mis pruebas';
-	 	echo '</h1>';
+	 	
 		 $datos = $this->micombobox->datosComboBox();
 		 $this->load->view('vpruebasGuillermo', $datos);
 	 }
+	*/
+	
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
@@ -63,10 +62,7 @@
 				}
 		}
 
-		/**Aquí harás todas las validaciones correspondientes de todos los campos.
-		 * No hagas validaciones por separado, al menos que yo pida que así sean.
-		 * Te enviaré la información vía POST. Tú las recibirás y manejarás para enviar
-		 * los datos a la BD. Si crees que necesito enviarte alguna cosa extra, me dices por favor */		
+		
 		function RegistraUsuario(){
 			//Recibe arreglo
 			
@@ -78,10 +74,14 @@
 			$this->form_validation->set_rules('usuario_aPaterno','required|trim');
 			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
 			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[3]');
+			//Si la validavión es correcta
 		    if($this->form_validation->run() != FALSE){
 			//echo "<pre>";
 			//print_r($_POST);
 			//echo "</pre>";
+			
+			//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
+			
 			$datosUsuario= array(
                 'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
                 'correo'=>$this->input->post('usuario_correo',TRUE),
@@ -99,29 +99,28 @@
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
 				'idAvatar'=>1		
 			);
-			if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
-			if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
-		    if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
-			if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
-			if($datosUsuario['area']=="")$datosUsuario['area']=null;
-			//Si la validación es correcta, me enviarás esto:
+			//Valido casos especiales de registro.
+				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
+				if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
+		    	if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
+				if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
+				if($datosUsuario['area']=="")$datosUsuario['area']=null;
+			//Si la validación es correcta
 			echo "<script>
 				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
 			</script>";	
-			echo "<pre>";
-			print_r($datosUsuario);
-			echo "</pre>";
-			$this->mregistro->setAgregarUsuario($datosUsuario);
-			//Qué vista mostrar?
+			//echo "<pre>";
+			//print_r($datosUsuario);//Imprimo datos antes de enviarlos al modelo
+			//echo "</pre>";
+			$this->mregistro->setAgregarUsuario($datosUsuario);//Registrando datos en la BD
 			}
 			
-			//En otro caso, esto:
 			else{
 			echo "<script>
 			alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
 			</script>";
 			
-			//Mandas a llamar nuevamente a la vista vinicio					
+			//Manda llamar nuevamente a la vista vinicio					
 			$datos = $this->micombobox->datosComboBox();
 			$this->load->view('vinicio', $datos);			
 			}	
@@ -138,16 +137,5 @@
 			echo json_encode(0);
 		}
 	}
-	
-	function validarAreaYCargo(){
-		//$datos;	
-		$area=$this->input->post('usuario_area',TRUE);
-		$cargo=$this->input->post('usuario_cargo',TRUE);
-		if($area==""){$datos['area']="NULL";}
-		if($cargo=="")$datos['cargo']="NULL";
 		
-		return $datos;
-		}
-
-	
 }
