@@ -97,7 +97,10 @@
 				'idDivision'=>$this->input->post('usuario_division',TRUE),
 				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
-				'idAvatar'=>1		
+				'idAvatar'=>1
+				//'codigoActivacion'=>uniqid(),
+				//'estatus'=>0
+					
 			);
 			//Valido casos especiales de registro.
 				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
@@ -106,6 +109,7 @@
 				if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
 				if($datosUsuario['area']=="")$datosUsuario['area']=null;
 			//Si la validación es correcta
+			
 			echo "<script>
 				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
 			</script>";	
@@ -135,6 +139,32 @@
 			echo json_encode(1);	
 		}else{
 			echo json_encode(0);
+		}
+	}
+	
+	function correoConfirmacion($correom, $codigo){
+		
+		require_once 'class.phpmailer.php';
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->Host = 'ssl://smtp.gmail.com';
+		$mail->Port = 465;
+		$mail->SMTPAuth = true;
+		$mail->Username = 'ludico@virtuami.izt.uam.mx';
+		$mail->Password = '7Ud1C0u@m';
+		$mail->From = "remitente@dominio.com";
+		$mail->FromName = "Loteria VIRTU@MI";
+		$mail->Subject = "Test phpMailer";
+		$mail->AddAddress($correo);
+		$body = "Tu código de activación es: ".$codigo."Ve a esta liga para comenzar a jugar: <LINK...>";
+		$mail->Body = $body;
+		if( ! $mail->Send() )
+		{
+			echo "No se pudo enviar el Mensaje.";
+		}
+		else
+		{
+			echo "Mensaje enviado";
 		}
 	}
 		
