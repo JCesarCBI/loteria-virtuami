@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('estadisticas/mestadisticas');
+					$this->load->model('juego/mjuegoavanzado');
 				}
 				
 				public function getDatos(){
@@ -22,11 +22,15 @@
 					$idNivel = 1; 			//1 Basico| 2 Intermedio | 3 Avanzado| 4 Experto
 					$idModalidad = 7;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
+					$idCarta = 1;
 					
+					$aleatorio = uniqid();
+					
+					echo $aleatorio;
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mestadisticas->getCartas();
+						$datos = $this->mjuegoavanzado->getCartaSinonimo($idCarta);
 						// echo'<pre>';
 							// print_r($datos);
 						// echo'</pre>';

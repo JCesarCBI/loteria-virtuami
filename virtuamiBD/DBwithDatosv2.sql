@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `loteriadb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `loteriadb`;
--- MySQL dump 10.13  Distrib 5.5.31, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: loteriadb
 -- ------------------------------------------------------
--- Server version	5.5.31-0ubuntu0.13.04.1
+-- Server version	5.5.32-0ubuntu0.13.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -759,6 +759,8 @@ CREATE TABLE `usuario` (
   `idDivision` int(11) DEFAULT NULL,
   `idGradoActivo` int(11) DEFAULT NULL,
   `idGradoPosgrado` int(11) DEFAULT NULL,
+  `estatus` int(11) NOT NULL DEFAULT '0',
+  `codigoActivacion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `idAvatar` int(11) NOT NULL,
   PRIMARY KEY (`idUsr`),
   KEY `fk_usuario_tipoUsuario1_idx` (`idTipoUsuario`),
@@ -766,11 +768,11 @@ CREATE TABLE `usuario` (
   KEY `fk_usuario_gradoActivo1_idx` (`idGradoActivo`),
   KEY `fk_usuario_gradoPosgrado1_idx` (`idGradoPosgrado`),
   KEY `fk_usuario_avatar1_idx` (`idAvatar`),
-  CONSTRAINT `fk_usuario_tipoUsuario1` FOREIGN KEY (`idTipoUsuario`) REFERENCES `tipoUsuario` (`idTipoUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_usuario_avatar1` FOREIGN KEY (`idAvatar`) REFERENCES `avatar` (`idAvatar`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_division1` FOREIGN KEY (`idDivision`) REFERENCES `division` (`idDivision`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_gradoActivo1` FOREIGN KEY (`idGradoActivo`) REFERENCES `gradoActivo` (`idGradoActivo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usuario_gradoPosgrado1` FOREIGN KEY (`idGradoPosgrado`) REFERENCES `gradoPosgrado` (`idGradoPosgrado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_avatar1` FOREIGN KEY (`idAvatar`) REFERENCES `avatar` (`idAvatar`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_usuario_tipoUsuario1` FOREIGN KEY (`idTipoUsuario`) REFERENCES `tipoUsuario` (`idTipoUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -847,4 +849,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-22 13:44:41
+-- Dump completed on 2013-07-30 15:36:28
