@@ -9,7 +9,7 @@
 		}
 		
 		public function getTrofeos($idUsr, $idJuego){
-			$this->db->SELECT('trofeo.*, tipoTrofeo.tipoTrofeo');
+			$this->db->SELECT('trofeo.idTrofeo');
 			$this->db->FROM('vitrina');
 			$this->db->JOIN('trofeo','trofeo.idTrofeo = vitrina.idTrofeo');
 			$this->db->JOIN('tipoTrofeo','tipoTrofeo.idTipoTrofeo = trofeo.idTipoTrofeo');
@@ -19,7 +19,10 @@
 			$query = $this->db->get();
 			
 			if ($query->num_rows() != 0) {
-				return $query->result_array();
+				foreach ($query->result_array() as $key => $value) {
+					$trofeosGanados[$key] = $value['idTrofeo'];
+				}
+				return $trofeosGanados;
 			} else {
 				return FALSE;
 			}
@@ -62,8 +65,15 @@
 			
 			$query = $this->db->get();
 			
+			//Cuando sólo tengas que regresar un array con un único dato (como en este caso, 
+			//Que únicamente tenías que regresar los idCarta, limpia el arreglo para que no
+			//mandes arreglos de arreglos y le ahorres trabajo a los controladores).
+			//Hice una corrección similar en getTrofeos
 			if ($query->num_rows()!=0) {
-				return $query->result_array();
+				foreach ($query->result_array() as $key => $value) {
+					$galeria[$key] = $value['idCarta'];
+				}
+				return $galeria;
 			} else {
 				return FALSE;
 			}
