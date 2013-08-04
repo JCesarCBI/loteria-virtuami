@@ -12,8 +12,6 @@ class CDatosPerfil2 extends CI_Controller {
 	}
 	
 	public function PerfilUsuario($idJuego, $idUsuario){
-		// $idJuego = 1;
-		// $idUsuario = 5; //estos datos los traere posteriormente del formulario		
 		if($idUsuario == 0){
 			echo "<script>alert('Usuario no existe')</script>";
 		}else{
@@ -129,9 +127,7 @@ class CDatosPerfil2 extends CI_Controller {
 				//Datos para la galeria de cartas
 				$idGaleria = $this->mestadisticas->getGaleria(1,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
-				// echo "<pre>";
-				// print_r($idGaleria);
-				// echo "</pre>";
+
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
@@ -189,10 +185,12 @@ class CDatosPerfil2 extends CI_Controller {
 			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
 			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
 			
+			//No es necesario:
 			// $idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
 			
 			$mazoCartas = $this->mestadisticas->getCartas();
-			
+
+			//No es necesario:
 			// foreach ($mazoCartas as $key) {
 				// unset($key["audio"]);
 				// unset($key["longitud"]);
@@ -208,6 +206,7 @@ class CDatosPerfil2 extends CI_Controller {
 			// echo "<pre>";
 			// print_r($idGaleria);
 			// echo "</pre>";
+			
 			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
 			echo json_encode($mazoCartas[$idcarta]);
 		}
