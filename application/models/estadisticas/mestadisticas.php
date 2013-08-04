@@ -48,9 +48,15 @@
 			$this->db->FROM('carta');
 			
 			$query = $this->db->get();
-			
+			//Trata de acomodar los arreglos de manera que estos lleven
+			//en el índice, el ID del dato que almacenan
+			//De esa manera, la información que le das a controladres es más ordenada 
+			//Y ellos se ahorran ese trabajo
 			if ($query->num_rows()!=0) {
-				return $query->result_array();
+				foreach ($query->result_array() as $value) {
+					$cartas[$value['idCarta']] = $value;
+				}
+				return $cartas;
 			} else {
 				return FALSE;
 			}
