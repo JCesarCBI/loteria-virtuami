@@ -86,6 +86,7 @@
 						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
 						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
 					</div>
+					
 					<!--tercera parte registro-->
 					<div id="paso3">
 						<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
@@ -97,6 +98,7 @@
 		        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
 		        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
 	        		</div>
+	        		
 	                <!-- botones siguiente y submit -->
 	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
 	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
@@ -105,7 +107,7 @@
 					<input type="submit" class="boton" id="enviar" value="enviar" disabled />
 					
 					<!-- envio de correo de confirmación -->
-					<input type="hidden" value="0" id="seEnvioCorreoRegistro">
+					<input type="hidden" value="0" id="seEnvioCorreoRegistro"/>
 	                <div id="amarillo-lat" class="amarillo-lat">
 	                	<label class="rotar">Registro</label>
 	                </div>

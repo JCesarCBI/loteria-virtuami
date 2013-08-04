@@ -33,22 +33,28 @@
 					<div class="row">
 						<div class="six colums foto">
 							<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
+							<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
 						</div>
-						<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>	
+						<div class="six columns">
+							<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>
+						</div>
+						<div class="two columns">
+							<input type="button" id="editarFoto" value="Editar foto"/>
+						</div>	
 					</div><br>
 					
 					<div class="row">
 						<div class="four columns">
-							<label for="usuario_nombreUsuario">Nombre(s):</label>
-							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $nombre?>" autofocus>
+							<label for="usuario_nombre">Nombre(s):</label>
+							<input class="" type="text" id="usuario_nombre" name="usuario_nombre" value="<?= $nombre?>" autofocus>
 						</div>
 						<div class="four columns">
-							<label for="usuario_nombreUsuario">Apellido paterno:</label>
-							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aPaterno?>" autofocus>
+							<label for="usuario_Apat">Apellido paterno:</label>
+							<input class="" type="text" id="usuario_Apat" name="usuario_Apat" value="<?= $aPaterno?>" autofocus>
 						</div>
 						<div class="four columns">
-							<label for="usuario_nombreUsuario">Apellido materno:</label>
-							<input class="" type="text" id="usuario_nombreUsuario" name="usuario_nombreUsuario" value="<?= $aMaterno?>" autofocus>
+							<label for="usuario_Amat">Apellido materno:</label>
+							<input class="" type="text" id="usuario_Amat" name="usuario_Amat" value="<?= $aMaterno?>" autofocus>
 						</div>
 					</div>
 					
@@ -111,6 +117,16 @@
 						<input type="submit" id="BtnGuardaCambios" value="Guardar cambios">
 					</div>
 				</form>
+				<div id="galeriaEditarFoto">
+					<?php
+						foreach ($avatares as $avatar) { ?>
+							<img src="<?php print_r(base_url().'media/img/avatar/'.$avatar['url'])?>" onclick("cambiaIdImagenFoto(<?=$avatar['id']?>)") />
+							
+					<?php }
+					?>
+					<a id="closeGaleriaEditarFoto" href="#"></a>
+
+				</div>
 				<div class="row"> <!--Editar información-->
 					<div class="four columns">
 						<input type="button" id="BtnEditar" value="Editar información">
@@ -128,23 +144,27 @@
 			<div class="row" id="estadisticas">
 				<div id="lightbox">
 					<?php
-						foreach ($trofeos as $indice=>$trofeo) {
-							if($trofeo['Estado'] == 1){ ?>
-								<center><div id="trofeo<?=$indice?>" class="">
-									<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
-									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
-									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
-									<a class="close" href="#"></a>
-								</div></center>
-							<?php }else{ ?>
-								<center><div id="trofeo<?=$indice?>" class="">
-									<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['url-grande']?>">
-									<h3 class="nombreTrofeo"><?= $trofeo['nombreTrofeo']?></h3>
-									<p class="descripcionTrofeo"><?= $trofeo['Descripcion']?></p>
-									<a class="close" href="#"></a>
-								</div></center>
-						<?php }
-							}
+						if($trofeos != NULL){
+							foreach ($trofeos as $indice=>$trofeo) {
+								if($trofeo['Estado'] == 1){ ?>
+									<center><div id="trofeo<?=$indice?>" class="">
+										<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
+										<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
+										<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
+										<a class="close" href="#"></a>
+									</div></center>
+								<?php }else{ ?>
+									<center><div id="trofeo<?=$indice?>" class="">
+										<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
+										<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
+										<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
+										<a class="close" href="#"></a>
+									</div></center>
+							<?php }
+								}
+						}else{
+							echo "<label>No hay trofeos ganados</label>";
+						}
 	 
 						?>
 				</div>
@@ -158,13 +178,13 @@
 								if($trofeo['Estado'] == 1){ ?>
 									<li>
 										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
-											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>
 									</li>
 								<?php }else{ ?>
 									<li>
 										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
-											<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['url-chico']?>">
+											<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>	
 									</li>
 						<?php }
@@ -230,11 +250,13 @@
 					</div>
 				</div>
 				<div class="row" id="carrusel">
-					<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="8">
+					<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="10">
 					<img id="carrusel-ant" class="recorre" src="<?=base_url()?>media/img/cback.png">
 					<?php 
+
 						foreach ($galeriaCartas as $imagen) { ?>
-							<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idImagen']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['urlChico'])?>" onclick="muestraInfoCarta(<?= $imagen['idImagen']?>);"/>
+							<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['idCarta'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
+						
 					<?php	} ?>
 					<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">
 					<br><br>
