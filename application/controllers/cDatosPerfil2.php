@@ -125,7 +125,7 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
 				//Datos para la galeria de cartas
-				$idGaleria = $this->mestadisticas->getGaleria(1,1);
+				$idGaleria = $this->mestadisticas->getGaleria($idUsuario, $idJuego);
 				$mazoCartas = $this->mestadisticas->getCartas();
 
 				if($idGaleria != FALSE){
@@ -138,7 +138,6 @@ class CDatosPerfil2 extends CI_Controller {
 						$mazoCartas[$i]=$key;
 					}
 				}else{
-					echo "no hay galeria";
 					foreach ($mazoCartas as $i=>$key) {
 						$key["Estado"] = 0;
 						$mazoCartas[$i]=$key;
