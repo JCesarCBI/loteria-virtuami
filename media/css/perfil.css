@@ -1,7 +1,8 @@
 .foto img{	margin-top:15px; width:150px; height:150px;	float:left;}
+
 label{color:#D9E021;margin-bottom:20px;} 
-.nombreUsr{	color:#FFF;}
-.informacion, .caja-estadisticas, #carrusel{
+.nombreUsr{color:#FFF;}
+.informacion, .caja-estadisticas{
 	background-image:url("../img/azulLecciones.png") !important;
 	margin-top:30px;
 	padding: 5px 40px;
@@ -16,22 +17,35 @@ label{color:#D9E021;margin-bottom:20px;}
 .header{height:50px; margin-bottom:80px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
 .header img{padding:2px 2px; width:40px; height:40px; float:right;}
-#BtnEditar{
-	width:200px;
-	height:60px;
-}
+#BtnEditar{width:200px;	height:60px;}
+#editarFoto{margin-left:-580px;	margin-top:130px;}
+
 /*******************/
-.gris{
-	opacity:0.4;
-	filter:alpha(opacity=40); /* For IE8 and earlier */
+.gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
+#gallery li{position: relative;	list-style: none;	display:inline;}
+#galeriaEditarFoto{
+	background-color: rgba(24, 6, 0, 0.9);
+    background: rgba(24, 6, 0, 0.9);
+    color: rgba(24, 6, 0, 0.9);
+	border: 2px solid #bdbdbd;
+	position: absolute;
+	margin-top:-500px;
+	display:fixed;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	z-index:-3;
+	opacity:0;
 }
-
-#gallery li{
-	position: relative;
-	list-style: none;
-	display:inline;
+#galeriaEditarFoto>img{	width:60px;	height:60px;}
+#closeGaleriaEditarFoto {
+	background: url(../img/close.png) no-repeat left top;
+	height: 32px;
+	width: 32px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
 }
-
 #gallery a {
 	position: relative;
 	-moz-transition: border 0.6s ease-out;
@@ -72,12 +86,12 @@ label{color:#D9E021;margin-bottom:20px;}
 	width:40%;
 	height:450px;
 	left:30%;
-	top:22%;
-	/*margin-top:-200px;
-	margin-left:-200px;*/
+	top:10%;
+	z-index: -3;
+	position: fixed;
 }
 
-#lightbox div:target {opacity: 10;	z-index:1}
+#lightbox div:target {opacity: 10;	z-index:5}
 
 #lightbox a {
 	background: url(../img/close.png) no-repeat left top;
@@ -104,10 +118,13 @@ h3{color:#fff; font-weight:bold;}
 .fondo-amarillo{background-color:#D9E021}
 
 /*CARRUSEL*/
-#carrusel-ant, #carrusel-sig{
-	color:#000000;
-}
 
+#carrusel{
+	background-image:url("../img/azulLecciones.png") !important;
+	padding: 5px 10px;
+	margin-top:20px;
+	margin-bottom:60px;
+}
 .carrusel-apaga{
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */	
@@ -116,7 +133,9 @@ h3{color:#fff; font-weight:bold;}
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */	
 }
-#carrusel>img{
-	width:88px;
-	height:88px;
+#carrusel>img{width:88px;height:88px;}
+
+#carrusel-ant, #carrusel-sig{
+	width:24px !important; height:24px !important;
+	margin-bottom:30px;
 }

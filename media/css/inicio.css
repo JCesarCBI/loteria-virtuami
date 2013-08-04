@@ -28,7 +28,7 @@ form:not("iSesion-form"){
 #sig1{ margin-top:12px;
 	float:right;
 	margin-right:90px;
-	}
+}
 .sig1-atras{ margin-top:22px;	margin-left:0px;}
 
 /* posición del segundo botón que aparece en el registro */
@@ -64,6 +64,7 @@ form:not("iSesion-form"){
 	transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
 	margin-top:30px;
+	width:auto;
 }
 .amarillo-lat{ /* Fondo amarillo del cajón lateral */
 	margin-top:-138px;
@@ -75,9 +76,7 @@ form:not("iSesion-form"){
 	padding: 7px 15px;
 	position:absolute;
 }
-.amarillo-lat2{ /* Fondo amarillo del cajón lateral */
-	margin-top:-172px;
-}
+
 #usuario_edad{margin-bottom:3px}
 
 #usuario_comunidadUniversitaria{
@@ -241,10 +240,10 @@ input.superior{
 .amarillo-sup{
 	margin-top:30px;
 	margin-bottom:10px;
-	margin-right:9px;
+	margin-right:6px;
 	background:#D9E021;
 	height:30px;
-	width:160px;
+	width:165px;
 	float:right;
 	padding: 7px 15px;	
 }
@@ -276,7 +275,7 @@ label.CS-cerrado{
 
 /*MediaQuerys*/
 
-@media screen and (max-width: 1100px) {
+/*@media screen and (max-width: 1100px) {
 	label.CL-cerrado{color:#D9E021; margin-top:190px; margin-left:20px; width:100px;}
 	.cajonLateral-cerrado{
 		padding:20px 10px;
@@ -295,12 +294,14 @@ label.CS-cerrado{
 		float: left;
 		z-index:2;		
 	}
-	.rotar{ /* Rota el texto registro en una orientación de 90 grados */
+	.rotar{ 
 		-ms-transform: rotate(-180deg);
 		-o-transform: rotate(-180deg);
 		transform: rotate(-180deg);
 		-webkit-transform: rotate(-180deg);
-		margin-top:30px;
+		margin-top:0px;
+		width:100px;
+		margin-left:10px;
 	}
 
 	.cajonLateral-abierto{
@@ -323,9 +324,11 @@ label.CS-cerrado{
 	.amarillo-lat{
 		float:left;
 		height:30px;
-		width:162px;
+		width:165px;
 		background:none repeat scroll 0 0 #D9E021;
-		margin-top:90px;
+		margin-top:48px;
+		margin-left:-1px;
+
 	}
 	
 	#formRegistro{
@@ -341,10 +344,11 @@ label.CS-cerrado{
 		margin-top:300px;
 	}
 
-	p.sexo{margin: 0px 0px -15px 0px;} /* Acomoda los radio inputs y los label en una sola línea */
-	label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
+	p.sexo{margin: 0px 0px -15px 0px;} 
+	label.sexo{ 
 		color:#D9E021;
 		margin: -10px 0px -5px 0px; float: left;	
 		font-size:12px;
 	}
-}
+
+}*/

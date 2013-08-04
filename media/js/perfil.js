@@ -1,6 +1,6 @@
 $(document).ready(function() {	
 	comunidad = $('#usuario_comunidadUniversitaria').val()
-	$('#contrasenaActual, #guardaCambios, #estadisticas, #galeria').hide()
+	$('#contrasenaActual, #guardaCambios, #estadisticas, #galeria, #editarFoto').hide()
 	$("form").find(':input:not(:disabled)').prop('disabled',true);
 	$("#carrusel>img").hide()
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
 					if(correcto == 0){
 						$("form").find(':input:disabled').prop('disabled',false);
 						$("#BtnEditar,#contrasenaActual").hide()
-						$("#guardaCambios").show()
+						$("#guardaCambios, #editarFoto").show()
 						
 					}else{
 						alert("contraseña incorrecta")
@@ -144,8 +144,22 @@ $(document).ready(function() {
 			})	
 		}
 	})
+	
+	$("#editarFoto").click(function(){
+		$("#galeriaEditarFoto").css({ "opacity": "10", "z-index": "4" }) 
+	})
+	$("#galeriaEditarFoto > img").click(function(){
+		url = $(this).attr('src')
+		$(".foto > img").prop('src',url)
+		$("#usuario_avatar").prop('value',url)
+	})
+	$("#closeGaleriaEditarFoto").click(function(){
+		$("#galeriaEditarFoto").css({"opacity":"0","z-index":"-4"})
+	})
+	
+	
 	$("#cancelarGuardaCambios").click(function(){
-		$('#guardaCambios').hide()
+		$('#guardaCambios,#editarFoto').hide()
 		$('#BtnEditar').show()
 		$("form").find(':input:not(:disabled)').prop('disabled',true);
 
@@ -172,7 +186,7 @@ $(document).ready(function() {
 		$("#carrusel-sig, #carrusel-ant").show()
 	})	
 
-	$("#carrusel>img").bind({
+	$("#carrusel>img:not(.recorre)").bind({
 		click: function(){
 			$(this).unbind('mouseleave');
 			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo')
@@ -197,7 +211,7 @@ $(document).ready(function() {
 				$("#carrusel-img"+i).show()
 			}
 		}else{
-			for(i=1; i<=8; i++){
+			for(i=1; i<=10; i++){
 				$("#carrusel-img"+i).show()
 			}			
 		}		
@@ -214,12 +228,12 @@ $(document).ready(function() {
 				$("#carrusel-img"+i).show()
 			}
 		}else{
-			for(i=47; i<=54; i++){
+			for(i=45; i<=54; i++){
 				$("#carrusel-img"+i).show()
 			}				
 		}
 	})
-
+	
 }); //Fin Document Ready
 
 function muestraInfoCarta($idcarta){
