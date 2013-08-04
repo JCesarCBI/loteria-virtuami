@@ -29,36 +29,47 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados["idTipoUsr"] = $idUsuario;
 				$datosPerfilOrdenados["Sexo"]["H"] = "Hombre";
 				$datosPerfilOrdenados["Sexo"]["M"] = "Mujer";
+				
+				//Obteniendo trofeos
 				if($idJuego != 0 && $idUsuario != 0){
+					//Se obtiene lista completa de trofeos
 					$trofeos = $this->mestadisticas->getTodosTrofeos();
+					//Se obtiene lista de trofeos ganados por el jugador en el juego
 					$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
-					for($i=0; $i<count($trofeos); $i++){
-						$datosPerfilOrdenados["trofeos"][$i+1] = $trofeos[$i];
-						$datosPerfilOrdenados["trofeos"][$i+1]["Estado"] = 0;
-						$datosPerfilOrdenados["trofeos"][$i+1]['nombreTrofeo'] = $datosPerfilOrdenados["trofeos"][$i+1]['nombre'];
-						unset($datosPerfilOrdenados["trofeos"][$i+1]['nombre']);
-						$datosPerfilOrdenados["trofeos"][$i+1]['Descripcion'] = $datosPerfilOrdenados["trofeos"][$i+1]['descripcion'];
-						unset($datosPerfilOrdenados["trofeos"][$i+1]['descripcion']);
-						$datosPerfilOrdenados["trofeos"][$i+1]['url-chico'] = $datosPerfilOrdenados["trofeos"][$i+1]['imagenIcon'];
-						unset($datosPerfilOrdenados["trofeos"][$i+1]['imagenIcon']);
-						$datosPerfilOrdenados["trofeos"][$i+1]['url-grande'] = $datosPerfilOrdenados["trofeos"][$i+1]['imagen'];
-						unset($datosPerfilOrdenados["trofeos"][$i+1]['imagen']);
+					
+					//Verificamos si el jugador ha ganado o no trofeos
+					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
+						//Se agrega el edo de no ganado a todos los trofeos
+						foreach ($trofeos as $i => $trof) {
+							$trof['Estado'] = 0;
+							$trofeos[$i]=$trof; //Se "actualiza" el arreglo
+						}
+						//Una vez agregado el estado a todos los trofeos, se agregan
+						//Al arreglo final que pasaremos a la vista
+						foreach ($trofeos as $trof) {
+							$datosPerfilOrdenados['trofeos'][$trof['idTrofeo']] = $trof;
+						}
+					}else{ //Si el usuario ha ganado al menos un trofeo
+						//Se realiza una búsqueda en los trofeos ganados por el jugador
+						//Para determinar el estado del trofeo (ganado/no ganado)
+						foreach ($trofeos as $i => $trof) {
+							//Se agrega el edo de ganado o no ganado
+							if(array_search($trof['idTrofeo'],$trofeosJugador)){
+								$trof['Estado'] = 1; //Trofeo ganado
+							}else{
+								$trof['Estado'] =0; //Trofeo no ganado
+							}
+
+							$trofeos[$i] = $trof; //Se "actualiza" el arreglo
+						}
+						//Una vez agregado el estado a todos los trofeos, se agregan
+						//Al arreglo final que pasaremos a la vista
+						foreach ($trofeos as $trof) {
+							$datosPerfilOrdenados['trofeos'][$trof['idTrofeo']] = $trof;
+						}
 					}
-					for ($i=0; $i < count($trofeosJugador); $i++) { 
-						$auxId = $trofeosJugador[$i]['idTrofeo'];
-						$datosPerfilOrdenados["trofeos"][$auxId]["Estado"] = 1;
-					}
-					// echo "<pre>";
-					// print_r($datosPerfilOrdenados);
-					// echo "<pre>";	
-					
-					
-					
-					// echo "<pre>";
-					// print_r($trofeos);
-					// echo "<pre>";	
-					
 				}else{
+					echo "no trofeos ganados";
 					return FALSE;
 				}
 				for($i=1; $i<45; $i++){
@@ -116,32 +127,53 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
 				//Datos para la galeria de cartas
-				$baraja = $this->mJuegoLibre->getMazo();
-				foreach ($baraja as $key) {
-					$id = $key["idCarta"];
-					$data["galeriaCartas"][$id] = $key;
-					unset($data["galeriaCartas"][$id]['descripcion']);
-					unset($data["galeriaCartas"][$id]['audio']);
-					unset($data["galeriaCartas"][$id]['longitud']);
-					unset($data["galeriaCartas"][$id]['imgIcon']);
-					$data["galeriaCartas"][$id]['idImagen'] = $key["idCarta"];
-					unset($data["galeriaCartas"][$id]['idCarta']);
-					$data["galeriaCartas"][$id]['nombreImagen'] = $key["nombre"];
-					unset($data["galeriaCartas"][$id]['nombre']);
-					$data["galeriaCartas"][$id]['urlChico'] = $key["imgPlantilla"];
-					unset($data["galeriaCartas"][$id]['imgPlantilla']);
-					$data["galeriaCartas"][$id]['urlGrande'] = $key["imgMazo"];
-					unset($data["galeriaCartas"][$id]['imgMazo']);
+				$idGaleria = $this->mestadisticas->getGaleria(1,1);
+				$mazoCartas = $this->mestadisticas->getCartas();
+				// echo "<pre>";
+				// print_r($idGaleria);
+				// echo "</pre>";
+				if($idGaleria != FALSE){
+					foreach ($mazoCartas as $i=>$key) {
+						if(array_search($key['idCarta'], $idGaleria)){
+							$key["Estado"] = 1;
+						}else{
+							$key["Estado"] = 0;
+						}
+						$mazoCartas[$i]=$key;
+					}
+				}else{
+					echo "no hay galeria";
+					foreach ($mazoCartas as $i=>$key) {
+						$key["Estado"] = 0;
+						$mazoCartas[$i]=$key;
+					}				
 				}
-				$datosPerfilOrdenados['galeriaCartas'] = $data['galeriaCartas'];	
+				foreach ($mazoCartas as $cartas) {
+					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
+				}
+
+				
+				$datosPerfilOrdenados['avatares'] = array(
+					'1' => array(
+						'id'=>1,
+						'nombre' =>'avatar1',
+						'url' => 'avatarA.png'						
+					),
+					'2' => array(
+						'id'=>2,
+						'nombre' =>'avatar2',
+						'url' => 'avatarB.png'						
+					),
+				);	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "</pre>";
-				// return $datosPerfilOrdenados;
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
 	}
+
+
 		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
 		//Se recibe mediante AJAX 
 		public function confirmaContrasena($contrasena,$idusuario){
@@ -157,19 +189,31 @@ class CDatosPerfil2 extends CI_Controller {
 			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
 			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
 			
-			$cartas = $this->mJuegoLibre->getMazo();
+			// $idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
+			
+			$mazoCartas = $this->mestadisticas->getCartas();
+			
+			// foreach ($mazoCartas as $key) {
+				// unset($key["audio"]);
+				// unset($key["longitud"]);
+				// $key['Estado'] = 0;
+				// $cartas[$key["idCarta"]] = $key;
+			// }
+			// foreach ($idGaleria as $key) {
+				// $cartas[$key["idCarta"]]["Estado"] = 1;
+			// }
 			// echo "<pre>";
 			// print_r($cartas);
 			// echo "</pre>";
+			// echo "<pre>";
+			// print_r($idGaleria);
+			// echo "</pre>";
 			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
-			echo json_encode($cartas[$idcarta-1]);
+			echo json_encode($mazoCartas[$idcarta]);
 		}
-		
-		public function editaInformacionUsuario(){
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
-		}
-		
-		
 }
+
+
+
+
+
