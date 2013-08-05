@@ -166,8 +166,8 @@
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
 		$mail->Subject = "Test phpMailer";
-		echo "CORREO------------->".$datosUsr['correo'];
-		echo "<br>";
+		//echo "CORREO------------->".$datosUsr['correo'];
+		//echo "<br>";
 		$mail->AddAddress($datosUsr['correo']);
 		$body = "Tu código de activación es: ".$datosUsr['codigoActivacion'];//"Ve a esta liga para comenzar a jugar:"."<a href="."http://www.google.com/>Visit W3Schools</a";
 		$mail->Body = $body;
