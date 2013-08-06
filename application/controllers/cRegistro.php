@@ -70,10 +70,10 @@
 			$this->form_validation->set_rules('usuario_nombreUsr','','required');
         	$this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
 			$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
-        	$this->form_validation->set_rules('usuario_nombre','required|trim');		
-			$this->form_validation->set_rules('usuario_aPaterno','required|trim');
-			$this->form_validation->set_rules('usuario_aMaterno','required|trim');
-			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[3]');
+        	$this->form_validation->set_rules('usuario_nombre','required|trim|alpha');		
+			$this->form_validation->set_rules('usuario_aPaterno','required|trim|alpha');
+			$this->form_validation->set_rules('usuario_aMaterno','required|trim|alpha');
+			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[2]');
 			//Si la validavión es correcta
 		    if($this->form_validation->run() != FALSE){
 			//echo "<pre>";
