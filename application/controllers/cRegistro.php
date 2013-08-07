@@ -67,13 +67,13 @@
 			//Recibe arreglo
 			
 			//Realiza validaciones
-			$this->form_validation->set_rules('usuario_nombreUsr','','required');
-        	$this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');
+			$this->form_validation->set_rules('usuario_nombreUsr','','required');//minimo 5 max 25
+        	$this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');//
 			$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
-        	$this->form_validation->set_rules('usuario_nombre','required|trim|alpha');		
-			$this->form_validation->set_rules('usuario_aPaterno','required|trim|alpha');
-			$this->form_validation->set_rules('usuario_aMaterno','required|trim|alpha');
-			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[2]');
+        	$this->form_validation->set_rules('usuario_nombre','required|trim|alpha');//min 4 max db	
+			$this->form_validation->set_rules('usuario_aPaterno','required|trim|alpha');//min3 max db
+			$this->form_validation->set_rules('usuario_aMaterno','required|trim|alpha');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[2]');//17-60
 			//Si la validavión es correcta
 		    if($this->form_validation->run() != FALSE){
 			//echo "<pre>";
@@ -121,7 +121,7 @@
 			
 			
 			$datos = $this->micombobox->datosComboBox();
-			$this->load->view('vpruebasGuillermo', $datos);
+			$this->load->view('vinicio', $datos);
 			
 			//$this->load->view('vinicio', $datos);	
 			}
@@ -169,7 +169,7 @@
 		//echo "CORREO------------->".$datosUsr['correo'];
 		//echo "<br>";
 		$mail->AddAddress($datosUsr['correo']);
-		$body = "Tu código de activación es: ".$datosUsr['codigoActivacion'];//"Ve a esta liga para comenzar a jugar:"."<a href="."http://www.google.com/>Visit W3Schools</a";
+		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
 		$mail->Body = $body;
 		if( ! $mail->Send() )
 		{
