@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('usuario/mregistro');
+					$this->load->model('estadisticas/mestadisticas');
 				}
 				
 				public function getDatos(){
@@ -31,16 +31,16 @@
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mregistro->setEstatus($nombreUsr);
+						$datos = $this->mestadisticas->getAvatar();
 						echo'<pre>';
 							print_r($datos);
 						echo'</pre>';
-						for ($i = 0; $i < count($datos) ; $i++) { 
-							$datosOrdenados[$i+1] = $datos[$i];
-						}
-						echo'<pre>';
-							print_r($datosOrdenados);
-						echo'</pre>';
+						// for ($i = 0; $i < count($datos) ; $i++) { 
+							// $datosOrdenados[$i+1] = $datos[$i];
+						// }
+						// echo'<pre>';
+							// print_r($datosOrdenados);
+						// echo'</pre>';
 					} else {
 						return FALSE;
 					}

@@ -62,6 +62,24 @@
 			}
 		}
 		
+		public function getAvatar()
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('avatar');
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $value) {
+					$avatar[$value['idAvatar']] = $value;
+				}
+				return $avatar;
+			} else {
+				return FALSE;
+			}
+			
+		}
+		
 		public function getGaleria($idUsr, $idJuego)
 		{
 			$this->db->SELECT('idCarta');
