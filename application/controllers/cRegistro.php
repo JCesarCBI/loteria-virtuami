@@ -64,25 +64,26 @@
 
 		
 		function RegistraUsuario(){
-			//Recibe arreglo
 			
 			//Realiza validaciones
-			$this->form_validation->set_rules('usuario_nombreUsr','','required');//minimo 5 max 25
-        	$this->form_validation->set_rules('usuario_correo','','required|trim|valid_email');//
-			$this->form_validation->set_rules('usuario_contrasena','','required|trim|min_length[6]');
-        	$this->form_validation->set_rules('usuario_nombre','required|trim|alpha');//min 4 max db	
-			$this->form_validation->set_rules('usuario_aPaterno','required|trim|alpha');//min3 max db
-			$this->form_validation->set_rules('usuario_aMaterno','required|trim|alpha');//min 3 max db
-			$this->form_validation->set_rules('usuario_edad','numeric|integer|trim|max_legth[2]');//17-60
+			$this->form_validation->set_rules('usuario_nombreUsr', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');
+			//$this->form_validation->set_rules('usuario_nombreUsr','','required|min_legth[5]|max_length[25]');//minimo 5 max 25
+        	$this->form_validation->set_rules('usuario_correo','Correo','required|trim|valid_email');//
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
+        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
+			$this->form_validation->set_rules('usuario_aPaterno','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
+			$this->form_validation->set_rules('usuario_aMaterno','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
 			//Si la validavión es correcta
-		    if($this->form_validation->run() != FALSE){
-			//echo "<pre>";
-			//print_r($_POST);
-			//echo "</pre>";
 			
-			//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
 			
-			$datosUsuario= array(
+		    if($this->form_validation->run()!= FALSE){
+		    	
+				//echo "<pre>";
+				//print_r($_POST);
+				//echo "</pre>";
+				//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
+				$datosUsuario= array(
                 'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
                 'correo'=>$this->input->post('usuario_correo',TRUE),
                 'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
