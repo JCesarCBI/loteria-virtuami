@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('estadisticas/mestadisticas');
+					$this->load->model('juego/mtrofeo');
 				}
 				
 				public function getDatos(){
@@ -20,7 +20,7 @@
 					$idJuego = 1;
 					$idPartida = 1; 		//1 Completa | 2 Rapida
 					$idNivel = 1; 			//1 Basico| 2 Intermedio | 3 Avanzado| 4 Experto
-					$idModalidad = 7;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
+					$idModalidad = 1;		//1 Juego Libre| 2 Diminutivos| 3 Adjetivos| 4 Verbos| 5 Sinonimos| 6 Genero| 7 Plural| 8 Aumentativo| 9 Peyorativos| 10 Sustantivos| 11 Antonimos 
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$idCarta = 1;
 					$nombreUsr = 'JCesarCBI';
@@ -31,10 +31,12 @@
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mestadisticas->getAvatar();
+						$datos = $this->mtrofeo->setTrofeo(1,1,24);
+						// $datos = $this->mtrofeo->getEasterEggs();
 						echo'<pre>';
 							print_r($datos);
 						echo'</pre>';
+						
 						// for ($i = 0; $i < count($datos) ; $i++) { 
 							// $datosOrdenados[$i+1] = $datos[$i];
 						// }
