@@ -23,6 +23,9 @@
 						<h3>Hoja de resultados</h3>
 						<span id="resultadosJuego" >
 							
+								<button class="small button tamanoBoton" onclick="reintentar()" type="button">Reintentar</button>
+								<button class="small button tamanoBoton" onclick="nuevoJuego()" type="button">Nuevo Juego</button><br /><br />
+								<center><button class="small button tamanoBoton" onclick="perfil()" type="button">Perfil</button></center>
 						</span>
 
 						<a class="close" href="#"></a>

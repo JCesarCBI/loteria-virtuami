@@ -1,4 +1,6 @@
+
 jQuery(document).ready(function($) {
+   
 
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
@@ -10,8 +12,20 @@ jQuery(document).ready(function($) {
 	document.getElementById('errorCadena').value = "";
 	document.getElementById('loteriaCadena').value = "";
 });
-var tiempo = "";
-var tiempo2 = "";
+
+	var tiempo = "";
+	var tiempo2 = "";
+    var bPreguntar = true;
+     
+    window.onbeforeunload = preguntarAntesDeSalir;
+     
+    function preguntarAntesDeSalir()
+    {
+      if (bPreguntar==true)
+        return "¿Seguro que quieres salir?";
+    }
+    
+    
 function obternerId(indice) {
 
 	//Obtengo todos los id de las cartas dey los guardo en una arreglo
@@ -469,16 +483,22 @@ function loteria(indice){
 	
 }
 
-function nuevoJuego(){
-	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
+function nuevoJuego(){	
+	bPreguntar = false;
+	window.location.href=base+'index.php/cLogin2/validarLogin';
 }
 
+function Perfil(){	
+	bPreguntar = false;
+	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
+}
 function reintentar(){
+	bPreguntar = false;
 	window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2';
 }
 
 function hojaResultados(){
-	
+	bPreguntar = false;	
 	puntos=document.getElementById('puntos').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	if (estadoPartida!=1 || estadoPartida!=0) {
@@ -505,7 +525,9 @@ function hojaResultados(){
 	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
 	$('#resultadosJuego').html('<label>Puntuación: </label>'+puntos+'<br />'+
 								'<label>Estado: </label>'+estado+'<br />'+
-								'<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
+								'<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'+
+								'<button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>'+
+								'<button class="small button" onclick="perfil()" type="button">Perfil</button>'
 							)
 	
 
