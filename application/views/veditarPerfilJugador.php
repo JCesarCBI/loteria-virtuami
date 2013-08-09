@@ -253,11 +253,13 @@
 					<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="10">
 					<img id="carrusel-ant" class="recorre" src="<?=base_url()?>media/img/cback.png">
 					<?php 
-
-						foreach ($galeriaCartas as $imagen) { ?>
-							<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['idCarta'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
-						
-					<?php	} ?>
+						foreach ($galeriaCartas as $imagen) {
+							if($imagen['Estado'] == 1){	 ?>
+								<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['imgPlantilla'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
+						<?php } else { ?>
+								<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().'media/img/mazo/reversa.png')?>" />
+										
+					<?php	} }?>
 					<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">
 					<br><br>
 					<!-- <label id="carrusel-ant">Atras</label>
