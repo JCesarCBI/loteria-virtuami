@@ -330,7 +330,13 @@ $(document).ready(function() {
 		if(edad == ""){	$("#edadError").hide();	}
 		//Desbloqueo del segundo botón siguiente
 		if(edad != "" && !(isNaN(edad))){
-			$("#usuario_comunidadUniversitaria").removeAttr("disabled")
+			if(parseInt(edad)>=17 && parseInt(edad)<=60){
+				$("#usuario_comunidadUniversitaria").removeAttr("disabled")
+				$("#edadError").hide();
+			}else{
+				alert("edad no válida")
+			}
+			
 			$("#edadError").hide();
 		}else{
 			$('#usuario_gradoActivo, #usuario_cargo, #usuario_area, #usuario_division, #usuario_posgrado').hide()
