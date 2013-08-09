@@ -13,14 +13,6 @@
 				
 	}
 	
-	//Esta función ya no es necesaria, ya que el controlador que se carga desde
-	//El inicio es welcome.php
-	 /*public function index(){
-	 	
-		 $datos = $this->micombobox->datosComboBox();
-		 $this->load->view('vpruebasGuillermo', $datos);
-	 }*/
-	
 	
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
@@ -66,8 +58,7 @@
 		function RegistraUsuario(){
 			
 			//Realiza validaciones
-			$this->form_validation->set_rules('usuario_nombreUsr', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');
-			//$this->form_validation->set_rules('usuario_nombreUsr','','required|min_legth[5]|max_length[25]');//minimo 5 max 25
+			$this->form_validation->set_rules('usuario_nombreUsr', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
         	$this->form_validation->set_rules('usuario_correo','Correo','required|trim|valid_email');//
 			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
         	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
@@ -79,9 +70,6 @@
 			
 		    if($this->form_validation->run()!= FALSE){
 		    	
-				//echo "<pre>";
-				//print_r($_POST);
-				//echo "</pre>";
 				//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
 				$datosUsuario= array(
                 'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
@@ -114,9 +102,7 @@
 			echo "<script>
 				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
 			</script>";	
-			//echo "<pre>";
-			//print_r($datosUsuario);//Imprimo datos antes de enviarlos al modelo
-			//echo "</pre>";
+			
 			$this->correoConfirmacion($datosUsuario);
 			$this->mregistro->setAgregarUsuario($datosUsuario);//Registrando datos en la BD
 			
@@ -151,10 +137,7 @@
 	}
 	
 	function correoConfirmacion($datosUsr){
-		echo "Dentro de correoConfirmacion";	
-		echo "<pre>";
-		print_r($datosUsr);//Imprimo datos 
-		echo "</pre>";
+		
 		require_once 'class.phpmailer.php';
 		
 		$mail = new PHPMailer();
@@ -167,8 +150,6 @@
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
 		$mail->Subject = "Test phpMailer";
-		//echo "CORREO------------->".$datosUsr['correo'];
-		//echo "<br>";
 		$mail->AddAddress($datosUsr['correo']);
 		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
 		$mail->Body = $body;
