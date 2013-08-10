@@ -148,20 +148,7 @@ class CDatosPerfil extends CI_Controller {
 				foreach ($mazoCartas as $cartas) {
 					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
 				}
-
-				
-				$datosPerfilOrdenados['avatares'] = array(
-					'1' => array(
-						'id'=>1,
-						'nombre' =>'avatar1',
-						'url' => 'avatarA.png'						
-					),
-					'2' => array(
-						'id'=>2,
-						'nombre' =>'avatar2',
-						'url' => 'avatarB.png'						
-					),
-				);	
+				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "</pre>";
