@@ -43,7 +43,7 @@
     	        	Se mantiene oculto y se activa con jquery -->
     	        <div class="recuperarContrasena">
 	    	        <label id="labelRecuperar" class="ins">Ingresa el correo al que se enviará tu contraseña</label>
-					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin2/recuperarContrasena">
+					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin/recuperarContrasena">
 		                <input autofocus class="superior vacio"  type="email" id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" required placeholder="correo"/>
 		                <input class="sup boton" type="submit" id="recuperaContrasena-boton" name="recuperaContrasena-boton" value="enviar">
 	    	        </form>
