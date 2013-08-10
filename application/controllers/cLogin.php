@@ -22,12 +22,23 @@ class CLogin extends CI_Controller {
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
         	$jugador = $this->mlogin->login_usuario($usr, $psw);
+			echo "<pre>";
+			print_r($jugador);
+			echo "</pre>";
 			if($jugador){
-				$this->session->set_userdata('usuario', $usr);
-				$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
-				$this->session->set_userdata('idJuego', 1);
-				$this->session->set_userdata('avatar', $jugador[0]->avatar);			
-				$this->load->view('vModalidad');  //aqui se cargara vPruebaEfrenLogin
+				if ($jugador[0]->estatus == 1) {
+					$this->session->set_userdata('usuario', $usr);
+					$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
+					$this->session->set_userdata('idJuego', 1);
+					$this->session->set_userdata('avatar', $jugador[0]->avatar);			
+					$this->load->view('vModalidad');  //aqui se cargara vPruebaEfrenLogin
+				} else {
+					$datos = $this->micombobox->datosComboBox();
+					//Agrega este índice para que se emita la alerta correspondiente
+					$datos['noExiste'] = 0;
+					$this->load->view('vinicio', $datos);
+					echo "<script>alert('Activa tu cuenta para poder jugar')</script>";
+				}
 			}else{
 				
 				//Envíame los datos de esta manera, por favor
