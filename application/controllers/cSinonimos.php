@@ -17,7 +17,7 @@
 			
 		}
 		
-		public function seleccionarPosibleRespuesta($respuesta= "cortesana",$id=2){
+		public function seleccionarPosibleRespuesta($respuesta,$id){
 		$sinonimo=$this->mjuegoavanzado->getCartaSinonimo($id);
 		/*echo "<pre>";
 		print_r($sinonimos);
