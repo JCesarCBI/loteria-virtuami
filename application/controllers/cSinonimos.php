@@ -30,9 +30,9 @@
 				$i++;
 			}
 			
-			echo "<pre>";
-			print_r($resultado['respuestas']);
-			echo "</pre>";
+			//echo "<pre>";
+			//print_r($resultado['respuestas']);
+			//echo "</pre>";
 			foreach ($resultado['respuestas'] as $value) {
 				if ($respuesta==$value) {
 					$ok=1;
