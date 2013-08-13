@@ -1,7 +1,7 @@
 $(document).ready(function() {	
 	//prepara campos para mostrar la primera parte del formulario
 	$('.cajonLateral-abierto, .cajonSuperior-abierto, .ok, .recuperarContrasena, .error_validation').hide();
-	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #usuario_comunidadUniversitaria, #usuario_division, #Lusuario_nombreUsr, #Lusuario_contrasena, #usuario_correo_recuperarContrena').val("");
+	$('#usuario_nombreUsr, #usuario_correo, #usuario_contrasena, #usuario_nombre, #usuario_aPaterno, #usuario_aMaterno,#usuario_edad, #Lusuario_nombreUsr, #Lusuario_contrasena, #usuario_correo_recuperarContrena').val("");
 	$("#sig1, #sig2, #enviar").attr("disabled","disabled")
 	$("#paso2, #paso3, #sig2, #atras2, #atras1, #enviar").hide()
 
@@ -121,7 +121,8 @@ $(document).ready(function() {
 					$('#usr_ok').val(0)
 					$('#usrError').show();
 				}else{//Si el usuario no existe 
-					if(usr != ""){ //se verifica primero que el campo no esté vacío para añadir la clase correcto
+					if(usr != "" && $("#usuario_nombreUsr").val().length >= 5 ){ //se verifica primero que el campo no esté vacío 
+						//y que sea de una longitud mayor o igual a 5 para añadir la clase correcto
 						$('#usuario_nombreUsr').removeClass("vacio incorrecto").addClass("correcto")
 						$('#usr_ok').val(1)
 						$('#usrError').hide();
@@ -223,9 +224,8 @@ $(document).ready(function() {
 		var nombre = $('#usuario_nombre').val()
 		var apat = $('#usuario_aPaterno').val()
 		var amat = $('#usuario_aMaterno').val()
-		
 		//Desbloqueo del segundo botón siguiente
-		if(nombre != '' && apat != '' && amat != ''){
+		if((nombre != '' && nombre.length>=4) && (apat != '' && apat.length>=3) && (amat != '' && amat.length >=3)){
 			$("#sig2").removeAttr("disabled")
 		}else{
 			$("#sig2").attr("disabled","disabled")
