@@ -17,7 +17,7 @@
 			
 		}
 		
-		public function seleccionarPosibleRespuesta($respuesta="mujer",$id=3, $modalidad=4){
+		public function seleccionarPosibleRespuesta($respuesta,$id, $modalidad){
 			
 			
 			switch ($modalidad) {
@@ -30,15 +30,16 @@
     			case 3://Adjetivos
         			echo "i es igual a 3";
         		break;
-				case 4://Sinonimos
-					
-					
+				case 4://Sinonimos				
 					if($this->validarSinonimo($respuesta, $id)== 1) echo 0;
 					else echo 1;										
 				break;
 				//Agregar aquí las otras modalidades ...
 			}	
 		}	
+		
+		
+		
 		
 		public function validarSinonimo($respuestaCarta, $idCarta){	//Valida si el 
 			$sinonimo=$this->mjuegoavanzado->getCartaSinonimo($idCarta); 
