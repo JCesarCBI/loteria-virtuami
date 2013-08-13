@@ -61,4 +61,48 @@
 			
 			return $valor;
 		}
+		
+		public function validarAdjetivos($respuestaCarta="damoso", $idCArta=3){
+			$adjetivos= $this->mjuegoavanzado->getCartaAdjetivo($idCArta);
+			
+			
+			$valor =0;
+			$i=1;
+			foreach ($adjetivos as $key) {
+				$resultado['respuestas'][$i]=$key['adjetivo'];
+				$i++;
+			}
+			
+			foreach ($resultado['respuestas'] as $value) {
+				if ($respuestaCarta==$value) {
+					$valor=1;
+					}
+			}	
+			echo $valor;
+			return $valor;
+			
+		}
+		
+		public function validarDiminutivos($respuestaCarta="damita", $idCArta=3){
+			$diminutivos= $this->mjuegoavanzado->getCartaDiminutivo($idCArta);
+			
+			
+			$valor =0;
+			$i=1;
+			foreach ($diminutivos as $key) {
+				$resultado['respuestas'][$i]=$key['diminutivo'];
+				$i++;
+			}
+			
+			foreach ($resultado['respuestas'] as $value) {
+				if ($respuestaCarta==$value) {
+					$valor=1;
+					}
+			}	
+			echo $valor;
+			return $valor;
+			
+		} 
+		
+		
 }
