@@ -164,7 +164,7 @@
 		$mail->AddAddress($datosUsr['correo']);
 		$altbody = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
 		$mail->AltBody = $altbody;
-		
+		$body= "<h1>Mensaje de prueba mandado con phpmailer en formato html</h1>";
 		
 		$mail->Body = $body;
 		if( ! $mail->Send() )
