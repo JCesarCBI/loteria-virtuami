@@ -32,7 +32,7 @@
 				<div class="amarillo-sup">				
 					<label class="i-sesion">Iniciar sesión</label>
 				</div>
-				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin2/validarLogin">
+				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
 	                <input autofocus class="superior vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
 	                <input autofocus class="superior vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
 	                <input class="sup boton" type="submit" id="iSesion-boton" name="iniciar-sesion" value="entrar">

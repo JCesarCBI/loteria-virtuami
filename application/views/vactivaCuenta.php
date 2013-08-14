@@ -8,26 +8,21 @@
 	</head>
 
 	<body>
-		<title>Registro de activación</title>
+		<title>Activar cuenta</title>
 		<div class="twelve columns">
 			<div class="row">
 				<div class="eight columns">
-						<h2>Bienvenid@ <?= $nombreUsr ?></h2>
+						<h2>Activación de tu cuenta</h2>
 						<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in 
 							this spot, which was created for the bliss of souls like mine.
 						</p>	
-						<p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that
-						 I never was a greater artist than now. When, while the lovely valley teems with 
-						</p>
 						
 						<div id="datosUsuario">
 							<label class="dato">Nombre de usuario:</label><?=$nombreUsr?><br><br>
-							<label class="dato">Correo electrónico:</label><?=$correo?><br><br>
-							<label class="dato">Contraseña:</label><?=$contrasena?><br><br>
 						</div>
-						<p>Activa tu cuenta para comentar a jugar:
-							<br><a href="">Código de activación</a>
-						</p>
+						<p>Activa tu cuenta para comenzar a jugar:<br>
+							<a href="#">Código de activación</a>
+						</p>				
 				</div>
 				<div class="four columns">
 					<img id="loteria-img" src="<?=base_url()?>/media/img/loteria.jpg"/>

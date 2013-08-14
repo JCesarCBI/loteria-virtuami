@@ -120,7 +120,7 @@
 				<div id="galeriaEditarFoto">
 					<?php
 						foreach ($avatares as $avatar) { ?>
-							<img src="<?php print_r(base_url().'media/img/avatar/'.$avatar['url'])?>" onclick("cambiaIdImagenFoto(<?=$avatar['id']?>)") />
+							<img src="<?php print_r(base_url().$avatar['avatar'])?>" onclick("cambiaIdImagenFoto(<?=$avatar['idAvatar']?>)") />
 							
 					<?php }
 					?>
