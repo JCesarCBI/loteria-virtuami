@@ -258,12 +258,17 @@ function borrarInputCambiarCarta() {
 
 }
 
-
-function loteria(indice){
+function cartasLoteria(indice){
 	
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
+	loteria()
+}
+
+function loteria(){
+	
+	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');
 	
@@ -276,5 +281,6 @@ function loteria(indice){
 	}else{
 			document.getElementById('estadoPartida').value=3;
 		
-	};	
+	};
+	hojaResultados();	
 }

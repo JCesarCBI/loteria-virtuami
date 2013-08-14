@@ -76,7 +76,6 @@
 			<!--Columna central, aquí iran las 16 cartas de la plantilla-->
 			<div class="six columns" id="columnaCentral">
 				
-					<div id="audio" class="audio"></div>
 				<img id="subtitulos"  src="<?= base_url()?>media/img/subs.png"/>
 				<img id="audioBoton"  src="<?= base_url()?>media/img/sonido.png"/>
 				
@@ -102,6 +101,8 @@
 							<center><span class="comodines centro" id="comodinesVisibles" >0</span></center>
 							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
 					</div>
+					<div></div>
+					<div id="audio"> </div>
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
 						<?php			
@@ -139,8 +140,8 @@
 					
 					<ul id="gallery">
 						<li>
-							<a class="clearfix" href="#loteria-FancyBox">
-								<img src="<?= base_url()?>media/img/boton.png"  onclick="loteria(-1)"/>
+							<a class="clearfix">
+								<img src="<?= base_url()?>media/img/boton.png"  onclick='loteria()'/>
 							</a>
 						</li>
 					</ul>

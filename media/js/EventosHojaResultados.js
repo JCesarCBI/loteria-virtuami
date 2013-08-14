@@ -38,6 +38,7 @@ function hojaResultados(){
 	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
 	$('#resultadosJuego').html('<label>Puntuación: </label>'+puntos+'<br />'+
 								'<label>Estado: </label>'+estado+'<br /><br />'+
+								'<label>Estado: </label>sssssss<br /><br />'+
 								'<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'+
 								'<button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>'+
 								'<button class="small button" onclick="perfil()" type="button">Perfil</button>'

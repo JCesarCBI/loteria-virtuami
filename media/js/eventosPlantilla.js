@@ -34,7 +34,7 @@ function presionaEnterPlantilla(evt, op) {
 			puntos();
 			borrarInputCambiarCarta();
 			cartaCorrecta(indice);
-			loteria(indice);
+			cartasLoteria(indice);
 		}
 
 	}
