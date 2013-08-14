@@ -66,7 +66,7 @@ public function descripcion($id=-1){
 }
 
 //******Función que escribe la trae larespuesta correcta********/
-public function respuestaCorrecta($id=-1){
+public function respuestaCorrecta($respuesta,$id){
 	
 
 	//Voy por el mazo de las cartas    
@@ -84,13 +84,19 @@ public function respuestaCorrecta($id=-1){
 	if ($id>-1 && isset($baraja[$id]['nombre'])) {
 		
 		$datos=$baraja[$id]['nombre'];
+		if ($datos==$respuesta) {
+			$resultado=0;
+		} else {
+			$resultado=1;
+		}
+		
 		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
-		print_r($datos);
+		echo($resultado);
 
 	}
 	//si no lo encuentra me manda una cadena vacía
 	else{
-		echo 0;
+		echo 1;
 	}
 	
 }

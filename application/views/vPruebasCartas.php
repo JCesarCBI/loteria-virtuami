@@ -4,13 +4,20 @@
 	
 	<title>Inicio</title>
 	<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="<?=base_url(); ?>media/js/tipoMultiplicador.js" type="text/javascript" charset="utf-8"></script>
-	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  	
 	<script>var base = "<?=base_url(); ?>"</script> 
+	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/eventosMazo.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/eventosPlantilla.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/EventosHojaResultados.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/eventosVisuales.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/funcionesAjax.js" type="text/javascript" charset="utf-8"></script>
+
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/fondoLoguin.css">
+	<link rel="stylesheet" href="<?=base_url(); ?>media/css/magic-master/magic.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/cartas.css">
 
 	</head>
@@ -59,13 +66,19 @@
 							</div>
 						</div>
 						
-					<img src="<?= base_url()?>media/img/mazo/reversa.png" onclick="cambiaCarta(0)" class="cartaReversa" id="cartaReversaClick"/>
+					<div id="espacioCartaReversa">
+						<img src="<?= base_url()?>media/img/mazo/reversa.png" onclick="cambiaCarta(0)" class="cartaReversa pasarCarta" id="cartaReversaClick"/>
+					</div>
 				</div>			
 			</div>
 			<!--Termina la columnaIzq-->
 			
 			<!--Columna central, aquí iran las 16 cartas de la plantilla-->
 			<div class="six columns" id="columnaCentral">
+				
+					<div id="audio" class="audio"></div>
+				<img id="subtitulos"  src="<?= base_url()?>media/img/subs.png"/>
+				<img id="audioBoton"  src="<?= base_url()?>media/img/sonido.png"/>
 				
 				<div class="contenidoSuperior" id="contenidoSuperior">
 					<div class="fondosup" id="fondosup">
@@ -89,7 +102,6 @@
 							<center><span class="comodines centro" id="comodinesVisibles" >0</span></center>
 							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
 					</div>
-					
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
 						<?php			
@@ -117,7 +129,6 @@
 					</div>
 			</div>
 			
-				<div id="audio"> </div>
 		
 			</div>
 			<!--Termina la columnaCentral-->
@@ -129,7 +140,7 @@
 					<ul id="gallery">
 						<li>
 							<a class="clearfix" href="#loteria-FancyBox">
-								<img src="<?= base_url()?>media/img/boton.png"  />
+								<img src="<?= base_url()?>media/img/boton.png"  onclick="loteria(-1)"/>
 							</a>
 						</li>
 					</ul>

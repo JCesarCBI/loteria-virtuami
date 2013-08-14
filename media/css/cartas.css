@@ -1,9 +1,10 @@
-}
-
 .Escondido{
-	display: none;
+	display: none !important;
 }
-
+.audio{
+	float:left;
+	position:fixed;
+}
 .respuestaInput{
 	min-height: 50px !important;
 	color:#f9ec23;
@@ -29,7 +30,8 @@
 }
 
 .cartaReversa{
-	width:100%;
+	width: 180px;
+	height:296px;
 	margin: 0 auto;
 }
 .mazoTemp{
@@ -192,6 +194,14 @@
 	
 }
 
+
+#espacioCartaReversa {
+	background: url(../img//mazo/reversa.png) no-repeat;
+	/mazo/reversa.png
+	width: 180px;
+	height:296px;
+	position: absolute;
+}	
 
 /********fancy box**************/
 
