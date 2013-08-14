@@ -5,21 +5,15 @@
         parent::__construct();
         $this->load->helper(array('html', 'url'));
 		$this->load->helper('form'); //Contiene funciones que ayuda a trabajar con formularios en html 
-		$this->load->model('usuario/mregistro');
+		$this->load->model('usuario/mregistro');//Carga funciones para agregar usuarios a la base de datos
 		$this->load->library('form_validation');
-		$this->load->library('micombobox');	
-		$this->load->model('usuario/mdatosperfil');		
-		$this->load->model('estadisticas/mestadisticas');
+		$this->load->library('micombobox');	//Libreria para cargar datos del comboBox de la vista vinicio
+		
 		//Filename: views/vinicio.php
 				
 	}
-
-	//Esta función ya no es necesaria, ya que el controlador que se carga desde
-	//El inicio es welcome.php
-	// public function index(){
-		// $datos = $this->micombobox->datosComboBox();
-		// $this->load->view('vinicio', $datos);
-	// }
+	
+	
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
@@ -60,32 +54,78 @@
 				}
 		}
 
-		/**Aquí harás todas las validaciones correspondientes de todos los campos.
-		 * No hagas validaciones por separado, al menos que yo pida que así sean.
-		 * Te enviaré la información vía POST. Tú las recibirás y manejarás para enviar
-		 * los datos a la BD. Si crees que necesito enviarte alguna cosa extra, me dices por favor */		
+		
 		function RegistraUsuario(){
-			//Recibe arreglo
-			// echo "<pre>";
-			// print_r($_POST);
-			// echo "</pre>";
-
-			//Realiza validaciones
 			
-			//Si la validación es correcta, me enviarás esto:
+			//Realiza validaciones
+			$this->form_validation->set_rules('usuario_nombreUsr', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
+        	$this->form_validation->set_rules('usuario_correo','Correo','required|trim|valid_email');//
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
+        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
+			$this->form_validation->set_rules('usuario_aPaterno','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
+			$this->form_validation->set_rules('usuario_aMaterno','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
+			//Si la validavión es correcta
+			
+			
+		    if($this->form_validation->run()!= FALSE){
+		    	
+				//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
+				$datosUsuario= array(
+                'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
+                'correo'=>$this->input->post('usuario_correo',TRUE),
+                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
+                'sexo'=>$this->input->post('usuario_sexo',TRUE),
+                'nombre'=>$this->input->post('usuario_nombre',TRUE),
+                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
+                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
+				'edad'=>$this->input->post('usuario_edad',TRUE),
+				'cargo'=>$this->input->post('usuario_cargo',TRUE),
+				'area'=>$this->input->post('usuario_area',TRUE),
+				'idTipoUsuario'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
+				'idDivision'=>$this->input->post('usuario_division',TRUE),
+				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
+				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
+				'idAvatar'=>1,
+				'codigoActivacion'=>uniqid(),
+				'estatus'=>0
+				);
+				
+			//Valido casos especiales de registro.
+				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
+				if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
+		    	if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
+				if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
+				if($datosUsuario['area']=="")$datosUsuario['area']=null;
+			//Si la validación es correcta
+			
 			echo "<script>
 				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
 			</script>";	
 			
-			//En otro caso, esto:
-			// echo "<script>
-				// alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
-			// </script>";
+			$this->correoConfirmacion($datosUsuario);
+			$this->mregistro->setAgregarUsuario($datosUsuario);//Registrando datos en la BD
 			
-			//Mandas a llamar nuevamente a la vista vinicio					
+			
 			$datos = $this->micombobox->datosComboBox();
-			$this->load->view('vinicio', $datos);				
+			$this->load->view('vinicio', $datos);
+			
+			//$this->load->view('vinicio', $datos);	
+			}
+			
+			else{
+				echo "<script>
+				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
+				window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2'
+				alert('no lo se')
+				</script>";
+// 				
+				// //Manda llamar nuevamente a la vista vinicio					
+				// $datos = $this->micombobox->datosComboBox();
+				// $this->load->view('vinicio', $datos);			
+			}	
 		}	
+		
 							
 		
 	function vacio($input){
@@ -98,15 +138,31 @@
 		}
 	}
 	
-	function validarAreaYCargo(){
-		//$datos;	
-		$area=$this->input->post('usuario_area',TRUE);
-		$cargo=$this->input->post('usuario_cargo',TRUE);
-		if($area==""){$datos['area']="NULL";}
-		if($cargo=="")$datos['cargo']="NULL";
+	function correoConfirmacion($datosUsr){
 		
-		return $datos;
+		require_once 'class.phpmailer.php';
+		
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->Host = 'ssl://smtp.gmail.com';
+		$mail->Port = 465;
+		$mail->SMTPAuth = true;
+		$mail->Username = 'ludico@virtuami.izt.uam.mx';
+		$mail->Password = '7Ud1C0u@m';
+		$mail->From = "remitente@dominio.com";
+		$mail->FromName = "Loteria VIRTU@MI";
+		$mail->Subject = "Test phpMailer";
+		$mail->AddAddress($datosUsr['correo']);
+		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		$mail->Body = $body;
+		if( ! $mail->Send() )
+		{
+			echo "No se pudo enviar el Mensaje.";
 		}
-
-	
+		else
+		{
+			echo "Mensaje enviado";
+		}
+	}
+		
 }

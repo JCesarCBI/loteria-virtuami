@@ -9,8 +9,6 @@
 		//$this->load->model('usuario/mdatosperfil');
 		$this->load->model('usuario/mregistro');
 		}
-	
-		
 		
 		function datosCorreo($idUsuario){
 		$datos=$this->mregistro->getCodigoActivacion($idUsuario);
