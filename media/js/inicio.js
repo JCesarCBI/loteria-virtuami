@@ -68,10 +68,10 @@ $(document).ready(function() {
 				$("#usuario_posgrado").show()
 			}	
 		}
-		if($("#usuario_comunidadUniversitaria").val() == 1){ //Alumno
-			$("#usuario_area").show()
-			$("#usuario_cargo").show()		
-		}
+		// if($("#usuario_comunidadUniversitaria").val() == 1){ //Alumno
+			// $("#usuario_area").show()
+			// $("#usuario_cargo").show()		
+		// }
 		if($("#usuario_comunidadUniversitaria").val() == 2){
 			$("#usuario_area").show()
 			$("#usuario_cargo").show()
@@ -135,7 +135,7 @@ $(document).ready(function() {
 				var pass = $('#usuario_contrasena').val();
 				var usr_ok = $('#usr_ok').val();
 				var email_ok = $('#email_ok').val();
-        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
+        		if(usr_ok == '1' && email_ok == '1' && pass != '' && pass.length>=6){
 					$("#sig1").removeAttr("disabled")
 				}else{
 					$("#sig1").attr("disabled","disabled")
@@ -178,7 +178,7 @@ $(document).ready(function() {
 									var pass = $('#usuario_contrasena').val();
 									var usr_ok = $('#usr_ok').val();
 									var email_ok = $('#email_ok').val();
-					        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
+					        		if(usr_ok == '1' && email_ok == '1' && pass != '' && pass.length>=6){
 										$("#sig1").removeAttr("disabled")
 									}else{
 										$("#sig1").attr("disabled","disabled")
@@ -191,7 +191,7 @@ $(document).ready(function() {
 										var pass = $('#usuario_contrasena').val();
 										var usr_ok = $('#usr_ok').val();
 										var email_ok = $('#email_ok').val();
-						        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
+						        		if(usr_ok == '1' && email_ok == '1' && pass != '' && pass.length>=6){
 											$("#sig1").removeAttr("disabled")
 										}else{
 											$("#sig1").attr("disabled","disabled")
@@ -209,7 +209,7 @@ $(document).ready(function() {
 					var pass = $('#usuario_contrasena').val();
 					var usr_ok = $('#usr_ok').val();
 					var email_ok = $('#email_ok').val();
-	        		if(usr_ok == '1' && email_ok == '1' && pass != ''){
+	        		if(usr_ok == '1' && email_ok == '1' && pass != '' && pass.length>=6){
 						$("#sig1").removeAttr("disabled")
 					}else{
 						$("#sig1").attr("disabled","disabled")
