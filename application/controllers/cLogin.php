@@ -68,10 +68,10 @@ class CLogin extends CI_Controller {
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
 			if($Usuario){
-				$destino = "jezrelmx1304@gmail.com";
-				$desde   = "micorreo@server.com";
-				$asunto  = "Prueba";
-				$mensaje = "Es un mensaje de prueba";
+				$destino = $correo;
+				$desde   = "virtuami@izt.uam.com";
+				$asunto  = "Contraseña virtuami";
+				$mensaje = "Tu contraseña de loteria virtuami es ".$Usuario;
 				mail($destino, $asunto, $mensaje, $desde);
 				echo '<script type="text/javascript">alert("Recibiras tu contraseña en tu correo");</script>'; 
 				//include("capilla.php");	
