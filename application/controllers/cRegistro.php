@@ -148,7 +148,6 @@
   	function correoConfirmacion($datosUsr){
 		
 		require_once 'class.phpmailer.php';
-		
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->Host = 'ssl://smtp.gmail.com';
@@ -156,25 +155,21 @@
 		$mail->SMTPAuth = true;
 		$mail->Username = 'ludico@virtuami.izt.uam.mx';
 		$mail->Password = '7Ud1C0u@m';
-		$mail->CharSet = "UTF-8";
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
-		$mail->IsHTML(true);
 		$mail->Subject = "Test phpMailer";
+		echo $datosUsr['correo'];
 		$mail->AddAddress($datosUsr['correo']);
-		$altbody = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
-		$mail->AltBody = $altbody;
-		$body= "<h1>Mensaje de prueba mandado con phpmailer en formato html</h1>";
-		
+		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
 		$mail->Body = $body;
-		if( ! $mail->Send() )
+		
+		if( !$mail->Send() )
 		{
 			echo "No se pudo enviar el Mensaje.";
 		}
 		else
 		{
-			echo "Mensaje enviado";
+			echo "Mensaje enviado"; 
 		}
 	}
-		
 }
