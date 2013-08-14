@@ -77,7 +77,7 @@
 			<div class="six columns" id="columnaCentral">
 				
 				<img id="subtitulos"  src="<?= base_url()?>media/img/subs.png"/>
-				<img id="audioBoton"  src="<?= base_url()?>media/img/sonido.png"/>
+				<img id="audioBoton" src="<?= base_url()?>media/img/sonido.png"/>
 				
 				<div class="contenidoSuperior" id="contenidoSuperior">
 					<div class="fondosup" id="fondosup">
@@ -102,7 +102,7 @@
 							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
 					</div>
 					<div></div>
-					<div id="audio"> </div>
+					<div id="audio" class="audio" > </div>
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
 						<?php			
