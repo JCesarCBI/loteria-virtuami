@@ -138,7 +138,9 @@
 	
 
 	function datosCorreo($idUsuario){
-		$datos;
+		$datos=$this->mregistro->getCodigoActivacion($idUsuario);
+		//print_r($datos);
+		return $datos;
 		
 	}
 	
