@@ -111,7 +111,7 @@ $(document).ready(function() {
 		}
      	
 		$.ajax({
-			url: base+'index.php/cpruebasNaye/usuario',
+			url: base+'index.php/cRegistro/usuario',
 			data: { usuario: $('#usuario_nombreUsr').val() },
 			dataType: "json",
 			type: "POST",
@@ -150,7 +150,7 @@ $(document).ready(function() {
 		}else{	   		
 			//Se comprueba el dominio
 			$.ajax({
-				url: base+'index.php/cpruebasNaye/dominio',
+				url: base+'index.php/cRegistro/dominio',
 				data: { correo: $('#usuario_correo').val() },
 				dataType: "json",
 				type: "POST",
@@ -164,7 +164,7 @@ $(document).ready(function() {
 					}else{
 						//Si el deominio es correcto, comprobará que el correo no exista
 						$.ajax({
-							url:base+'index.php/cpruebasNaye/correo',
+							url:base+'index.php/cRegistro/correo',
 							data:{ correo: $('#usuario_correo').val() },
 							dataType: "json",
 							type: "POST",							
@@ -357,27 +357,7 @@ $(document).ready(function() {
 		}
 	});
 		
-	$('#recuperaContrasena-boton').click(function(){
-		$.ajax({
-			url: base+'index.php/cpruebasNaye/recuperarContrasena',
-			data: { correo: $('#usuario_correo_recuperarContrena').val() },
-			dataType: "json",
-			type: "POST",
-			success:function(exito){ 
-				if(exito == 1){
-					alert("Tu contraseña ha sido enviada a tu correo :D")
-					$('#Lusuario_nombreUsr, #Lusuario_contrasena, #recuperaContrasena, #iSesion-boton').show();
-					$('#usuario_correo_recuperarContrena').val('');
-					$('.recuperarContrasena').hide();
-				}else{ 
-					alert("Este correo no está registrado! >.<")
-        		}
-			}
-		})
-	})
-
 	//LOGIN
-	
 	$('#recuperaContrasena-boton').click(function(){
 			$.ajax({
 				url: base+'index.php/cpruebasNaye/recuperarContrasena',
