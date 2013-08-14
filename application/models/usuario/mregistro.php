@@ -138,6 +138,23 @@ class Mregistro extends CI_Model {
 		
 		$this->db->insert('jugador', $player);
 	}
+	
+	//Obtiene el codigo de activacion
+		public function getCodigoActivacion($idUsr)
+		{
+			$this->db->SELECT('nombreUsr, correo, contrasena, codigoActivacion');
+			$this->db->FROM('usuario');
+			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query-> num_rows() == 1) {
+				return $query->result_array();
+			} else {
+				return FALSE;
+			}
+		}
 }
 
 ?>
