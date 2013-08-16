@@ -153,14 +153,33 @@
 		$mail->Host = 'ssl://smtp.gmail.com';
 		$mail->Port = 465;
 		$mail->SMTPAuth = true;
+		$mail->CharSet = "UTF-8";
 		$mail->Username = 'ludico@virtuami.izt.uam.mx';
 		$mail->Password = '7Ud1C0u@m';
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
+		$mail->IsHTML(true);
 		$mail->Subject = "Test phpMailer";
-		echo $datosUsr['correo'];
-		$mail->AddAddress($datosUsr['correo']);
-		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		
+		//$correo=$datosUsr['correo'];
+		$correo="guillermotorreslopez@gmail.com";
+		$mail->AddAddress($correo);
+		//$altbody = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASEÑA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		/*$body="<h1>Prueba de correo</h1>";
+		$body.="<h2>";
+		$body.="USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASEÑA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		$body.="</h2>";*/
+		//$mail->AltBody =$altbody;
+		//$body=$this->view('welcome_message');
+		$datosCorreo['nombreUsr']=$datosUsr['nombreUsr'];
+		$datosCorreo['correo']=$datosUsr['correo'];
+		$datosCorreo['contrasena']=$datosUsr['contrasena'];
+		$datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
+		
+		$body = $this->load->view('registroActivacion', $datosCorreo, true);
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
+		$mail->AddEmbeddedImage("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","fondo","loteria.jpg");
+		//$body = file_get_contents('/var/www/loteriaVIRTUAMI/application/views/welcome_message.php');
 		$mail->Body = $body;
 		
 		if( !$mail->Send() )
