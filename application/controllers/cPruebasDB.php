@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mtrofeo');
+					$this->load->model('juego/mjuegoavanzado');
 				}
 				
 				public function getDatos(){
@@ -31,7 +31,7 @@
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mtrofeo->setTrofeo(1,1,24);
+						$datos = $this->mjuegoavanzado->getCardPhrase();
 						// $datos = $this->mtrofeo->getEasterEggs();
 						echo'<pre>';
 							print_r($datos);

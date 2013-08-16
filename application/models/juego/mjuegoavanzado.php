@@ -18,8 +18,11 @@
 						GROUP BY f.idCarta
 						ORDER BY c.idCarta;');
 											
-			if ($query->num_rows() != 0) {
-				return $query->result_array();
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $value) {
+					$cartas[$value['idCarta']] = $value;
+				}
+				return $cartas;
 			} else {
 				return FALSE;
 			}

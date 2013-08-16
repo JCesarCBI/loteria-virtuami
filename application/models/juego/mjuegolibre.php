@@ -14,9 +14,11 @@
 			$this->db->FROM('carta');
 			
 			$query = $this->db->get();
-			
-			if ($query->num_rows()>0) {
-				return $query->result_array();
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $value) {
+					$cartas[$value['idCarta']] = $value;
+				}
+				return $cartas;
 			} else {
 				return FALSE;
 			}
@@ -36,7 +38,7 @@
 			}
 		}
 		
-		public function getCartas($value='')
+		public function getCartas()
 		{
 			$this->db->SELECT('carta.*, frase.frase');
 			$this->db->FROM('carta');
