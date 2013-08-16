@@ -13,6 +13,13 @@ jQuery(document).ready(function($) {
 
 });
     
+function volteaCarta(){
+		 
+	$('#cartaReversaClick').addClass('magictime rotateUp', 10, "easeOutQuart");
+	$("#cartaReversaClick").removeClass('magictime rotateUp', 450, "easeOutQuart");
+	
+};
+    
 function cartaCorrecta(indice){
 	$('#plantilla-frijolito-' + indice).addClass("frijolito");
 }

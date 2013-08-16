@@ -10,13 +10,9 @@ jQuery(document).ready(function($) {
 	document.getElementById('comodinesTotales').value = 0;
 	document.getElementById('errorCadena').value = "";
 	document.getElementById('loteriaCadena').value = "";
+	document.getElementById('bonusCartasRestantes').value = 0;
     var datosModificadosSinGuardar = true;
-	$("#cartaReversaClick").bind("click",function() {
-		 
-		$('#cartaReversaClick').addClass('magictime rotateUp', 10, "easeOutQuart");
-		$("#cartaReversaClick").removeClass('magictime rotateUp', 450, "easeOutQuart");
-	
-	  });
+    	
 
 });
 
@@ -59,19 +55,22 @@ function audioRima(indice) {
 
 
 function cambiaCarta(numCarta, mult) {
-
+	volteaCarta();
 	if (mult != 1) {
 		rompeCadenas();
 	};
 	//Temporizador
 	tiempo2 = temporizador(10);
+	idCarta = obternerId(numCarta);
+	
+	longitudRespuesta(idCarta);
 
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
-	
+	document.getElementById('bonusCartasRestantes').value=numCarta;
 	$('#cartaReversaClick').removeAttr("onclick");
 	var continuar = audioRima(numCarta);
-
+	
 	if (continuar == 0) {
 	//En esta función regreso 0 si la carta fue encontrada, en caso contrario regreso 0
 	var url = document.getElementById('baraja-' + numCarta).value

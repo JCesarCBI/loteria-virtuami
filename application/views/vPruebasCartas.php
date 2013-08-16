@@ -13,6 +13,7 @@
 	<script src="<?=base_url(); ?>media/js/EventosHojaResultados.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/eventosVisuales.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/funcionesAjax.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url(); ?>media/js/ayuda.js" type="text/javascript" charset="utf-8"></script>
 
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
@@ -35,7 +36,7 @@
 								<center><button class="small button tamanoBoton" onclick="perfil()" type="button">Perfil</button></center>
 						</span>
 
-						<a class="close" href="#"></a>
+						<a class="close" href="<?=base_url();?>index.php/cpruebasLuisa/juegoLibre2"></a>
 					</div>
 					</center>
 				</div>
@@ -55,15 +56,12 @@
 				<input type="hidden"  id="comodinesTotales" value="0" />
 				<input type="hidden"  id="errorCadena" value="" />
 				<input type="hidden"  id="loteriaCadena" value="" />
+				<input type="hidden"  id="bonusCartasRestantes" value="" />
 				<div class="cartasColumnaIzq">
 						<div class="BarajaResp">
-							<div>
 								<div id="cartaBvisible"></div>
-								
-							</div>
-							<div class="twelve columns respuestaInput"  id="respuestaInput">
-								aqui se escribira la respuesta
-							</div>
+								<div class="twelve columns respuestaInput"  id="respuestaInput"></div>
+								<center><div id="longitudAyuda"></div></center>
 						</div>
 						
 					<div id="espacioCartaReversa">

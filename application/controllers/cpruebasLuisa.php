@@ -9,12 +9,15 @@ class cpruebasLuisa extends CI_Controller {
 	}
 	
 	public function juegoLibre2(){
-				$baraja = $this->mJuegoLibre->getMazo();
-		shuffle($baraja);
-		foreach ($baraja as $key) {
-			$id = $key["idCarta"];
-			$data["baraja"][$id] = $key;
+		$datos="";
+	$baraja = $this->mJuegoLibre->getMazo();
+			shuffle($baraja);
+			foreach ($baraja as $key) {
+				$id = $key["idCarta"];
+				$data["baraja"][$id] = $key;
 		}
+			
+				
 		$k = 0;
 		$conta = 0;
 		for ($k=0; $k < 16; $k++) { 
@@ -38,16 +41,9 @@ class cpruebasLuisa extends CI_Controller {
 public function descripcion($id=-1){
 	
 
-	//Voy por el mazo de las cartas    
-	$barajas = $this->mJuegoLibre->getMazo();
-
-		$k = 0;
-		foreach ($barajas as $key) {
-
-			$baraja[$k+1] = $barajas[$k];
-			$k++;
-
-		}
+	$baraja = $this->mJuegoLibre->getMazo();
+			
+			
 			
 	//Si el id es correcto y la carta existe busco la descripción
 	if ($id>-1 && isset($baraja[$id]['nombre'])) {
@@ -68,18 +64,9 @@ public function descripcion($id=-1){
 //******Función que escribe la trae larespuesta correcta********/
 public function respuestaCorrecta($respuesta,$id){
 	
-
-	//Voy por el mazo de las cartas    
-	$barajas = $this->mJuegoLibre->getMazo();
-
-		$k = 0;
-		foreach ($barajas as $key) {
-
-			$baraja[$k+1] = $barajas[$k];
-			$k++;
-
-		}
-			
+	
+	$baraja = $this->mJuegoLibre->getMazo();
+					
 	//Si el id es correcto y la carta existe busco la descripción
 	if ($id>-1 && isset($baraja[$id]['nombre'])) {
 		
@@ -101,40 +88,6 @@ public function respuestaCorrecta($respuesta,$id){
 	
 }
 
-
-public function seleccionJuego($respuesta="neko"){
-		$id=1;
-		//$respuesta="neko";
-		$baraja[$id]['respuesta'][1]="gato";
-		$baraja[$id]['id']="gato";
-		$baraja[$id]['respuesta'][2]="felino";
-		$baraja[$id]['respuesta'][3]="neko";
-		$baraja[$id]['respuesta'][4]="cat";
-		
-		print_r($baraja[$id]);
-		
-			echo "<pre>";
-		foreach ($baraja[$id]['respuesta'] as $value) {
-			print_r($value);
-			echo "<br />";
-		}
-			echo "</pre>";
-		
-		 echo "************************";
-		
-		foreach ($baraja[$id]['respuesta'] as $value) {
-			
-			echo "<br />";
-			if ($respuesta==$value) {
-				echo "******Respuesta Correcta*******";
-			echo "<br />";
-				
-			}
-			
-		}
-				
-
-}
 
 public function seleccionarPosibleRespuesta($respuesta="neko"){
 		$id=1;
@@ -167,6 +120,52 @@ public function seleccionarPosibleRespuesta($respuesta="neko"){
 		}
 				
 
+	}
+
+public function stripAccents($String)
+{
+	$String = str_replace(array('á','à','â','ã','ª','ä'),'a',$String);
+	$String = str_replace(array('Á','À','Â','Ã','Ä'),"A",$String);
+	$String = str_replace(array("Í",'Ì','Î','Ï'),'I',$String);
+	// $String = str_replace(array(‘í’,'ì’,'î’,'ï’),”i”,$String);
+	// $String = str_replace(array(‘é’,'è’,'ê’,'ë’),”e”,$String);
+	// $String = str_replace(array(‘É’,'È’,'Ê’,'Ë’),”E”,$String);
+	// $String = str_replace(array(‘ó’,'ò’,'ô’,'õ’,'ö’,'º’),”o”,$String);
+	// $String = str_replace(array(‘Ó’,'Ò’,'Ô’,'Õ’,'Ö’),”O”,$String);
+	// $String = str_replace(array(‘ú’,'ù’,'û’,'ü’),”u”,$String);
+	// $String = str_replace(array(‘Ú’,'Ù’,'Û’,'Ü’),”U”,$String);
+	// $String = str_replace(array(‘[','^','´','`','¨','~',']‘),”",$String);
+	// $String = str_replace(“ç”,”c”,$String);
+	// $String = str_replace(“Ç”,”C”,$String);
+	// $String = str_replace(“ñ”,”n”,$String);
+	// $String = str_replace(“Ñ”,”N”,$String);
+	// $String = str_replace(“Ý”,”Y”,$String);
+	// $String = str_replace(“ý”,”y”,$String);$String
+	return $String;
 }
+public function longitudRespuesta($id){
+		
+	$baraja = $this->mJuegoLibre->getMazo();
+				
+		//Si el id es correcto y la carta existe busco la descripción
+		if ($id>-1 && isset($baraja[$id]['nombre'])) {
+			
+			$datos=$baraja[$id]['nombre'];
+
+
+			$respuesta=$this->stripAccents($datos);
+			
+			$datosReal=$datos."  ".strlen($respuesta);
+			echo($datosReal);
+	
+		}
+		//si no lo encuentra me manda una cadena vacía
+		else{
+			echo 0;
+		}
+				
+
+	}
+
 
 }

@@ -1,3 +1,8 @@
+#cartaBvisible{
+	min-width: 180px;
+	min-height:220px;
+}
+
 .Escondido{
 	display: none !important;
 }
@@ -27,6 +32,11 @@
 	max-height:334px;
 	margin: 0px auto;
 	
+}
+#longitudAyuda{
+	color:#f9ec23;
+	margin 0px auto;
+	font-size: 18pt;	
 }
 
 .cartaReversa{
@@ -269,3 +279,4 @@
 .tamanoBoton{
 	padding: 5px 20px 6px 16px
 }
+
