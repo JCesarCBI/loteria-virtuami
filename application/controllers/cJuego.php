@@ -83,7 +83,7 @@ class CJuego extends CI_Controller {
 			// echo "<pre>";
 			// print_r($this->session->all_userdata());
 			// echo "</pre>";
-			//$this->load->view('vPruebasCartas', $data);
+			$this->load->view('vPruebasCartas', $data);
 		}
 	}
 	public function guardarScore($record, $idEdoPartida){
