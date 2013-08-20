@@ -177,12 +177,17 @@
 		$datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
 		
 		$body = $this->load->view('registroActivacion', $datosCorreo, true);
-		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
-		$mail->AddEmbeddedImage("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","fondo","loteria.jpg");
+		$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg");
+		
+		
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
+		
+		//$mail->AddEmbeddedImage("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","fondo","loteria.jpg");
 		//$body = file_get_contents('/var/www/loteriaVIRTUAMI/application/views/welcome_message.php');
 		$mail->Body = $body;
 		
-		if( !$mail->Send() )
+		if(!$mail->Send())
 		{
 			echo "No se pudo enviar el Mensaje.";
 		}
