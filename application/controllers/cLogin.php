@@ -98,7 +98,8 @@ class CLogin extends CI_Controller {
 				
 				
 				
-				$destino = $correo;
+				// $destino = $correo;
+				$destino = "jezrelmx1304@gmail.com";
 				$cabecera = "Content-type: text/html\r\n";
 				// $desde   = "virtuami@izt.uam.com";
 				$asunto  = "Contraseña virtuami";
