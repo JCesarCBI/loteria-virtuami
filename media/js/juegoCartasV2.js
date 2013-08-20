@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-   
 
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
@@ -11,7 +10,8 @@ jQuery(document).ready(function($) {
 	document.getElementById('errorCadena').value = "";
 	document.getElementById('loteriaCadena').value = "";
 	document.getElementById('bonusCartasRestantes').value = 0;
-    var datosModificadosSinGuardar = true;
+	var reloj=document.getElementById('tiempoJuego').value;
+	document.getElementById('tiempoReloj').value =reloj.slice(0,(reloj.length-3));
     	
 
 });
@@ -60,7 +60,7 @@ function cambiaCarta(numCarta, mult) {
 		rompeCadenas();
 	};
 	//Temporizador
-	tiempo2 = temporizador(10);
+	tiempo2 = temporizador(document.getElementById('tiempoReloj').value);
 	idCarta = obternerId(numCarta);
 	
 	longitudRespuesta(idCarta);
@@ -100,7 +100,7 @@ function cambiaCarta(numCarta, mult) {
 
 		$('#cartaReversaClick').attr("onclick", "cambiaCarta(" + numCarta + ");");
 		document.getElementById('numeroCarta').value = numCarta;
-		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", 10000);
+		tiempo = setTimeout("cambiaCarta(" + numCarta + ")", document.getElementById('tiempoJuego').value);
 
 	} else {
 		//Si no se encontro la cart solo escondo la última que se mostró
@@ -266,7 +266,7 @@ function cartasLoteria(indice){
 }
 
 function loteria(){
-	
+	bPreguntar = false;	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');

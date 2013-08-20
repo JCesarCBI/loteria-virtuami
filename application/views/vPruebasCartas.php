@@ -24,28 +24,17 @@
 	</head>
 	<body>
 		<div class="espacioSuperior">
-			
-				<div id="lightbox">
-					<center>
-					<div id="loteria-FancyBox" class="">
-						<h3>Hoja de resultados</h3>
-						<span id="resultadosJuego" >
-							
-								<button class="small button tamanoBoton" onclick="reintentar()" type="button">Reintentar</button>
-								<button class="small button tamanoBoton" onclick="nuevoJuego()" type="button">Nuevo Juego</button><br /><br />
-								<center><button class="small button tamanoBoton" onclick="perfil()" type="button">Perfil</button></center>
-						</span>
-
-						<a class="close" href="<?=base_url();?>index.php/cpruebasLuisa/juegoLibre2"></a>
-					</div>
-					</center>
+				<div id="hojaDeResultados">
+					<?=$hojaResultado?>				  
 				</div>
+				
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
 				<input type="hidden"  id="cartaVisible"  value="" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
-				<input type="hidden"  id="puntajeCarta"  value="<?= $puntuaje=20?>" />
-				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo=10000?>" />
+				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
+				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
+				<input type="hidden"  id="tiempoReloj"  value="0" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
 				<input type="hidden"  id="multiplicadorValorAux" value="1" />
 				<input type="hidden"  id="errorValor" value="0" />
