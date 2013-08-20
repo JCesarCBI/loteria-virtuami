@@ -1,14 +1,16 @@
 jQuery(document).ready(function($) {
 
-	$("#subtitulos").click(function () {
-		
+	$("#subtitulos").click(function () {		
 		$('#contenido').toggleClass("Escondido");
+		$(this).toggleClass("seleccionado");
+		
 	});
 	
 	$("#audioBoton").click(function () {
 		
 		$('embed').remove();
 		$('#audio').toggleClass("Escondido");
+		$(this).toggleClass("seleccionado");
 	});
 
 });

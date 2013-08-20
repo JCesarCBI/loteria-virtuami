@@ -6,10 +6,19 @@
 .Escondido{
 	display: none !important;
 }
+
+/**Audio y subs*/
 .audio{
 	float:left;
 	position:fixed;
 }
+
+.seleccionado{
+	opacity:0.6;
+	filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
+/**Termina audio y subs**/
 .respuestaInput{
 	min-height: 50px !important;
 	color:#f9ec23;
