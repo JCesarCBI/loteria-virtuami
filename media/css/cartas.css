@@ -90,6 +90,8 @@
 }
 
 .barajaTemp{
+	position:absolute;
+	z-index: 1 !important;
 	margin-left: 2px;
 	width: 170px !important;
 	height:214px !important;

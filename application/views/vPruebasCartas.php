@@ -87,9 +87,9 @@
 					<div class="textoLetra">
 							<center><div class="espacioReloj"><img class="reloj" src="<?= base_url()?>media/img/reloj.png" /><span class="hora" id="tiempo"></span></div></center>
 							<center><span class="puntosTotal centro" id="puntosTotalesVisibles" style="font-size: 23pt !important; margin-top:-4px !important;">0</span></center>
-							<center><span class="multiplicador centro" id="multiplicadorVisible" >1</span></center>
-							<center><span class="comodines centro" id="comodinesVisibles" >0</span></center>
-							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
+							<center><span class="multiplicador centro magictime puffIn" id="multiplicadorVisible" >x1</span></center>
+							<center><span class="comodines centro magictime puffIn" id="comodinesVisibles" >0</span></center>
+							<center><span class="errores centro magictime puffIn" id="erroresVisibles" >0</span></center>
 					</div>
 					<div></div>
 					<?= isset($puntaje) ? '' : '<div id="audio" class="audio" > </div>' ;?>
