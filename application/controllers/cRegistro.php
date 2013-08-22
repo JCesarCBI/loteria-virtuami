@@ -162,7 +162,7 @@
 		$mail->Subject = "Test phpMailer";
 		
 		//$correo=$datosUsr['correo'];
-		$correo="guillermotorreslopez@gmail.com";
+		$correo=$datosUsr['correo'];
 		$mail->AddAddress($correo);
 		//$altbody = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASEÑA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
 		/*$body="<h1>Prueba de correo</h1>";
@@ -177,14 +177,16 @@
 		$datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
 		
 		$body = $this->load->view('registroActivacion', $datosCorreo, true);
-		$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg");
-		
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
 		
 		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
 		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
 		
 		//$mail->AddEmbeddedImage("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","fondo","loteria.jpg");
-		//$body = file_get_contents('/var/www/loteriaVIRTUAMI/application/views/welcome_message.php');
+		
 		$mail->Body = $body;
 		
 		if(!$mail->Send())
