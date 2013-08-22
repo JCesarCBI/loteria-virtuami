@@ -16,7 +16,7 @@ function ajax_escribeRima(id) {
 
 		error : function() {
 
-			alert("Error al cargar la carta");
+			$('#contenido').html("");
 		}
 	});
 
@@ -26,11 +26,14 @@ function ajax_escribeRima(id) {
 function ajax_validarRespuesta(id, respuesta) {
 
 	var respuestaCorrecta = 1;
-	var url = base + 'index.php/cpruebasLuisa/respuestaCorrecta/'+respuesta+ '/' + id;
+	var url = base + 'index.php/cpruebasLuisa/respuestaCorrecta/'+ id;
+	var data = 'respuesta='+respuesta;
 
 	$.ajax({
 
 		url : url,
+	    data: data,
+	    type: 'POST',
 		async : false,
 
 		success : function(data) {

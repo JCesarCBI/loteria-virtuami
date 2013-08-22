@@ -2,7 +2,7 @@
 	<head>
 	<meta charset="utf-8">
 	
-	<title>Inicio</title>
+	<title>Lotería</title>
 	<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	
@@ -30,7 +30,9 @@
 				
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
+				<?=$partida=1;?>
 				<input type="hidden"  id="cartaVisible"  value="" />
+				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($partida) && $partida==1) ? 1 : 0 ;?>" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
@@ -55,6 +57,7 @@
 						
 					<div id="espacioCartaReversa">
 						<img src="<?= base_url()?>media/img/mazo/reversa.png" onclick="cambiaCarta(0)" class="cartaReversa pasarCarta" id="cartaReversaClick"/>
+						<div id="cartaEfecto"> </div>
 					</div>
 				</div>			
 			</div>
@@ -64,7 +67,7 @@
 			<div class="six columns" id="columnaCentral">
 				
 				<img id="subtitulos"  src="<?= base_url()?>media/img/subs.png"/>
-				<img id="audioBoton" src="<?= base_url()?>media/img/sonido.png"/>
+				<img id="audioBoton" <?= isset($puntaje) ? 'class="seleccionado"' : "" ;?> src="<?= base_url()?>media/img/sonido.png"/>
 				
 				<div class="contenidoSuperior" id="contenidoSuperior">
 					<div class="fondosup" id="fondosup">
@@ -89,7 +92,7 @@
 							<center><span class="errores centro" id="erroresVisibles" >0</span></center>
 					</div>
 					<div></div>
-					<div id="audio" class="audio" > </div>
+					<?= isset($puntaje) ? '' : '<div id="audio" class="audio" > </div>' ;?>
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
 						<?php			
@@ -127,8 +130,8 @@
 					
 					<ul id="gallery">
 						<li>
-							<a class="clearfix">
-								<img src="<?= base_url()?>media/img/boton.png"  onclick='loteria()'/>
+							<a id="ayudaLoteriaBoton" >
+								<img src="<?= base_url()?>media/img/boton.png" id="botonLoteria" class="" onclick='loteria()'/>
 							</a>
 						</li>
 					</ul>

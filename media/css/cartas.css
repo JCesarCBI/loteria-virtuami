@@ -42,17 +42,39 @@
 	margin: 0px auto;
 	
 }
+
+/**clases para la ayuda de la loteria**/
+	
 #longitudAyuda{
 	color:#f9ec23;
 	margin 0px auto;
 	font-size: 18pt;	
 }
 
-.cartaReversa{
-	width: 180px;
-	height:296px;
-	margin: 0 auto;
+.ayudaLoteria{
+	-moz-box-shadow: -9px 13px 16px #777;
+	-webkit-box-shadow: -9px 13px 16px #777;
+	box-shadow: -9px 13px 16px #777;
+	
 }
+
+/**terminan Clases para la ayuda de la loteria***/
+	
+.cartaReversa{
+	float:left;
+	width: 200px;
+	height:306px;
+	margin: 0px auto;
+}
+
+
+#cartaEfecto {
+	background: url(../img//mazo/reversa.png) no-repeat;
+	width: 200px;
+	height:306px;
+	margin-left:10px;
+}	
+
 .mazoTemp{
 	float:left;
 	position:relative;
@@ -213,14 +235,6 @@
 	
 }
 
-
-#espacioCartaReversa {
-	background: url(../img//mazo/reversa.png) no-repeat;
-	/mazo/reversa.png
-	width: 180px;
-	height:296px;
-	position: absolute;
-}	
 
 /********fancy box**************/
 

@@ -55,10 +55,11 @@ function audioRima(indice) {
 
 
 function cambiaCarta(numCarta, mult) {
-	volteaCarta();
 	if (mult != 1) {
 		rompeCadenas();
+		$("#cartaEfecto").removeClass('magictime rotateUp');
 	};
+	volteaCarta();
 	//Temporizador
 	tiempo2 = temporizador(document.getElementById('tiempoReloj').value);
 	idCarta = obternerId(numCarta);
@@ -139,7 +140,7 @@ function validarComodines() {
 		document.getElementById('comodinesTotales').value = comodines;
 		document.getElementById('errorValor').value = erroresTotales;
 		pintaComodines(comodines);
-		$('#erroresVisibles').html(erroresTotales);
+		pintaErrores(erroresTotales);
 		//alert(" errores= " + erroresTotales + " comodines = " + comodines);
 		return erroresTotales;
 	} else {
@@ -245,7 +246,7 @@ function rompeCadenas() {
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
 	document.getElementById('estadoPartida').value=1;
-	$('#multiplicadorVisible').html('1');
+	$('#multiplicadorVisible').html('x1');
 	
 
 }
@@ -262,7 +263,14 @@ function cartasLoteria(indice){
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
-	loteria()
+	var ayuda=document.getElementById('ayudaVoF').value=cartas;
+	if (ayuda==0) {
+		cartas=document.getElementById('loteriaCadena').value;
+		arreglo=cartas.split('*');
+		if (arreglo==17) {
+			marcaBtonLoteria();	
+		};	
+	};
 }
 
 function loteria(){

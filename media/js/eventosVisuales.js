@@ -16,9 +16,9 @@ jQuery(document).ready(function($) {
 });
     
 function volteaCarta(){
-		 
-	$('#cartaReversaClick').addClass('magictime rotateUp', 10, "easeOutQuart");
-	$("#cartaReversaClick").removeClass('magictime rotateUp', 450, "easeOutQuart");
+	 
+	$('#cartaEfecto').addClass('magictime rotateUp', 100, "easeOutQuart");
+	
 	
 };
     
@@ -31,19 +31,29 @@ function quitarMarco(indice){
 }
 
 function pintaComodines(cantidad) {
-
+	$('#comodinesVisibles').removeClass('magictime puffIn');
 	var comodines = "";
 	for (var i = 0; i < cantidad; i++) {
 		comodines = comodines + '<img class="estrella" src="' + base + 'media/img/star.png" />';
 	};
+	
 	if (comodines == "") {
 		comodines = 0;
 	};
+	
 	$('#comodinesVisibles').html(comodines);
+	$('#comodinesVisibles').addClass('magictime puffIn', 200, "");
 
 }
 
+function pintaErrores(cantidad) {
+		$('#erroresVisibles').removeClass('magictime puffIn');
+		$('#erroresVisibles').html(cantidad);
+		$('#erroresVisibles').addClass('magictime puffIn', 200, "");
+}
 function multiplicadorCaso(cont){
+	
+	$('#multiplicadorVisible').removeClass('magictime puffIn');
 	switch(cont)
 	{
 		case 2:
@@ -61,5 +71,9 @@ function multiplicadorCaso(cont){
 		default:		
 				  
 	}
-	
+	$('#multiplicadorVisible').addClass('magictime puffIn', 200, "");
 };
+
+function marcaBtonLoteria(){
+	$('#botonLoteria').addClass("ayudaLoteria");
+}

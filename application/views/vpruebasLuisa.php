@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="utf-8">
 	
-		<title>Principal</title>
+		<title>Modalidad del Juego</title>
 		<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script>var base = "<?=base_url(); ?>"</script> 
 		<script src="<?=base_url(); ?>media/js/modalidadJuego.js" type="text/javascript" charset="utf-8"></script>

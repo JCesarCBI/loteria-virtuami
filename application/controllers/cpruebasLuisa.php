@@ -112,9 +112,10 @@ public function descripcion($id=-1){
 	
 }
 
-//******Función que escribe la trae larespuesta correcta********/
-public function respuestaCorrecta($respuesta,$id){
+//******Función que escribe trae larespuesta correcta********/
+public function respuestaCorrecta($id){
 	
+	$respuesta = $_POST['respuesta'];
 	
 	$baraja = $this->mJuegoLibre->getMazo();
 					
