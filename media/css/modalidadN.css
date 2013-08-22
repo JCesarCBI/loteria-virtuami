@@ -1,12 +1,11 @@
-a{
-	color:#000;
-}
-a:hover{
-	color:#fff;
-}
+body{	background-image:url("../img/fondo-general.jpg") !important;}
+a{color:#000;}
+a:hover{color:#fff;}
 h3{color:#000; text-align:center;}
-
-#modalidadCaja{
-	background-image:url("../img/azulLecciones.png") !important;
+#modalidadCaja{	
+	background-image:url("../img/azulLecciones.png") !important;	
 	padding:30px;
+	width:auto;
+	margin-top:40px;
 }
+
