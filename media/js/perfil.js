@@ -233,26 +233,54 @@ $(document).ready(function() {
 			}				
 		}
 	})
-	
 }); //Fin Document Ready
 
-function muestraInfoCarta($idcarta){
+function muestraInfoCarta(idcarta){
+	$("#numRima").val(1)
 	//Llama al AJAX para traer la información de la carta
 	$.ajax({
-		url: base+'index.php/cDatosPerfil2/traeDatosCarta/'+$idcarta,
+		url: base+'index.php/cDatosPerfil2/traeDatosCarta/'+idcarta,
 		dataType: "json",
 		type: "POST",
 		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
 			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo).addClass('fondo-amarillo')
 			$("#nombreCarta").html(correcto.nombre)
 			$("#descripcionCarta").html(correcto.descripcion)
-
+			numRima = $("#numRima").val()
+			$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='muestraRimas("+idcarta+"), sumaRima()'/>")
 		}
 	})	
 }
 
-// function abreCambiarContrasena(){
-	// liga=base+'index.php/cpruebasNaye/cambiarContrasena/1';
-	// window.open(liga, 'Cambiar contraseña', 'status=1,width=410,height=410, resizable=0') 
-	// return 0;
-// }	
+function muestraRimas(idcarta){
+	numRima = $("#numRima").val()
+
+	$.ajax({
+		url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima,
+		dataType: "json",
+		type: "POST",
+		success:function(ri){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
+			$("#descripcionCarta").html(ri)
+			numRima = $("#numRima").val()
+			$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='muestraRimas("+idcarta+"), sumaRima()'/>")
+			if(numRima == 2){
+				$("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='muestraRimas("+idcarta+"), restaRima()'/>")
+			}
+		}
+	})	
+}
+
+function sumaRima(){
+	numRima = $("#numRima").val()
+	suma = parseInt(numRima)+1
+	$("#numRima").val(suma)
+}
+
+function restaRima(rimaAct,idcarta){
+	numRima = $("#numRima").val()
+	if(numRima == 1){
+		alert("rima1 no puedo retrocer más!")
+	}
+	resta = parseInt(numRima)-1
+	$("#numRima").val(resta)
+}

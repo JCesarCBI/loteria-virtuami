@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class CDatosPerfil2 extends CI_Controller {
+	
 	function __construct() {    
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
@@ -125,7 +126,7 @@ class CDatosPerfil2 extends CI_Controller {
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
 				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
 				//Datos para la galeria de cartas
-				$idGaleria = $this->mestadisticas->getGaleria($idUsuario, $idJuego);
+				$idGaleria = $this->mestadisticas->getGaleria(1,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
 
 				if($idGaleria != FALSE){
@@ -138,6 +139,7 @@ class CDatosPerfil2 extends CI_Controller {
 						$mazoCartas[$i]=$key;
 					}
 				}else{
+					echo "no hay galeria";
 					foreach ($mazoCartas as $i=>$key) {
 						$key["Estado"] = 0;
 						$mazoCartas[$i]=$key;
@@ -146,20 +148,8 @@ class CDatosPerfil2 extends CI_Controller {
 				foreach ($mazoCartas as $cartas) {
 					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
 				}
-
-				
-				$datosPerfilOrdenados['avatares'] = array(
-					'1' => array(
-						'id'=>1,
-						'nombre' =>'avatar1',
-						'url' => 'avatarA.png'						
-					),
-					'2' => array(
-						'id'=>2,
-						'nombre' =>'avatar2',
-						'url' => 'avatarB.png'						
-					),
-				);	
+				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();
+	
 				// echo "<pre>";
 				// print_r($datosPerfilOrdenados);
 				// echo "</pre>";
@@ -179,36 +169,20 @@ class CDatosPerfil2 extends CI_Controller {
 		}
 		
 		public function traeDatosCarta($idcarta){
-			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
-			//El siguiente arreglo deberá ser traído desde la BD
-			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
-			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
-			
-			//No es necesario:
-			// $idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
-			
 			$mazoCartas = $this->mestadisticas->getCartas();
-
-			//No es necesario:
-			// foreach ($mazoCartas as $key) {
-				// unset($key["audio"]);
-				// unset($key["longitud"]);
-				// $key['Estado'] = 0;
-				// $cartas[$key["idCarta"]] = $key;
-			// }
-			// foreach ($idGaleria as $key) {
-				// $cartas[$key["idCarta"]]["Estado"] = 1;
-			// }
-			// echo "<pre>";
-			// print_r($cartas);
-			// echo "</pre>";
-			// echo "<pre>";
-			// print_r($idGaleria);
-			// echo "</pre>";
-			
-			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
 			echo json_encode($mazoCartas[$idcarta]);
 		}
+		
+		public function traeRimaCarta($idcarta, $rima){
+			//El modelo te traerá un arreglo de las rimas para esta carta	
+			$rimas= Array(
+				1 => "rima1",
+				2 => "rima2",
+				3 => "rima3"
+			);
+			echo json_encode($rimas[$rima]);
+		}
+
 }
 
 

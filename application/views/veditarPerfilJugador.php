@@ -240,13 +240,16 @@
 			</div> <!--estadísticas -->
 			
 			<div class="row" id="galeria">
-				<h3>Galería</h3>
 				<div class="row" id="infCarta">
 					<img id="imgCarta" class="six columns" src="<?=base_url()?>media/img/mazo/reversa.png"/>
 					
 					<div id="datosCarta" class="six columns">
+						<h3>Galería</h3>
 						<h2 id="nombreCarta"></h2>
 						<p id="descripcionCarta"></p>
+						<input type="hidden" value="1" id="numRima"/>
+						<div id="masInfoCarta"></div>
+						<div id="incarat"></div>
 					</div>
 				</div>
 				<div class="row" id="carrusel">
@@ -262,8 +265,6 @@
 					<?php	} }?>
 					<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">
 					<br><br>
-					<!-- <label id="carrusel-ant">Atras</label>
-					<label id="carrusel-sig">Siguiente</label> -->
 				</div>
 			</div>
 		</div>
