@@ -96,7 +96,7 @@ class CLogin extends CI_Controller {
 				$miMensaje .= "<img id='uam' src='".base_url()."/media/img/uamizt.png'/>";
 				$miMensaje .='</div></div></div></body></html>';
 				// $destino = $correo;
-				$destino = "jezrel_mx@hotmail.com";
+				$destino = "jezrelmx1304@gmail.com";
 				$cabecera = "Content-type: text/html\r\n";
 				// $desde   = "virtuami@izt.uam.com";
 				$asunto  = "Contraseña virtuami";
