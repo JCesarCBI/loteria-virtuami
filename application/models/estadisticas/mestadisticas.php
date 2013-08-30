@@ -115,13 +115,6 @@
 			
 			$query = $this->db->count_all_results();
 			return $query;
-			
-			// $query = $this->db->get(); 			
-			// if ($query->num_rows()!=0) {
-				// return $query->result_array();
-			// } else {
-				// return FALSE;
-			// }
 		}
 		
 		public function getNiveles($idUsr, $idJuego, $idNivel, $idEstadoPartida)
@@ -150,6 +143,24 @@
 			
 			$query = $this->db->count_all_results();
 			return $query;
+		}
+		
+		public function getRima($idCarta)
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('frase');
+			$this->db->WHERE('idCarta', $idCarta);
+			
+			$query = $this->db->get();
+						
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $key => $value) {
+					$frase[$key] = $value['frase'];
+				}
+				return $frase;
+			} else {
+				return FALSE;
+			}
 		}
 	}
 ?>
