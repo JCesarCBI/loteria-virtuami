@@ -29,20 +29,22 @@
 				</div>
 			</div>
 			<div id="informacion" class="twelve columns informacion">
-				<form action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
-					<div class="row">
-						<div class="six colums foto">
-							<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
-							<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
+				<div class="twelve columns">
+					<div class="six colums foto">
+						<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
+						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
+					</div>
+					<div class="six columns">
+						<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>
+						<div class="hilera twelve columns">
+							<div></div>
 						</div>
-						<div class="six columns">
-							<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>
-						</div>
-						<div class="two columns">
-							<input type="button" id="editarFoto" value="Editar foto"/>
-						</div>	
-					</div><br>
-					
+					</div>
+					<div class="two columns">
+						<input type="button" id="editarFoto" value="Editar foto"/>
+					</div>	
+				</div>
+				<form id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
 					<div class="row">
 						<div class="four columns">
 							<label for="usuario_nombre">Nombre(s):</label>
@@ -174,23 +176,22 @@
 						<?php
 							$i = 1;
 							foreach ($trofeos as $indice=>$trofeo) {
-								
 								if($trofeo['Estado'] == 1){ ?>
 									<li>
-										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
+										<a class="two columns clearfix" href="#trofeo<?=$indice?>">
 											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>
 									</li>
 								<?php }else{ ?>
 									<li>
-										<a class="four columns clearfix" href="#trofeo<?=$indice?>">
+										<a class="two columns clearfix" href="#trofeo<?=$indice?>">
 											<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>	
 									</li>
 						<?php }
 							$i++;	
-							if($i==4){
-								echo "<br><br><br><br><br><br>";
+							if($i==5){
+								echo "<br><br><br>";
 								$i=1;
 							}
 						}
@@ -246,10 +247,14 @@
 					<div id="datosCarta" class="six columns">
 						<h3>Galería</h3>
 						<h2 id="nombreCarta"></h2>
-						<p id="descripcionCarta"></p>
+						<p id="descripcionCarta">
+							<div class="Div-vacio"></div>
+						</p>
 						<input type="hidden" value="1" id="numRima"/>
-						<div id="masInfoCarta"></div>
-						<div id="incarat"></div>
+						<input type="hidden" value="3" id="totalRima"/>
+						<div class="six columns" id="incarat"></div>
+						<div class="six columns" id="masInfoCarta"></div>
+
 					</div>
 				</div>
 				<div class="row" id="carrusel">

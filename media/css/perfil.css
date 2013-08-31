@@ -1,11 +1,18 @@
-.foto img{	margin-top:15px; width:150px; height:150px;	float:left;}
-
+.foto img{	margin-top:15px; width:177px; height:177px;	float:left; border: 7px solid #D9E021;}
 label{color:#D9E021;margin-bottom:20px;} 
 .nombreUsr{color:#FFF;}
-.informacion, .caja-estadisticas{
+.hilera{
+	background-image:url("../img/cenefa.png") !important;
+	height:21px;
+	margin-top:90px;
+}
+#cjInformacion,.caja-estadisticas{
 	background-image:url("../img/azulLecciones.png") !important;
 	margin-top:30px;
 	padding: 5px 40px;
+}
+#cjInformacion{
+	margin-top:200px;
 }
 .navegacion ul>li{
 	display:inline;
@@ -46,24 +53,18 @@ label{color:#D9E021;margin-bottom:20px;}
 	top: -15px;
 	right: -15px;
 }
-#gallery a {
+
+#gallery a{
+	margin-top:25px;
 	position: relative;
 	-moz-transition: border 0.6s ease-out;
 	-o-transition: border 0.6s ease-out;
 	-webkit-transition: border 0.6s ease-out;
-}
-#gallery a:hover {
-	border: 5px solid rgba(39, 25, 0, 1);
-	border: 5px solid rgba(0, 0, 0, 0.5);
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	
-}
-#gallery a:focus {
-	-moz-transform: rotate(-2deg);
-	-o-transform: rotate(-2deg);
-	-webkit-transform: rotate(-2deg);
+	border: 2px solid #D9E021;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	margin-right:8px;
 }
 
 #lightbox div{
@@ -102,7 +103,7 @@ label{color:#D9E021;margin-bottom:20px;}
 	right: -15px;
 }	
 
-.trofeo-chico{width:250px; height:80px;}
+.trofeo-chico{width:40px; height:40px;}
 
 .trofeo-grande{
 	width:200px;
@@ -141,4 +142,4 @@ h3{color:#fff;}
 }
 
 #nombreCarta{color:#fff; font-size:43px;}
-#descripcionCarta{color:#fff}
+#descripcionCarta{color:#fff; height:270px}

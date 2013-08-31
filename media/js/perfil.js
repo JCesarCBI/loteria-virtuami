@@ -242,45 +242,66 @@ function muestraInfoCarta(idcarta){
 		url: base+'index.php/cDatosPerfil2/traeDatosCarta/'+idcarta,
 		dataType: "json",
 		type: "POST",
-		success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
-			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo).addClass('fondo-amarillo')
-			$("#nombreCarta").html(correcto.nombre)
-			$("#descripcionCarta").html(correcto.descripcion)
+		success:function(correcto){
+			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo).addClass('fondo-amarillo') //Agregando efecto
+			$("#nombreCarta").html(correcto.nombre) //Se agrega el nombre de la carta
+			$("#descripcionCarta").html(correcto.descripcion) //Se agrega su descripción
+			//Preparo los datos para mostrar las rimas
 			numRima = $("#numRima").val()
-			$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='muestraRimas("+idcarta+"), sumaRima()'/>")
+			//Creo botón siguiente para ver más información (rimas)
+			$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='muestraRimas("+idcarta+")'/>")
+			$("#incarat").html("")
 		}
 	})	
 }
 
-function muestraRimas(idcarta){
-	numRima = $("#numRima").val()
-
-	$.ajax({
-		url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima,
-		dataType: "json",
-		type: "POST",
-		success:function(ri){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
-			$("#descripcionCarta").html(ri)
-			numRima = $("#numRima").val()
-			$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='muestraRimas("+idcarta+"), sumaRima()'/>")
-			if(numRima == 2){
-				$("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='muestraRimas("+idcarta+"), restaRima()'/>")
+//Esta función recibe como parámetro el id de la carta que se está viendo
+function muestraRimas(idcarta){ 
+	total = $("#totalRima").val()
+	numRima = $("#numRima").val() //Obtengo el número de rima que mostrará
+	if(numRima < total){
+		$.ajax({
+			url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			dataType: "json",
+			type: "POST",
+			success:function(ri){ //Obteniendo los datos vía AJAX
+				$("#descripcionCarta").html(ri) //Se muestra la rima
+				//Se crea el botón "siguiente para ver el resto de las rimas"
 			}
-		}
-	})	
+		})	
+		$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='sumaRima("+idcarta+")'/>")
+		$("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='restaRima("+idcarta+")'/>")
+	}else{
+		$.ajax({
+			url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			dataType: "json",
+			type: "POST",
+			success:function(ri){ //Obteniendo los datos vía AJAX
+				$("#descripcionCarta").html(ri) //Se muestra la rima
+				//Se crea el botón "siguiente para ver el resto de las rimas"
+			}
+		})	
+		$("#masInfoCarta").html("")
+	}
+
 }
 
-function sumaRima(){
+function sumaRima(idcarta){
 	numRima = $("#numRima").val()
 	suma = parseInt(numRima)+1
 	$("#numRima").val(suma)
+	muestraRimas(idcarta)
+
 }
 
-function restaRima(rimaAct,idcarta){
+function restaRima(idcarta){
 	numRima = $("#numRima").val()
-	if(numRima == 1){
-		alert("rima1 no puedo retrocer más!")
-	}
 	resta = parseInt(numRima)-1
 	$("#numRima").val(resta)
+	muestraRimas(idcarta)
+	if(numRima == 0){
+		muestraInfoCarta(idcarta)
+	}
+	
+
 }
