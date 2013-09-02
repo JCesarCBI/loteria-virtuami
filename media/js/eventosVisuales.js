@@ -76,3 +76,17 @@ function multiplicadorCaso(cont){
 function marcaBtonLoteria(){
 	$('#botonLoteria').addClass("ayudaLoteria");
 }
+
+function iluminaCartaPlantilla(numCarta){
+	 id=obternerId(numCarta);
+ 	var arregloCarta = document.getElementById('IdMazoReversa').value;
+	cartasId = arregloCarta.split("*");
+	var voF = cartasId.indexOf(id);
+	id = id + "";
+	
+	if (voF>-1) {
+		$('#plantilla-' + voF).addClass("cartaClick", 350, "easeOutQuart");
+		setTimeout("quitarMarco(" + voF + ")", 1000);
+	};
+
+}

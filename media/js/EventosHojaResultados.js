@@ -12,7 +12,9 @@ jQuery(document).ready(function($) {
 });
 
 function hojaResultados(){
-		
+	clearInterval(NoClickLoteria);
+	clearInterval(tiempo2);
+	clearInterval(tiempo);
 	bonus=document.getElementById('bonusCartasRestantes').value;
 	var bonus = parseInt(bonus);
 	bonus=54-bonus;
@@ -40,10 +42,18 @@ function hojaResultados(){
 
 	botonNuevo='<button class="small button" onclick="nuevoJuego()" type="button">Nuevo Juego</button>'
 	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
+	
+	if (estadoPartida=="3") {		
+		$('#resultadosJuego').html('<h4><label>Estado: </label><h4><h2>'+estado+'</h2><br /><br />'+'<br /><br />');
+		
+	} else{
+		
 	$('#resultadosJuego').html('<label>Puntuación: </label>'+puntos+'<br />'+
 								'<label>Estado: </label>'+estado+'<br /><br />'+
-								'<label>Bonus por cartas en el mazo: </label>'+bonus+'<br /><br />'
-							)
+								'<label>Bonus por cartas en el mazo: </label>'+bonus+'<br /><br />')
+		
+	};
+							
 	
 
 }

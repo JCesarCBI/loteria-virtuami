@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
 
 	var tiempo = "";
 	var tiempo2 = "";
+	var NoClickLoteria=""
     var bPreguntar = true;
      
     window.onbeforeunload = preguntarAntesDeSalir;
@@ -64,7 +65,10 @@ function cambiaCarta(numCarta, mult) {
 	tiempo2 = temporizador(document.getElementById('tiempoReloj').value);
 	idCarta = obternerId(numCarta);
 	
+	//Ayudas del nivel básico
 	longitudRespuesta(idCarta);
+	iluminaCartaPlantilla(numCarta);
+	//Terminan ayudas nivel básico
 
 	//elimino el input para que clickeen la nueva carta
 	$('#respuestaInput').html("");
@@ -263,23 +267,41 @@ function cartasLoteria(indice){
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
-	var ayuda=document.getElementById('ayudaVoF').value=cartas;
-	if (ayuda==0) {
+	var ayuda=document.getElementById('ayudaVoF').value;
+	
+	if (ayuda==1) {
 		cartas=document.getElementById('loteriaCadena').value;
 		arreglo=cartas.split('*');
-		if (arreglo==17) {
+		
+		if (arreglo.length==2) {
 			marcaBtonLoteria();	
+			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
 	};
 }
+function pierdeNoLoteria(cartaActual){
+		
+		cartaActual=parseInt(cartaActual)
+		document.getElementById('estadoPartida').value=3;
+		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
+		
+	if (cartaActual!=carta) {
+		
+		hojaResultados();
 
+	} else{
+		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 1000);
+		
+	};
+	
+}
 function loteria(){
 	bPreguntar = false;	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');
 	
-	if (arreglo.length == 17) {
+	if (arreglo.length == 2) {
 		
 		if (estadoPartida!=2) {
 			document.getElementById('estadoPartida').value=1;

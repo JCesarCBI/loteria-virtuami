@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/fondoLoguin.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/magic-master/magic.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/cartas.css">
+	<link rel="stylesheet" href="<?=base_url(); ?>media/css/hojaRes.css">
 
 	</head>
 	<body>
