@@ -25,10 +25,12 @@
         			echo "i es igual a 1";
         		break;
     			case 2://Diminutivos
-        			echo "i es igual a 2";
+        			if($this->validarDiminutivos($respuesta, $id)== 1) echo 0;
+					else echo 1;
         		break;
     			case 3://Adjetivos
-        			echo "i es igual a 3";
+        			if($this->validarAdjetivos($respuesta, $id)== 1) echo 0;
+					else echo 1;
         		break;
 				case 4://Sinonimos				
 					if($this->validarSinonimo($respuesta, $id)== 1) echo 0;
@@ -62,7 +64,7 @@
 			return $valor;
 		}
 		
-		public function validarAdjetivos($respuestaCarta="damoso", $idCArta=3){
+		public function validarAdjetivos($respuestaCarta, $idCArta){
 			$adjetivos= $this->mjuegoavanzado->getCartaAdjetivo($idCArta);
 			
 			
@@ -83,7 +85,7 @@
 			
 		}
 		
-		public function validarDiminutivos($respuestaCarta="damita", $idCArta=3){
+		public function validarDiminutivos($respuestaCarta, $idCArta){
 			$diminutivos= $this->mjuegoavanzado->getCartaDiminutivo($idCArta);
 			
 			
