@@ -9,7 +9,7 @@ class cpruebasLuisa extends CI_Controller {
 	}
 	
 	public function modalidad(){
-		$this->load->view('vpruebasLuisa', "");
+		$this->load->view('vModalidad', "");
 	}
 	
 	public function juegoLibre2(){

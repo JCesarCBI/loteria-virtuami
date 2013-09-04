@@ -6,8 +6,10 @@
 	<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	
-	<script>var base = "<?=base_url(); ?>"</script> 
-	<script src="<?=base_url(); ?>media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>
+	<script>var base = "<?=base_url(); ?>"</script>
+	<?=$idPartida=2;?>
+	<?= (isset($idPartida) && ($idPartida== 2)) ? '<script src="'.base_url().'media/js/juegoCartas4x4.js" type="text/javascript" charset="utf-8"></script>' : '<script src="'.base_url().'media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>' ;?> 
+	
 	<script src="<?=base_url(); ?>media/js/eventosMazo.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/eventosPlantilla.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/EventosHojaResultados.js" type="text/javascript" charset="utf-8"></script>
@@ -33,6 +35,7 @@
 			<div class="three columns" id="ColumnaIzq">
 				<?=$partida=1;?>
 				<input type="hidden"  id="cartaVisible"  value="" />
+				<input type="hidden"  id="linea1"  value="0" />
 				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($partida) && $partida==1) ? 1 : 0 ;?>" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
