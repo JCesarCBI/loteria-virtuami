@@ -162,5 +162,33 @@
 				return FALSE;
 			}
 		}
+		
+		public function getExisteUsuario($idUsr)
+		{
+			$this->db->SELECT('idUsr');
+			$this->db->FROM('usuario');
+			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query-> num_rows() == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		public function setActualizaUsuario($idUser, $data)
+		{
+			if ($this->getExisteUsuario($idUser)==TRUE) {
+				$this->db->WHERE('idUsr', $idUser);
+				$this->db->UPDATE('usuario', $data);
+				log_message('error', 'A ocurrido un error en la base de datos');
+			} else {
+				log_message('error', 'A ocurrido un error en la base de datos');
+			}
+			
+		}
 	}
 ?>
