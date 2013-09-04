@@ -128,7 +128,7 @@ $(document).ready(function() {
 		}else{
 			//Enviará la contraseña vía AJAX para validarla
 			$.ajax({
-				url: base+'index.php/cDatosPerfil2/confirmaContrasena/'+$("#usuario_contrasenaActual").val()+'/'+$("#usuario_id").val(),
+				url: base+'index.php/cDatosPerfil/confirmaContrasena/'+$("#usuario_contrasenaActual").val()+'/'+$("#usuario_id").val(),
 				dataType: "json",
 				type: "POST",
 				success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
@@ -239,7 +239,7 @@ function muestraInfoCarta(idcarta){
 	$("#numRima").val(1)
 	//Llama al AJAX para traer la información de la carta
 	$.ajax({
-		url: base+'index.php/cDatosPerfil2/traeDatosCarta/'+idcarta,
+		url: base+'index.php/cDatosPerfil/traeDatosCarta/'+idcarta,
 		dataType: "json",
 		type: "POST",
 		success:function(correcto){
@@ -261,7 +261,7 @@ function muestraRimas(idcarta){
 	numRima = $("#numRima").val() //Obtengo el número de rima que mostrará
 	if(numRima < total){
 		$.ajax({
-			url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
 			dataType: "json",
 			type: "POST",
 			success:function(ri){ //Obteniendo los datos vía AJAX
@@ -273,7 +273,7 @@ function muestraRimas(idcarta){
 		$("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='restaRima("+idcarta+")'/>")
 	}else{
 		$.ajax({
-			url: base+'index.php/cDatosPerfil2/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
 			dataType: "json",
 			type: "POST",
 			success:function(ri){ //Obteniendo los datos vía AJAX
@@ -291,7 +291,6 @@ function sumaRima(idcarta){
 	suma = parseInt(numRima)+1
 	$("#numRima").val(suma)
 	muestraRimas(idcarta)
-
 }
 
 function restaRima(idcarta){
@@ -302,6 +301,4 @@ function restaRima(idcarta){
 	if(numRima == 0){
 		muestraInfoCarta(idcarta)
 	}
-	
-
 }

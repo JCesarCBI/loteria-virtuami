@@ -12,8 +12,7 @@
 		//Filename: views/vinicio.php
 				
 	}
-	
-	
+		
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 	function usuario(){
@@ -114,15 +113,16 @@
 			}
 			
 			else{
-				echo "<script>
-				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
-				window.location.href=base+'index.php/cpruebasLuisa/juegoLibre2'
-				alert('no lo se')
-				</script>";
-// 				
-				// //Manda llamar nuevamente a la vista vinicio					
-				// $datos = $this->micombobox->datosComboBox();
-				// $this->load->view('vinicio', $datos);			
+			echo "<script>
+			alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
+			</script>";
+			
+			//Manda llamar nuevamente a la vista vinicio					
+			$datos = $this->micombobox->datosComboBox();
+			echo "<pre>";
+			print_r($datos);
+			echo "</pre>";
+			$this->load->view('vinicio', $datos);			
 			}	
 		}	
 		
@@ -138,31 +138,66 @@
 		}
 	}
 	
-	function correoConfirmacion($datosUsr){
+
+	function datosCorreo($idUsuario){
+		$datos=$this->mregistro->getCodigoActivacion($idUsuario);
+		//print_r($datos);
+		return $datos;
+		
+	}
+	
+	
+  	function correoConfirmacion($datosUsr){
 		
 		require_once 'class.phpmailer.php';
-		
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->Host = 'ssl://smtp.gmail.com';
 		$mail->Port = 465;
 		$mail->SMTPAuth = true;
+		$mail->CharSet = "UTF-8";
 		$mail->Username = 'ludico@virtuami.izt.uam.mx';
 		$mail->Password = '7Ud1C0u@m';
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
+		$mail->IsHTML(true);
 		$mail->Subject = "Test phpMailer";
-		$mail->AddAddress($datosUsr['correo']);
-		$body = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASENA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		
+		//$correo=$datosUsr['correo'];
+		$correo=$datosUsr['correo'];
+		$mail->AddAddress($correo);
+		//$altbody = "USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASEÑA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		/*$body="<h1>Prueba de correo</h1>";
+		$body.="<h2>";
+		$body.="USUARIO:".$datosUsr['nombreUsr']."\n"."CORREO:".$datosUsr['correo']."\n"."CONTRASEÑA:".$datosUsr['contrasena']."\n"."TU CODIGO DE ACTIVACION ES: ".$datosUsr['codigoActivacion']."\n"."DA CLICK AQUI: http://google.com.mx";
+		$body.="</h2>";*/
+		//$mail->AltBody =$altbody;
+		//$body=$this->view('welcome_message');
+		$datosCorreo['nombreUsr']=$datosUsr['nombreUsr'];
+		$datosCorreo['correo']=$datosUsr['correo'];
+		$datosCorreo['contrasena']=$datosUsr['contrasena'];
+		$datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
+		
+		$body = $this->load->view('registroActivacion', $datosCorreo, true);
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
+		
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
+		
+		//$mail->AddEmbeddedImage("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","fondo","loteria.jpg");
+		
 		$mail->Body = $body;
-		if( ! $mail->Send() )
+		
+		if(!$mail->Send())
 		{
 			echo "No se pudo enviar el Mensaje.";
 		}
 		else
 		{
-			echo "Mensaje enviado";
+			echo "Mensaje enviado"; 
 		}
 	}
-		
 }

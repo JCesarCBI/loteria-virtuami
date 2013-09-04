@@ -34,8 +34,13 @@
 			<a href="#" id="mDyA" class="button round">Derivados y adjetivos</a>	
 			<a href="#" id="mSinonimos" class="button round">Sinonimos</a><br /> <br />
 			
-			<a id="bJuego" class="large button round">¡Jugar!</a>
-			</center>
+	 <form method="post" action="<?=base_url(); ?>index.php/cpruebasLuisa/juegoLibre2" >
+			<input type="hidden" id="vPartida" name="vPartida" value="0" />
+			<input type="hidden" id="vNivel" name="vNivel" value="0" />
+			<input type="hidden" id="vModalidad" name="vModalidad" value="0" />
+            <input  type="submit" value="Juego" class="large button round" id="bJuego"/>
+      </form>	
+      </center>
 		 </div>
 		<div class="two columns"></div>
 	</body>

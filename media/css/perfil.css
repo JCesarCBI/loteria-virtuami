@@ -1,10 +1,14 @@
+input[type="button"], input[type="submit"]{
+	background:#D9E021;
+}
 .foto img{	margin-top:15px; width:177px; height:177px;	float:left; border: 7px solid #D9E021;}
 label{color:#D9E021;margin-bottom:20px;} 
 .nombreUsr{color:#FFF;}
 .hilera{
 	background-image:url("../img/cenefa.png") !important;
 	height:21px;
-	margin-top:90px;
+	margin-top:10px;
+	width:105% !important;
 }
 #cjInformacion,.caja-estadisticas{
 	background-image:url("../img/azulLecciones.png") !important;
@@ -25,8 +29,7 @@ label{color:#D9E021;margin-bottom:20px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
 .header img{padding:2px 2px; width:40px; height:40px; float:right;}
 #BtnEditar{width:200px;	height:60px;}
-#editarFoto{margin-left:-580px;	margin-top:130px;}
-
+#editarFoto{margin-top:50px}
 /*******************/
 .gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
 #gallery li{position: relative;	list-style: none;	display:inline;}
@@ -68,9 +71,10 @@ label{color:#D9E021;margin-bottom:20px;}
 }
 
 #lightbox div{
-    background-color: rgba(24, 6, 0, 0.9);
-    background: rgba(24, 6, 0, 0.9);
-    color: rgba(24, 6, 0, 0.9);
+	background-image:url("../img/azulLecciones.png") !important;
+    /*background-color: rgba(24, 6, 0, 0.9);
+    background: rgba(24, 6, 0, 0.9);*/
+    /*color: rgba(24, 6, 0, 0.9);*/
 	border: 2px solid #bdbdbd;
 	opacity: 0;
 	position: absolute;
@@ -142,4 +146,5 @@ h3{color:#fff;}
 }
 
 #nombreCarta{color:#fff; font-size:43px;}
-#descripcionCarta{color:#fff; height:270px}
+#descripcionCarta{color:#fff; height:220px; margin-top:100px; margin-bottom:50px;}
+#datosCarta{margin-top:20px;}

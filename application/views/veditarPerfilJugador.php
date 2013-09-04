@@ -30,21 +30,17 @@
 			</div>
 			<div id="informacion" class="twelve columns informacion">
 				<div class="twelve columns">
-					<div class="six colums foto">
+					<div class="three columns foto">
 						<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
 					</div>
-					<div class="six columns">
-						<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>
-						<div class="hilera twelve columns">
-							<div></div>
-						</div>
+					<div class="nine columns">
+						<h1 class="nombreUsr twelve columns"><?= $nombreUsr?></h1>
+						<div class="hilera twelve columns"></div>
+						<input class="" type="button" id="editarFoto" value="Editar foto"/>
 					</div>
-					<div class="two columns">
-						<input type="button" id="editarFoto" value="Editar foto"/>
-					</div>	
 				</div>
-				<form id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
+				<form id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil/editaInformacionUsuario" method="post">
 					<div class="row">
 						<div class="four columns">
 							<label for="usuario_nombre">Nombre(s):</label>
@@ -149,14 +145,14 @@
 						if($trofeos != NULL){
 							foreach ($trofeos as $indice=>$trofeo) {
 								if($trofeo['Estado'] == 1){ ?>
-									<center><div id="trofeo<?=$indice?>" class="">
+									<center><div id="trofeo<?=$indice?>" class="trofeo-popup">
 										<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
 										<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
 										<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
 										<a class="close" href="#"></a>
 									</div></center>
 								<?php }else{ ?>
-									<center><div id="trofeo<?=$indice?>" class="">
+									<center><div id="trofeo<?=$indice?>" class="trofeo-popup">
 										<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
 										<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
 										<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
@@ -240,21 +236,23 @@
 				</div>
 			</div> <!--estadísticas -->
 			
+			<!--GALERÍA DE FOTOS-->
 			<div class="row" id="galeria">
 				<div class="row" id="infCarta">
 					<img id="imgCarta" class="six columns" src="<?=base_url()?>media/img/mazo/reversa.png"/>
 					
 					<div id="datosCarta" class="six columns">
-						<h3>Galería</h3>
+						<!-- <h3>Galería</h3> -->
 						<h2 id="nombreCarta"></h2>
+						<div class="hilera twelve columns"></div>
 						<p id="descripcionCarta">
 							<div class="Div-vacio"></div>
 						</p>
-						<input type="hidden" value="1" id="numRima"/>
-						<input type="hidden" value="3" id="totalRima"/>
 						<div class="six columns" id="incarat"></div>
 						<div class="six columns" id="masInfoCarta"></div>
-
+						<div class="hilera twelve columns"></div>
+						<input type="hidden" value="1" id="numRima"/>
+						<input type="hidden" value="3" id="totalRima"/>
 					</div>
 				</div>
 				<div class="row" id="carrusel">
