@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('estadisticas/mestadisticas');
+					$this->load->model('juego/mscore');
 				}
 				
 				public function getDatos(){
@@ -24,6 +24,15 @@
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$idCarta = 1;
 					$nombreUsr = 'JCesarCBI';
+					$record = 27;
+					
+					$score = array(
+									"idPartida" => 1,
+									"idNivel" => 1,
+									"idModalidad" => 1,
+									"idUsr" => 1,
+									"idJuego" => 1
+					);
 					
 					$aleatorio = uniqid();
 					
@@ -31,7 +40,8 @@
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
-						$datos = $this->mestadisticas->getRima($idCarta);
+						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
+						$datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();
 						echo'<pre>';
 							print_r($datos);

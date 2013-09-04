@@ -11,6 +11,10 @@
 		
 		public function setScore($score, $record, $idEstadoPartida)
 		{
+			$idUser = $score["idUsr"];
+			$idJuego = $score["idJuego"];
+			$aux = $record;
+			
 			$this->db->insert('score', $score);
 			
 			$lastId = $this->db->select_max('idScore')->from('score')->get();
@@ -29,6 +33,30 @@
 			);
 			
 			$this->db->insert('record', $record);
+			
+			$scoreTotal = $this->getScoreTotal($idUser, $idJuego);
+			$aux = $scoreTotal['scoreTotal'];
+			
+			
+		}
+		
+		public function getScoreTotal($idUser, $idJuego)
+		{
+			$this->db->SELECT('*');
+			$this->db->FROM('jugador');
+			$this->db->WHERE('idUsr', $idUser);
+			$this->db->WHERE('idJuego', $idJuego);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $value) {
+					$total[$value['idUsr']] = $value;
+				}
+				return $total;
+			} else {
+				return FALSE;
+			}
 		}
 	}
 	
