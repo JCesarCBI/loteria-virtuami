@@ -15,13 +15,13 @@ jQuery(document).ready(function($) {
 	
 	//Estas solo existiran en caso de que sea un juego rápido    	
 	document.getElementById('linea1').value = "";
-	document.getElementById('linea2').value = 0;
-	document.getElementById('linea3').value = 0;
-	document.getElementById('linea4').value = 0;
-	document.getElementById('linea5').value = 0;
-	document.getElementById('linea6').value = 0;
-	document.getElementById('linea7').value = 0;
-	document.getElementById('linea8').value = 0;
+	document.getElementById('linea2').value = "";
+	document.getElementById('linea3').value = "";
+	document.getElementById('linea4').value = "";
+	document.getElementById('linea5').value = "";
+	document.getElementById('linea6').value = "";
+	document.getElementById('linea7').value = "";
+	document.getElementById('linea8').value = "";
 
 });
 
@@ -271,40 +271,145 @@ function borrarInputCambiarCarta() {
 
 }
 
-function marcaPosicion(indice){
-		$("#linea1").val($("#linea1").val()+1);
-		alert($("#linea1").val().length);
-	switch(indice)
-	{
-		case 0:	
-		$("#linea1").val(value)
-		  break;
-	}
-	
-};
 
 function cartasLoteria(indice){
-	marcaPosicion();
-	cartas=document.getElementById('loteriaCadena').value;
-	cartas=cartas+indice+"*";
-	document.getElementById('loteriaCadena').value=cartas;
-	var ayuda=document.getElementById('ayudaVoF').value;
 	
-	if (ayuda==1) {
-		cartas=document.getElementById('loteriaCadena').value;
-		arreglo=cartas.split('*');
+	var long1;
+	var long2;
+
+	var opcion=parseInt(indice);
+	
+	switch(opcion)
+	{
 		
-		if (arreglo.length==5) {
+		case 0:	
+		$("#linea1").val($("#linea1").val()+1);
+		$("#linea5").val($("#linea5").val()+1);
+		long1=$("#linea1").val().length;
+		long2=$("#linea5").val().length;
+		  break;
+		
+		case 1:	
+		$("#linea2").val($("#linea2").val()+1);
+		$("#linea5").val($("#linea5").val()+1);
+		long1=$("#linea2").val().length;
+		long2=$("#linea5").val().length;
+		  break;
+		
+		case 2:	
+		$("#linea3").val($("#linea3").val()+1);
+		$("#linea5").val($("#linea5").val()+1);
+		long1=$("#linea3").val().length;
+		long2=$("#linea5").val().length;
+		  break;
+		
+		case 3:	
+		$("#linea4").val($("#linea4").val()+1);
+		$("#linea5").val($("#linea5").val()+1);
+		long1=$("#linea4").val().length;
+		long2=$("#linea5").val().length;
+		  break;
+		
+		case 4:	
+		$("#linea1").val($("#linea1").val()+1);
+		$("#linea6").val($("#linea6").val()+1);
+		long1=$("#linea1").val().length;
+		long2=$("#linea6").val().length;
+		  break;
+		
+		case 5:	
+		$("#linea2").val($("#linea2").val()+1);
+		$("#linea6").val($("#linea6").val()+1);
+		long1=$("#linea2").val().length
+		long2=$("#linea6").val().length
+		  break;
+		
+		case 6:	
+		$("#linea3").val($("#linea3").val()+1);
+		$("#linea6").val($("#linea6").val()+1);
+		long1=$("#linea3").val().length
+		long2=$("#linea6").val().length
+		  break;
+		
+		case 7:	
+		$("#linea4").val($("#linea4").val()+1);
+		$("#linea6").val($("#linea6").val()+1);
+		long1=$("#linea4").val().length
+		long2=$("#linea6").val().length
+		  break;
+		
+		case 8:	
+		$("#linea1").val($("#linea1").val()+1);
+		$("#linea7").val($("#linea7").val()+1);
+		long1=$("#linea1").val().length
+		long2=$("#linea7").val().length
+		break;
+		
+		case 9:	
+		$("#linea2").val($("#linea2").val()+1);
+		$("#linea7").val($("#linea7").val()+1);
+		long1=$("#linea2").val().length
+		long2=$("#linea7").val().length
+		break;	
+			
+		case 10:	
+		$("#linea3").val($("#linea3").val()+1);
+		$("#linea7").val($("#linea7").val()+1);
+		long1=$("#linea3").val().length
+		long2=$("#linea7").val().length
+		break;	
+			
+		case 11:	
+		$("#linea4").val($("#linea4").val()+1);
+		$("#linea7").val($("#linea7").val()+1);
+		long1=$("#linea4").val().length
+		long2=$("#linea7").val().length
+		break;	
+			
+		case 12:	
+		$("#linea1").val($("#linea1").val()+1);
+		$("#linea8").val($("#linea8").val()+1);
+		long1=$("#linea1").val().length
+		long2=$("#linea8").val().length
+		break;
+			
+		case 13:	
+		$("#linea2").val($("#linea2").val()+1);
+		$("#linea8").val($("#linea8").val()+1);
+		long1=$("#linea2").val().length
+		long2=$("#linea8").val().length
+		break;			
+		
+		case 14:	
+		$("#linea3").val($("#linea3").val()+1);
+		$("#linea8").val($("#linea8").val()+1);
+		long1=$("#linea3").val().length
+		long2=$("#linea8").val().length
+		break;
+					
+		case 15:	
+		$("#linea4").val($("#linea4").val()+1);
+		$("#linea8").val($("#linea8").val()+1);
+		long1=$("#linea1").val().length
+		long2=$("#linea8").val().length
+		break;
+	}
+	
+	
+		if ((long1==4) || (long2==4)) {
 			marcaBtonLoteria();	
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
+			document.getElementById('loteriaCadena').value=4;
 		};	
-	};
+
+	
 }
+
 function pierdeNoLoteria(cartaActual){
 		
-		cartaActual=parseInt(cartaActual)
-		document.getElementById('estadoPartida').value=3;
-		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
+	cartaActual=parseInt(cartaActual)
+	document.getElementById('estadoPartida').value=3;
+	carta=parseInt(document.getElementById('bonusCartasRestantes').value);
 		
 	if (cartaActual!=carta) {
 		
@@ -320,9 +425,9 @@ function loteria(){
 	bPreguntar = false;	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
-	arreglo=cartas.split('*');
 	
-	if (arreglo.length == 5) {
+	
+	if (cartas == 4) {
 		
 		if (estadoPartida!=2) {
 			document.getElementById('estadoPartida').value=1;

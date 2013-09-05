@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   	$("#pRapida").attr("disabled", "disabled");
+   	
    	$("#nBasico").attr("disabled", "disabled");
    	$("#nIntermedio").attr("disabled", "disabled");
    	$("#nAvanzado").attr("disabled", "disabled");
@@ -10,6 +10,15 @@ $(document).ready(function(){
    	$("#mSinonimos").attr("disabled", "disabled");
    	$("#bJuego").attr("disabled", "disabled");
 
+
+    //Habilita las opciones posibles de la partida rápida
+	$("#pRapida").click(function() {
+   		$("#nBasico").removeAttr("disabled");
+   		$("#nAvanzado").removeAttr("disabled");
+		$("#vRapida").val(1)
+   		
+	});
+	
     //Habilita las opciones posibles de la partida completa
 	$("#pCompleta").click(function() {
    		$("#nBasico").removeAttr("disabled");
@@ -17,6 +26,7 @@ $(document).ready(function(){
 		$("#vPartida").val(1)
    		
 	});
+    
 
     //Habilita las opciones posibles de la partida básica
 	$("#nBasico").click(function() {

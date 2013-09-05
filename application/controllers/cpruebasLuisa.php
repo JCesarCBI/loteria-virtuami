@@ -26,6 +26,7 @@ class cpruebasLuisa extends CI_Controller {
 			
         }else{
 	        $idPartida = $this->input->post('vPartida');
+			$data['idPartida']=$idPartida; 
 			$idNivel = $this->input->post('vNivel');
 			$idModalidad = $this->input->post('vModalidad');
 				
@@ -50,6 +51,8 @@ class cpruebasLuisa extends CI_Controller {
 					$k--;
 				}
 			}
+			echo $puntaje;
+			echo $tiempo;
 			//Aqui se hace la configuración del juego conforme a los parametros recibidos
 			if ($idPartida == 1) {  //Configuración para las partidas completas
 				if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre

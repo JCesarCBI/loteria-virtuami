@@ -7,7 +7,6 @@
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	
 	<script>var base = "<?=base_url(); ?>"</script>
-	<?=$idPartida=2;?>
 	<?= (isset($idPartida) && ($idPartida== 2)) ? '<script src="'.base_url().'media/js/juegoCartas4x4.js" type="text/javascript" charset="utf-8"></script>' : '<script src="'.base_url().'media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>' ;?> 
 	
 	<script src="<?=base_url(); ?>media/js/eventosMazo.js" type="text/javascript" charset="utf-8"></script>
@@ -33,10 +32,16 @@
 				
 			<!--Columna izquierda, aquí iran las 56 cartas, y también se escribirá la respuesta de cada carta-->
 			<div class="three columns" id="ColumnaIzq">
-				<?=$partida=1;?>
 				<input type="hidden"  id="cartaVisible"  value="" />
-				<input type="hidden"  id="linea1"  value="0" />
-				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($partida) && $partida==1) ? 1 : 0 ;?>" />
+				<input type="hidden"  id="linea1"  value="" />
+				<input type="hidden"  id="linea2"  value="" />
+				<input type="hidden"  id="linea3"  value="" />
+				<input type="hidden"  id="linea4"  value="" />
+				<input type="hidden"  id="linea5"  value="" />
+				<input type="hidden"  id="linea6"  value="" />
+				<input type="hidden"  id="linea7"  value="" />
+				<input type="hidden"  id="linea8"  value="" />
+				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($idPartida) && $idPartida==1) ? 1 : 0 ;?>" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
