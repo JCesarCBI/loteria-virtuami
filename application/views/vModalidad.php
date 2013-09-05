@@ -19,10 +19,6 @@
 			<div class="row">
 			<a href="<?=base_url()?>index.php/cDatosPerfil/PerfilUsuario/<?=$idJuego=1?>/<?=$idUsuario=-1?>" id="bPerfil" class="large button round offset-by-ten"> Ver perfil</a>
 			</div>
-			<!-- inputs que guardarán datos -->
-			<input type="hidden" id="vPartida" value="0" />
-			<input type="hidden" id="vNivel" value="0" />
-			<input type="hidden" id="vModalidad" value="0" />
 
 			<!-- sección donde el usuario elegirá la modalidad a jugar -->
 			<div class="row">

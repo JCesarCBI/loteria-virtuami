@@ -12,11 +12,16 @@
 					<input type="hidden" name="vPartida" id="vPartida" value="1" />
 					<input type="hidden" name="vModalidad" id="vPartida" value="1" />
 					<input type="hidden" name="vNivel" id="vPartida" value="1" />
-				<span class="row">
-					<input type="button" class="small button tamanoBoton four columns" id="bPerfil" value="Perfil"/>
-					<input type="button" class="small button tamanoBoton four columns" id="bNuevoJuego" value="Nuevo juego"/>
-					<input type="submit" class="small button four columns tamanoBoton"  value="Reintentar" />
-				</span>
+				
+				<center><span class="row">
+					<img src="<?= base_url()?>/media/img/hr_usuario.png" id="bPerfil"/>
+					<label class="cartelito">Nuevo juego</label>
+					<img src="<?= base_url()?>/media/img/hr_nuevo.png"  id="bNuevoJuego" />
+					<label class="cartelito">Reintentar</label>
+					<img src="<?= base_url()?>/media/img/hr_rw.png"  id="bReiniciarJuego" />
+					<label class="cartelito">Perfil</label>
+					<!-- <input type="submit" class="small button four columns tamanoBoton"  value="Reintentar" /> -->
+				</span></center>
 			</form>
 		</span>
 		<a class="close" href="<?=base_url();?>index.php/cpruebasLuisa/modalidad"></a>
