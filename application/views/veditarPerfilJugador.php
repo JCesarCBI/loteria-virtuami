@@ -28,19 +28,17 @@
 					</ul>
 				</div>
 			</div>
-			<div id="informacion" class="twelve columns informacion">
-				<div class="twelve columns">
-					<div class="three columns foto">
-						<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
-						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
-					</div>
-					<div class="nine columns">
-						<h1 class="nombreUsr twelve columns"><?= $nombreUsr?></h1>
-						<div class="hilera twelve columns"></div>
-						<input class="" type="button" id="editarFoto" value="Editar foto"/>
-					</div>
+			<div id="informacion" class="row informacion">
+				<!-- <div class="three columns foto"> -->
+					<img class="three columns foto" src="<?= base_url() ?><?= $avatar ?>" title=""/>
+				<!-- </div> -->
+				<div class="nine columns">
+					<h1 class="nombreUsr twelve columns"><?= $nombreUsr?></h1>
+					<div class="hilera twelve columns"></div>
+					<input class="" type="button" id="editarFoto" value="Editar foto"/>
 				</div>
-				<form id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil/editaInformacionUsuario" method="post">
+				<form class="twelve columns" id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
+					<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
 					<div class="row">
 						<div class="four columns">
 							<input type="hidden" value="<?= $idUsr?> name="idUsuario"/>
@@ -124,7 +122,6 @@
 					<?php }
 					?>
 					<a id="closeGaleriaEditarFoto" href="#"></a>
-
 				</div>
 				<div class="row"> <!--Editar información-->
 					<div class="four columns">

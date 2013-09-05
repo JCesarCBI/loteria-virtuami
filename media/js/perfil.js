@@ -150,7 +150,7 @@ $(document).ready(function() {
 	})
 	$("#galeriaEditarFoto > img").click(function(){
 		url = $(this).attr('src')
-		$(".foto > img").prop('src',url)
+		$(".foto").prop('src',url)
 		$("#usuario_avatar").prop('value',url)
 	})
 	$("#closeGaleriaEditarFoto").click(function(){

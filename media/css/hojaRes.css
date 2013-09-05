@@ -1,4 +1,14 @@
 /********fancy box**************/
+#trofeos{
+	margin-bottom: 50px;
+}
+
+#trofeosGanadoslb{
+	color: #fff;
+	font-size:25px;
+	text-align:center;
+	margin-bottom:20px;
+}
 #resultadosJuego h2{
 	color: #D9E021;
 	font-size:70px !important;

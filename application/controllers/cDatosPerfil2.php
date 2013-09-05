@@ -186,6 +186,12 @@ class CDatosPerfil2 extends CI_Controller {
 				echo json_encode($resultado[$rima-1]);
 			}
 		}
+		
+		function editaInformacionUsuario(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
+		}
 }
 
 
