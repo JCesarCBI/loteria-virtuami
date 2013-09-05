@@ -25,37 +25,43 @@
 				}
 			}
 									
-			$record = array(
+			$recordArray = array(
 					'record'=> $record,
 					'fecha' => date('Y-m-d H:i:s'),
 					'idScore' => $idScore,
 					'idEstadoPartida' => $idEstadoPartida,
 			);
 			
-			$this->db->insert('record', $record);
+			$this->db->INSERT('record', $recordArray);
 			
 			$scoreTotal = $this->getScoreTotal($idUser, $idJuego);
-			$aux = $scoreTotal['scoreTotal'];
 			
+			print_r($scoreTotal);
+			print_r($record);
+			
+			$total = $scoreTotal+$record;
+						
+			$data = array('scoreTotal'=>$total);
+			
+			$this->db->WHERE('idUsr', $idUser);
+			$this->db->UPDATE('jugador', $data);
 			
 		}
 		
 		public function getScoreTotal($idUser, $idJuego)
 		{
-			$this->db->SELECT('*');
+			$this->db->SELECT('scoreTotal');
 			$this->db->FROM('jugador');
 			$this->db->WHERE('idUsr', $idUser);
 			$this->db->WHERE('idJuego', $idJuego);
 			
 			$query = $this->db->get();
 			
-			if ($query->num_rows()!=0) {
-				foreach ($query->result_array() as $value) {
-					$total[$value['idUsr']] = $value;
-				}
-				return $total;
+			if ($query->num_rows()==1) {
+				$row = $query->row();
+				return $row->scoreTotal;
 			} else {
-				return FALSE;
+				return NULL;
 			}
 		}
 	}

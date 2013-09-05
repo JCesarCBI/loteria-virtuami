@@ -24,7 +24,7 @@
 					$idEstadoPartida = 1;	//1 es Ganado | 2 es Perfecto | 3 es Perdido
 					$idCarta = 1;
 					$nombreUsr = 'JCesarCBI';
-					$record = 27;
+					$record = 200;
 					
 					$score = array(
 									"idPartida" => 1,
@@ -35,17 +35,17 @@
 					);
 					
 					$aleatorio = uniqid();
-					
+									
 					echo $aleatorio;
 					
 					if ($idUser != 0) {
 						// $datos = $this->mestadisticas->getGaleria(1,1);
 						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
-						$datos = $this->mscore->getScoreTotal($idUser, $idJuego);
+						// $datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();
-						echo'<pre>';
-							print_r($datos);
-						echo'</pre>';
+						// echo'<pre>';
+							// print_r($datos);
+						// echo'</pre>';
 						
 						// for ($i = 0; $i < count($datos) ; $i++) { 
 							// $datosOrdenados[$i+1] = $datos[$i];

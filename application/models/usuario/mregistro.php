@@ -121,6 +121,9 @@ class Mregistro extends CI_Model {
 	//Agrega un nuevo usuario/jugador
 	public function setAgregarUsuario($datos)
 	{
+		$idJuego = 1;
+		$idUsr = 0;
+		
 		if (!empty($datos)) {
 			$this->db->insert('usuario', $datos);
 			$lastId = $this->db->select_max('idUsr')->from('usuario')->get();
@@ -137,24 +140,55 @@ class Mregistro extends CI_Model {
 		);
 		
 		$this->db->insert('jugador', $player);
+		
+		$randCarta = $this->getRandomCarta();
+		
+		echo'<pre>';
+			print_r($randCarta);
+		echo'</pre>';
+		
+		foreach($randCarta as $carta)
+		{
+			$this->db->INSERT('galeria', array('idUsr' => $idUsr, 'idJuego' => $idJuego, 'idCarta' => $carta));
+			print_r($carta);
+		}
 	}
 	
 	//Obtiene el codigo de activacion
-		public function getCodigoActivacion($idUsr)
-		{
-			$this->db->SELECT('nombreUsr, correo, contrasena, codigoActivacion');
-			$this->db->FROM('usuario');
-			$this->db->WHERE('idUsr', $idUsr);
-			$this->db->LIMIT(1);
+	public function getCodigoActivacion($idUsr)
+	{
+		$this->db->SELECT('nombreUsr, correo, contrasena, codigoActivacion');
+		$this->db->FROM('usuario');
+		$this->db->WHERE('idUsr', $idUsr);
+		$this->db->LIMIT(1);
 			
-			$query = $this->db->get();
+		$query = $this->db->get();
 			
-			if ($query-> num_rows() == 1) {
-				return $query->result_array();
-			} else {
-				return FALSE;
+		if ($query-> num_rows() == 1) {
+			return $query->result_array();
+		} else {
+			return FALSE;
+		}
+	}
+	
+	public function getRandomCarta()
+	{
+		$num = Array();
+		reset($num);
+		for($i=1;$i<=3;$i++){
+			$num[$i]=rand(1,54);
+			if($i>1){
+				for($x=1; $x<$i; $x++){
+					if($num[$i]==$num[$x]){
+						$i--;
+						break;
+					}
+				}
 			}
 		}
+		return $num;
+	}
+		
 }
 
 ?>
