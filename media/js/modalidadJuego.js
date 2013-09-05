@@ -23,7 +23,7 @@ $(document).ready(function(){
 	$("#pCompleta").click(function() {
    		$("#nBasico").removeAttr("disabled");
    		$("#nAvanzado").removeAttr("disabled");
-		$("#vPartida").val(1)
+		$("#vPartida").val(2)
    		
 	});
     
