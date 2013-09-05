@@ -12,7 +12,7 @@
 	<body>						
 		<title>Editar perfil</title>
 		<div class="twelve columns">
-		<div class="twelve columns header">
+		<div id="barraUsuario" class="twelve columns header">
 			<img src="<?= base_url() ?><?= $avatar ?>" title="avatar"/>
 			<a href="#" id="usuario"><?=$nombreUsr?></a>
 			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
@@ -43,6 +43,7 @@
 				<form id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil/editaInformacionUsuario" method="post">
 					<div class="row">
 						<div class="four columns">
+							<input type="hidden" value="<?= $idUsr?> name="idUsuario"/>
 							<label for="usuario_nombre">Nombre(s):</label>
 							<input class="" type="text" id="usuario_nombre" name="usuario_nombre" value="<?= $nombre?>" autofocus>
 						</div>

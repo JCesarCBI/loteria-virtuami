@@ -1,13 +1,11 @@
 jQuery(document).ready(function($) {
    
 	$("#bPerfil").click(function(){
-		
 		window.location.href=base+'index.php/cDatosPerfil/PerfilUsuario/1/1';
 	});
 	
 	$("#bNuevoJuego").click(function(){
 		window.location.href=base+'index.php/cpruebasLuisa/modalidad';
-		
 	})   
 });
 
@@ -26,10 +24,10 @@ function hojaResultados(){
 	switch(estadoPartida)
 		{
 			case "1":
-				estado="GANASTE";	
+				estado="¡GANASTE!";	
 			  break;
 			case "2":
-				estado="PERFECTO";	
+				estado="¡PERFECTO!";	
 			  break;
 			case "3":
 				estado="PERDISTE";
@@ -44,13 +42,13 @@ function hojaResultados(){
 	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
 	
 	if (estadoPartida=="3") {		
-		$('#resultadosJuego').html('<h4><label>Estado: </label><h4><h2>'+estado+'</h2><br /><br />'+'<br /><br />');
+		$('#resultadosJuego').html('<h2>'+estado+'</h2>');
 		
-	} else{
-		
-	$('#resultadosJuego').html('<label>Puntuación: </label>'+puntos+'<br />'+
-								'<label>Estado: </label>'+estado+'<br /><br />'+
-								'<label>Bonus por cartas en el mazo: </label>'+bonus+'<br /><br />')
+	} else{		
+	$('#resultadosJuego').html('<h2>'+estado+'<h2/>'+
+								'<label id="puntuacion">Puntación:<br>'+puntos+'</label><br/><br/>'
+								// '<label id="bonus" >Bonus por cartas en el mazo: </label>'+bonus+'<br /><br />'
+							)
 		
 	};
 							

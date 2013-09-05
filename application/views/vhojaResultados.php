@@ -1,27 +1,25 @@
-<div id="lightbox">
-	<center>
-	<div id="loteria-FancyBox" class="">
-		<h3>Hoja de resultados</h3>
-		<span id="resultadosJuego" >
+<div id="lightbox" class="twelve columns">
+	<!-- <center> -->
+	<div id="loteria-FancyBox">
+		<span id="resultadosJuego" class="twelve columns">
 			
 		</span>
-		<span id="trofeos" >
+		<span id="trofeos" class="twelve columns">
 			
 		</span>
-		<span id="botones">
+		<span id="botones" class="twelve columns">
 			<form action="<?=base_url();?>index.php/cpruebasLuisa/juegoLibre2" method="post" enctype="multipart/form-data" id="menuForm" name="menuForm">
 					<input type="hidden" name="vPartida" id="vPartida" value="1" />
 					<input type="hidden" name="vModalidad" id="vPartida" value="1" />
 					<input type="hidden" name="vNivel" id="vPartida" value="1" />
-					<center>
-						<button class="small button tamanoBoton" id="bPerfil" type="button">Perfil</button>
-						<button class="small button tamanoBoton" id="bNuevoJuego" type="button">Nuevo Juego</button><br />
-					</center>				
-					<input class="medium button" type="submit" value="Reintentaraaa" />
+				<span class="row">
+					<input type="button" class="small button tamanoBoton four columns" id="bPerfil" value="Perfil"/>
+					<input type="button" class="small button tamanoBoton four columns" id="bNuevoJuego" value="Nuevo juego"/>
+					<input type="submit" class="small button four columns tamanoBoton"  value="Reintentar" />
+				</span>
 			</form>
 		</span>
-
 		<a class="close" href="<?=base_url();?>index.php/cpruebasLuisa/modalidad"></a>
 	</div>
-	</center>
 </div>
+	<!-- </center> -->

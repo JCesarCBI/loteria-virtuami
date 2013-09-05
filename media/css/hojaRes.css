@@ -1,5 +1,16 @@
 /********fancy box**************/
+#resultadosJuego h2{
+	color: #D9E021;
+	font-size:70px !important;
+	margin-top:50px;
+	text-align:center;
+}
 
+#puntuacion{
+	color:#fff;
+	font-size:40px;
+	text-align:center;
+}
 #gallery li{
 	position: relative;
 	list-style: none;

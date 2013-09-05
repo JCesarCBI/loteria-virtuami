@@ -148,11 +148,12 @@ class CDatosPerfil2 extends CI_Controller {
 				foreach ($mazoCartas as $cartas) {
 					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
 				}
-				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();
-	
-				// echo "<pre>";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
+				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();	
+				echo "<pre>";
+				print_r($datosPerfilOrdenados);
+				echo "</pre>";
+				$this->load->view('headerPerfilUsuario', $datosPerfilOrdenados);
+				$this->load->view('barraUsuario', $datosPerfilOrdenados);
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
@@ -169,20 +170,22 @@ class CDatosPerfil2 extends CI_Controller {
 		}
 		
 		public function traeDatosCarta($idcarta){
+			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
+			//El siguiente arreglo deberá ser traído desde la BD
+			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
+			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
 			$mazoCartas = $this->mestadisticas->getCartas();
 			echo json_encode($mazoCartas[$idcarta]);
 		}
 		
 		public function traeRimaCarta($idcarta, $rima){
-			//El modelo te traerá un arreglo de las rimas para esta carta	
-			$rimas= Array(
-				1 => "rima1",
-				2 => "rima2",
-				3 => "rima3"
-			);
-			echo json_encode($rimas[$rima]);
+			$resultado = $this->mestadisticas->getRima($idcarta);
+			if(count($resultado) < $rima){
+				echo json_encode(array_pop($resultado));
+			}else{
+				echo json_encode($resultado[$rima-1]);
+			}
 		}
-
 }
 
 
