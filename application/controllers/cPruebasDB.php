@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('juego/mscore');
+					$this->load->model('juego/mjuegolibre');
 				}
 				
 				public function getDatos(){
@@ -39,13 +39,13 @@
 					echo $aleatorio;
 					
 					if ($idUser != 0) {
-						// $datos = $this->mestadisticas->getGaleria(1,1);
+						$datos = $this->mjuegolibre->getMazoFrase();
 						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
 						// $datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();
-						// echo'<pre>';
-							// print_r($datos);
-						// echo'</pre>';
+						echo'<pre>';
+							print_r($datos);
+						echo'</pre>';
 						
 						// for ($i = 0; $i < count($datos) ; $i++) { 
 							// $datosOrdenados[$i+1] = $datos[$i];

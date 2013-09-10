@@ -8,12 +8,35 @@
 			parent::__construct();
 		}
 		
-		public function getMazo()
+		public function getMazoCarta()
+			{
+			$query = $this->db->query('
+					SELECT c.idCarta, c.nombre, c.descripcion, c.audioOGG, c.audioMP3, c.imgMazo, c.imgPlantilla, c.imgGaleria, f.frase FROM carta c
+					JOIN (SELECT frase, audioOGG, audioMP3, idCarta, idFrase FROM frase ORDER BY RAND()) f
+					ON c.idCarta = f.idCarta
+					WHERE f.frase IS NOT NULL
+					GROUP BY f.idCarta
+					ORDER BY c.idCarta;');
+												
+			if ($query->num_rows()!=0) {
+				foreach ($query->result_array() as $value) {
+					$cartas[$value['idCarta']] = $value;
+				}
+				return $cartas;
+			} else {
+				return FALSE;
+			}
+		}
+		public function getMazoFrase()
 		{
-			$this->db->SELECT('*');
-			$this->db->FROM('carta');
-			
-			$query = $this->db->get();
+			$query = $this->db->query('
+				SELECT c.idCarta, c.nombre, c.descripcion, f.audioOGG, f.audioMP3, c.imgMazo, c.imgPlantilla, c.imgGaleria, f.frase FROM carta c
+				JOIN (SELECT frase, audioOGG, audioMP3, idCarta, idFrase FROM frase ORDER BY RAND()) f
+				ON c.idCarta = f.idCarta
+				WHERE f.frase IS NOT NULL
+				GROUP BY f.idCarta
+				ORDER BY c.idCarta;');
+											
 			if ($query->num_rows()!=0) {
 				foreach ($query->result_array() as $value) {
 					$cartas[$value['idCarta']] = $value;
