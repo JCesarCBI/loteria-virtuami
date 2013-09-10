@@ -80,6 +80,7 @@ class CJuego extends CI_Controller {
 			$this->session->set_userdata('idModalidad', $idModalidad);
 			$data['puntaje']=$puntaje;
 			$data['tiempo']=$tiempo;
+			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			// echo "<pre>";
 			// print_r($this->session->all_userdata());
 			// echo "</pre>";
