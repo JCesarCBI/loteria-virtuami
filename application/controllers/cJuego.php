@@ -14,7 +14,7 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vPartida','','required');
 		$this->form_validation->set_rules('vNivel', '', 'required');
 		$this->form_validation->set_rules('vModalidad', '', 'required');
-        if ($this->form_validation->run() == FALSE){
+        if ($this->form_validation->run() != FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
 			$this->load->view('vModalidad');
             // $this->load->view('vinicio');
@@ -30,7 +30,11 @@ class CJuego extends CI_Controller {
 			
 			$puntaje = 0;
 			$tiempo = 0;
-			$baraja = $this->mJuegoLibre->getMazo();
+			$baraja = $this->mJuegoLibre->getMazoCarta();
+			echo "<pre>";
+			print_r($baraja);
+			echo "</pre>";
+			
 			shuffle($baraja);
 			foreach ($baraja as $key) {
 				$id = $key["idCarta"];
@@ -87,6 +91,7 @@ class CJuego extends CI_Controller {
 			$this->load->view('vPruebasCartas', $data);
 		}
 	}
+
 	public function guardarScore($record, $idEdoPartida){
 		
 		$score = array('idPartida' => $this->session->userdata('idPartida') ,
