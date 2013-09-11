@@ -22,9 +22,9 @@ class CLogin extends CI_Controller {
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
         	$jugador = $this->mlogin->login_usuario($usr, $psw);
-			echo "<pre>";
-			print_r($jugador);
-			echo "</pre>";
+			// echo "<pre>";
+			// print_r($jugador);
+			// echo "</pre>";
 			if($jugador){
 				if ($jugador[0]->estatus == 1) {
 					$this->session->set_userdata('usuario', $usr);

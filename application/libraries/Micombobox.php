@@ -44,7 +44,10 @@ class Micombobox{
 				$i++;
 			}
 		}
-		
+		for ($i=17; $i < 61; $i++) {
+			$datos['edad'][$i] = $i; 
+		}
+		 
 		// echo "<pre>";
 		// print_r($datos);
 		// echo "</pre>";
