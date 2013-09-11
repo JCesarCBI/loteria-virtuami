@@ -14,7 +14,7 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vPartida','','required');
 		$this->form_validation->set_rules('vNivel', '', 'required');
 		$this->form_validation->set_rules('vModalidad', '', 'required');
-        if ($this->form_validation->run() != FALSE){
+        if ($this->form_validation->run() == FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
 			$this->load->view('vModalidad');
             // $this->load->view('vinicio');
@@ -44,9 +44,9 @@ class CJuego extends CI_Controller {
 				// }
 			// }
 			//Aqui se hace la configuración del juego conforme a los parametros recibidos
-			$idPartida = 2;
-			$idNivel = 3;
-			$idModalidad = 4;
+			// $idPartida = 2;
+			// $idNivel = 3;
+			// $idModalidad = 4;
 			if ($idPartida == 1) {  //Configuración para las partidas completas
 				if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre
 					$puntaje = 20;
