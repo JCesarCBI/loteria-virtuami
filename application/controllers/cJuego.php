@@ -9,7 +9,7 @@ class CJuego extends CI_Controller {
 		$this->load->model('juego/mscore');
 	}
 	
-	public function configuracionJuego(){ //Recibir tres parametros idPartida, idNivel, idModalidad
+	public function configuracionJuego(){
 	//Traigo la baraja y la acomodo para mandar las imagenes del tablero y del mazo
 		$this->form_validation->set_rules('vPartida','','required');
 		$this->form_validation->set_rules('vNivel', '', 'required');
@@ -23,18 +23,61 @@ class CJuego extends CI_Controller {
 	        $idPartida = $this->input->post('vPartida');
 			$idNivel = $this->input->post('vNivel');
 			$idModalidad = $this->input->post('vModalidad');
-			// echo "Prtida".$idPartida;
-			// echo "Nivel".$idNivel;
-			// echo "Modalidad".$idModalidad;
-				
-			
 			$puntaje = 0;
 			$tiempo = 0;
-			$baraja = $this->mJuegoLibre->getMazoCarta();
-			echo "<pre>";
-			print_r($baraja);
-			echo "</pre>";
-			
+			// $baraja = $this->mJuegoLibre->getMazoCarta();
+			// shuffle($baraja);
+			// foreach ($baraja as $key) {
+				// $id = $key["idCarta"];
+				// $data["baraja"][$id] = $key;
+			// }
+			// $k = 0;
+			// $conta = 0;
+			// for ($k=0; $k < 16; $k++) { 
+				// srand ();
+				// $aleat = rand(0,53);
+				// $r = $baraja[$aleat]['idCarta'];
+				// $data["lote"][$r] = $baraja[$aleat];
+				// $conteo = count($data["lote"]);			
+				// if($conteo == $k){
+					// $k--;
+				// }
+			// }
+			//Aqui se hace la configuración del juego conforme a los parametros recibidos
+			$idPartida = 2;
+			$idNivel = 3;
+			$idModalidad = 4;
+			if ($idPartida == 1) {  //Configuración para las partidas completas
+				if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre
+					$puntaje = 20;
+					$tiempo = 10000;
+					$baraja = $this->mJuegoLibre->getMazoCarta();
+				}
+				if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
+					$puntaje = 60;
+					$tiempo = 6000;
+					$baraja = $this->mJuegoLibre->getMazoFrase();
+				}
+				if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
+					$puntaje = 120;
+					$tiempo = 6000;
+					$baraja = $this->mJuegoLibre->getMazoCarta();
+				}
+				if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
+					$puntaje = 240;
+					$tiempo = 6000;
+					$baraja = $this->mJuegoLibre->getMazoCarta();
+				}
+				if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
+					$puntaje = 360;
+					$tiempo = 6000;
+					$baraja = $this->mJuegoLibre->getMazoCarta();
+				}
+			} else {  //Configuración para las partidas rapidas
+				$puntaje = 400;
+				$tiempo = 4000;
+				$baraja = $this->mJuegoLibre->getMazoFrase();
+			}
 			shuffle($baraja);
 			foreach ($baraja as $key) {
 				$id = $key["idCarta"];
@@ -52,32 +95,6 @@ class CJuego extends CI_Controller {
 					$k--;
 				}
 			}
-			//Aqui se hace la configuración del juego conforme a los parametros recibidos
-			if ($idPartida == 1) {  //Configuración para las partidas completas
-				if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre
-					$puntaje = 20;
-					$tiempo = 10000;
-				}
-				if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
-					$puntaje = 60;
-					$tiempo = 6000;
-				}
-				if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
-					$puntaje = 120;
-					$tiempo = 6000;
-				}
-				if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
-					$puntaje = 240;
-					$tiempo = 6000;
-				}
-				if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
-					$puntaje = 360;
-					$tiempo = 6000;
-				}
-			} else {  //Configuración para las partidas rapidas
-				$puntaje = 1;
-				$tiempo = 1;
-			}
 			//Guardamos los siguientes datos en la cookie
 			$this->session->set_userdata('idPartida', $idPartida);
 			$this->session->set_userdata('idNivel', $idNivel);
@@ -85,8 +102,9 @@ class CJuego extends CI_Controller {
 			$data['puntaje']=$puntaje;
 			$data['tiempo']=$tiempo;
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
-			// echo "<pre>";
-			// print_r($this->session->all_userdata());
+			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
+			// echo "<pre> Baraja con audio ";
+			// print_r($data);
 			// echo "</pre>";
 			$this->load->view('vPruebasCartas', $data);
 		}
