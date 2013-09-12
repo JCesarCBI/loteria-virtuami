@@ -334,7 +334,7 @@ $(document).ready(function() {
 				$("#usuario_comunidadUniversitaria").removeAttr("disabled")
 				$("#edadError").hide();
 			}else{
-				alert("edad no válida")
+				// alert("edad no válida")
 			}
 			
 			$("#edadError").hide();

@@ -15,7 +15,7 @@
 					$trofeosGanados = array(
 						1 => array(
 								'id' => 1,
-								'nombre' => "gn_aprendiz.PNG"
+								'nombre' => "gn_aprendiz.png"
 							),
 						2 => array(
 							'id' => 2,
@@ -31,7 +31,7 @@
 						)						
 					);
 					foreach ($trofeosGanados as $trofeos) { ?>
-						<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$trofeos['id']?>" width="80px" height="80px" src="<?php print_r(base_url().'media/img/trofeos/'.$trofeos['nombre'])?>" />
+						<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$trofeos['id']?>" width="80px" height="80px" src="<?php print_r(base_url().'media/img/trofeo/'.$trofeos['nombre'])?>" />
 				<?php } ?>
 				<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">
 			</span>
