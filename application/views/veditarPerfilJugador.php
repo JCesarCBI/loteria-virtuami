@@ -39,9 +39,10 @@
 				</div>
 				<form class="twelve columns" id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
 					<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
+					<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $avatar ?>"/>
 					<div class="row">
 						<div class="four columns">
-							<input type="hidden" value="<?= $idUsr?> name="idUsuario"/>
+							<input type="hidden" value="<?= $idUsr?>" name="idUsuario"/>
 							<label for="usuario_nombre">Nombre(s):</label>
 							<input class="" type="text" id="usuario_nombre" name="usuario_nombre" value="<?= $nombre?>" autofocus>
 						</div>
@@ -153,7 +154,7 @@
 									<center><div id="trofeo<?=$indice?>" class="trofeo-popup">
 										<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
 										<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
-										<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
+										<p class="descripcionTrofeo">Trofeo no ganado</p>
 										<a class="close" href="#"></a>
 									</div></center>
 							<?php }
@@ -172,13 +173,13 @@
 							foreach ($trofeos as $indice=>$trofeo) {
 								if($trofeo['Estado'] == 1){ ?>
 									<li>
-										<a class="two columns clearfix" href="#trofeo<?=$indice?>">
+										<a class="three clearfix" href="#trofeo<?=$indice?>">
 											<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>
 									</li>
 								<?php }else{ ?>
 									<li>
-										<a class="two columns clearfix" href="#trofeo<?=$indice?>">
+										<a class="three clearfix" href="#trofeo<?=$indice?>">
 											<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 										</a>	
 									</li>
@@ -261,7 +262,7 @@
 							if($imagen['Estado'] == 1){	 ?>
 								<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().$imagen['imgPlantilla'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
 						<?php } else { ?>
-								<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().'media/img/mazo/reversa.png')?>" />
+								<img class="carrusel-apaga imgCarrusel" id="carrusel-img<?=$imagen['idCarta']?>" width="80px" height="80px" src="<?php print_r(base_url().'media/img/mazo/reversa.png')?>" onclick="limpiaInfoCarta()"/>
 										
 					<?php	} }?>
 					<img class="recorre" id="carrusel-sig" src="<?=base_url()?>media/img/cnext.png">

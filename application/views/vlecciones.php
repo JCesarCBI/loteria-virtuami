@@ -15,17 +15,21 @@
 		<div class="twelve header">
 		
 		<div class="row">
-			<div class="two columns"></div>
-			<div class="seven columns mueble">
-				<img id="mueble-img" src="<?= base_url()?>media/img/mueble.png" />
-				<label id="lb-reglas" class="rotar libro">Reglas</label>
-				<label id="lb-lecciones" class="rotar libro">Lecciones</label>
-				<label id="lb-diminutivos" class="rotar libro">Diminutivos</label>
-				<label id="lb-derivaciones" class="rotar libro">Derivaciones</label>
-				<label id="lb-sinonimos" class="rotar libro">Sinónimos</label>
-				<input id="seccion" type="hidden" value="reglas">
-				<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
-				<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>				
+			<div class="one columns"></div>
+			<div class="ten columns mueble">
+				<div class="offset-by-eight two columns" id="flechas">
+					<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
+					<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
+				</div>
+				<div id="labels" class="twelve columns">
+					<label id="lb-reglas" class="rotar libro">Reglas</label>
+					<label id="lb-lecciones" class="rotar libro">Lecciones</label>
+					<label id="lb-diminutivos" class="rotar libro">Diminutivos</label>
+					<label id="lb-derivaciones" class="rotar libro">Derivaciones</label>
+					<label id="lb-sinonimos" class="rotar libro">Sinónimos</label>
+				</div>
+				<!-- <center><img class="ten columns centered" id="mueble-img" src="<?= base_url()?>media/img/mueble.png" /></center> -->
+				<input id="seccion" type="hidden" value="reglas">	
 				<div id="reglas-txt" class="cajas-txt-lecciones">
 					<h3>Reglas</h3>
 						<ul class="plecciones">
@@ -124,8 +128,12 @@
 						</li>
 					</ul>
 				</div>
-			</div>
-			<div class="three columns mesa"></div>
+				<div class="offset-by-eight two columns" id="flechas2">
+					<img id="flecha-izq2" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
+					<img id="flecha-der2" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
+				</div>
+			</div> <!--mueble -->
+			<div class="one columns"></div>
 		</div>
 	</body>
 </html>

@@ -15,25 +15,26 @@
 		<div class="twelve columns header">
 			<img src="<?= base_url() ?><?= $avatar ?>" title="avatar"/>
 			<a href="#" id="usuario"><?=$nombreUsr?></a>
-			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
 		</div>
 
 		<div class="row">
 			<div class="row">
 				<div class="twelve columns navegacion">
 					<ul>
-						<li id="nav-informacion" class="offset-by-six two column">Información</li>
-						<li id="nav-estadistica"class="two column">Estadísticas</li>
-						<li id="nav-galeria" class="two column">Galería</li>
+						<li id="nav-informacion" class="offset-by-six two columns">Información</li>
+						<li id="nav-estadistica" class="two columns">Estadísticas</li>
+						<li id="nav-galeria" class="two columns">Galería</li>
 					</ul>
 				</div>
 			</div>
 			<div id="informacion" class="twelve columns informacion">
 				<form action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
-					<div class="row">
+					<div class="row">				
+						<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>"/>
 						<div class="six colums foto">
 							<img src="<?= base_url() ?><?= $avatar ?>" title=""/>
 							<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $avatar ?>"/>
+							<input id="avatar_id" name="avatar_id" type="hidden" value="1"/>
 						</div>
 						<div class="six columns">
 							<h1 class="nombreUsr six columns"><?= $nombreUsr?></h1>
@@ -71,7 +72,7 @@
 						<div class="four columns">
 							<label for="usuario_nombreUsuario">Edad:</label>
 				        	<?php  
-				        	echo form_dropdown('usuario_sexo', $Edades, $edad, 'id=usuario_sexo'); ?>
+				        	echo form_dropdown('usuario_edad', $Edades, $edad, 'id=usuario_edad'); ?>
 						</div>
 					</div>
 					<hr>
@@ -105,7 +106,7 @@
 					<hr>
 					<div class="row"> <!--Seguridad -->
 						<label for="usuario_contrasena">Contraseña:</label>
-						<input class="four columns" id="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
+						<input class="four columns" id="usuario_contrasena" name="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
 						<input id="desenmascarar" class="four columns" type="checkbox" />
 						<label for="desenmascarar">Desenmascarar</label>
 						<div class="four columns"></div>
