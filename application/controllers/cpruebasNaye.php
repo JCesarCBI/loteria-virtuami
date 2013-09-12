@@ -24,7 +24,7 @@ class cpruebasNaye extends CI_Controller {
 		$this->load->view('vinicio', $datos);
 	}
 	
-	public function modalidadPrueva(){
+	public function modalidadPrueba(){
 		$this->load->view('vModalidadP');
 	}
 	

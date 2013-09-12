@@ -4,7 +4,7 @@
 		<title>Configuración del juego</title>
 		<script src="<?=base_url(); ?>media/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script>var base = "<?=base_url(); ?>"</script> 
-		<script src="<?=base_url(); ?>media/js/modalidadJuego.js" type="text/javascript" charset="utf-8"></script>
+		<script src="<?=base_url(); ?>media/js/eventosDeslizaCartaModalidad.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/modalidadN.css">
