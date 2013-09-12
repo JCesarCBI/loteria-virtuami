@@ -2,10 +2,62 @@ body{	background-image:url("../img/fondo-general.jpg") !important;}
 a{color:#000;}
 a:hover{color:#fff;}
 h3{color:#000; text-align:center;}
-#modalidadCaja{	
+/*#modalidadCaja{	
 	background-image:url("../img/azulLecciones.png") !important;	
 	padding:30px;
 	width:auto;
 	margin-top:40px;
+}*/
+.carta{
+	margin-left:20px;
+	width:250px;
+	height:300px;
+	border:#000000 solid 1px;
+	background-repeat:no-repeat;
+	background-size: 80% 100%;
+	background:#fff;
 }
 
+.labelConf{font-size:20px;text-align:center;}
+.ultima{float:left !important;}
+.ultima2{z-index:-3 !important;	margin-left:-230px;}
+.cartasAbiertas{margin-left:-230px !important;	margin-right:70px;}
+.clase1{margin-left:-320px !important;z-index: -2 !important;}
+.clase2{margin-left:-320px !important;	z-index: -3 !important;}
+.clase3{margin-left:-249px !important;}
+.nJuegoInicio{float:left !important;
+	margin-left:-720px !important;
+	z-index:-1;
+}
+.regresaBa1{
+	z-index: -2 !important;
+}
+.nJuegoOculta{opacity: 0;}
+.nJuegoAparece{	opacity:1 !important;}
+.nJuegoInicio2{margin-left:-240px !important; z-index:1;}
+.basicoInicio{margin-left:-720px !important; float:left !important; z-index:-1;}
+.basico2{margin-left:10px !important; z-index: 1 !important;}
+.intermedio{margin-left:-240px !important; z-index: -2 !important;}
+.intermedio2{margin-left:10px !important; z-index: 1 !important;}
+#cTipoJuego{
+	margin-left:-250px;
+	background:pink;
+	z-index: -1;
+}
+
+#cPartCompleta{
+	background:blue;
+	margin-left:-50px;
+	opacity:0;
+	z-index: -2;
+}
+
+#cPartRapida{
+	background:green;
+	opacity:0;
+	z-index: -2;
+}
+
+#cConfiguracion{
+	margin-top:20px;
+}

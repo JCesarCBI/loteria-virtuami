@@ -24,6 +24,10 @@ class cpruebasNaye extends CI_Controller {
 		$this->load->view('vinicio', $datos);
 	}
 	
+	public function modalidadPrueva(){
+		$this->load->view('vModalidadP');
+	}
+	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
 		function usuario(){
 			$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90

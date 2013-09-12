@@ -243,7 +243,7 @@ function muestraInfoCarta(idcarta){
 		dataType: "json",
 		type: "POST",
 		success:function(correcto){
-			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgMazo).addClass('fondo-amarillo') //Agregando efecto
+			$("#imgCarta").removeAttr('src').attr('src',base+correcto.imgGaleria).addClass('fondo-amarillo') //Agregando efecto
 			$("#nombreCarta").html(correcto.nombre) //Se agrega el nombre de la carta
 			$("#descripcionCarta").html(correcto.descripcion) //Se agrega su descripción
 			//Preparo los datos para mostrar las rimas
@@ -253,6 +253,14 @@ function muestraInfoCarta(idcarta){
 			$("#incarat").html("")
 		}
 	})	
+}
+
+function limpiaInfoCarta(){
+	$("#imgCarta").removeAttr('src').attr('src',base+'media/img/mazo/reversa.png').removeClass('fondo-amarillo') //Agregando efecto
+	$("#nombreCarta").html('') //Se agrega el nombre de la carta
+	$("#descripcionCarta").html('') //Se agrega su descripción
+	$("#incarat, #masInfoCarta"). hide()
+
 }
 
 //Esta función recibe como parámetro el id de la carta que se está viendo
@@ -285,6 +293,7 @@ function muestraRimas(idcarta){
 	}
 
 }
+
 
 function sumaRima(idcarta){
 	numRima = $("#numRima").val()

@@ -55,8 +55,7 @@ label{color:#D9E021;margin-bottom:20px;}
 	right: -15px;
 }
 
-#gallery a{
-	margin-top:25px;
+#gallery img{
 	position: relative;
 	-moz-transition: border 0.6s ease-out;
 	-o-transition: border 0.6s ease-out;
@@ -68,6 +67,9 @@ label{color:#D9E021;margin-bottom:20px;}
 	margin-right:8px;
 }
 
+.trofeos{
+	margin-top:40px;
+}
 #lightbox div{
 	/*background-image:url("../img/azulLecciones.png") !important;*/
     background-color: rgba(24, 6, 0, 0.9);

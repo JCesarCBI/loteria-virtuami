@@ -76,4 +76,27 @@ $(document).ready(function() {
 			//alert("No puedo recorrer más hacia atrás ¬¬")
 		}		
 	});
+	
+	$("#flecha-der2").click(function(){
+		id = $('.muestra').attr('id')
+		if(id != 'final' && id != 'unaPag'){
+			$('.muestra').hide().addClass('ant');
+			$('.muestra').next().show().addClass('muestra').removeClass('desp ant');
+			$('.ant').removeClass('muestra');	
+		}else{
+			// alert("No puedo recorrer más hacia delante ¬¬")
+		}			
+	});
+	
+	$("#flecha-izq2").click(function() {
+		id = $('.muestra').attr('id')
+		if(id != 'inicio' && id != 'unaPag'){
+			$('.muestra').hide().addClass('desp');
+			$('.muestra').prev().show().addClass('muestra').removeClass('desp ant');
+			$('.desp').removeClass('muestra');
+			id = $('.muestra').attr('id')
+		}else{
+			//alert("No puedo recorrer más hacia atrás ¬¬")
+		}		
+	});
 });
