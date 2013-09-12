@@ -70,8 +70,11 @@ function cambiaCarta(numCarta, mult) {
 	idCarta = obternerId(numCarta);
 	
 	//Ayudas del nivel básico
-	longitudRespuesta(idCarta);
-	iluminaCartaPlantilla(numCarta);
+	if (document.getElementById('idNivel').value == "1") {
+		longitudRespuesta(idCarta);
+		iluminaCartaPlantilla(numCarta);
+		
+	};
 	//Terminan ayudas nivel básico
 
 	//elimino el input para que clickeen la nueva carta
@@ -271,13 +274,13 @@ function cartasLoteria(indice){
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
-	var ayuda=document.getElementById('ayudaVoF').value;
+	var ayuda=document.getElementById('idNivel').value;
 	
-	if (ayuda==1) {
+	if (ayuda=="1") {
 		cartas=document.getElementById('loteriaCadena').value;
 		arreglo=cartas.split('*');
 		
-		if (arreglo.length==2) {
+		if (arreglo.length==17) {
 			marcaBtonLoteria();	
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
@@ -305,7 +308,7 @@ function loteria(){
 	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');
 	
-	if (arreglo.length == 2) {
+	if (arreglo.length == 17) {
 		
 		if (estadoPartida!=2) {
 			document.getElementById('estadoPartida').value=1;

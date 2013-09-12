@@ -46,6 +46,7 @@
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
 				<input type="hidden"  id="tipoDeAudio"  value="<?= $audio?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
+				<input type="hidden"  id="idNivel"  value="<?= $idNivel?>" />
 				<input type="hidden"  id="tiempoReloj"  value="0" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
 				<input type="hidden"  id="multiplicadorValorAux" value="1" />
