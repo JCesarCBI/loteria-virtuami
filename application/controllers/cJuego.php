@@ -52,31 +52,37 @@ class CJuego extends CI_Controller {
 					$puntaje = 20;
 					$tiempo = 10000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
+					$data['audio'] = 1;
 				}
 				if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
 					$puntaje = 60;
 					$tiempo = 6000;
 					$baraja = $this->mJuegoLibre->getMazoFrase();
+					$data['audio'] = 2;
 				}
 				if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
 					$puntaje = 120;
 					$tiempo = 6000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
+					$data['audio'] = 1;
 				}
 				if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
 					$puntaje = 240;
 					$tiempo = 6000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
+					$data['audio'] = 1;
 				}
 				if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
 					$puntaje = 360;
 					$tiempo = 6000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
+					$data['audio'] = 1;
 				}
 			} else {  //Configuración para las partidas rapidas
 				$puntaje = 400;
 				$tiempo = 4000;
 				$baraja = $this->mJuegoLibre->getMazoFrase();
+				$data['audio'] = 2;
 			}
 			shuffle($baraja);
 			foreach ($baraja as $key) {
