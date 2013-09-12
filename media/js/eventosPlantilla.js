@@ -1,11 +1,30 @@
 
 function presionaEnterPlantilla(evt, op) {
-
+	
+	
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	
+	var restaLong = document.getElementById('vallongitudAyuda').value;
+	var longitudchar = document.getElementById('vallong').value;
+	longitud= parseInt(longitudchar);
+	restarLong= parseInt(restaLong);
+	
+	if(charCode==8 && (restarLong<longitud)){
+		restarLong++;	
+		document.getElementById('vallongitudAyuda').value=restarLong;
+	}
+	else{
+		if((restarLong <= longitud) && (charCode!=8))
+		restarLong--;
+		document.getElementById('vallongitudAyuda').value=restarLong;
+	};
+	
+	$('#longitudAyuda').html(restarLong);
+	
 	indice = document.getElementById('cartaClickPlantilla').value;
 	$('#plantilla-' + indice).removeAttr("onclick");
 
-	var charCode = (evt.which) ? evt.which : event.keyCode
-
+	
 	if (charCode == 13) {
 		//Presiond enter obtengo la respuesta escrita
 		var respuesta = document.getElementById('respuestaBaraja').value;

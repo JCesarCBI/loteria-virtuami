@@ -41,8 +41,12 @@ function audioRima(indice) {
 
 		//llamo a la función ajax_escribeRima() y le mando su correspondiente Id)
 		ajax_escribeRima(cartasId[indice]);
+		if (document.getElementById('tipoDeAudio').value=="2") {
+			
+		var sondioUrl=ajax_sonido(cartasId[indice]);
 		$('embed').remove();
-		$('#audio').html('<embed src="'+base+'media/audio/wa_wa_waaa.mp3" autostart="true" hidden="true" loop="false" />');
+		$('#audio').html('<embed src="'+base+sondioUrl+'" autostart="true"  type="audio/mpeg" hidden="true" loop="false" />');
+		};
 
 		return 0;
 	} else {

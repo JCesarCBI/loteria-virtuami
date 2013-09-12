@@ -44,6 +44,7 @@
 				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($idPartida) && $idPartida==1) ? 1 : 0 ;?>" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
+				<input type="hidden"  id="tipoDeAudio"  value="<?= $audio?>" />
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
 				<input type="hidden"  id="tiempoReloj"  value="0" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
@@ -57,6 +58,8 @@
 				<input type="hidden"  id="errorCadena" value="" />
 				<input type="hidden"  id="loteriaCadena" value="" />
 				<input type="hidden"  id="bonusCartasRestantes" value="" />
+				<input type="hidden"  id="vallongitudAyuda" value="" />
+				<input type="hidden"  id="vallong" value="" />
 				<div class="cartasColumnaIzq">
 						<div class="BarajaResp">
 								<div id="cartaBvisible"></div>
@@ -76,7 +79,7 @@
 			<div class="six columns" id="columnaCentral">
 				
 				<img id="subtitulos"  src="<?= base_url()?>media/img/subs.png"/>
-				<img id="audioBoton" <?= isset($puntaje) ? 'class="seleccionado"' : "" ;?> src="<?= base_url()?>media/img/sonido.png"/>
+				<img id="audioBoton"  src="<?= base_url()?>media/img/sonido.png"/>
 				
 				<div class="contenidoSuperior" id="contenidoSuperior">
 					<div class="fondosup" id="fondosup">
@@ -101,7 +104,8 @@
 							<center><span class="errores centro magictime puffIn" id="erroresVisibles" >0</span></center>
 					</div>
 					<div></div>
-					<?= isset($puntaje) ? '' : '<div id="audio" class="audio" > </div>' ;?>
+					<div id="audio" class="audio" > <embed src="<?= base_url();?>/media/audio/01_gallo.mp3" autostart="true"  type="audio/mpeg" hidden="true" loop="false" /> </div>
+				    <!-- <audio src="<?= base_url()?>/media/audio/01_gallo.mp3" autoplay></audio> -->
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
 						<?php			

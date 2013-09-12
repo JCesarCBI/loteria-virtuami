@@ -1,7 +1,7 @@
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_escribeRima(id) {
-
-	var url = base + 'index.php/cpruebasLuisa/descripcion/' + id;
+	var audioTipo=document.getElementById('tipoDeAudio').value;
+	var url = base + 'index.php/cpruebasLuisa/descripcion/' + id+'/'+audioTipo;
 
 	$.ajax({
 
@@ -21,6 +21,31 @@ function ajax_escribeRima(id) {
 	});
 
 }
+
+//Esta funcion se encarga de escribir la rima del elemento
+function ajax_sonido(id) {
+	var sonido;
+	var audio= document.getElementById("tipoDeAudio").value;
+	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+audio;
+
+	$.ajax({
+
+		url : url,
+		async : false,
+
+		success : function(data) {
+			sonido=data;	
+		},
+
+		error : function() {
+
+			$('#contenido').html("");
+		}
+	});
+	
+	return sonido;
+}
+
 
 //Esta funcion se encarga de traerme la respuesta correcta dependiendo del Id
 function ajax_validarRespuesta(id, respuesta) {
