@@ -148,10 +148,20 @@ class CDatosPerfil extends CI_Controller {
 				foreach ($mazoCartas as $cartas) {
 					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
 				}
-				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();	
-				// echo "<pre>";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
+				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();
+				foreach ($datosPerfilOrdenados["galeriaCartas"] as $key) {
+					$resultado = $this->mestadisticas->getRima($key["idCarta"]);
+					if ($resultado == FALSE) {
+						$datosPerfilOrdenados["galeriaCartas"][$key["idCarta"]]['numRimas'] = 0;
+					} else {
+						$datosPerfilOrdenados["galeriaCartas"][$key["idCarta"]]['numRimas'] = count($resultado);
+					}
+					
+					
+				}
+				// echo "<pre> Arreglo ";
+					// print_r($datosPerfilOrdenados);
+					// echo "</pre>";
 				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
