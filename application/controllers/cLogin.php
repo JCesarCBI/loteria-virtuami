@@ -58,18 +58,22 @@ class CLogin extends CI_Controller {
 	public function recuperarContrasena(){
 		
 		$this->form_validation->set_rules('usuario_correo_recuperarContrena','','trim|required|valid_email');
-		if ($this->form_validation->run() == FALSE){
+		if ($this->form_validation->run() != FALSE){
             $datos = $this->micombobox->datosComboBox();
 			//Agrega este índice para que se emita la alerta correspondiente
 			echo "<script>alert('Introduce un e-mail valido')</script>";
 			$datos['noExiste'] = 0;
 			$this->load->view('vinicio', $datos);
         }else{
+        	// $correo = "cbi202318574@titlani.uam.mx";
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
+			$nombreUsr = $Usuario[0]->nombreUsr;
+			$contrasena = $Usuario[0]->contrasena;
+			echo "<pre>";
+			print_r($correo);
+			echo "</pre>";
 			if($Usuario){
-				$nombreUsr = "jezrelmx1304";
-				$contrasena = "123456";
 				$miMensaje = '<html><head><meta charset="utf-8">';
 				$miMensaje .= "<link rel='stylesheet' href=".base_url()."media/css/foundation.css.>";
 				$miMensaje .= "<link rel='stylesheet' href=".base_url()."media/css/formatoCorreos.css>";
@@ -87,31 +91,51 @@ class CLogin extends CI_Controller {
 				$miMensaje .= "<label class='dato'>Nombre de usuario:</label>".$nombreUsr."<br><br>";
 				$miMensaje .= "<label class='dato'>Tu contraseña:</label>".$contrasena."<br><br>";
 				$miMensaje .=	'</div></div><div class="four columns">';
-				// $miMensaje .= "<img id='loteria-img' src='".base_url()."media/img/loteria.jpg'/>";
-				$miMensaje .= "<img id='loteria-img' src='http://148.206.34.85/loteriaVIRTUAMI/media/img/loteria.jpg'/>";
+				$miMensaje .= "<img id='loteria-img' src='".base_url()."media/img/loteria.jpg'/>";
 				$miMensaje .= '</div></div><div id="segundo" class="row"><div class="three columns">';
 				$miMensaje .= "<img id='virtuami-img' src='".base_url()."/media/img/virtuami_logo.png'/>";
 				$miMensaje .= '</div><div class="six columns"><p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p> 
 							<p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</p></div><div class="three columns">';
 				$miMensaje .= "<img id='uam' src='".base_url()."/media/img/uamizt.png'/>";
 				$miMensaje .='</div></div></div></body></html>';
-				// $destino = $correo;
-				$destino = "cbi202318574@titlani.uam.mx";
-				$cabecera = "Content-type: text/html\r\n";
-				// $desde   = "virtuami@izt.uam.com";
-				$asunto  = "Contraseña virtuami";
-				//$mensaje = "Tu contraseña de loteria virtuami es ".$Usuario[0]->contrasena;
-				mail($destino, $asunto, $miMensaje, $cabecera);
-				echo '<script type="text/javascript">alert("Recibiras tu contraseña en tu correo");</script>'; 
-				// echo "<pre>";
-				// print_r($Usuario[0]->contrasena);
-				// echo "<pre>";
-				}else{
-					$datos = $this->micombobox->datosComboBox();
-					//Agrega este índice para que se emita la alerta correspondiente
-					echo "<script>alert('No tienes una cuenta en Loteria Virtuami')</script>";
-					$datos['noExiste'] = 0;
-					$this->load->view('vinicio', $datos);
+				
+				require_once 'class.phpmailer.php';
+				$mail = new PHPMailer();
+				$mail->IsSMTP();
+				$mail->Host = 'ssl://smtp.gmail.com';
+				$mail->Port = 465;
+				$mail->SMTPAuth = true;
+				$mail->CharSet = "UTF-8";
+				$mail->Username = 'ludico@virtuami.izt.uam.mx';
+				$mail->Password = '7Ud1C0u@m';
+				$mail->From = "remitente@dominio.com";
+				$mail->FromName = "Loteria VIRTU@MI";
+				$mail->IsHTML(true);
+				$mail->Subject = "Test phpMailer";
+				// $correo=$datosUsr['correo'];
+				$mail->AddAddress($correo);
+				// $datosCorreo['nombreUsr']=$datosUsr['nombreUsr'];
+				// $datosCorreo['correo']=$datosUsr['correo'];
+				// $datosCorreo['contrasena']=$datosUsr['contrasena'];
+				// $datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
+				// $body = $this->load->view('registroActivacion', $datosCorreo, true);
+				$body = $miMensaje;
+				$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
+				$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+				$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
+				$mail->Body = $body;
+				if(!$mail->Send()){
+					echo "No se pudo enviar el Mensaje.";
+				}
+				else{
+					echo "Mensaje enviado"; 
+				}
+			}else{
+				$datos = $this->micombobox->datosComboBox();
+				//Agrega este índice para que se emita la alerta correspondiente
+				echo "<script>alert('No tienes una cuenta en Loteria Virtuami')</script>";
+				$datos['noExiste'] = 0;
+				$this->load->view('vinicio', $datos);
 			}        	
         }
 		// $this->load->view('vinicio',$this->micombobox->datosComboBox());
