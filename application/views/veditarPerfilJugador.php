@@ -69,7 +69,7 @@
 						<div class="four columns">
 							<label for="usuario_nombreUsuario">Edad:</label>
 				        	<?php  
-				        	echo form_dropdown('usuario_sexo', $Edades, $edad, 'id=usuario_sexo'); ?>
+				        	echo form_dropdown('usuario_edad', $Edades, $edad, 'id=usuario_edad'); ?>
 						</div>
 					</div>
 					<hr>
@@ -103,7 +103,7 @@
 					<hr>
 					<div class="row"> <!--Seguridad -->
 						<label for="usuario_contrasena">Contraseña:</label>
-						<input class="four columns" id="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
+						<input class="four columns" id="usuario_contrasena" name="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
 						<input id="desenmascarar" class="four columns" type="checkbox" />
 						<label for="desenmascarar">Desenmascarar</label>
 						<div class="four columns"></div>
