@@ -203,5 +203,114 @@ class CEditarPerfilJugador extends CI_Controller {
 		echo"<pre>";
 		print_r($_POST);
 		echo"</pre>";
+		
+		$nuevo['idUsr']=$_POST['idUsuario'];
+        $nuevo['nombre']=$_POST['usuario_nombre'];
+        $nuevo['aPaterno']=$_POST['usuario_Apat'];
+        $nuevo['aMaterno']=$_POST['usuario_Amat'];
+       // $nuevo['sexo']=$_POST['sexo'];
+        $nuevo['edad']=$_POST['usuario_sexo']; 
+        $nuevo['correo']=$_POST['usr_correo'];
+        $nuevo['idTipoUsuario']=$_POST['usuario_comunidadUniversitaria'];
+        $nuevo['idDivision']=$_POST['usuario_division'];
+        $nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
+        $nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
+        $nuevo['idAvatar']=3;
+        $nuevo['cargo']= $_POST['usuario_area'];
+        $nuevo['area']= $_POST['usuario_cargo'];
+		
+		$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
+		//$nuevos=$_POST;
+		
+		echo"<pre>";
+		print_r($actuales);
+		echo"</pre>";
+		$this->analizarDatos($nuevo, $actuales);
+		
+		}
+		
+		
+		/*[usuario_avatar] => /media/img/avatar/avatarE.png
+    	[idUsuario] => 1
+    	[usuario_nombre] => Flor Nallely
+    	[usuario_Apat] => Flores
+    	[usuario_Amat] => Vicente
+    	[usr_correo] => anjudark@xanum.uam.mx
+    	[usuario_sexo] => 22
+    	[usuario_comunidadUniversitaria] => 1
+    	[usuario_area] => 
+    	[usuario_cargo] => 
+    	[usuario_gradoActivo] => 1
+    	[usuario_division] => 2
+    	[usuario_posgrado] => 1*/
+
+    	
+    	/*[idUsr] => 1
+            [nombreUsr] => anjudark89
+            [nombre] => Flor Nallely
+            [aPaterno] => Flores
+            [aMaterno] => Vicente
+            [sexo] => M
+            [edad] => 22
+            [correo] => anjudark@xanum.uam.mx
+            [contrasena] => 123456
+            [idTipoUsuario] => 1
+            [idDivision] => 2
+            [idGradoPosgrado] => 
+            [idGradoActivo] => 1
+            [avatar] => /media/img/avatar/avatarE.png
+            [cargo] => 
+            [area] => */	
+            
+            
+            
+            
+            /*
+			 * $nuevo['idUsr']=$_POST['idUsuario'];
+        $nuevo['nombre']=$_POST['usuario_nombre'];
+        $nuevo['aPaterno']=$_POST['usuario_Apat'];
+        $nuevo['aMaterno']=$_POST['usuario_Amat'];
+       // $nuevo['sexo']=$_POST['sexo'];
+        $nuevo['edad']=$_POST['usuario_sexo']; 
+        $nuevo['correo']=$_POST['usr_correo'];
+        $nuevo['idTipoUsuario']=$_POST['usuario_comunidadUniversitaria'];
+        $nuevo['idDivision']=$_POST['usuario_division'];
+        $nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
+        $nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
+        $nuevo['idAvatar']=1;
+        $nuevo['cargo']= $_POST['usuario_area'];
+        $nuevo['area']= $_POST['usuario_cargo'];
+			 * 
+			 * */	
+		public function analizarDatos($datosNuevos, $datosActuales){
+			
+		
+			
+			switch ($datosActuales[0]['idTipoUsuario']) {
+				case '1':
+					echo 'Es alumno...';
+					if($datosNuevos['idGradoActivo']== 2){
+						$datosNuevos['idDivision']= null;
+						$datosNuevos['cargo']= null;
+        				$datosNuevos['area']=null;
+						$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+					}
+					echo 'actualizado...';
+					break;
+				case '2':
+					echo 'Es Profesor';
+					break;	
+				case '3':
+					echo 'Es Administrativo';
+					break;
+				
+				case '4':
+					echo 'Es otro';
+				
+				default:
+					echo 'Error';
+					break;
+			}
+			
 		}
 }
