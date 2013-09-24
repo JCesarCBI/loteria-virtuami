@@ -13,15 +13,10 @@ class CLogin2 extends CI_Controller {
 	}
 	
 	public function validarLogin(){
-		echo "<h1>Entro a validarLogin</h1>";
-		echo "<pre>";
-		print_r($_POST);
-		echo "</pre>";
 		$this->session->set_userdata('idUsuario', 0);
 		$this->form_validation->set_rules('Lusuario_nombreUsr','','trim|required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('Lusuario_contrasena', '', 'trim|required');
         if ($this->form_validation->run() == FALSE){
-        	echo "<h1>validacion falsa</h1>";
 			$this->load->view('vinicio');
         }else{
         	$usr = $this->input->post('Lusuario_nombreUsr');

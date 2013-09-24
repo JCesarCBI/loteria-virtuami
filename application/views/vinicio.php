@@ -82,9 +82,7 @@
 							<label id="apatVacio" class="error"></label>
 							<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
 							<label id="amatVacio" class="error"></label>
-							<select>
-								<option>Edad</option>
-							</select><hr>
+							<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo'); ?><hr>
 			                <center>
 			                	<span class="one centered columns"></span>
 			                	<input type="button" class="boton centered four columns" id="atras1" value="atrás" />
