@@ -3,136 +3,137 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio2.css">
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
-		<script src="<?= base_url()?>media/js/inicio.js"></script>
+		<script src="<?= base_url()?>media/js/inicio2.js"></script>
 	</head>
 
 	<body>
-		<script>
-			$(document).ready(function() {	
-				if(<?=$noExiste?>==1){
-					alert('Usuario o contraseña incorrecto')
-				}
-			})
-		</script>
-		<title>Inicio</title>
-		<div class="twelve header">
-
-		<div class="nine columns">
-			<div class="mesa"></div>
-			
-			<!--CAJÓN SUPERIOR -->
-			<div id="cajonSupCerrado" class="cajonSuperior-cerrado">
-				<label class="CS-cerrado">Iniciar sesión</label>				
-			</div>			
-			
-			<div class="cajonSuperior-abierto">
-				<div class="amarillo-sup">				
-					<label class="i-sesion">Iniciar sesión</label>
-				</div>
-				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
-	                <input autofocus class="superior vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
-	                <input autofocus class="superior vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
-	                <input class="sup boton" type="submit" id="iSesion-boton" name="iniciar-sesion" value="entrar">
-    	        </form>
-    	        <label id="recuperaContrasena">recuperar contraseña</label>
-
-    	        <!-- formulario que se mostrará si el usuario elige "recuperar contraseña"
-    	        	Se mantiene oculto y se activa con jquery -->
-    	        <div class="recuperarContrasena">
-	    	        <label id="labelRecuperar" class="ins">Ingresa el correo al que se enviará tu contraseña</label>
-					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin/recuperarContrasena">
-		                <input autofocus class="superior vacio"  type="email" id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" required placeholder="correo"/>
-		                <input class="sup boton" type="submit" id="recuperaContrasena-boton" name="recuperaContrasena-boton" value="enviar">
-	    	        </form>
-           	        <label id="Isesion">Iniciar sesión</label>
-    	        </div>    	        
-			</div> 
-			<!--TERMINA cajón superior-->
-			
-			<!--CAJÓN LATERAL-->
-			<div class="cajonLateral-cerrado">
-				<label class="rotar CL-cerrado">Registro</label>				
-			</div>
-			
-			<div class="cajonLateral-abierto">
-				<form id="formRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro/RegistraUsuario">
-					<label class="ins">Campos con * son obligatorios</label>
-					<!-- primera parte registro -->
-					<div id="paso1">
-		                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="* usuario"/>
-		                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
-						<label id="usrError" class="error_validation">El alias ya existe</label>
-	
-		                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
-		                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
-	   					<label id="emailExisteError" class="error_validation">El correo ya está registrado</label>
-						<label id="emailDominioError" class="error_validation">El dominio no es válido,<br> usa tu cuenta de titlani/xanum/docencia</label>
-						
-		                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
-	
-		                <p class="sexo">
-		                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
-		                </p>
-		                <p class="sexo"> 
-		                	<label class="sexo" for="usuario_sexo">mujer</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
-		                </p><br>
-	                </div>
-					<!-- segunda parte registro -->
-					<div id="paso2">
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
+		<div id="cajaMadre" class="twelve columns">
+			<div id="cajaHija" class="twelve columns">
+				<div class="one columns"></div>
+				<div id="seccion-informacion" class="four columns">
+					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
+					<div class="twelve columns" id="texto">
+						Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos 
+						de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias 
+						desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la
+						imprenta) desconocido usó una galería de textos y los mezcló de tal manera 
+						que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
+						sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. 
+						Fue popularizado en los 60s con la creación de las hojas "Letraset", 
+						las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición,
+						como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
 					</div>
-					
-					<!--tercera parte registro-->
-					<div id="paso3">
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
-						<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
-						<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
-						<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
-		        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
-		        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
-	        		</div>
-	        		
-	                <!-- botones siguiente y submit -->
-	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
-	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
-	                <input type="button" class="boton" id="atras1" value="atrás" />
-					<input type="button" class="boton atras2" id="atras2" value="atrás" />
-					<input type="submit" class="boton" id="enviar" value="enviar" disabled />
-					
-					<!-- envio de correo de confirmación -->
-					<input type="hidden" value="0" id="seEnvioCorreoRegistro"/>
-	                <div id="amarillo-lat" class="amarillo-lat">
-	                	<label class="rotar">Registro</label>
-	                </div>
-                </form>
-			</div> <!--canjonLateral-abierto-->			
+					<div id="footer" class="twelve columns">
+						<span id="logoUam" class="six columns">
+							<img src="<?= base_url() ?>media/img/uami.png">
+						</span>
+						<span id="logoVirtuami" class="six columns">
+							<img src="<?= base_url() ?>media/img/virtuami_logo.png">
+						</span>
+					</div>
+				</div> <!--seccion-informacion-->
+				<div class="one columns"></div>
+				<div id="seccion-formularios" class="five columns">
+					<div id="video" class="twelve columns">
+						<center><video width="100%" height="auto" controls>
+						  <source src="<?= base_url()?>/media/video/remember.mp4" type="video/mp4"/>
+						  <source src="<?= base_url()?>/media/video/remember.webm" type="video/webm"/>
+						Your browser does not support the video tag.
+						</video></center> 					
+					</div>
+					<div id="botones" class="twelve columns">
+						<center><span class="row"><input id="iniciarSesionBtn" type="button" class="six centered columns boton" value="Iniciar sesión"></span><hr></center>
+						<center><span class="row"><input id="registroBtn" type="button" class="six centered columns boton" value="Registro"></span></center>
+					</div>	
+					<!-- primera parte registro -->
+					<form id="formularioRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro/RegistraUsuario">
+						<div id="paso1">
+			                <input autofocus class="vacio" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="*Usuario"/>
+			                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
+							<label id="usrError" class="error">El usuario ya existe</label>
+							<label id="usuarioVacio" class="error"></label>
+							<label id="usuarioLong" class="error">Tu nombre de usuario debe tener al menos 5 caracteres</label>
+		
+			                <input autofocus class="vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="*e-mail"/>
+			                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
+		   					<label id="emailExiste" class="error">El correo ya está registrado o no es de un dominio válido(titlani, xanum, docencia)</label>
+							<label id="emailVacio" class="error"></label>
+														
+			                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
+							<label id="passVacio" class="error"></label>
+							<label id="passLong" class="error">Tu contraseña debe tener al menos 6 caracteres</label>
+		
+			                <div id="cajaSexo">
+			                	<span for="usuario_sexo">hombre</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
+			                    <span for="usuario_sexo">mujer</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
+			                </div>
+	
+	       	                <center><input class="six columns boton centered" type="button" id="sig1" value="siguiente"/><hr>
+	       	                <input type="button" class="boton six columns centered" id="iniciarSesionBtn2" value="Iniciar sesión"/></center>
+	       	            </div> <!--paso1-->		
+				
+						<div id="paso2">
+							<input autofocus class="vacio" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
+							<label id="nombreVacio" class="error"></label>
+							<input autofocus class="vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
+							<label id="apatVacio" class="error"></label>
+							<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
+							<label id="amatVacio" class="error"></label>
+							<select>
+								<option>Edad</option>
+							</select><hr>
+			                <center>
+			                	<span class="one centered columns"></span>
+			                	<input type="button" class="boton centered four columns" id="atras1" value="atrás" />
+			                	<span class="one centered columns"></span>
+			                	<input type="button" class="boton centered four columns" id="sig2" value="siguiente" />
+			                	<span class="one columns centered"></span>
+			                </center>
+						</div> <!--paso2-->	                
+						<div id="paso3">
+							<label class="labelRegistro">Comunidad universitaria</label>
+							<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria'); ?>
+							
+							<div id="alumno">						
+								<label id="lgrado" class="labelRegistro">Grado activo</label>
+								<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo'); ?>
+								<label id="ldivision" class="labelRegistro">División</label>
+				        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division'); ?>
+								<label id="lposgrado" class="labelRegistro">Posgrado</label>
+				        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado'); ?>
+				        		
+			        		</div>
+							<div id="prof-admin">
+								<input autofocus class="vacio" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
+								<input autofocus class="vacio" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
+							</div>
+			        		<center>
+			        			<hr>
+			                	<span class="one centered columns"></span>
+			        			<input type="button" class="boton centered four columns" id="atras2" value="atrás" />
+			                	<span class="one centered columns"></span>
+								<input type="submit" class="boton centered four columns" id="enviar" value="enviar" disabled>
+			                	<span class="one centered columns"></span>
 
-		</div><!-- nine columns-->
-		
-		
-		<div class="three columns"></div> <!-- completa las 12 columnas-->
-		
-		<!--Sección de ACERCA DEL JUEGO -->
-		<div class="twelve columns acerca">
-				<div class="nine columns">
-					<h2>Acerca del juego</h2>
-					<p>dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-					</p>
-				</div>
-				<div class="three columns">
-					<img id="logoUAM" src="<?= base_url()?>media/img/uami.png"/>
-				</div>
-		</div> <!--termina sección ACERCA DEL JUEGO -->
+							</center>
+		        		</div> <!--paso3-->	     
+	        		</form>    
+	        		       			
+					<div id="formularioIsesion">
+						<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
+			                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
+			                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
+			                <center><span class="twelve columns"><input class="six columns boton centered" type="submit" id="iSesion-boton" value="Entrar"></span>
+			                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr>
+			                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>
+			           	</form>
+					</div>
+				</div> <!--seccion formularios-->
+				<div class="one columns"></div>
+			</div><!--caja hija-->
+		</div> <!--twelve columns--->
 	</body>
 </html>

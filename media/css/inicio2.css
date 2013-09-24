@@ -1,0 +1,94 @@
+#seccion-formularios, #seccion-informacion{	margin-top:50px;}
+#seccion-formularios{
+	padding: 20px;
+	background:#1C1C1C;
+	/*background-image:url("../img/azulLecciones.png");*/
+	/*background-repeat:no-repeat;*/
+	background-size: 100% 100%;
+	height: 600px;
+}
+#formularioIsesion, #formularioRegistro{
+	margin-top:50px;
+}
+.boton{
+	margin:30px 0px !important;
+	height: 40px;
+	border-radius:10px;	
+}
+#texto{
+	margin-bottom:100px;
+}
+
+#cajaMadre{
+	border: 10px #fff solid;
+	margin: 30px 20px;
+	padding: 12px;
+}
+
+#cajaHija{
+	border: 5px #fff solid;
+	margin-left:15px;
+}
+
+.twelve {
+	width:98% !important;
+}
+
+select{
+	margin-bottom:5%;
+	height:7%;
+	width:80%;
+	margin-left:10%;
+}
+
+video{margin-bottom:50px; margin-top:15px;}
+
+#seccion-informacion img{
+	margin-top:10px;
+	margin-bottom:80px;
+}
+
+.vacio{	border-color: #000 !important;}
+.correcto {border-color: #005702 !important;}
+.incorrecto{border-color: #A70000 !important;}
+
+input[type="text"], input[type="email"], input[type="password"]{
+	background:#fff;
+	border-radius: 10px;
+	height:7%;
+	width: 80%;
+	margin-bottom:5%;
+	margin-left:10%;
+}
+
+.labelRegistro{
+	width: 80%;
+	margin-left:10%;
+	color: #fff;
+	margin-bottom:5px;
+}
+
+.error{
+	width: 80%;
+	margin-left:10%;
+	color: red;
+	margin-bottom:15px;
+	margin-top:-10px;	
+}
+#cajaSexo{
+	height:7%;
+	width:80%;
+	margin-left:10% !important;
+	background:#fff;
+	margin: 10px 0px;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#sig1{margin: 20px 0px;}
+
+@media (min-width: 1500px){
+	#seccion-formularios{
+		height: 700px;
+	}	
+}

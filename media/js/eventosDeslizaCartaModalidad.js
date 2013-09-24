@@ -98,7 +98,6 @@ $(document).ready(function(){
 		$("#inicioConfig").show();
 	})
 	$("#nivelJuegoRegresar").click(function(){
-		alert("entro")
 		limpiarClasesNivel()
 		activaTipoJuego()
 		mostrarCartasTipojuego();
@@ -116,12 +115,12 @@ $(document).ready(function(){
 });
 
 function desactivaNiveles(){
-	$("#cNivelJuego, #nBasico, #nIntermedio, #nAvanzado, #nExperto").hide();
+	$("#cNivelJuego, #nBasico, #nAvanzado, #nExperto").hide();
 }
 
 function activaNiveles(){
 	desactivaTipoJuego();
-	$("#cNivelJuego, #nBasico, #nIntermedio, #nAvanzado, #nExperto").show();
+	$("#cNivelJuego, #nBasico, #nAvanzado, #nExperto").show();
 }
 
 function activaTipoJuego(){
@@ -148,24 +147,23 @@ function mostrarCartasTipojuego(){
 function mostrarCartasNivelJuego(){
 	$("#cNivelJuego").removeClass('nJuegoOculta').addClass('nJuegoAparece nJuegoInicio2 magictime slideRight');
 	$("#nBasico").removeClass('nJuegoOculta basicoInicio').addClass('nJuegoAparece basico2 magictime slideRight');
-	$("#nIntermedio").removeClass('nJuegoOculta').addClass('nJuegoAparece intermedio2 magictime slideRight');
-	$("#nAvanzado").removeClass('nJuegoOculta').addClass('nJuegoAparece intermedio2 magictime slideRight');
-	$("#nExperto").removeClass('nJuegoOculta').addClass('nJuegoAparece intermedio2 magictime slideRight');
+	$("#nAvanzado").removeClass('nJuegoOculta').addClass('nJuegoAparece magictime slideRight');
+	$("#nExperto").removeClass('nJuegoOculta').addClass('nJuegoAparece magictime slideRight');
 
 }
 
 function ocultarCartasNivelJuego(){
-	$("#nBasico").removeClass('slideRight basico2 nJuegoAparece').addClass('slideRightRetourn');
-	$("#nIntermedio").removeClass('slideRight nJuegoAparece basicoInicio intermedio2').addClass('slideRightRetourn intermedio');
+	$("#nBasico").removeClass('slideRight basico2').addClass('slideRightRetourn regresa');
+	$("#nAvanzado").removeClass('slideRight basico2').addClass('slideRightRetourn regresa2');
+	$("#nExperto").removeClass('slideRight basico3').addClass('slideRightRetourn regresa2');
 
 }
 
 function limpiarClasesNivel(){
-	alert("limpio!!")
 	$("#cNivelJuego").removeClass('magictime slideRight nJuegoInicio2').addClass('nJuegoAparece');
-	$("#nBasico").removeClass('nJuegoAparece basico2 magictime slideRight').addClass('nJuegoOculta basicoInicio');
-	$("#nIntermedio").removeClass('nJuegoAparece intermedio2 intermedio slideRight').addClass('nJuegoOculta');
-	$("#nAvanzado, #nExperto").removeClass('nJuegoAparece intermedio2 intermedio magictime slideRight').addClass('nJuegoOculta');
+	$("#nBasico").removeClass('nJuegoAparece basico2 magictime slideRight slideRightRetourn regresa').addClass('nJuegoOculta basicoInicio basicoInicio nJuegoOculta');
+	$("#nAvanzado").removeClass('nJuegoAparece regresa2 magictime slideRight').addClass('nJuegoOculta');
+	$("#nExperto").removeClass('nJuegoAparece regresa3 magictime slideRight').addClass('nJuegoOculta');
 }
 
 

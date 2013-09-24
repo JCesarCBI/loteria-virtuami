@@ -2,6 +2,8 @@ body{	background-image:url("../img/fondo-general.jpg") !important;}
 a{color:#000;}
 a:hover{color:#fff;}
 h3{color:#000; text-align:center;}
+
+
 /*#modalidadCaja{	
 	background-image:url("../img/azulLecciones.png") !important;	
 	padding:30px;
@@ -9,7 +11,7 @@ h3{color:#000; text-align:center;}
 	margin-top:40px;
 }*/
 .carta{
-	margin-left:20px;
+	margin-left:5px;
 	width:250px;
 	height:300px;
 	border:#000000 solid 1px;
@@ -29,16 +31,25 @@ h3{color:#000; text-align:center;}
 	margin-left:-720px !important;
 	z-index:-1;
 }
-.regresaBa1{
+.regresa{
 	z-index: -2 !important;
+}
+
+.regresa2{
+	z-index:-3 !important;
+	margin-left:-250px;
+}
+.regresa3{
+	z-index: -4 !important;
+	margin-left:-250px;
 }
 .nJuegoOculta{opacity: 0;}
 .nJuegoAparece{	opacity:1 !important;}
 .nJuegoInicio2{margin-left:-240px !important; z-index:1;}
 .basicoInicio{margin-left:-720px !important; float:left !important; z-index:-1;}
 .basico2{margin-left:10px !important; z-index: 1 !important;}
-.intermedio{margin-left:-240px !important; z-index: -2 !important;}
-.intermedio2{margin-left:10px !important; z-index: 1 !important;}
+/*.intermedio{margin-left:-240px !important; z-index: -2 !important;}*/
+/*.intermedio2{margin-left:10px !important; z-index: 1 !important;}*/
 #cTipoJuego{
 	margin-left:-250px;
 	background:pink;
