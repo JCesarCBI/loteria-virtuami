@@ -12,10 +12,10 @@ class Micombobox{
 		$division = $this->ci->mregistro->getDivision();
 		$gradoActivo = $this->ci->mregistro->getGradoActivo();
 		$posgrado = $this->ci->mregistro->getGradoPosgrado();
-		$datos['comunidad_universitaria'][-1] = 'Comunidad Universitaria';
-		$datos['division'][-1] = 'Division';
-		$datos['gradoActivo'][-1] = 'Grado activo';
-		$datos['pos'][-1] = 'Posgrado';
+		// $datos['comunidad_universitaria'][-1] = 'Comunidad Universitaria';
+		//$datos['division'][-1] = 'Division';
+		//$datos['gradoActivo'][-1] = 'Grado activo';
+		//$datos['pos'][-1] = 'Posgrado';
 		$i = 1;
 		foreach ($tipoUsuario as $lugar) {
 			foreach ($lugar as $key) {
