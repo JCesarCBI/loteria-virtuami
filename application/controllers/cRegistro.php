@@ -87,6 +87,7 @@
 				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
 				'idAvatar'=>1,
+				'fechaRegistro'=>date('Y-m-d H:i:s'),
 				'codigoActivacion'=>uniqid(),
 				'estatus'=>0
 				);
