@@ -1,27 +1,67 @@
-/*input[type="button"], input[type="submit"]{
-	background:#D9E021;
-}*/
-.foto{margin:0; width:177px; height:177px;	float:left; border: 7px solid #D9E021; margin: 0}
+input[type="text"], input[type="password"], input[type="email"]{
+	height:32px;
+}
+select{margin-bottom:10px; height:35px}
+
+#cajaMadre{
+	border: 10px #fff solid;
+	margin: 30px 20px;
+	padding: 12px;
+}
+#cajaHija{
+	border: 5px #fff solid;
+	margin-left:15px;
+}
+
+
+.twelve {
+	width:98% !important;
+}
+.foto{margin:0; width:177px; height:177px;	float:left; margin: 0}
 label{color:#D9E021;margin-bottom:20px;} 
-.nombreUsr{color:#FFF;}
+.underline{text-decoration:underline; color:#FFF;}
 .hilera{
 	background-image:url("../img/cenefa.png") !important;
 	height:21px;
 	margin: 0;
 	margin-top:10px;
 }
-#cjInformacion,.caja-estadisticas{
-	background-image:url("../img/azulLecciones.png") !important;
-	margin:30px 0px;
-	padding: 5px 40px;
+/*Información*/
+#c1,#c2,#c3{
+	margin-top:50px;
 }
-
-.navegacion ul>li{
+form > hr {
+	height:3px;
+	width: auto !important;
+	/*margin-left:-3.4%;*/
+	background:#fff;
+	margin-bottom:-10px;
+}
+#informacion{margin-top:20px;}
+#cjInformacion,.caja-estadisticas{
+	background:#0B4C5F;
+	margin:30px 0px;
+	padding: 10px 0px;
+	padding-bottom:80px;
+	width:107.1% !important;
+	margin-left:-2.5%;
+	margin-bottom:20px;
+}
+#nombreUsuario{
+	width:auto !important;
+	float:left !important;
+}
+/* Barra de navegación */
+.navegacion{
+	margin-top:10px;
+}
+.navegacion >li{
 	display:inline;
 	background:#FFF;
 	padding:10px;
 }
-.navegacion ul>li:hover{font-size:20px;}
+.navegacion > li:hover{font-size:20px;}
+#guardaCambios{margin-top:300px;}
 #BtnGuardaCambios, #cancelarGuardaCambios{height:50px;float:right;}
 .header{height:50px; margin-bottom:80px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}

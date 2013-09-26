@@ -12,8 +12,6 @@ $(document).ready(function() {
 		if(validaPaso1()){
 			$(".error").hide();
 			muestraPaso2();
-		}else{
-			//alert("el formulario no está bien llenado")
 		}
 	})
 	$("#atras1").click(function(){
@@ -22,10 +20,7 @@ $(document).ready(function() {
 	$("#sig2").click(function(){
 		if(validaPaso2()){
 			muestraPaso3();	
-		}else{
-			
-		}
-		
+		}		
 	})
 	$("#atras2").click(function(){
 		muestraPaso2();
@@ -37,21 +32,21 @@ $(document).ready(function() {
 		eligeTipoUsuario();
 	})
 	$("#usuario_gradoActivo").change(function(){
-		eligeTipoUsuario();
+		evaluaGradoActivo();
 	})
 });
 
 function muestraCamposAlumno(){
 	$("#prof-admin").hide();
 	$("#alumno, #usuario_gradoActivo").show();
+	$("#usuario_gradoActivo").val(1);
 	$("#usuario_division,#usuario_posgrado, #lposgrado, #ldivision").hide();
+	$("#usuario_area, #usuario_cargo").removeAttr("required");
 	evaluaGradoActivo();
 }
 function evaluaGradoActivo(){
 	grado = $("#usuario_gradoActivo").val();
 	switch (grado){
-		case "-1":
-			break;
 		case "1": //Licenciatura
 			$("#usuario_posgrado, #lposgrado").hide();
 			$("#usuario_division, #ldivision").show();
@@ -65,6 +60,8 @@ function muestraCamposProfAdmin(){
 	$("#alumno").hide();
 	$("#prof-admin > input[type='text']").val("");
 	$("#prof-admin").show();
+	$("#usuario_area, #usuario_cargo").attr("required","required");
+
 }
 
 function muestraPaso1(){
@@ -86,15 +83,12 @@ function muestraIsesionForm(){
 	$("#formularioIsesion").show();
 }
 function inicio(){
-	$("#emailExisteError, #usrError, #emailDominioError, #edadError").hide();
+	$("input[type='text'], input[type='password'], input[type='email']").val("");
 	$("#formularioRegistro, #formularioIsesion, #paso1, #paso2, #paso3, #prof-admin, .error").hide();
 }
 function eligeTipoUsuario(){
 	tipoUsuario = $("#usuario_comunidadUniversitaria").val()
 	switch (tipoUsuario){
-		case "-1":
-			$("#alumno, #prof-admin").hide()
-			break;
 		case "1": //Alumno
 			muestraCamposAlumno();
 			break;
@@ -114,6 +108,13 @@ function validaPaso2(){
 	var errorVacio = new Array();
 	if($("#usuario_nombre").val() != ""){
 		usuarioLleno = true;
+		if($("#usuario_nombre").val().length<3 || $("#usuario_nombre").val().length>25){
+			longNombre = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longNombre").attr("class", "error ");
+			$("#usuario_nombre").after(label)
+		}else{
+			longNombre = true;
+		}
 	}else{
 		usuarioLleno = false;
 		errorVacio[1]= "#nombreVacio";
@@ -121,6 +122,13 @@ function validaPaso2(){
 	
 	if($("#usuario_aPaterno").val() != ""){
 		paternoLleno = true;
+		if($("#usuario_aPaterno").val().length<3 || $("#usuario_aPaterno").val().length>25){
+			longApat = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longApat").attr("class", "error ");
+			$("#usuario_aPaterno").after(label)
+		}else{
+			longApat = true;
+		}
 	}else{
 		paternoLleno = false;
 		errorVacio[2]= "#apatVacio";
@@ -128,12 +136,19 @@ function validaPaso2(){
 	 
 	if($("#usuario_aMaterno").val() != ""){
 		maternoLleno = true;
+		if($("#usuario_aMaterno").val().length<3 || $("#usuario_aMaterno").val().length>25){
+			longMat = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longMat").attr("class", "error ");
+			$("#usuario_aMaterno").after(label)
+		}else{
+			longMat = true;
+		}
 	}else{
 		maternoLleno = false;
 		errorVacio[3]= "#amatVacio";
 	}
 	
-	if(usuarioLleno && paternoLleno && maternoLleno){
+	if(usuarioLleno && paternoLleno && maternoLleno && longNombre && longApat && longMat){
 		return true;
 	}else{
 		muestraErrores(errorVacio);
@@ -155,15 +170,10 @@ function validaPaso1(){
 		success:function(existe){ 
 			if(existe == 1){
 				usuarioNoExiste = false;
-				$("#usrError").show();
+				var label = $("<label>").text("El usuario ya existe").attr({id:"usrError", class:"error"})
+				$('#usuario_nombreUsr').after(label)
 			}else{//Si el usuario no existe 
 				usuarioNoExiste = true;
-				if($("#usuario_nombreUsr").val().length < 5){ //Verificamos la longitud
-					$("#usuarioLong").show();
-					longUsuario = false;
-				}else{
-					longUsuario=true;
-				}
     		}
 		}
 	})
@@ -171,6 +181,13 @@ function validaPaso1(){
 	//Usuario lleno
 	if($("#usuario_nombreUsr").val() != ""){
 		usuarioLleno = true;
+		if($("#usuario_nombreUsr").val().length < 5){ //Verificamos la longitud
+			var label = $("<label>").text("Mínimo 5 caracteres").attr({id:"usuarioLong", class:"error"})
+			$("#usuario_nombreUsr").after(label);
+			longUsuario = false;
+		}else{
+			longUsuario=true;
+		}
 	}else{
 		usuarioLleno = false;
 		errorVacio[0]= "#usuarioVacio";
@@ -188,7 +205,8 @@ function validaPaso1(){
 			success:function(existe){
 				if(existe == 1){
 					correoNoExiste = false;
-					$("#emailExiste").show();						
+					var label = $("<label>").text("El correo ya existe o el dominio es inválido (la cuenta debe ser de titlani/xanum/docencia)").attr({id:"emailExiste", class:"error"})
+					$("#usuario_correo").after(label);
 				}else{ 	//si el correo no existe, verifica que el campo no esté vacío para añadir la clase correcto
 					correoNoExiste = true;
 				}
@@ -202,8 +220,9 @@ function validaPaso1(){
 	//Contrasena vacía
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
-		if($("#usuario_contrasena").val().lenght<6){
-			$("#passLong").show()
+		if($("#usuario_contrasena").val().length < 6){
+			var label = $("<label>").text("Mínimo 6 carácteres").attr("id","passLong").attr("class", "error ");
+			$("#usuario_contrasena").after(label)
 			passLong = false;
 		}else{
 			passLong = true;

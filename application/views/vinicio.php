@@ -53,18 +53,14 @@
 						<div id="paso1">
 			                <input autofocus class="vacio" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="*Usuario"/>
 			                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
-							<label id="usrError" class="error">El usuario ya existe</label>
 							<label id="usuarioVacio" class="error"></label>
-							<label id="usuarioLong" class="error">Tu nombre de usuario debe tener al menos 5 caracteres</label>
 		
 			                <input autofocus class="vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="*e-mail"/>
 			                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
-		   					<label id="emailExiste" class="error">El correo ya está registrado o no es de un dominio válido(titlani, xanum, docencia)</label>
 							<label id="emailVacio" class="error"></label>
 														
 			                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
 							<label id="passVacio" class="error"></label>
-							<label id="passLong" class="error">Tu contraseña debe tener al menos 6 caracteres</label>
 		
 			                <div id="cajaSexo">
 			                	<span for="usuario_sexo">hombre</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
@@ -80,9 +76,8 @@
 							<label id="nombreVacio" class="error"></label>
 							<input autofocus class="vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
 							<label id="apatVacio" class="error"></label>
-							<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
+							<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><hr>
 							<label id="amatVacio" class="error"></label>
-							<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo'); ?><hr>
 			                <center>
 			                	<span class="one centered columns"></span>
 			                	<input type="button" class="boton centered four columns" id="atras1" value="atrás" />
@@ -93,15 +88,14 @@
 						</div> <!--paso2-->	                
 						<div id="paso3">
 							<label class="labelRegistro">Comunidad universitaria</label>
-							<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria'); ?>
-							
+							<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, 1, 'id=usuario_comunidadUniversitaria'); ?>
 							<div id="alumno">						
 								<label id="lgrado" class="labelRegistro">Grado activo</label>
-								<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo'); ?>
+								<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, 1, 'id=usuario_gradoActivo'); ?>
 								<label id="ldivision" class="labelRegistro">División</label>
-				        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division'); ?>
+				        		<?php  echo form_dropdown('usuario_division', $division, 1, 'id=usuario_division'); ?>
 								<label id="lposgrado" class="labelRegistro">Posgrado</label>
-				        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado'); ?>
+				        		<?php  echo form_dropdown('usuario_posgrado', $pos, 1, 'id=usuario_posgrado'); ?>
 				        		
 			        		</div>
 							<div id="prof-admin">
@@ -113,7 +107,7 @@
 			                	<span class="one centered columns"></span>
 			        			<input type="button" class="boton centered four columns" id="atras2" value="atrás" />
 			                	<span class="one centered columns"></span>
-								<input type="submit" class="boton centered four columns" id="enviar" value="enviar" disabled>
+								<input type="submit" class="boton centered four columns" id="enviar" value="enviar">
 			                	<span class="one centered columns"></span>
 
 							</center>
