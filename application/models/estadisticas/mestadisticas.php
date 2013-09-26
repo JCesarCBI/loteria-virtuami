@@ -190,5 +190,47 @@
 			}
 			
 		}
+		
+		public function getRanking()
+		{
+			$this->db->SELECT('usuario.nombreUsr, jugador.scoreTotal');
+			$this->db->FROM('jugador');
+			$this->db->JOIN('usuario','usuario.idUsr = jugador.idUsr');
+			$this->db->ORDER_BY('scoreTotal', 'desc');
+			$this->db->LIMIT(3);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				FALSE;
+			}
+		}
+		
+		public function getUltimoScore($idUsr)
+		{
+			$fechaActual = date('Y-m-d H:i:s');
+			echo $fechaActual;
+			
+			$this->db->SELECT('partida.partida, nivel.nivel, modalidad.modalidad, record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->JOIN('partida','partida.idPartida = score.idPartida');
+			$this->db->JOIN('nivel','nivel.idNivel = score.idPartida');
+			$this->db->JOIN('modalidad','modalidad.idModalidad = score.idPartida');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			// $this->db->WHERE_NOT_IN('record.idEstadoPartida', 3);
+			$this->db->ORDER_BY('record.fecha', 'desc');
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				FALSE;
+			}
+		}
 	}
 ?>
