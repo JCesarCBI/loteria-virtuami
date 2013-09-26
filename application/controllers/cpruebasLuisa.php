@@ -160,9 +160,23 @@ public function audio($id=-1, $audio=-1){
 	//Si el id es correcto y la carta existe busco la descripción
 	if ($id>-1 && isset($baraja[$id]['audioMP3'])) {
 		
+		//Si es 1 se reproducirá el Mp3
+		if ($audio==1) {
 		//$datos=$baraja[$id]['nombre']."   ".$id."<img src='".base_url().$baraja[$id]['imagen']."' style='width:90px; height:80px'/>";
 		$datos=$baraja[$id]['audioMP3'];
 		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+			
+		} else {
+			if ($audio==2 && (isset($baraja[$id]['audioOGG']))) {
+				
+				$datos=$baraja[$id]['audioOGG'];
+			} else {
+				$datos="";
+			}
+			
+		}
+		
+		
 		echo $datos;
 
 	}

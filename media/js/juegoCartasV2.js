@@ -30,6 +30,30 @@ function preguntarAntesDeSalir()
     return "¿Seguro que quieres salir?";
 }
     
+function reproduceSonidoNavegador(indiceAudio){
+	
+	$('embed').remove();
+	  var navegador = navigator.userAgent;
+	  if (navigator.userAgent.indexOf('MSIE') !=-1) {
+	  	var sondioUrl=ajax_sonido(indiceAudio, 1);
+	  } else if (navigator.userAgent.indexOf('Firefox') !=-1) {
+	    var sondioUrl=ajax_sonido(indiceAudio, 2);
+	  } else if (navigator.userAgent.indexOf('Chrome') !=-1) {
+	    var sondioUrl=ajax_sonido(indiceAudio, 1);
+	  } else if (navigator.userAgent.indexOf('Opera') !=-1) {
+	    var sondioUrl=ajax_sonido(indiceAudio, 2);
+	  } else if (navigator.userAgent.indexOf('Safari') !=-1) {
+	    var sondioUrl=ajax_sonido(indiceAudio, 1);
+	  } else {
+	    var sondioUrl=ajax_sonido(indiceAudio, 2);
+	  }
+	  
+		if (document.getElementById('mute').value=="0") {
+			$('#audio').html('<audio autoplay src="'+base+sondioUrl+'" ></audio>');
+			
+		};
+};
+
 
 //Esta funcion se encarga de escribir las rimas y reproducir el audio de la carta que se muestr
 function audioRima(indice) {
@@ -41,11 +65,12 @@ function audioRima(indice) {
 
 		//llamo a la función ajax_escribeRima() y le mando su correspondiente Id)
 		ajax_escribeRima(cartasId[indice]);
+		
+		//Solo se reproducirán sonidos cuando existan
 		if (document.getElementById('tipoDeAudio').value=="2") {
 			
-		var sondioUrl=ajax_sonido(cartasId[indice]);
-		$('embed').remove();
-		$('#audio').html('<embed src="'+base+sondioUrl+'" autostart="true"  type="audio/mpeg" hidden="true" loop="false" />');
+			reproduceSonidoNavegador(cartasId[indice]);
+		
 		};
 
 		return 0;
@@ -60,11 +85,14 @@ function audioRima(indice) {
 
 
 function cambiaCarta(numCarta, mult) {
+	
+	$('#posiblePuntuacion').html("   ");
 	if (mult != 1) {
 		rompeCadenas();
 		$("#cartaEfecto").removeClass('magictime rotateUp');
 	};
 	volteaCarta();
+	
 	//Temporizador
 	tiempo2 = temporizador(document.getElementById('tiempoReloj').value);
 	idCarta = obternerId(numCarta);
@@ -303,6 +331,7 @@ function pierdeNoLoteria(cartaActual){
 	
 }
 function loteria(){
+	
 	bPreguntar = false;	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
@@ -319,4 +348,17 @@ function loteria(){
 		
 	};
 	hojaResultados();	
+}
+
+
+function pintaPuntos() {
+	
+	var valor = document.getElementById('puntajeCarta').value;
+	var m = document.getElementById('multiplicadorValor').value;
+	var mult = parseInt(m)
+	var puntos = valor * mult;
+
+	$('#posiblePuntuacion').html(puntos);
+	
+
 }

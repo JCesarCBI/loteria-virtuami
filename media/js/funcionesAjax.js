@@ -23,10 +23,9 @@ function ajax_escribeRima(id) {
 }
 
 //Esta funcion se encarga de escribir la rima del elemento
-function ajax_sonido(id) {
+function ajax_sonido(id, tipoAudio) {
 	var sonido;
-	var audio= document.getElementById("tipoDeAudio").value;
-	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+audio;
+	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+tipoAudio;
 
 	$.ajax({
 

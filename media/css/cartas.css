@@ -19,6 +19,14 @@
 }
 
 /**Termina audio y subs**/
+
+#posiblePuntuacion{
+	float:left;
+	color:#f9ec23;
+	margin 0px auto;
+	font-size: 18pt;	
+}
+
 .respuestaInput{
 	min-height: 50px !important;
 	color:#f9ec23;
@@ -44,7 +52,13 @@
 }
 
 /**clases para la ayuda de la loteria**/
-	
+
+.longitud{
+	float:right;
+	margin-right:5px;
+	margin-top:-5px;
+}
+
 #longitudAyuda{
 	color:#f9ec23;
 	margin 0px auto;

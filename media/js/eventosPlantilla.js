@@ -4,22 +4,13 @@ function presionaEnterPlantilla(evt, op) {
 	
 	var charCode = (evt.which) ? evt.which : event.keyCode
 	
-	var restaLong = document.getElementById('vallongitudAyuda').value;
+	var restarLong = respuesta2.length;
 	var longitudchar = document.getElementById('vallong').value;
-	longitud= parseInt(longitudchar);
-	restarLong= parseInt(restaLong);
-	
-	if(charCode==8 && (restarLong<longitud)){
-		restarLong++;	
-		document.getElementById('vallongitudAyuda').value=restarLong;
-	}
-	else{
-		if((restarLong <= longitud) && (charCode!=8))
-		restarLong--;
-		document.getElementById('vallongitudAyuda').value=restarLong;
-	};
+	longitud= parseInt(longitudchar);	
+	restarLong=longitud-restarLong;
 	
 	$('#longitudAyuda').html(restarLong);
+	
 	
 	indice = document.getElementById('cartaClickPlantilla').value;
 	$('#plantilla-' + indice).removeAttr("onclick");
@@ -60,12 +51,12 @@ function presionaEnterPlantilla(evt, op) {
 }
 
 function clickPlantilla(indice) {
-
+	pintaPuntos();
 	var respuesta = validaPlantillaBaraja(indice);
 
 	if (respuesta > 0) {
 		//Escribo el input en el cual se escribirá la respuesta
-		$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnterPlantilla(event, 1)">');
+		$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeyup="javascript:return presionaEnterPlantilla(event, 1)">');
 		//pongo el curso en el input
 		$('#respuestaBaraja').focus();
 

@@ -10,6 +10,16 @@ jQuery(document).ready(function($) {
 		
 		$('embed').remove();
 		$('#audio').toggleClass("Escondido");
+		
+		if (document.getElementById('mute').value=="0") {
+			document.getElementById('mute').value=1;
+			$('#audio').html('');
+		}
+		else{
+			document.getElementById('mute').value=0;
+			
+			
+		}
 		$(this).toggleClass("seleccionado");
 	});
 

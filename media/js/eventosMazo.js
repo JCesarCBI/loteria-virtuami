@@ -9,9 +9,20 @@ function obternerId(indice) {
 
 
 function presionaEnter(evt, op) {
+
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	var respuesta2 = document.getElementById('respuestaBaraja').value;
+	
+	var restarLong = respuesta2.length;
+	var longitudchar = document.getElementById('vallong').value;
+	longitud= parseInt(longitudchar);	
+	restarLong=longitud-restarLong;
+	
+	$('#longitudAyuda').html(restarLong);
+	
+
 	indice = document.getElementById('cartaVisible').value;
 	$('#baraja-' + indice).removeAttr("onclick");
-	var charCode = (evt.which) ? evt.which : event.keyCode
 
 	if (charCode == 13) {
 		//Presiond enter obtengo la respuesta escrita
@@ -52,7 +63,7 @@ function clickBaraja(indice) {
 
 	if (resultado == 0) {
 		//Escribo el input en el cual se escribirá la respuesta
-		$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeydown="javascript:return presionaEnter(event, 1)">');
+		$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeyup="javascript:return presionaEnter(event, 1)">');
 		//pongo el curso en el input
 		$('#respuestaBaraja').focus();
 

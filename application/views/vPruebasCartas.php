@@ -41,7 +41,8 @@
 				<input type="hidden"  id="linea6"  value="" />
 				<input type="hidden"  id="linea7"  value="" />
 				<input type="hidden"  id="linea8"  value="" />
-				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($idPartida) && $idPartida==1) ? 1 : 0 ;?>" />
+				<!--Sí la partida se juega en modo completo y en nivel básico la ayuda se habilitará-->
+				<input type="hidden"  id="ayudaVoF"  value="<?=(isset($idPartida) && $idPartida==1 && $idNivel==1) ? 1 : 0 ;?>" />
 				<input type="hidden"  id="JuegoPerfecto" name="JuegoPerfecto"  value="0" />
 				<input type="hidden"  id="puntajeCarta"  value="<?= $puntaje?>" />
 				<input type="hidden"  id="tipoDeAudio"  value="<?= $audio?>" />
@@ -61,11 +62,14 @@
 				<input type="hidden"  id="bonusCartasRestantes" value="" />
 				<input type="hidden"  id="vallongitudAyuda" value="" />
 				<input type="hidden"  id="vallong" value="" />
+				<input type="hidden"  id="mute" value="0" />
+				
 				<div class="cartasColumnaIzq">
 						<div class="BarajaResp">
 								<div id="cartaBvisible"></div>
 								<div class="twelve columns respuestaInput"  id="respuestaInput"></div>
-								<center><div id="longitudAyuda"></div></center>
+								<div id="posiblePuntuacion"></div>
+								<div class="longitud" id="longitudAyuda">6</div>
 						</div>
 						
 					<div id="espacioCartaReversa">
@@ -105,7 +109,7 @@
 							<center><span class="errores centro magictime puffIn" id="erroresVisibles" >0</span></center>
 					</div>
 					<div></div>
-					<div id="audio" class="audio" > <embed src="<?= base_url();?>/media/audio/01_gallo.mp3" autostart="true"  type="audio/mpeg" hidden="true" loop="false" /> </div>
+					<div id="audio" class="audio" ><audio autoplay src="http://localhost/loteriaVIRTUAMI/media/audio/13_gorro.png" ></audio> </div>
 				    <!-- <audio src="<?= base_url()?>/media/audio/01_gallo.mp3" autoplay></audio> -->
 					<div class="contenido" id="contenido"></div>	
 					<div class="fondoMazo" >	
