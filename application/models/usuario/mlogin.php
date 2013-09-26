@@ -10,7 +10,7 @@
 		
 		//Obtiene las credenciales del usuario	
 		public function login_usuario($nombreUsr, $contrasena){
-			$this->db->SELECT('usuario.idUsr, usuario.nombreUsr, usuario.contrasena, usuario.estatus, avatar.gdeAvatar, avatar.icnAvatar');
+			$this->db->SELECT('usuario.idUsr, usuario.nombreUsr, usuario.contrasena, usuario.estatus, avatar.avatar');
 			$this->db->FROM('usuario');
 			$this->db->JOIN('avatar','avatar.idAvatar = usuario.idAvatar');
 			$this->db->WHERE('nombreUsr', $nombreUsr);

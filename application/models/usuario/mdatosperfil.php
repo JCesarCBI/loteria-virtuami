@@ -15,7 +15,7 @@
 								usuario.edad, usuario.correo, usuario.contrasena, 
 								usuario.idTipoUsuario, usuario.idDivision, 
 								usuario.idGradoPosgrado, usuario.idGradoActivo,usuario.idAvatar, 
-								avatar.gdeAvatar, avatar.icnAvatar, usuario.cargo, usuario.area');
+								avatar.avatar, usuario.cargo, usuario.area');
 			$this->db->FROM('usuario');
 			$this->db->JOIN('avatar','avatar.idAvatar = usuario.idAvatar');
 			$this->db->WHERE('idUsr', $idUsr);
