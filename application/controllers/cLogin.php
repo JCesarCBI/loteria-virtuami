@@ -27,10 +27,14 @@ class CLogin extends CI_Controller {
 			// echo "</pre>";
 			if($jugador){
 				if ($jugador[0]->estatus == 1) {
+					// echo "<pre>";
+					// print_r($jugador);
+					// echo "</pre>";
 					$this->session->set_userdata('usuario', $usr);
 					$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
 					$this->session->set_userdata('idJuego', 1);
-					$this->session->set_userdata('avatar', $jugador[0]->avatar);			
+					$this->session->set_userdata('avatar', $jugador[0]->gdeAvatar);
+					$this->session->set_userdata('icnavatar', $jugador[0]->icnAvatar);			
 					$this->load->view('vModalidad');  //aqui se cargara vPruebaEfrenLogin
 				} else {
 					$datos = $this->micombobox->datosComboBox();

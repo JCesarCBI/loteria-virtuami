@@ -159,10 +159,10 @@ class CDatosPerfil extends CI_Controller {
 					
 					
 				}
-				// echo "<pre> Arreglo ";
-					// print_r($datosPerfilOrdenados);
-					// echo "</pre>";
-				$this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
+				echo "<pre> Arreglo ";
+				print_r($datosPerfilOrdenados);
+				echo "</pre>";
+				// $this->load->view('veditarPerfilJugador', $datosPerfilOrdenados);
 			}
 		}
 	}
