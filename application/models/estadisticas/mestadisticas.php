@@ -103,48 +103,6 @@
 			}
 		}
 		
-		public function getPartidas($idUsr, $idJuego, $idPartida, $idEstadoPartida)
-		{
-			$this->db->SELECT('score.*,record.record');
-			$this->db->FROM('score');
-			$this->db->JOIN('record','record.idScore = score.idScore');
-			$this->db->WHERE('score.idUsr',$idUsr);
-			$this->db->WHERE('score.idPartida',$idPartida);
-			$this->db->WHERE('score.idJuego',$idJuego);
-			$this->db->WHERE('record.idEstadoPartida',$idEstadoPartida);
-			
-			$query = $this->db->count_all_results();
-			return $query;
-		}
-		
-		public function getNiveles($idUsr, $idJuego, $idNivel, $idEstadoPartida)
-		{
-			$this->db->SELECT('score.*,record.record');
-			$this->db->FROM('score');
-			$this->db->JOIN('record','record.idScore = score.idScore');
-			$this->db->WHERE('score.idUsr',$idUsr);
-			$this->db->WHERE('score.idNivel',$idNivel);
-			$this->db->WHERE('score.idJuego',$idJuego);
-			$this->db->WHERE('record.idEstadoPartida',$idEstadoPartida);
-			
-			$query = $this->db->count_all_results();
-			return $query;
-		}
-		
-		public function getModalidades($idUsr, $idJuego, $idModalidad, $idEstadoPartida)
-		{
-			$this->db->SELECT('score.*,record.record');
-			$this->db->FROM('score');
-			$this->db->JOIN('record','record.idScore = score.idScore');
-			$this->db->WHERE('score.idUsr',$idUsr);
-			$this->db->WHERE('score.idModalidad',$idModalidad);
-			$this->db->WHERE('score.idJuego',$idJuego);
-			$this->db->WHERE('record.idEstadoPartida',$idEstadoPartida);
-			
-			$query = $this->db->count_all_results();
-			return $query;
-		}
-		
 		public function getRima($idCarta)
 		{
 			$this->db->SELECT('*');
@@ -231,6 +189,75 @@
 			} else {
 				FALSE;
 			}
+		}
+		
+		public function getMejorPuntuacion($idUsr)
+		{
+			$this->db->SELECT('record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->ORDER_BY('record.record', 'desc');
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				FALSE;
+			}
+		}
+		
+		public function getBasicoGanadas($idUsr)
+		{
+			$this->db->SELECT('record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->WHERE('score.idNivel', 1);
+			$this->db->WHERE('record.idEstadoPartida',1);
+			
+			$query = $this->db->count_all_results();
+			return $query;
+		}
+
+		public function getAvanzadoGanadas($idUsr)
+		{
+			$this->db->SELECT('record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->WHERE('score.idNivel', 3);
+			$this->db->WHERE('record.idEstadoPartida',1);
+			
+			$query = $this->db->count_all_results();
+			return $query;
+		}
+		
+		public function getExpertoGanadas($idUsr)
+		{
+			$this->db->SELECT('record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->WHERE('score.idNivel', 4);
+			$this->db->WHERE('record.idEstadoPartida',1);
+			
+			$query = $this->db->count_all_results();
+			return $query;
+		}
+
+		public function getPartidasPerdidas($idUsr)
+		{
+			$this->db->SELECT('record.record');
+			$this->db->FROM('score');
+			$this->db->JOIN('record','record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr',$idUsr);
+			$this->db->WHERE('record.idEstadoPartida',3);
+			
+			$query = $this->db->count_all_results();
+			return $query;
 		}
 	}
 ?>
