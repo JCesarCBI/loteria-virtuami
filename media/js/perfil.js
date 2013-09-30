@@ -1,116 +1,12 @@
 $(document).ready(function() {	
-	comunidad = $('#usuario_comunidadUniversitaria').val()
-	$('#contrasenaActual, #guardaCambios, #estadisticas, #galeria, #editarFoto').hide()
-	$("form").find(':input:not(:disabled)').prop('disabled',true);
-	$("#carrusel>img").hide()
+	inicio();
+	muestraPerfil();
+	eligeTipoUsuario();
 
-	switch(comunidad){
-		case "1":
-			// alert("Es alumno")
-			$('#cargo, #area,#posgrado,#division').hide()
-			$('#gradoActivo').show()
-			grado = $('#usuario_gradoActivo').val()
-			switch(grado){
-				case "1":
-					$('#division').show()
-					$('#posgrado').hide()
-					break;
-				case "2":
-					$('#posgrado').show()
-					$('#division').hide()
-					break;
-			}
-			$('#usuario_gradoActivo').change(function(){
-					grado = $('#usuario_gradoActivo').val()
-					switch(grado){
-						case "1":
-							$('#division').show()
-							$('#posgrado').hide()
-							break;
-						case "2":
-							$('#posgrado').show()
-							$('#division').hide()
-							break;
-					}	
-				}
-			
-			)
-			break;
-		case "2":
-			// alert("Es profe")
-			$('#gradoActivo, #posgrado,#division').hide()
-			$('#area, #cargo').show()
-			break;
-		case "3":
-			// alert("Es admin")
-			$('#gradoActivo, #posgrado,#division').hide()
-			$('#area, #cargo').show()
-			break;
-		case "4":
-			// alert("Es otro")
-			$('#gradoActivo, #posgrado, #division, #cargo, #area').hide()
-	}
+	$("#usuario_comunidadUniversitaria").change(function(){	eligeTipoUsuario();	})
+	$("#usuario_gradoActivo").change(function(){ evaluaGradoActivo(); })
 	
-	$('#usuario_comunidadUniversitaria').change(function(){
-		comunidad = $(this).val()
-		switch(comunidad){
-			case "1":
-				// alert("Es alumno")
-				$('#cargo, #area,#posgrado,#division').hide()
-				$('#gradoActivo').show()
-				grado = $('#usuario_gradoActivo').val()
-				switch(grado){
-					case "1":
-						$('#division').show()
-						$('#posgrado').hide()
-						break;
-					case "2":
-						$('#posgrado').show()
-						$('#division').hide()
-						break;
-				}
-				$('#usuario_gradoActivo').change(function(){
-						grado = $('#usuario_gradoActivo').val()
-						switch(grado){
-							case "1":
-								$('#division').show()
-								$('#posgrado').hide()
-								break;
-							case "2":
-								$('#posgrado').show()
-								$('#division').hide()
-								break;
-						}	
-					}
-				)
-				break;
-			case "2":
-				// alert("Es profe")
-				$('#gradoActivo, #posgrado,#division').hide()
-				$('#area, #cargo').show()
-				break;
-			case "3":
-				// alert("Es admin")
-				$('#gradoActivo, #posgrado,#division').hide()
-				$('#area, #cargo').show()
-				break;
-			case "4":
-				// alert("Es otro")
-				$('#gradoActivo, #posgrado, #division, #cargo, #area').hide()
-		}
-	})
-	
-	//Desenmascarar contraseña
-	checked=0;
-	$("#desenmascarar").click(function(){
-		if(checked==0){
-			$("#usuario_contrasena").removeAttr("type").attr("type","text")
-			checked=1
-		}else{
-			$("#usuario_contrasena").removeAttr("type").attr("type","password")
-			checked=0;
-		}	
-	})
+	desenmascaraPass();
 	
 	//Seguridad
 	$("#BtnEditar").click(function(){
@@ -120,8 +16,10 @@ $(document).ready(function() {
 	
 	//Eventos del botón cancelar cambiar contraseña
 	$("#BtnCancelarEditar").click(function(){
-		$('#contrasenaActual').hide()
+		muestraPerfil();
 	})
+	
+	//Confirmamos contraseña
 	$("#BtnConfirmContrasena").click(function(){
 		if($("#usuario_contrasenaActual").val()==""){
 			alert("campo vacío")
@@ -133,10 +31,7 @@ $(document).ready(function() {
 				type: "POST",
 				success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
 					if(correcto == 0){
-						$("form").find(':input:disabled').prop('disabled',false);
-						$("#BtnEditar,#contrasenaActual").hide()
-						$("#guardaCambios, #editarFoto").show()
-						
+						editaPerfil();
 					}else{
 						alert("contraseña incorrecta")
 					}
@@ -159,10 +54,7 @@ $(document).ready(function() {
 	
 	
 	$("#cancelarGuardaCambios").click(function(){
-		$('#guardaCambios,#editarFoto').hide()
-		$('#BtnEditar').show()
-		$("form").find(':input:not(:disabled)').prop('disabled',true);
-
+		muestraPerfil();
 	})	
 
 	//Navegación del usuario
@@ -233,8 +125,134 @@ $(document).ready(function() {
 			}				
 		}
 	})
+	
+	$("#BtnGuardaCambios").click(function(){
+		if(validaCampos()){
+			alert("datos correctos")
+		}else{
+			alert("datos incorrectos")
+		}
+	})
 }); //Fin Document Ready
 
+function validaCampos(){
+	errorVacio = new Array();
+	$(".error").hide();
+	
+	//Nombre
+	if($("#usuario_nombre").val() != ""){
+		usuarioLleno = true;
+		if($("#usuario_nombre").val().length<3 || $("#usuario_nombre").val().length>25){
+			longNombre = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longNombre").attr("class", "error ");
+			$("#usuario_nombre").after(label)
+		}else{
+			longNombre = true;
+		}
+	}else{
+		usuarioLleno = false;
+		errorVacio[1]= "#nombreVacio";
+	}	
+
+	//Apellido paterno
+	if($("#usuario_aPaterno").val() != ""){
+		paternoLleno = true;
+		if($("#usuario_aPaterno").val().length<3 || $("#usuario_aPaterno").val().length>25){
+			longApat = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longApat").attr("class", "error ");
+			$("#usuario_aPaterno").after(label)
+		}else{
+			longApat = true;
+		}
+	}else{
+		paternoLleno = false;
+		errorVacio[2]= "#apatVacio";
+	}
+	
+	//Apellido materno
+	if($("#usuario_aMaterno").val() != ""){
+		maternoLleno = true;
+		if($("#usuario_aMaterno").val().length<3 || $("#usuario_aMaterno").val().length>25){
+			longMat = false;
+			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longMat").attr("class", "error ");
+			$("#usuario_aMaterno").after(label)
+		}else{
+			longMat = true;
+		}
+	}else{
+		maternoLleno = false;
+		errorVacio[3]= "#amatVacio";
+	}
+
+	//Correo
+	if($("#usuario_correo").val() != ""){
+		correoLleno = true;
+		$.ajax({
+			url:base+'index.php/cRegistro/correo',
+			data:{ correo: $('#usuario_correo').val() },
+			dataType: "json",
+			async:false,					
+			type: "POST",		
+			success:function(existe){
+				if(existe == 1){
+					correoNoExiste = false;
+					var label = $("<label>").text("El correo ya existe o el dominio es inválido (la cuenta debe ser de titlani/xanum/docencia)").attr({id:"emailExiste", class:"error"})
+					$("#usuario_correo").after(label);
+				}else{ 	//si el correo no existe, verifica que el campo no esté vacío para añadir la clase correcto
+					correoNoExiste = true;
+				}
+			}
+		})
+	}else{
+		correoLleno = false;
+		errorVacio[4]= "#emailVacio";
+	}
+	
+	//Contrasena
+	if($("#usuario_contrasena").val() != ""){
+		passLleno = true;
+		if($("#usuario_contrasena").val().length < 6){
+			var label = $("<label>").text("Mínimo 6 carácteres").attr("id","passLong").attr("class", "error ");
+			$("#usuario_contrasena").after(label)
+			passLong = false;
+		}else{
+			passLong = true;
+		}
+	}else{
+		passLleno = false;
+		errorVacio[5]= "#passVacio";
+	}
+	//Realiza validación 
+	if(longNombre && usuarioLleno && correoLleno && passLleno && paternoLleno && maternoLleno && longApat && longMat && correoNoExiste &&passLong){
+		alert("regresare true")
+		return true;
+	}else{
+		alert("regresare false")
+		muestraErrores(errorVacio);
+		return false;
+	}
+
+
+}
+//Desenmascarar contraseña
+function desenmascaraPass(){
+	checked=0;
+	$("#desenmascarar").click(function(){
+		if(checked==0){
+			$("#usuario_contrasena").removeAttr("type").attr("type","text")
+			checked=1
+		}else{
+			$("#usuario_contrasena").removeAttr("type").attr("type","password")
+			checked=0;
+		}	
+	})
+}
+
+function editaPerfil(){
+	$("form").find(':input:disabled').prop('disabled',false);
+	$("#BtnEditar,#contrasenaActual").hide()
+	$("#guardaCambios, #editarFoto").show()
+}
 function muestraInfoCarta(idcarta){
 	$("#numRima").val(1)
 	//Llama al AJAX para traer la información de la carta
@@ -255,6 +273,11 @@ function muestraInfoCarta(idcarta){
 	})	
 }
 
+function inicio(){
+	$('#contrasenaActual, #estadisticas, #galeria, #editarFoto').hide()
+	$("#carrusel>img").hide()
+}
+
 function limpiaInfoCarta(){
 	$("#imgCarta").removeAttr('src').attr('src',base+'media/img/mazo/reversa.png').removeClass('fondo-amarillo') //Agregando efecto
 	$("#nombreCarta").html('') //Se agrega el nombre de la carta
@@ -263,51 +286,59 @@ function limpiaInfoCarta(){
 
 }
 
+function muestraPerfil(){
+	$(".error").hide();
+	$("form").find(':input:not(:disabled)').prop('disabled','false');
+	$("#editarSeccion input[type='button'], #contrasenaActual input[type = 'password']").removeAttr("disabled");
+	$('#guardaCambios,#editarFoto, #contrasenaActual').hide()
+	$('#BtnEditar').show()
+}
+
 //Esta función recibe como parámetro el id de la carta que se está viendo
-function muestraRimas(idcarta){ 
-	total = $("#totalRima").val()
-	numRima = $("#numRima").val() //Obtengo el número de rima que mostrará
-	if(numRima < total){
-		$.ajax({
-			url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
-			dataType: "json",
-			type: "POST",
-			success:function(ri){ //Obteniendo los datos vía AJAX
-				$("#descripcionCarta").html(ri) //Se muestra la rima
-				//Se crea el botón "siguiente para ver el resto de las rimas"
-			}
-		})	
-		$("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='sumaRima("+idcarta+")'/>")
-		$("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='restaRima("+idcarta+")'/>")
-	}else{
-		$.ajax({
-			url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
-			dataType: "json",
-			type: "POST",
-			success:function(ri){ //Obteniendo los datos vía AJAX
-				$("#descripcionCarta").html(ri) //Se muestra la rima
-				//Se crea el botón "siguiente para ver el resto de las rimas"
-			}
-		})	
-		$("#masInfoCarta").html("")
-	}
+// function muestraRimas(idcarta){ 
+	// total = $("#totalRima").val()
+	// numRima = $("#numRima").val() //Obtengo el número de rima que mostrará
+	// if(numRima < total){
+		// $.ajax({
+			// url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			// dataType: "json",
+			// type: "POST",
+			// success:function(ri){ //Obteniendo los datos vía AJAX
+				// $("#descripcionCarta").html(ri) //Se muestra la rima
+				// //Se crea el botón "siguiente para ver el resto de las rimas"
+			// }
+		// })	
+		// $("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='sumaRima("+idcarta+")'/>")
+		// $("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='restaRima("+idcarta+")'/>")
+	// }else{
+		// $.ajax({
+			// url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
+			// dataType: "json",
+			// type: "POST",
+			// success:function(ri){ //Obteniendo los datos vía AJAX
+				// $("#descripcionCarta").html(ri) //Se muestra la rima
+				// //Se crea el botón "siguiente para ver el resto de las rimas"
+			// }
+		// })	
+		// $("#masInfoCarta").html("")
+	// }
+// 
+// }
 
-}
 
-
-function sumaRima(idcarta){
-	numRima = $("#numRima").val()
-	suma = parseInt(numRima)+1
-	$("#numRima").val(suma)
-	muestraRimas(idcarta)
-}
-
-function restaRima(idcarta){
-	numRima = $("#numRima").val()
-	resta = parseInt(numRima)-1
-	$("#numRima").val(resta)
-	muestraRimas(idcarta)
-	if(numRima == 0){
-		muestraInfoCarta(idcarta)
-	}
-}
+// function sumaRima(idcarta){
+	// numRima = $("#numRima").val()
+	// suma = parseInt(numRima)+1
+	// $("#numRima").val(suma)
+	// muestraRimas(idcarta)
+// }
+// 
+// function restaRima(idcarta){
+	// numRima = $("#numRima").val()
+	// resta = parseInt(numRima)-1
+	// $("#numRima").val(resta)
+	// muestraRimas(idcarta)
+	// if(numRima == 0){
+		// muestraInfoCarta(idcarta)
+	// }
+// }

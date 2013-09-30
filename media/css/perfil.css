@@ -1,24 +1,9 @@
-input[type="text"], input[type="password"], input[type="email"]{
-	height:32px;
-}
 select{margin-bottom:10px; height:35px}
-
-#cajaMadre{
-	border: 10px #fff solid;
-	margin: 30px 20px;
-	padding: 12px;
-}
-#cajaHija{
-	border: 5px #fff solid;
-	margin-left:15px;
-}
-
-
-.twelve {
-	width:98% !important;
-}
-.foto{margin:0; width:177px; height:177px;	float:left; margin: 0}
-label{color:#D9E021;margin-bottom:20px;} 
+#nombreUsuario{	vertical-align:bottom;}
+#logoLoteria{margin-top:-40px;}
+.foto{margin:0; width:250px; height:250px; float:left; border: 2px solid #fff; padding: 15px 10px;}
+label{color:#727b7a;margin-bottom:20px;} 
+#lnombreUsr{color:#000000; font-size:20px;}
 .underline{text-decoration:underline; color:#FFF;}
 .hilera{
 	background-image:url("../img/cenefa.png") !important;
@@ -26,10 +11,10 @@ label{color:#D9E021;margin-bottom:20px;}
 	margin: 0;
 	margin-top:10px;
 }
+
 /*Información*/
-#c1,#c2,#c3{
-	margin-top:50px;
-}
+#c1,#c2,#c3{margin-top:50px; padding:0px 50px; height:500px;}
+#c1,#c2{border-right: 3px solid #fff;}
 form > hr {
 	height:3px;
 	width: auto !important;
@@ -39,36 +24,38 @@ form > hr {
 }
 #informacion{margin-top:20px;}
 #cjInformacion,.caja-estadisticas{
-	background:#0B4C5F;
-	margin:30px 0px;
+	background:#17343c;
+	margin:0;
+	margin-top:30px;
+	margin-left:-22px;
 	padding: 10px 0px;
 	padding-bottom:80px;
-	width:107.1% !important;
-	margin-left:-2.5%;
-	margin-bottom:20px;
+	width:105.7% !important;
+	height:auto;
 }
 #nombreUsuario{
 	width:auto !important;
 	float:left !important;
 }
 /* Barra de navegación */
-.navegacion{
-	margin-top:10px;
-}
+.navegacion{margin-top:10px;}
 .navegacion >li{
+	color:#fff;
 	display:inline;
-	background:#FFF;
 	padding:10px;
 }
-.navegacion > li:hover{font-size:20px;}
-#guardaCambios{margin-top:300px;}
-#BtnGuardaCambios, #cancelarGuardaCambios{height:50px;float:right;}
-.header{height:50px; margin-bottom:80px;}
+.navegacion > li:hover{font-weight:bold;}
+#guardaCambios{margin-top:220px;}
+#editarSeccion{margin-top:220px;}
+#BtnGuardaCambios, #cancelarGuardaCambios{height:40px;}
+#BtnGuardaCambios{margin:20px 0px;}
+.header{height:50px; margin-bottom:30px;}
 .header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
 .header img{padding:2px 2px; width:40px; height:40px; float:right;}
-#BtnEditar{width:200px;	height:60px;}
 #editarFoto{margin-top:50px}
+
 /*******************/
+
 .gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
 #gallery li{position: relative;	list-style: none;	display:inline;}
 #galeriaEditarFoto{
@@ -107,9 +94,8 @@ form > hr {
 	margin-right:8px;
 }
 
-.trofeos{
-	margin-top:40px;
-}
+.trofeos{margin-top:40px;}
+
 #lightbox div{
 	/*background-image:url("../img/azulLecciones.png") !important;*/
     background-color: rgba(24, 6, 0, 0.9);
@@ -188,3 +174,48 @@ h3{color:#D9E021;}
 #nombreCarta{color:#fff; font-size:43px;}
 #descripcionCarta{color:#fff; height:220px; margin-top:100px; margin-bottom:50px;}
 #datosCarta{margin-top:20px;}
+
+
+/*Clase para pasar de formulario a tarjeta*/
+
+input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"]:disabled, select:disabled{
+	background:#17343c !important;
+	border:none;
+	font-size:20px !important;
+	color:#fff !important;
+	height:40px !important;
+	border-bottom: 3px solid #fff;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+	-moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+	text-align:center;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus{
+	border:2px solid #078d7b;
+}
+input[type="button"]{
+	background:#17343c;
+	border: 3px solid #fff;
+	text-align:center;
+	font-size:20px !important;
+	color:#fff;
+	height:40px !important;
+	margin-bottom:10px !important;
+}
+
+input[type="text"], input[type="password"], input[type="email"], select{
+	background:#17343c !important;
+	height:40px;
+	color:#000;
+	border:2px solid #FFF;
+}
+
+#c2 > label, #c3>label, #alumno>label, #prof-admin>label{text-align:center;}
+
+@media (min-width: 1500px){
+	#cjInformacion, .caja-estadisticas{
+		width: 104.7% !important;
+	}	
+}
