@@ -199,7 +199,7 @@ function validaCampos(){
 			type: "POST",		
 			success:function(existe){
 				if(existe == 1){
-					correoNoExiste = false;
+					correoNoExiste = true;
 					var label = $("<label>").text("El correo ya existe o el dominio es inválido (la cuenta debe ser de titlani/xanum/docencia)").attr({id:"emailExiste", class:"error"})
 					$("#usuario_correo").after(label);
 				}else{ 	//si el correo no existe, verifica que el campo no esté vacío para añadir la clase correcto
