@@ -17,9 +17,11 @@
 			
 		}
 		
-		public function seleccionarPosibleRespuesta($respuesta,$id, $modalidad){
+		public function seleccionarPosibleRespuesta($id, $modalidad){
 			
 			
+			//Respuesta via post 
+			$respuesta=$_POST['respuesta'];
 			switch ($modalidad) {
     			case 1:// Juego Libre
         			echo "i es igual a 1";
