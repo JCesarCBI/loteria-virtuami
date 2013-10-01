@@ -14,39 +14,17 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vPartida','','required');
 		$this->form_validation->set_rules('vNivel', '', 'required');
 		$this->form_validation->set_rules('vModalidad', '', 'required');
-        if ($this->form_validation->run() == FALSE){
+        if ($this->form_validation->run() != FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
 			$this->load->view('vModalidad');
             // $this->load->view('vinicio');
             //header("Location: " . "http://" . $_SERVER['HTTP_HOST']."index.php/");
         }else{
-	        $idPartida = $this->input->post('vPartida');
-			$idNivel = $this->input->post('vNivel');
-			$idModalidad = $this->input->post('vModalidad');
+	        $idPartida = 1;//$this->input->post('vPartida');
+			$idNivel = 1;//$this->input->post('vNivel');
+			$idModalidad = 1;//$this->input->post('vModalidad');
 			$puntaje = 0;
 			$tiempo = 0;
-			// $baraja = $this->mJuegoLibre->getMazoCarta();
-			// shuffle($baraja);
-			// foreach ($baraja as $key) {
-				// $id = $key["idCarta"];
-				// $data["baraja"][$id] = $key;
-			// }
-			// $k = 0;
-			// $conta = 0;
-			// for ($k=0; $k < 16; $k++) { 
-				// srand ();
-				// $aleat = rand(0,53);
-				// $r = $baraja[$aleat]['idCarta'];
-				// $data["lote"][$r] = $baraja[$aleat];
-				// $conteo = count($data["lote"]);			
-				// if($conteo == $k){
-					// $k--;
-				// }
-			// }
-			//Aqui se hace la configuración del juego conforme a los parametros recibidos
-			// $idPartida = 2;
-			// $idNivel = 3;
-			// $idModalidad = 4;
 			if ($idPartida == 1) {  //Configuración para las partidas completas
 				if ($idNivel == 1 && $idModalidad == 1) {  //Nivel básico libre
 					$puntaje = 20;
@@ -107,6 +85,13 @@ class CJuego extends CI_Controller {
 			$this->session->set_userdata('idModalidad', $idModalidad);
 			$data['puntaje']=$puntaje;
 			$data['tiempo']=$tiempo;
+			$data['juego']['idPartida'] = $idPartida;
+			$data['juego']['idNivel'] = $idPartida;
+			$data['juego']['idModalidad'] = $idPartida;
+			$data['jugador']['nombre'] = $this->session->userdata('usuario');
+			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
+			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
+			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";
