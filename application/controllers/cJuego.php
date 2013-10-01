@@ -14,15 +14,15 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vPartida','','required');
 		$this->form_validation->set_rules('vNivel', '', 'required');
 		$this->form_validation->set_rules('vModalidad', '', 'required');
-        if ($this->form_validation->run() != FALSE){
+        if ($this->form_validation->run() == FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
 			$this->load->view('vModalidad');
             // $this->load->view('vinicio');
             //header("Location: " . "http://" . $_SERVER['HTTP_HOST']."index.php/");
         }else{
-	        $idPartida = 1;//$this->input->post('vPartida');
-			$idNivel = 1;//$this->input->post('vNivel');
-			$idModalidad = 1;//$this->input->post('vModalidad');
+	        $idPartida = $this->input->post('vPartida');
+			$idNivel = $this->input->post('vNivel');
+			$idModalidad = $this->input->post('vModalidad');
 			$puntaje = 0;
 			$tiempo = 0;
 			if ($idPartida == 1) {  //Configuración para las partidas completas
