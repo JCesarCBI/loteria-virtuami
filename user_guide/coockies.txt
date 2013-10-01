@@ -1,0 +1,23 @@
+/*
+ * Efrén Valdez Jasso
+ * Información de las cookies del sistema
+ * Para preguntar el valor de una cookie con CodeIgniter $this->input->cookie('item');
+ */
+
+ ***********************************cookie con los datos de la sesión**********************************************************************
+ 
+'session_id' => id de la sesion activa en el navegador
+'ip_address' => direccion IP de donde se esta accediendo
+'user_agent' => Navegador, OS
+'last_activity' => Nos dice cuando fue la ultima vez que se creo esta cookie
+'usuario' => nombre de usuario
+'idUsuario' => id del usuario
+'idJuego' => id del juego selecionado
+'avatar' => imagen grande del avatar
+'icnavatar' => imagen chica del avatar
+
+$this- session- all_userdata()	/*Obtengo todos los datos de la cookie*/
+$this->session->userdata('item');	/*Obtengo los datos de un elemento*/
+$this->session->set_userdata('nombre', info); /*nombre del campo e info que guardara el nombre del campo*/
+
+*******************************************************************************************************************************************
