@@ -48,7 +48,7 @@
 							</video></center> 					
 						</div>
 						<div id="botones" class="twelve columns">
-							<center><span class="row"><input id="iniciarSesionBtn" type="button" class="six centered columns boton" value="Iniciar sesión"></span><hr></center>
+							<center><span class="row"><input id="iniciarSesionBtn" type="button" class="six centered columns boton" value="Iniciar sesión"></span><hr class="linea3"></center>
 							<center><span class="row"><input id="registroBtn" type="button" class="six centered columns boton" value="Registro"></span></center>
 						</div>	
 						<!-- primera parte registro -->
@@ -68,7 +68,7 @@
 				                    <span for="usuario_sexo">mujer</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
 				                </div>
 		
-		       	                <center><input class="six columns boton centered" type="button" id="sig1" value="siguiente"/><hr>
+		       	                <center><input class="six columns boton centered" type="button" id="sig1" value="siguiente"/><hr class="linea3">
 		       	                <input type="button" class="boton six columns centered" id="iniciarSesionBtn2" value="Iniciar sesión"/></center>
 		       	            </div> <!--paso1-->		
 					
@@ -77,7 +77,7 @@
 								<label id="nombreVacio" class="error"></label>
 								<input autofocus class="vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
 								<label id="apatVacio" class="error"></label>
-								<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><hr>
+								<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><hr class="linea3">
 								<label id="amatVacio" class="error"></label>
 				                <center>
 				                	<span class="one centered columns"></span>
@@ -96,8 +96,7 @@
 									<label id="ldivision" class="labelRegistro">División</label>
 					        		<?php  echo form_dropdown('usuario_division', $division, 1, 'id=usuario_division'); ?>
 									<label id="lposgrado" class="labelRegistro">Posgrado</label>
-					        		<?php  echo form_dropdown('usuario_posgrado', $pos, 1, 'id=usuario_posgrado'); ?>
-					        		
+					        		<?php  echo form_dropdown('usuario_posgrado', $pos, 1, 'id=usuario_posgrado'); ?>					        		
 				        		</div>
 								<div id="prof-admin">
 									<input autofocus class="vacio" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
@@ -110,7 +109,6 @@
 				                	<span class="one centered columns"></span>
 									<input type="submit" class="boton centered four columns" id="enviar" value="enviar">
 				                	<span class="one centered columns"></span>
-	
 								</center>
 			        		</div> <!--paso3-->	     
 		        		</form>    
@@ -120,7 +118,7 @@
 				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
 				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
 				                <center><span class="twelve columns"><input class="six columns boton centered" type="submit" id="iSesion-boton" value="Entrar"></span>
-				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr>
+				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr class="linea3">
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>
 				           	</form>
 						</div>

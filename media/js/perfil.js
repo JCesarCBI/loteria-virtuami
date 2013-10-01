@@ -75,10 +75,10 @@ $(document).ready(function() {
 		for(i=inicio; i<=fin; i++){
 			$("#carrusel-img"+i).show()
 		}
-		$("#carrusel-sig, #carrusel-ant").show()
+		$("#carrusel-sig, #carrusel-ant, #logoLoteria").show()
 	})	
 
-	$("#carrusel>img:not(.recorre)").bind({
+	$("#carrusel>span:not(.recorre)").bind({
 		click: function(){
 			$(this).unbind('mouseleave');
 			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo')
@@ -93,7 +93,7 @@ $(document).ready(function() {
 	})
 	//Navegación del carrusel
 	$("#carrusel-ant").click(function(){
-		$("#carrusel>img:not(.recorre)").hide()
+		$("#carrusel>span:not(.recorre)").hide()
 		inicio = parseInt($("#carrusel-inicio").val())-1
 		fin = parseInt($("#carrusel-final").val())-1
 		if(inicio>0){
@@ -110,7 +110,7 @@ $(document).ready(function() {
 	})
 
 	$("#carrusel-sig").click(function(){
-		$("#carrusel>img:not(.recorre)").hide()
+		$("#carrusel>span:not(.recorre)").hide()
 		inicio = parseInt($("#carrusel-inicio").val())+1
 		fin = parseInt($("#carrusel-final").val())+1
 		if(fin<=54){
@@ -275,7 +275,7 @@ function muestraInfoCarta(idcarta){
 
 function inicio(){
 	$('#contrasenaActual, #estadisticas, #galeria, #editarFoto').hide()
-	$("#carrusel>img").hide()
+	$("#carrusel>span").hide()
 }
 
 function limpiaInfoCarta(){

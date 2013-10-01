@@ -1,9 +1,10 @@
+/*------------------------------------------------------------------------------------------------------------*/
+											/*Información */
+											
+.header{height:50px; margin-bottom:30px; margin-left:1%;}
+.header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
+.header img{padding:2px 2px; width:40px; height:40px; float:right; margin-top:3px;}
 select{margin-bottom:10px; height:35px}
-#nombreUsuario{	vertical-align:bottom;}
-#logoLoteria{margin-top:-40px;}
-.foto{margin:0; width:250px; height:250px; float:left; border: 2px solid #fff; padding: 15px 10px;}
-label{color:#727b7a;margin-bottom:20px;} 
-#lnombreUsr{color:#000000; font-size:20px;}
 .underline{text-decoration:underline; color:#FFF;}
 .hilera{
 	background-image:url("../img/cenefa.png") !important;
@@ -11,18 +12,30 @@ label{color:#727b7a;margin-bottom:20px;}
 	margin: 0;
 	margin-top:10px;
 }
+/* Barra de navegación */
+.navegacion{margin-top:10px;}
+.navegacion >li{
+	color:#fff;
+	display:inline;
+	padding:10px;
+}
+.navegacion > li:hover{font-weight:bold;}
 
 /*Información*/
+#informacion{margin-top:20px;}
+#nombreUsuario{	vertical-align:bottom;}
+#logoLoteria{margin-top:-40px;}
+.foto{margin:0; width:250px; height:250px; float:left; border: 2px solid #fff; padding: 15px 10px;}
+label{color:#727b7a;margin-bottom:20px;} 
+#lnombreUsr{color:#000000; font-size:20px;}
 #c1,#c2,#c3{margin-top:50px; padding:0px 50px; height:500px;}
 #c1,#c2{border-right: 3px solid #fff;}
 form > hr {
 	height:3px;
 	width: auto !important;
-	/*margin-left:-3.4%;*/
 	background:#fff;
 	margin-bottom:-10px;
 }
-#informacion{margin-top:20px;}
 #cjInformacion,.caja-estadisticas{
 	background:#17343c;
 	margin:0;
@@ -37,147 +50,14 @@ form > hr {
 	width:auto !important;
 	float:left !important;
 }
-/* Barra de navegación */
-.navegacion{margin-top:10px;}
-.navegacion >li{
-	color:#fff;
-	display:inline;
-	padding:10px;
-}
-.navegacion > li:hover{font-weight:bold;}
+
 #guardaCambios{margin-top:220px;}
 #editarSeccion{margin-top:220px;}
 #BtnGuardaCambios, #cancelarGuardaCambios{height:40px;}
 #BtnGuardaCambios{margin:20px 0px;}
-.header{height:50px; margin-bottom:30px;}
-.header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
-.header img{padding:2px 2px; width:40px; height:40px; float:right;}
 #editarFoto{margin-top:50px}
 
-/*******************/
-
-.gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
-#gallery li{position: relative;	list-style: none;	display:inline;}
-#galeriaEditarFoto{
-	background-color: rgba(24, 6, 0, 0.9);
-    background: rgba(24, 6, 0, 0.9);
-    color: rgba(24, 6, 0, 0.9);
-	border: 2px solid #bdbdbd;
-	position: absolute;
-	margin-top:140px;
-	display:fixed;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	z-index:-3;
-	opacity:0;
-}
-#galeriaEditarFoto>img{	width:60px;	height:60px;}
-#closeGaleriaEditarFoto {
-	background: url(../img/close.png) no-repeat left top;
-	height: 32px;
-	width: 32px;
-	position: absolute;
-	top: -15px;
-	right: -15px;
-}
-
-#gallery img{
-	position: relative;
-	-moz-transition: border 0.6s ease-out;
-	-o-transition: border 0.6s ease-out;
-	-webkit-transition: border 0.6s ease-out;
-	border: 2px solid #D9E021;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
-	border-radius: 25px;
-	margin-right:8px;
-}
-
-.trofeos{margin-top:40px;}
-
-#lightbox div{
-	/*background-image:url("../img/azulLecciones.png") !important;*/
-    background-color: rgba(24, 6, 0, 0.9);
-    background: rgba(24, 6, 0, 0.9);    
-    color: rgba(24, 6, 0, 0.9);
-	border: 2px solid #bdbdbd;
-	opacity: 0;
-	position: absolute;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	-moz-box-shadow: 0 0 300px rgba(0, 0, 0, 1);
-	-webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-	-moz-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	-webkit-transition: all 0.3s ease-out;
-	padding:40px;
-	width:80%;
-	height:450px;
-	left:10%;
-	top:10%;
-	z-index: -3;
-	position: fixed;
-}
-
-#lightbox div:target {opacity: 10;	z-index:5}
-
-#lightbox a {
-	background: url(../img/close.png) no-repeat left top;
-	height: 32px;
-	width: 32px;
-	position: absolute;
-	top: -15px;
-	right: -15px;
-}	
-
-.trofeo-chico{width:40px; height:40px;}
-
-.trofeo-grande{
-	width:200px;
-	height:200px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
-
-p.descripcionTrofeo{color:#D9E021;}
-h3{color:#D9E021;}
-#imgCarta{width:450px;height:450px; padding:5px}
-.borde-amarillo{border: 5px solid #D9E021;}
-.fondo-amarillo{background-color:#D9E021}
-
-/*CARRUSEL*/
-
-#carrusel{
-	background-image:url("../img/azulLecciones.png") !important;
-	padding: 5px 10px;
-	margin-top:20px;
-	margin-bottom:60px;
-}
-.carrusel-apaga{
-	opacity:0.4;
-	filter:alpha(opacity=40); /* For IE8 and earlier */	
-}
-.carrusel-ilumina2{
-	opacity:0.4;
-	filter:alpha(opacity=40); /* For IE8 and earlier */	
-}
-#carrusel>img{width:88px;height:88px;}
-
-#carrusel-ant, #carrusel-sig{
-	width:24px !important; height:24px !important;
-	margin-bottom:30px;
-}
-
-#nombreCarta{color:#fff; font-size:43px;}
-#descripcionCarta{color:#fff; height:220px; margin-top:100px; margin-bottom:50px;}
-#datosCarta{margin-top:20px;}
-
-
 /*Clase para pasar de formulario a tarjeta*/
-
 input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"]:disabled, select:disabled{
 	background:#17343c !important;
 	border:none;
@@ -214,8 +94,152 @@ input[type="text"], input[type="password"], input[type="email"], select{
 
 #c2 > label, #c3>label, #alumno>label, #prof-admin>label{text-align:center;}
 
+/*------------------------------------------------------------------------------------------------------------*/
+											/*Estadísticas */
+											
+p.descripcionTrofeo{color:#D9E021;}
+h3{color:#D9E021;}
+.gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
+.trofeos{margin-top:40px;}
+.trofeo-chico{width:40px; height:40px;}
+.trofeo-grande{
+	width:200px;
+	height:200px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+#gallery li{position: relative;	list-style: none;	display:inline;}
+#gallery img{
+	position: relative;
+	-moz-transition: border 0.6s ease-out;
+	-o-transition: border 0.6s ease-out;
+	-webkit-transition: border 0.6s ease-out;
+	border: 2px solid #D9E021;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	margin-right:8px;
+}
+#galeriaEditarFoto{
+	background-color: rgba(24, 6, 0, 0.9);
+    background: rgba(24, 6, 0, 0.9);
+    color: rgba(24, 6, 0, 0.9);
+	border: 2px solid #bdbdbd;
+	position: absolute;
+	margin-top:140px;
+	display:fixed;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	z-index:-3;
+	opacity:0;
+}
+#galeriaEditarFoto>img{	width:60px;	height:60px;}
+#closeGaleriaEditarFoto {
+	background: url(../img/close.png) no-repeat left top;
+	height: 32px;
+	width: 32px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+}
+#lightbox div{
+	/*background-image:url("../img/azulLecciones.png") !important;*/
+    background-color: rgba(24, 6, 0, 0.9);
+    background: rgba(24, 6, 0, 0.9);    
+    color: rgba(24, 6, 0, 0.9);
+	border: 2px solid #bdbdbd;
+	opacity: 0;
+	position: absolute;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 300px rgba(0, 0, 0, 1);
+	-webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	padding:40px;
+	width:80%;
+	height:450px;
+	left:10%;
+	top:10%;
+	z-index: -3;
+	position: fixed;
+}
+
+#lightbox div:target {opacity: 10;	z-index:5}
+#lightbox a {
+	background: url(../img/close.png) no-repeat left top;
+	height: 32px;
+	width: 32px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+}	
+
+
+
+/*------------------------------------------------------------------------------------------------------------*/
+											/*Carrusel */
+											
+#imgCarta{width:450px;height:450px; padding:5px}
+.borde-amarillo{
+	border: 5px solid #D9E021;
+    -moz-box-shadow: 4px 3px 5px #000000;
+    -webkit-box-shadow: 4px 3px 5px #000000;
+    box-shadow: 4px 3px 5px #000000;
+}
+.fondo-amarillo{
+	background-color:#D9E021; 
+    -moz-box-shadow: 4px 3px 5px #000000;
+    -webkit-box-shadow: 4px 3px 5px #000000;
+    box-shadow: 4px 3px 5px #000000;
+}
+#logoLoteriaPerfil{	margin-top:15px;}
+#carrusel{
+	background:#ee4036;
+	padding: 5px 10px;
+	margin-top:5%;
+	margin-bottom:60px;
+}
+.carrusel-apaga{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */	
+}
+.carrusel-ilumina2{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */	
+}
+#carrusel>span>img{width:100%;height:120px;}
+#nombreCarta{color:#fff; font-size:43px;}
+#descripcionCarta{
+	color:#fff; 
+	text-shadow: 0px 1px #000;
+	text-indent:5%;
+	text-align:justify; 
+	height:220px; 
+	margin-top:50px; 
+	margin-bottom:40px; 
+	padding:0% 5%;
+}
+
+
+/*----------------------------------------------------------------------------------------------------*/
+										/*MediaQuerys*/
+
 @media (min-width: 1500px){
 	#cjInformacion, .caja-estadisticas{
 		width: 104.7% !important;
 	}	
+}
+@media (max-width: 900px){
+	#carrusel>span>img,  #carrusel-ant, #carrusel-sig{
+		width:80px !important;
+	}
+	#carrusel>span, #carrusel-ant, #carrusel-sig{
+		width:100px !important;
+		float:left !important;
+	}
 }
