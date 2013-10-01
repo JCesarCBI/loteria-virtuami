@@ -36,7 +36,7 @@ form > hr {
 	background:#fff;
 	margin-bottom:-10px;
 }
-#cjInformacion,.caja-estadisticas{
+#cjInformacion{
 	background:#17343c;
 	margin:0;
 	margin-top:30px;
@@ -45,6 +45,16 @@ form > hr {
 	padding-bottom:80px;
 	width:105.7% !important;
 	height:auto;
+}
+#estadisticas{
+	background:#17343c;
+	margin:0;
+	margin-top:50px;
+	margin-left:-6px;
+	padding: 10px 0px;
+	padding-bottom:80px;
+	width:101% !important;
+	height:auto;	
 }
 #nombreUsuario{
 	width:auto !important;
@@ -97,17 +107,20 @@ input[type="text"], input[type="password"], input[type="email"], select{
 /*------------------------------------------------------------------------------------------------------------*/
 											/*Estadísticas */
 											
-p.descripcionTrofeo{color:#D9E021;}
-h3{color:#D9E021;}
-.gris{opacity:0.4;	filter:alpha(opacity=40); /* For IE8 and earlier */}
+p.descripcionTrofeo{color:#fff;}
+h3{color:#fff;}
+h2{color:#fff;}
+.lineaCentro{
+	height:3px;
+	background:#fff;
+	width:50%;
+	margin-left:3%;
+	color:#fff;
+}
+.gris{opacity:0.4 !important;	filter:alpha(opacity=40); /* For IE8 and earlier */}
 .trofeos{margin-top:40px;}
 .trofeo-chico{width:40px; height:40px;}
-.trofeo-grande{
-	width:200px;
-	height:200px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
+.trofeo-grande{	opacity:1;}
 #gallery li{position: relative;	list-style: none;	display:inline;}
 #gallery img{
 	position: relative;
@@ -122,7 +135,7 @@ h3{color:#D9E021;}
 }
 #galeriaEditarFoto{
 	background-color: rgba(24, 6, 0, 0.9);
-    background: rgba(24, 6, 0, 0.9);
+    background: #ee4036;
     color: rgba(24, 6, 0, 0.9);
 	border: 2px solid #bdbdbd;
 	position: absolute;
@@ -144,10 +157,9 @@ h3{color:#D9E021;}
 	right: -15px;
 }
 #lightbox div{
-	/*background-image:url("../img/azulLecciones.png") !important;*/
-    background-color: rgba(24, 6, 0, 0.9);
-    background: rgba(24, 6, 0, 0.9);    
-    color: rgba(24, 6, 0, 0.9);
+    background-color: rgba(178, 44, 44, 0.8);
+    background: rgba(178, 44, 44, 0.8);
+    color: #fff !important;
 	border: 2px solid #bdbdbd;
 	opacity: 0;
 	position: absolute;
@@ -162,7 +174,7 @@ h3{color:#D9E021;}
 	-webkit-transition: all 0.3s ease-out;
 	padding:40px;
 	width:80%;
-	height:450px;
+	height:auto;
 	left:10%;
 	top:10%;
 	z-index: -3;
@@ -230,7 +242,7 @@ h3{color:#D9E021;}
 										/*MediaQuerys*/
 
 @media (min-width: 1500px){
-	#cjInformacion, .caja-estadisticas{
+	#cjInformacion{
 		width: 104.7% !important;
 	}	
 }

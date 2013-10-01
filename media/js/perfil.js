@@ -3,15 +3,15 @@ $(document).ready(function() {
 	muestraPerfil();
 	eligeTipoUsuario();
 
-	$("#usuario_comunidadUniversitaria").change(function(){	eligeTipoUsuario();	})
-	$("#usuario_gradoActivo").change(function(){ evaluaGradoActivo(); })
+	$("#usuario_comunidadUniversitaria").change(function(){	eligeTipoUsuario();	});
+	$("#usuario_gradoActivo").change(function(){ evaluaGradoActivo(); });
 	
 	desenmascaraPass();
 	
 	//Seguridad
 	$("#BtnEditar").click(function(){
-		$('#contrasenaActual').show()
-		$('#usuario_contrasenaActual').val("")
+		$('#contrasenaActual').show();
+		$('#usuario_contrasenaActual').val("");
 	})
 	
 	//Eventos del botón cancelar cambiar contraseña
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	//Confirmamos contraseña
 	$("#BtnConfirmContrasena").click(function(){
 		if($("#usuario_contrasenaActual").val()==""){
-			alert("campo vacío")
+			alert("campo vacío");
 		}else{
 			//Enviará la contraseña vía AJAX para validarla
 			$.ajax({
@@ -33,7 +33,7 @@ $(document).ready(function() {
 					if(correcto == 0){
 						editaPerfil();
 					}else{
-						alert("contraseña incorrecta")
+						alert("contraseña incorrecta");
 					}
 				}
 			})	
@@ -44,12 +44,12 @@ $(document).ready(function() {
 		$("#galeriaEditarFoto").css({ "opacity": "10", "z-index": "4" }) 
 	})
 	$("#galeriaEditarFoto > img").click(function(){
-		url = $(this).attr('src')
-		$(".foto").prop('src',url)
-		$("#usuario_avatar").prop('value',url)
+		url = $(this).attr('src');
+		$(".foto").prop('src',url);
+		$("#usuario_avatar").prop('value',url);
 	})
 	$("#closeGaleriaEditarFoto").click(function(){
-		$("#galeriaEditarFoto").css({"opacity":"0","z-index":"-4"})
+		$("#galeriaEditarFoto").css({"opacity":"0","z-index":"-4"});
 	})
 	
 	
@@ -59,78 +59,82 @@ $(document).ready(function() {
 
 	//Navegación del usuario
 	$("#nav-informacion").click(function(){
-		$("#informacion").show()
-		$("#estadisticas, #galeria").hide()
+		$("#informacion, #foto-nombreUsr, #lnombreUsr").show();
+		$("#nombreUsuario>h1").addClass("underline");
+		$("#estadisticas, #galeria").hide();
 	})	
 	$("#nav-estadistica").click(function(){
-		$("#informacion, #galeria").hide()
-		$("#estadisticas").show()
+		$("#informacion, #galeria, #foto-nombreUsr").hide();
+		$("#estadisticas, #foto-nombreUsr").show();
+		$("#lnombreUsr").hide()
+		$("#nombreUsuario>h1").removeClass("underline").css("color","#fff");
+		
 	})
 	$("#nav-galeria").click(function(){
 		//Traigo galería de cartas con AJAX
-		$("#informacion, #estadisticas").hide()
+		$("#informacion, #estadisticas, #foto-nombreUsr").hide();
 		$("#galeria").show()
 		inicio=$("#carrusel-inicio").val();
 		fin = $("#carrusel-final").val();
 		for(i=inicio; i<=fin; i++){
-			$("#carrusel-img"+i).show()
+			$("#carrusel-img"+i).show();
 		}
-		$("#carrusel-sig, #carrusel-ant, #logoLoteria").show()
+		$("#carrusel-sig, #carrusel-ant, #logoLoteria").show();
 	})	
 
 	$("#carrusel>span:not(.recorre)").bind({
 		click: function(){
 			$(this).unbind('mouseleave');
-			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo')
-			$('.imgCarrusel').not(this).addClass('carrusel-apaga').removeClass('borde-amarillo')
+			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo');
+			$('.imgCarrusel').not(this).addClass('carrusel-apaga').removeClass('borde-amarillo');
 		},
 		mouseenter:function(){
-			$(this).removeClass('carrusel-apaga')
+			$(this).removeClass('carrusel-apaga');
 		},
 		mouseleave: function(){
-			$(this).addClass('carrusel-apaga')
+			$(this).addClass('carrusel-apaga');
 		}
 	})
 	//Navegación del carrusel
 	$("#carrusel-ant").click(function(){
-		$("#carrusel>span:not(.recorre)").hide()
+		$("#carrusel>span:not(.recorre)").hide();
 		inicio = parseInt($("#carrusel-inicio").val())-1
 		fin = parseInt($("#carrusel-final").val())-1
 		if(inicio>0){
-			$("#carrusel-inicio").val(inicio)
-			$("#carrusel-final").val(fin)
+			$("#carrusel-inicio").val(inicio);
+			$("#carrusel-final").val(fin);
 			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show()
+				$("#carrusel-img"+i).show();
 			}
 		}else{
 			for(i=1; i<=10; i++){
-				$("#carrusel-img"+i).show()
+				$("#carrusel-img"+i).show();
 			}			
 		}		
 	})
 
 	$("#carrusel-sig").click(function(){
-		$("#carrusel>span:not(.recorre)").hide()
+		$("#carrusel>span:not(.recorre)").hide();
 		inicio = parseInt($("#carrusel-inicio").val())+1
 		fin = parseInt($("#carrusel-final").val())+1
 		if(fin<=54){
-			$("#carrusel-final").val(fin)
-			$("#carrusel-inicio").val(inicio)
+			$("#carrusel-final").val(fin);
+			$("#carrusel-inicio").val(inicio);
 			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show()
+				$("#carrusel-img"+i).show();
 			}
 		}else{
 			for(i=45; i<=54; i++){
-				$("#carrusel-img"+i).show()
+				$("#carrusel-img"+i).show();
 			}				
 		}
 	})
 	
 	$("#BtnGuardaCambios").click(function(){
 		if(validaCampos()){
-			alert("datos correctos")
+			alert("datos correctos");
 		}else{
-			alert("datos incorrectos")
+			alert("datos incorrectos");
 		}
 	})
 }); //Fin Document Ready
@@ -288,6 +292,7 @@ function limpiaInfoCarta(){
 
 function muestraPerfil(){
 	$(".error").hide();
+	$("#foto-nombreUsr").show();
 	$("form").find(':input:not(:disabled)').prop('disabled','false');
 	$("#editarSeccion input[type='button'], #contrasenaActual input[type = 'password']").removeAttr("disabled");
 	$('#guardaCambios,#editarFoto, #contrasenaActual').hide()

@@ -27,20 +27,19 @@
 					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
 					<li id="nav-galeria" class="three column"><img src="<?= base_url()?>media/img/_g.jpg">alería</li>
 				</ul>
-				
-				<div id="informacion" class="twelve columns informacion">
-					<div id="foto-nombreUsr" class="twelve columns">
-						<center><img class="two columns foto" src="<?= base_url() ?><?= $gdeAvatar ?>" title=""/></center>
-						<div class="one columns"></div>
-						<div id="nombreUsuario" class="nine columns">
-							<h1 class="underline"><?= $nombreUsr?></h1>
-							<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
-						</div>
-											
-						<!-- <div class="nine columns">
-							<input class="" type="button" id="editarFoto" value="Editar foto"/>
-						</div> -->
+				<div id="foto-nombreUsr" class="twelve columns">
+					<center><img class="two columns foto" src="<?= base_url() ?><?= $gdeAvatar ?>" title=""/></center>
+					<div class="one columns"></div>
+					<div id="nombreUsuario" class="nine columns">
+						<h1 class="underline"><?= $nombreUsr?></h1>
+						<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
 					</div>
+										
+					<!-- <div class="nine columns">
+						<input class="" type="button" id="editarFoto" value="Editar foto"/>
+					</div> -->
+				</div>
+				<div id="informacion" class="twelve columns">
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
 						<hr><hr>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>

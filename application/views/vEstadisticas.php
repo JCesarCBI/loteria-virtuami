@@ -1,31 +1,37 @@
-<div class="row" id="estadisticas">
+<div class="twelve columns" id="estadisticas">
 					<div id="lightbox">
 						<?php
 							if($trofeos != NULL){
 								foreach ($trofeos as $indice=>$trofeo) {
 									if($trofeo['Estado'] == 1){ ?>
-										<center><div id="trofeo<?=$indice?>" class="trofeo-popup">
-											<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
-											<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
-											<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
-											<a class="close" href="#"></a>
-										</div></center>
+										<center>
+											<div id="trofeo<?=$indice?>" class="trofeo-popup">
+												<h3>Trofeos</h3>
+												<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['imagen']?>"><hr class="lineaCentro">
+												<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
+												<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
+												<p class="descripcionTrofeo"><?= $trofeo['condicion']?></p>
+												<a class="close" href="#"></a>
+											</div>
+										</center>
 									<?php }else{ ?>
-										<center><div id="trofeo<?=$indice?>" class="trofeo-popup">
-											<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>">
-											<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
-											<p class="descripcionTrofeo">Trofeo no ganado</p>
-											<a class="close" href="#"></a>
-										</div></center>
+										<center>
+											<div id="trofeo<?=$indice?>" class="trofeo-popup">
+												<h3>Trofeos</h3>
+						 						<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>"><hr class="lineaCentro">
+												<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
+												<p class="descripcionTrofeo">Trofeo no ganado</p>
+												<a class="close" href="#"></a>
+											</div>
+										</center>
 								<?php }
 									}
 							}else{
 								echo "<label>No hay trofeos ganados</label>";
-							}
-		 
+							}		 
 							?>
 					</div>
-					<div class="trofeos three columns">
+					<div class="trofeos four columns">
 						<div>
 							<ul id="gallery">
 							<?php
@@ -56,8 +62,11 @@
 						</div>
 					</div> <!--trofeos-->
 					
-					<div class="nine columns">
-						<div id="partidas" class="caja-estadisticas">
+					<div id="graficas" class="four columns">
+						<h1>Aquí irán las gráficas</h1>
+					</div>
+					<div id="ranking" class="four columns">
+						<div id="partidas">
 							<h3>Partidas</h3>
 							<ul>
 								<li><b>Partidas "rápidas" ganadas:</b> <?= $estadisticas['partida']['rapidasGanadas']?></li>
@@ -67,7 +76,7 @@
 							</ul>
 						</div>
 						
-						<div id="niveles" class="caja-estadisticas">
+						<div id="niveles">
 							<h3>Níveles</h3>
 							<ul>
 								<li><b>Níveles "básico" ganados:</b> <?= $estadisticas['juego']['basicoGanados']?></li>
@@ -79,7 +88,7 @@
 							</ul>
 						</div>
 						
-						<div id="modalidades" class="caja-estadisticas">
+						<div id="modalidades">
 							<h3>Modalidades</h3>
 							<ul>
 								<li><b>Modalidad "Juego libre" ganados:</b> <?= $estadisticas['modalidad']['juegoLibreGanados']?></li>
