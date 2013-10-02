@@ -17,10 +17,12 @@ function presionaEnter(evt, op) {
 	var longitudchar = document.getElementById('vallong').value;
 	longitud= parseInt(longitudchar);	
 	restarLong=longitud-restarLong;
+		
+	if (restarLong >=0) {
+		$('#longitudAyuda').html("Long: "+restarLong);
+		
+	};
 	
-	$('#longitudAyuda').html(restarLong);
-	
-
 	indice = document.getElementById('cartaVisible').value;
 	$('#baraja-' + indice).removeAttr("onclick");
 
@@ -31,7 +33,7 @@ function presionaEnter(evt, op) {
 		respuesta = respuesta.toLowerCase();
 		id = obternerId(indice);
 
-		var vOf = ajax_validarRespuesta(id, respuesta)
+		var vOf = ajax_validarRespuesta2(id, respuesta)
 		if (vOf == 1) {
 			//rompo cadenas
 			rompeCadenas();

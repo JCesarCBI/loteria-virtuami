@@ -91,6 +91,7 @@ class cpruebasLuisa extends CI_Controller {
 			$data['tiempo']=$tiempo;
 			$data['idPartida']=$idPartida;
 			$data['idNivel']=$idNivel;
+			$data['idModalidad']=$idModalidad;
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";

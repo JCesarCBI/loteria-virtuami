@@ -2,6 +2,14 @@ jQuery(document).ready(function($) {
 
 	$("#subtitulos").click(function () {		
 		$('#contenido').toggleClass("Escondido");
+		
+		if ($(this).val()== "Activado") {
+		
+			$(this).attr( "value", "Desactivado" );
+		
+		} else{
+			$(this).attr( "value", "Activado" );
+		};
 		$(this).toggleClass("seleccionado");
 		
 	});
@@ -11,12 +19,12 @@ jQuery(document).ready(function($) {
 		$('embed').remove();
 		$('#audio').toggleClass("Escondido");
 		
-		if (document.getElementById('mute').value=="0") {
-			document.getElementById('mute').value=1;
+		if ($(this).val()== "Activado") {
 			$('#audio').html('');
+			$(this).attr( "value", "Desactivado" );
 		}
 		else{
-			document.getElementById('mute').value=0;
+			$(this).attr( "value", "Activado" );
 			
 			
 		}

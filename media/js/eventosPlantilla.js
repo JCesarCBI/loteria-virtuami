@@ -3,13 +3,17 @@ function presionaEnterPlantilla(evt, op) {
 	
 	
 	var charCode = (evt.which) ? evt.which : event.keyCode
+	var respuesta2 = document.getElementById('respuestaBaraja').value;
 	
 	var restarLong = respuesta2.length;
 	var longitudchar = document.getElementById('vallong').value;
 	longitud= parseInt(longitudchar);	
 	restarLong=longitud-restarLong;
 	
-	$('#longitudAyuda').html(restarLong);
+	if (restarLong >=0) {
+		$('#longitudAyuda').html("Long: "+restarLong);
+		
+	};
 	
 	
 	indice = document.getElementById('cartaClickPlantilla').value;

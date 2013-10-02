@@ -9,8 +9,7 @@ function longitudRespuesta (id) {
 
 		success : function(data) {
 			
-			$('#longitudAyuda').html(data);
-			document.getElementById("vallongitudAyuda").value=data;
+			$('#longitudAyuda').html("Long: "+data);
 			document.getElementById("vallong").value=data;
 			//alert(document.getElementById("vallongitudAyuda").value);
 

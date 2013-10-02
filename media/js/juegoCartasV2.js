@@ -48,7 +48,7 @@ function reproduceSonidoNavegador(indiceAudio){
 	    var sondioUrl=ajax_sonido(indiceAudio, 2);
 	  }
 	  
-		if (document.getElementById('mute').value=="0") {
+		if ($('#audioBoton').val()== "Activado") {
 			$('#audio').html('<audio autoplay src="'+base+sondioUrl+'" ></audio>');
 			
 		};
@@ -358,7 +358,7 @@ function pintaPuntos() {
 	var mult = parseInt(m)
 	var puntos = valor * mult;
 
-	$('#posiblePuntuacion').html(puntos);
+	$('#posiblePuntuacion').html(puntos+" pts");
 	
 
 }

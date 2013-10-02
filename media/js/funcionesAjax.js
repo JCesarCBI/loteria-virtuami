@@ -74,3 +74,34 @@ function ajax_validarRespuesta(id, respuesta) {
 	return respuestaCorrecta;
 
 }
+
+
+function ajax_validarRespuesta2(id, respuesta) {
+	
+	var modalidad=2;
+	var respuestaCorrecta = 1;
+	var url = base + 'index.php/cSinonimos/seleccionarPosibleRespuesta/'+id+'/'+modalidad;
+	var data = 'respuesta='+respuesta;
+
+	$.ajax({
+
+		url : url,
+	    data: data,
+	    type: 'POST',
+		async : false,
+
+		success : function(data) {
+			
+			respuestaCorrecta = data;
+			$('#contenido').html(data);
+
+		},
+
+		error : function() {
+			alert("Error al traer la respuesta");
+		}
+	});
+
+	return respuestaCorrecta;
+
+}

@@ -1,3 +1,67 @@
+.twelve {width:98% !important;}
+
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+.contenidoCentrado{
+	margin:0px auto !important;
+	padding:0px auto !important;
+	min-width: 1080px;
+}
+
+input[type="button"]
+{
+	font-family:Gabriela;
+    background-color:#1a1a1a !important;
+    color:#fdcf22;
+    min-height:35px;
+    min-width:34px;
+    text-align:center;
+    text-decoration:none;
+    margin-left:3px;
+	font-size:11pt;
+	border:solid 2px #111 !important;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	margin-top:10px;
+	width:150px;
+
+}
+
+.segundoM{
+	border:solid 5px #FFFFFF !important;
+	margin: 1% !important;
+	padding:0.5%;
+  	height: 96%;
+  	min-height:0px auto !important;
+}
+
+.conteidoMargen{
+	border:solid 10px #FFFFFF !important;
+	margin: 1% !important;
+  	height: 96%;
+  	min-height:698px !important;
+}
+
+.fondoSubs{
+    padding-left:45px;
+    background:transparent url(../img/subs.png) no-repeat !important;
+    padding-right:20px;
+
+}
+
+.fondoAudio{
+    padding-left:45px;
+	background:transparent url(../img/sonido.png) no-repeat !important;
+    padding-right:20px;
+	
+}
+
 #cartaBvisible{
 	min-width: 180px;
 	min-height:220px;
@@ -14,24 +78,33 @@
 }
 
 .seleccionado{
-	opacity:0.6;
-	filter:alpha(opacity=60); /* For IE8 and earlier */
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
 /**Termina audio y subs**/
 
 #posiblePuntuacion{
 	float:left;
-	color:#f9ec23;
-	margin 0px auto;
-	font-size: 18pt;	
+	color:#bd2531;
+	padding-left:5px;
+	margin-top:-5px;
+	font-size: 18pt;
 }
 
 .respuestaInput{
-	min-height: 50px !important;
+	position:static;	
+	min-height: 35px !important;
 	color:#f9ec23;
-	
+	padding:4px;
 }
+
+#respuestaInput{
+	margin:0px auto;
+	min-height: 40px !important;
+	max-width: 160px;
+}
+
 .BarajaResp{
 	margin-bottom:16px;
 	background-color:#1a1a1a !important;
@@ -50,19 +123,19 @@
 	margin: 0px auto;
 	
 }
-
+.columnaCentral{
+	min-width: 600px;
+}
+.ColumnaDer{
+	min-width:180px;
+}
 /**clases para la ayuda de la loteria**/
 
 .longitud{
 	float:right;
 	margin-right:5px;
-	margin-top:-5px;
-}
-
-#longitudAyuda{
+	font-size: 12pt !important;
 	color:#f9ec23;
-	margin 0px auto;
-	font-size: 18pt;	
 }
 
 .ayudaLoteria{
@@ -120,33 +193,43 @@
 
 .contenido{
 	width: 528px;
-	background-color: #003f3b;
+	background-color: #333333;
 	min-height: 50px !important;
 	color:#f9ec23;
-	margin: auto;
+	margin:0px auto;
+	font-family: Arial;
+	text-align:center;
+	font-style:oblique;
+	padding-top:13px;
+		
 	
 }
 .fondoMazo{
-	width: 528px;
-	height: 528px;
-	background-color: #00a69c;
+	width: 508px;
+	height:508px;
+	background-color: #1a1a1a;
+	margin:0px auto;
 }
 .espacioSuperior{
 	margin-top:3%;
 }
+.espacioSuperiorP{
+	padding-top:30px;
+}
 
 .contenidoSuperior{
-	width: 528px;
-	background-color: #007853;
+	width: 532px;
+	background-color: #333333;
 	min-height: 20px !important;
 	margin:0px auto;
-	font-family:Helvetica;
+	font-family:Arial;
 	font-size:10pt;
+	padding:4px;
 	
 }
 .fondosup{
 	width: 528px;
-	background-color: #000;
+	background-color: #333333;
 	min-height: 15px !important;
 	font-size: 87%;
 	color: white;
@@ -189,9 +272,10 @@
 
 .textoLetra{
 	color:#f9ec23;
-	background-color:#007853;
-	min-height: 28px;
-	margin-top: 3px;
+	background-color:#1A1A1A;
+	min-height: 32px;
+	margin-top: 5px !important;
+	padding-top:4px;
 	font-size: 18pt;
 	
 }
@@ -257,3 +341,6 @@
 	padding: 5px 20px 6px 16px
 }
 
+.botonLT{
+	max-width:200px;
+}
