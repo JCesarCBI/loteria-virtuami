@@ -86,8 +86,8 @@ class CJuego extends CI_Controller {
 			$data['puntaje']=$puntaje;
 			$data['tiempo']=$tiempo;
 			$data['juego']['idPartida'] = $idPartida;
-			$data['juego']['idNivel'] = $idPartida;
-			$data['juego']['idModalidad'] = $idPartida;
+			$data['juego']['idNivel'] = $idNivel;
+			$data['juego']['idModalidad'] = $idModalidad;
 			$data['jugador']['nombre'] = $this->session->userdata('usuario');
 			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
 			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
