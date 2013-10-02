@@ -40,7 +40,7 @@
 					</div> -->
 				</div>
 				<div id="informacion" class="twelve columns">
-					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cDatosPerfil2/editaInformacionUsuario" method="post">
+					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
@@ -48,7 +48,7 @@
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
 							<center id="guardaCambios" class="twelve columns"> 
-								<input class="six columns centered" type="button" id="BtnGuardaCambios" value="Guardar cambios"><br>
+								<input class="six columns centered" type="submit" id="BtnGuardaCambios" value="Guardar cambios"><br>
 								<input class="six columns centered" type="button" id="cancelarGuardaCambios" value="Cancelar">
 							</center>
 							<center id="editarSeccion"> <!--Editar información-->
