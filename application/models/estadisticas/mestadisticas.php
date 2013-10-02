@@ -167,10 +167,7 @@
 		}
 		
 		public function getUltimoScore($idUsr)
-		{
-			$fechaActual = date('Y-m-d H:i:s');
-			echo $fechaActual;
-			
+		{		
 			$this->db->SELECT('partida.partida, nivel.nivel, modalidad.modalidad, record.record');
 			$this->db->FROM('score');
 			$this->db->JOIN('record','record.idScore = score.idScore');
