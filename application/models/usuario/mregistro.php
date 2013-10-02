@@ -142,15 +142,10 @@ class Mregistro extends CI_Model {
 		$this->db->insert('jugador', $player);
 		
 		$randCarta = $this->getRandomCarta();
-		
-		echo'<pre>';
-			print_r($randCarta);
-		echo'</pre>';
-		
+				
 		foreach($randCarta as $carta)
 		{
 			$this->db->INSERT('galeria', array('idUsr' => $idUsr, 'idJuego' => $idJuego, 'idCarta' => $carta));
-			print_r($carta);
 		}
 	}
 	
