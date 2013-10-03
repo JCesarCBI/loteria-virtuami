@@ -106,7 +106,7 @@ input[type="text"], input[type="password"], input[type="email"], select{
 
 /*------------------------------------------------------------------------------------------------------------*/
 											/*Estadísticas */
-											
+										
 p.descripcionTrofeo{color:#fff;}
 h3{color:#fff;}
 h2{color:#fff;}
@@ -117,10 +117,41 @@ h2{color:#fff;}
 	margin-left:3%;
 	color:#fff;
 }
+#logoLoteriaEst{
+	margin-bottom:30px;
+}
 .gris{opacity:0.4 !important;	filter:alpha(opacity=40); /* For IE8 and earlier */}
 .trofeos{margin-top:40px;}
 .trofeo-chico{width:40px; height:40px;}
 .trofeo-grande{	opacity:1;}
+.TseccionesEst{
+	text-align:center;
+	color:#eeb81c;
+	font-weight: bold;
+	font-size:15px;
+}
+.azul{
+	background:#17343C !important;
+}
+.blanco{
+	color:#FFF !important;
+	text-align:center !important;
+}
+table{
+	background: #17343C !important;
+}
+#ultimaPartida{
+	font-weight:bold;
+	color:#EE4036;
+	font-size:15px;
+	text-align:center;
+}
+#totalUltimaPartida{
+	font-size:30px;
+	color:#EEB81C;
+	text-align:center;
+	font-weight:bold;
+}
 #gallery li{position: relative;	list-style: none;	display:inline;}
 #gallery img{
 	position: relative;
