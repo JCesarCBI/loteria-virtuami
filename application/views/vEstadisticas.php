@@ -32,26 +32,31 @@
 							?>
 					</div>
 					<div class="trofeos four columns">
-						<div>
+						<div class="twelve columns">
+								<center><img id="logoLoteriaEst" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
+						</div><hr class="linea3">
+						<div class="twelve columns">
+							<p class="TseccionesEst">Trofeos</p>
+							<center>
 							<ul id="gallery">
 							<?php
 								$i = 1;
 								foreach ($trofeos as $indice=>$trofeo) {
 									if($trofeo['Estado'] == 1){ ?>
 										<li>
-											<a class="three clearfix" href="#trofeo<?=$indice?>">
+											<a class="two" href="#trofeo<?=$indice?>">
 												<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 											</a>
 										</li>
 									<?php }else{ ?>
 										<li>
-											<a class="three clearfix" href="#trofeo<?=$indice?>">
+											<a class="two" href="#trofeo<?=$indice?>">
 												<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
 											</a>	
 										</li>
 							<?php }
 								$i++;	
-								if($i==5){
+								if($i==7){
 									echo "<br><br><br>";
 									$i=1;
 								}
@@ -59,47 +64,75 @@
 		 
 							?>
 							</ul>
+							</center>
 						</div>
 					</div> <!--trofeos-->
 					
 					<div id="graficas" class="four columns">
-						<h1>Aquí irán las gráficas</h1>
-					</div>
+						<p class="TseccionesEst">Partidas jugadas : <?= $estadisticas['numPartidas'] ?></p>
+						<!-- <center><div id="piechart"></div></center> -->
+
+						<table id="tablaEst" class="twelve columns">
+							<tr class="azul">
+								<td class="blanco">P. PERDIDAS</td>
+								<?php if($estadisticas['partidasPerdidas'] == -1){ ?>
+									<td class="blanco">No ha jugado</td>
+								<?php }else { ?>
+									<td class="blanco"><?=$estadisticas['partidasPerdidas']?></td>
+								<?php } ?>
+							</tr>
+							<tr class="azul">
+								<td class="blanco">BÁSICO</td>
+								<?php if($estadisticas['basicoGanados'] == -1){ ?>
+									<td class="blanco">No ha jugado</td>
+								<?php }else { ?>
+									<td class="blanco"><?=$estadisticas['basicoGanados']?></td>
+								<?php } ?>							
+							</tr>
+							<tr class="azul">
+								<td class="blanco">AVANZADO</td>
+								<?php if($estadisticas['avanzadoGanados'] == -1){ ?>
+									<td class="blanco">No ha jugado</td>
+								<?php }else { ?>
+									<td class="blanco"><?=$estadisticas['avanzadoGanados']?></td>
+								<?php } ?>
+							</tr>
+							<tr class="azul">
+								<td class="blanco">EXPERTO</td>
+								<?php if($estadisticas['expertoGanados'] == -1){ ?>
+									<td class="blanco">No ha jugado</td>
+									
+								<?php }else { ?>
+									<td class="blanco"><?=$estadisticas['expertoGanados']?></td>
+								<?php } ?>
+							</tr>
+						</table>				
+					</div> <!--graficas-->
+					
 					<div id="ranking" class="four columns">
-						<div id="partidas">
-							<h3>Partidas</h3>
-							<ul>
-								<li><b>Partidas "rápidas" ganadas:</b> <?= $estadisticas['partida']['rapidasGanadas']?></li>
-								<li><b>Partidas "rápidas" perdidas:</b> <?= $estadisticas['partida']['rapidasPerdidas']?></li>
-								<li><b>Partidas "completas" ganadas:</b> <?= $estadisticas['partida']['completasGanadas']?></li>
-								<li><b>Partidas "completas" perdidas:</b> <?= $estadisticas['partida']['completasPerdidas']?></li>
-							</ul>
-						</div>
-						
-						<div id="niveles">
-							<h3>Níveles</h3>
-							<ul>
-								<li><b>Níveles "básico" ganados:</b> <?= $estadisticas['juego']['basicoGanados']?></li>
-								<li><b>Níveles "básico" perdidos:</b> <?= $estadisticas['juego']['basicoPerdidos']?></li>
-								<li><b>Níveles "intermedio" ganados:</b> <?= $estadisticas['juego']['intermedioGanados']?></li>
-								<li><b>Níveles "intermedio" perdidos:</b> <?= $estadisticas['juego']['intermedioPerdidos']?></li>
-								<li><b>Níveles "avanzado" ganados:</b> <?= $estadisticas['juego']['avanzadoGanados']?></li>
-								<li><b>Níveles "avanzado" perdidos:</b> <?= $estadisticas['juego']['avanzadoPerdidos']?></li>
-							</ul>
-						</div>
-						
-						<div id="modalidades">
-							<h3>Modalidades</h3>
-							<ul>
-								<li><b>Modalidad "Juego libre" ganados:</b> <?= $estadisticas['modalidad']['juegoLibreGanados']?></li>
-								<li><b>Modalidad "Juego libre" perdidos:</b> <?= $estadisticas['modalidad']['juegoLibrePerdidos']?></li>
-								<li><b>Modalidad "Diminutivos" ganados:</b> <?= $estadisticas['modalidad']['diminutivosGanados']?></li>
-								<li><b>Modalidad "Diminutivos" perdidos:</b> <?= $estadisticas['modalidad']['diminutivosPerdidos']?></li>
-								<li><b>Modalidad "Adjetivos" ganados:</b> <?= $estadisticas['modalidad']['adjetivosGanados']?></li>
-								<li><b>Modalidad "Adjetivos" perdidos:</b> <?= $estadisticas['modalidad']['adjetivosPerdidos']?></li>
-								<li><b>Modalidad "Sinónimos" ganados:</b> <?= $estadisticas['modalidad']['sinonimosGanados']?></li>
-								<li><b>Modalidad "Sinónimos" perdidos:</b> <?= $estadisticas['modalidad']['sinonimosPerdidos']?></li>
-							</ul>
-						</div>				
+						<div id="ultimaPartidaS" class="twelve columns">
+							<p class="TseccionesEst">Descripción De Última Partida</p>
+							<p id="ultimaPartida"><?= $estadisticas['ultimoScore']['partida']?>/
+							 <?= $estadisticas['ultimoScore']['nivel']?>/
+							 <?= $estadisticas['ultimoScore']['modalidad']?>
+							</p>
+							<p id="totalUltimaPartida">
+								Puntuación:<br>
+								<?= $estadisticas['ultimoScore']['record']?>
+							</p>
+						</div><hr class="linea3">
+						<div id="rankingS" class="twelve columns">
+							<p class="TseccionesEst">Ranking</p>
+							<table id="tablaRanking" class="twelve columns">
+								<?php 
+									foreach ($estadisticas['ranking'] as $ranking) { ?>
+										<tr class="azul">
+											<td class="blanco"><?= $ranking['nombreUsr']?></td>
+											<td class="blanco"><?= $ranking['scoreTotal']?></td>
+										</tr>									
+								<?php } ?>
+								
+							</table>
+						</div>						
 					</div>
 				</div> <!--estadísticas -->

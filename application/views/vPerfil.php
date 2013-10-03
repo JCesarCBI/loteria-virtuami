@@ -9,6 +9,35 @@
 		<script> base = "<?= base_url() ?>"</script>
 		<script src="<?= base_url()?>media/js/validaCampos.js"></script>
 		<script src="<?= base_url()?>media/js/perfil.js"></script>
+		
+		
+		<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+	    <!-- <script type="text/javascript">
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      function drawChart() {
+			var data = google.visualization.arrayToDataTable([
+			          ['Tipo Partida', 'Numero'],
+			          ['basicoGanados',    <?= $estadisticas['basicoGanados'] ?>],
+			          ['avanzadoGanados',  <?= $estadisticas['avanzadoGanados'] ?>],
+			          ['partidasPerdidas',  <?= $estadisticas['partidasPerdidas'] ?>],
+			          ['Experto', 6],
+	
+			        ]);
+		
+		        var options = {
+					backgroundColor: '#17343C',
+			       	legend: 'none',
+			       	enableInteractivity:false,
+			       
+			       	
+		        };
+		
+		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		        chart.draw(data, options);
+			}
+    	</script> -->
+
 	</head>
 
 	<body>						
