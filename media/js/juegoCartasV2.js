@@ -167,20 +167,34 @@ function validaPlantillaBaraja(indice) {
 
 }
 
+function quitaErrores(){
+	//El arreglo de la carta va #deError, posicionPlantilla
+	var error1=document.getElementById('quitaErrorC').value
+	var posicion=error1.lenght;
+	error1=error1.split("-");
+	var carta1=error1[posicion-1]
+	carta1=carta1.split("*");
+	$('#plantilla-' + carta1[1]).removeClass("cartaError");
+	//alert('#plantilla-' + carta1[1]);
+	cartaCorrecta(carta1[1]);
+	cartasLoteria(carta1[1]);
+	
+}
+
 
 function validarComodines() {
 	var comodines = document.getElementById('comodinesTotales').value;
 	var erroresTotales = document.getElementById('errorValor').value;
+		//alert(" errores= "+document.getElementById('quitaErrorC').value);
 
 	if ((comodines > 0) && (erroresTotales > 0)) {
-
+		quitaErrores()
 		comodines--;
 		erroresTotales--
 		document.getElementById('comodinesTotales').value = comodines;
 		document.getElementById('errorValor').value = erroresTotales;
 		pintaComodines(comodines);
 		pintaErrores(erroresTotales);
-		//alert(" errores= " + erroresTotales + " comodines = " + comodines);
 		return erroresTotales;
 	} else {
 		return -1;
@@ -235,6 +249,7 @@ function errores(id) {
 	var errorTotal = document.getElementById('errorValor').value;
 	errorTotal++;
 	document.getElementById('errorValor').value = errorTotal;
+	document.getElementById('quitaErrorC').value = errorTotal+"*"+id+"-";
 
 	var cantidadErrores = validarComodines();
 	//alert(cadena.split('*'));
@@ -298,7 +313,7 @@ function borrarInputCambiarCarta() {
 }
 
 function cartasLoteria(indice){
-	
+	alert(indice+"  caraloteria");
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;

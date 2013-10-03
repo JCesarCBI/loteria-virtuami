@@ -69,6 +69,7 @@ function pintaErrores(cantidad) {
 		$('#erroresVisibles').html(cantidad);
 		$('#erroresVisibles').addClass('magictime puffIn', 200, "");
 }
+
 function multiplicadorCaso(cont){
 	$('#erroresVisibles').removeClass('magictime puffIn');
 	switch(cont)

@@ -33,7 +33,7 @@ function presionaEnter(evt, op) {
 		respuesta = respuesta.toLowerCase();
 		id = obternerId(indice);
 
-		var vOf = ajax_validarRespuesta2(id, respuesta)
+		var vOf = ajax_validarRespuesta(id, respuesta)
 		if (vOf == 1) {
 			//rompo cadenas
 			rompeCadenas();

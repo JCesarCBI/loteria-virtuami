@@ -89,9 +89,12 @@ class cpruebasLuisa extends CI_Controller {
 			$this->session->set_userdata('idModalidad', $idModalidad);
 			$data['puntaje']=$puntaje;
 			$data['tiempo']=$tiempo;
-			$data['idPartida']=$idPartida;
-			$data['idNivel']=$idNivel;
-			$data['idModalidad']=$idModalidad;
+			$data['juego']['idPartida'] = $idPartida;
+			$data['juego']['idNivel'] = $idNivel;
+			$data['juego']['idModalidad'] = $idModalidad;
+			$data['jugador']['nombre'] = $this->session->userdata('usuario');
+			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
+			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";

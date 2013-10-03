@@ -113,11 +113,14 @@
 					<!--Termina la columnaCentral-->
 						<!--Columna derecha, aquí ira la la opción para gritar loteria -->
 					<div class="three columns" id="ColumnaDer">
-							
-							
+						<center>	
+							<img src="<?= base_url().$jugador['avatarGde']?>" class="botonLT" />
+							<div><h4><?=$jugador['nombre']?> </h4> </div>
 							 <input id="subtitulos"  type="button" class="fondoSubs" value="Activado" /><br />
 							 <input id="audioBoton"   type="button" class="fondoAudio" value="Activado" /><br />
 							 <input type="button" value="Abandonar partida" />
+							<br /> 
+							<br /> 
 							<br /> 
 							<br /> 
 							<br /> 
@@ -128,12 +131,12 @@
 								<ul id="gallery">
 									<li>
 										<a id="ayudaLoteriaBoton" >
-											<img class="botonLT" src="<?= base_url()?>media/img/boton.png" id="botonLoteria" class="" onclick='loteria()'/>
+											<img class="botonLT" src="<?= base_url()?>media/img/boton.png" id="botonLoteria"  onclick='loteria()'/>
 										</a>
 									</li>
 								</ul>
 							</div>
-							
+						</center>
 					</div>	
 						<!--Termina la columnaDer-->
 				</div>
@@ -199,6 +202,7 @@
 				<input type="hidden"  id="loteriaCadena" value="" />
 				<input type="hidden"  id="bonusCartasRestantes" value="" />
 				<input type="hidden"  id="vallong" value="" />
+				<input type="hidden"  id="quitaErrorC" value="" />
 				
 		</div>
 	</body>	
