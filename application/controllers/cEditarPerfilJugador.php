@@ -71,6 +71,7 @@ class CEditarPerfilJugador extends CI_Controller {
 					echo "no trofeos ganados";
 					return FALSE;
 				}
+								
 				for($i=1; $i<45; $i++){
 					$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 				}
@@ -101,30 +102,33 @@ class CEditarPerfilJugador extends CI_Controller {
 				$datosPerfilOrdenados['datos']['pos'] = $gradoPos;
 				$datosPerfilOrdenados['idTipoUsr'] = $datosPerfilOrdenados['idTipoUsuario'];
 				unset($datosPerfilOrdenados['idTipoUsuario']);
+// 				
+				// //Estadisticas de juegos ganados y perdidos, en cuanto a rapidas y completas
+				// $datosPerfilOrdenados['estadisticas']['partida']['rapidasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 1); //Ganadas
+								
 				
-				//Estadisticas de juegos ganados y perdidos, en cuanto a rapidas y completas
-				$datosPerfilOrdenados['estadisticas']['partida']['rapidasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['partida']['rapidasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['partida']['completasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['partida']['completasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 3); //Perdidas
-				//Estadisticas de juegos en sus diferentes niveles que haya perdido y ganado
-				$datosPerfilOrdenados['estadisticas']['juego']['basicoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['juego']['basicoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['juego']['intermedioGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['juego']['intermedioPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['juego']['avanzadoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['juego']['avanzadoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['juego']['expertoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['juego']['expertoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 3); //Perdidas
-				//Estadisticas de juegos ganados y perdidos por modalidad
-				$datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibreGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibrePerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 3); //Perdidas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
-				$datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['partida']['rapidasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['partida']['completasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['partida']['completasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 3); //Perdidas
+				// //Estadisticas de juegos en sus diferentes niveles que haya perdido y ganado
+				// $datosPerfilOrdenados['estadisticas']['juego']['basicoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['juego']['basicoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['juego']['intermedioGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['juego']['intermedioPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['juego']['avanzadoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['juego']['avanzadoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['juego']['expertoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['juego']['expertoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 3); //Perdidas
+				// //Estadisticas de juegos ganados y perdidos por modalidad
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibreGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibrePerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 3); //Perdidas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
+				// $datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
+				
 				//Datos para la galeria de cartas
 				$idGaleria = $this->mestadisticas->getGaleria(1,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
@@ -148,11 +152,25 @@ class CEditarPerfilJugador extends CI_Controller {
 				foreach ($mazoCartas as $cartas) {
 					$datosPerfilOrdenados["galeriaCartas"][$cartas["idCarta"]] = $cartas;
 				}
-				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();	
-				// echo "<pre>";
+				$datosPerfilOrdenados['avatares'] = $this->mestadisticas->getAvatar();
+				foreach ($datosPerfilOrdenados["galeriaCartas"] as $key) {
+					$resultado = $this->mestadisticas->getRima($key["idCarta"]);
+					if ($resultado == FALSE) {
+						$datosPerfilOrdenados["galeriaCartas"][$key["idCarta"]]['numRimas'] = 0;
+					} else {
+						$datosPerfilOrdenados["galeriaCartas"][$key["idCarta"]]['numRimas'] = count($resultado);
+					}
+					
+					
+				}
+				// echo "<pre> Arreglo ";
 				// print_r($datosPerfilOrdenados);
 				// echo "</pre>";
-				$this->load->view('veditarPerfilJugadorPruebas', $datosPerfilOrdenados);
+				$this->load->view('pruebaPerfil', $datosPerfilOrdenados);
+				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
+				$this->load->view('vGaleria', $datosPerfilOrdenados);
+				
+				
 			}
 		}
 	}
@@ -172,38 +190,28 @@ class CEditarPerfilJugador extends CI_Controller {
 			//El siguiente arreglo deberá ser traído desde la BD
 			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
 			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
-			
-			//No es necesario:
-			// $idGaleria = $this->mestadisticas->getGaleria($this->session->userdata('idUsuario'), $this->session->userdata('idJuego'));
-			
 			$mazoCartas = $this->mestadisticas->getCartas();
-
-			//No es necesario:
-			// foreach ($mazoCartas as $key) {
-				// unset($key["audio"]);
-				// unset($key["longitud"]);
-				// $key['Estado'] = 0;
-				// $cartas[$key["idCarta"]] = $key;
-			// }
-			// foreach ($idGaleria as $key) {
-				// $cartas[$key["idCarta"]]["Estado"] = 1;
-			// }
-			// echo "<pre>";
-			// print_r($cartas);
-			// echo "</pre>";
-			// echo "<pre>";
-			// print_r($idGaleria);
-			// echo "</pre>";
-			
-			//La función regresará vía JSON un arreglo con los datos de la carta que tenga ID = $idcarta
 			echo json_encode($mazoCartas[$idcarta]);
 		}
+		
+		public function traeRimaCarta($idcarta, $rima){
+			$resultado = $this->mestadisticas->getRima($idcarta);
+			if(count($resultado) < $rima){
+				echo json_encode(array_pop($resultado));
+			}else{
+				echo json_encode($resultado[$rima-1]);
+			}
+		}
 
+
+		//Apartir de aquí se hacen validaciones de los datos a actualizar 
 		public function actualizarDatos(){
 		echo"<pre>";
 		print_r($_POST);
 		echo"</pre>";
+	
 		
+		/*
 		$nuevo['idUsr']=$_POST['idUsuario'];
         $nuevo['nombre']=$_POST['usuario_nombre'];
         $nuevo['aPaterno']=$_POST['usuario_Apat'];
@@ -218,6 +226,67 @@ class CEditarPerfilJugador extends CI_Controller {
         $nuevo['idAvatar']=3;
         $nuevo['cargo']= $_POST['usuario_area'];
         $nuevo['area']= $_POST['usuario_cargo'];
+		*/
+	/*	
+			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
+        	$this->form_validation->set_rules('usr_correo','Correo','required|trim|valid_email');//
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
+        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
+			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
+			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
+			//Si la validavión es correcta
+			
+			
+		    if($this->form_validation->run()!= FALSE){
+		    	
+				//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
+				$datosUsuario= array(
+                'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
+                'correo'=>$this->input->post('usuario_correo',TRUE),
+                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
+                'sexo'=>$this->input->post('usuario_sexo',TRUE),
+                'nombre'=>$this->input->post('usuario_nombre',TRUE),
+                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
+                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
+				'edad'=>$this->input->post('usuario_edad',TRUE),
+				'cargo'=>$this->input->post('usuario_cargo',TRUE),
+				'area'=>$this->input->post('usuario_area',TRUE),
+				'idTipoUsuario'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
+				'idDivision'=>$this->input->post('usuario_division',TRUE),
+				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
+				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
+				'idAvatar'=>1,
+				'fechaRegistro'=>date('Y-m-d H:i:s'),
+				'codigoActivacion'=>uniqid(),
+				'estatus'=>0
+				);
+				
+			//Valido casos especiales de registro.
+				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
+				if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
+		    	if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
+				if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
+				if($datosUsuario['area']=="")$datosUsuario['area']=null;
+			//Si la validación es correcta
+			
+			echo "<script>
+				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
+			</script>";	
+			
+			
+			
+			
+			
+			
+				
+			}
+			
+			else{
+			echo "<script>
+			alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
+			</script>";
+		
 		
 		$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
 		//$nuevos=$_POST;
@@ -226,11 +295,11 @@ class CEditarPerfilJugador extends CI_Controller {
 		print_r($actuales);
 		echo"</pre>";
 		$this->analizarDatos($nuevo, $actuales);
-		
+		*/
 		}
 		
 		
-		/*[usuario_avatar] => /media/img/avatar/avatarE.png
+		/*[usuario_avatar] => /media/img/avatar/avatarE.pn~/.dropbox-dist/dropboxdg
     	[idUsuario] => 1
     	[usuario_nombre] => Flor Nallely
     	[usuario_Apat] => Flores
@@ -313,4 +382,32 @@ class CEditarPerfilJugador extends CI_Controller {
 			}
 			
 		}
+
+
+	//public function validacionFormulario($datos)
+	/*
+		function usuario(){
+			$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
+			$valor= $this->mregistro->getExisteUsuario($term);//La función 'getExisteUsuario' regresa true si el ususario existe y false en caso contrario.
+			//Envia respuesta a la vista si el usuario existe o no en la BD
+			if( $valor){
+				echo json_encode(1);	
+			}else{
+				echo json_encode(0);
+			}		
+		}
+	*/
+		/*function correo(){
+			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
+			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
+			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
+			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
+			if( $valor || ($correo_xanum == FALSE && $correo_titlani==FALSE)){
+				//Correo existe   
+				echo json_encode(1);	
+			}else{
+				//Correo no existe
+				echo json_encode(0);
+			}					
+		}*/
 }
