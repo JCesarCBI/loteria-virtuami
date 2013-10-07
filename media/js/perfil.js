@@ -137,6 +137,7 @@ $(document).ready(function() {
 			alert("datos incorrectos");
 		}
 	})
+
 }); //Fin Document Ready
 
 function validaCampos(){

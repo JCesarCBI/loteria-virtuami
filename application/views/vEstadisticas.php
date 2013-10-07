@@ -18,7 +18,7 @@
 										<center>
 											<div id="trofeo<?=$indice?>" class="trofeo-popup">
 												<h3>Trofeos</h3>
-						 						<img class="trofeo-grande gris" src="<?= base_url() ?><?= $trofeo['imagen']?>"><hr class="lineaCentro">
+						 						<img class="trofeo-grande" src="<?= base_url() ?>media/img/trofeo/gn_carbon.png"><hr class="lineaCentro">
 												<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
 												<p class="descripcionTrofeo">Trofeo no ganado</p>
 												<a class="close" href="#"></a>
@@ -31,11 +31,11 @@
 							}		 
 							?>
 					</div>
-					<div class="trofeos four columns">
-						<div class="twelve columns">
+					<div id="trofeos" class="four columns">
+						<div id="cajaImgLoteria" class="twelve columns">
 								<center><img id="logoLoteriaEst" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
-						</div><hr class="linea3">
-						<div class="twelve columns">
+						</div>
+						<div id="trofeosGaleria" class="twelve columns">
 							<p class="TseccionesEst">Trofeos</p>
 							<center>
 							<ul id="gallery">
@@ -51,7 +51,7 @@
 									<?php }else{ ?>
 										<li>
 											<a class="two" href="#trofeo<?=$indice?>">
-												<img class="trofeo-chico gris" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
+												<img class="trofeo-chico" src="<?= base_url() ?>/media/img/trofeo/icn_carbon.png">
 											</a>	
 										</li>
 							<?php }
@@ -70,7 +70,7 @@
 					
 					<div id="graficas" class="four columns">
 						<p class="TseccionesEst">Partidas jugadas : <?= $estadisticas['numPartidas'] ?></p>
-						<!-- <center><div id="piechart"></div></center> -->
+						<center><div id="piechart"></div></center>
 
 						<table id="tablaEst" class="twelve columns">
 							<tr class="azul">

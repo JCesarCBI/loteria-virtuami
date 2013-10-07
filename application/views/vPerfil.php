@@ -5,14 +5,12 @@
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/perfil.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/bordeBlanco.css">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
 		<script src="<?= base_url()?>media/js/validaCampos.js"></script>
 		<script src="<?= base_url()?>media/js/perfil.js"></script>
-		
-		
-		<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-	    <!-- <script type="text/javascript">
+	    <script type="text/javascript">
 	      google.load("visualization", "1", {packages:["corechart"]});
 	      google.setOnLoadCallback(drawChart);
 	      function drawChart() {
@@ -21,22 +19,24 @@
 			          ['basicoGanados',    <?= $estadisticas['basicoGanados'] ?>],
 			          ['avanzadoGanados',  <?= $estadisticas['avanzadoGanados'] ?>],
 			          ['partidasPerdidas',  <?= $estadisticas['partidasPerdidas'] ?>],
-			          ['Experto', 6],
+			          ['Experto', 0],
 	
 			        ]);
 		
-		        var options = {
-					backgroundColor: '#17343C',
-			       	legend: 'none',
-			       	enableInteractivity:false,
-			       
-			       	
-		        };
+	        var options = {
+				backgroundColor: '#17343C',
+		       	legend: 'none',
+		       	enableInteractivity:false,
+		       	chartArea:{
+		       		width:"auto"
+		       	},
+		       	width:"auto",			       	
+	        };
 		
-		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-		        chart.draw(data, options);
-			}
-    	</script> -->
+	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	        chart.draw(data, options);
+		  }
+    	</script>
 
 	</head>
 
@@ -64,15 +64,15 @@
 						<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
 					</div>
 										
-					<!-- <div class="nine columns">
-						<input class="" type="button" id="editarFoto" value="Editar foto"/>
-					</div> -->
+					<div class="nine columns">
+						<input type="button" id="editarFoto" value="Editar foto"/>
+					</div>
 				</div>
 				<div id="informacion" class="twelve columns">
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
-						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
+						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
 						
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
@@ -93,7 +93,7 @@
 						<div id="c2" class="four columns">
 							<input type="hidden" value="<?= $idUsr?>" name="idUsuario"/>
 
-							<input id="usuario_nombre" class="tarjeta" type="text" autofocus="" disabled value="<?= $nombre ?>">							
+							<input id="usuario_nombre" name="usuario_nombre" class="tarjeta" type="text" autofocus="" disabled value="<?= $nombre ?>">							
 							<label id="nombreVacio" class="error"></label>
 							<label for="usuario_nombre">Nombre</label>
 

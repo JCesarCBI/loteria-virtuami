@@ -50,11 +50,12 @@ form > hr {
 	background:#17343c;
 	margin:0;
 	margin-top:50px;
-	margin-left:-6px;
+	margin-left:-9px;
 	padding: 10px 0px;
 	padding-bottom:80px;
-	width:101% !important;
+	width:101.5% !important;
 	height:auto;	
+	border: 3px solid #fff;
 }
 #nombreUsuario{
 	width:auto !important;
@@ -85,7 +86,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus{
 	border:2px solid #078d7b;
 }
-input[type="button"]{
+input[type="button"], input[type="submit"]{
 	background:#17343c;
 	border: 3px solid #fff;
 	text-align:center;
@@ -120,8 +121,25 @@ h2{color:#fff;}
 #logoLoteriaEst{
 	margin-bottom:30px;
 }
-.gris{opacity:0.4 !important;	filter:alpha(opacity=40); /* For IE8 and earlier */}
-.trofeos{margin-top:40px;}
+#cajaImgLoteria{
+	border-bottom:3px solid #fff;
+}
+
+#trofeosGaleria{
+	margin-top:50px;
+}
+#trofeos, #graficas{
+	margin-top:40px;
+	border-right: 3px solid #fff;
+	margin-bottom: 50px;
+}
+#ranking{
+	margin-top:40px;
+	margin-bottom:50px;
+	/*border-left:3px solid #fff;*/
+}
+
+
 .trofeo-chico{width:40px; height:40px;}
 .trofeo-grande{	opacity:1;}
 .TseccionesEst{
@@ -137,8 +155,13 @@ h2{color:#fff;}
 	color:#FFF !important;
 	text-align:center !important;
 }
-table{
+table, td{
 	background: #17343C !important;
+	border:1px solid #EEB81C !important;
+}
+table{
+	padding:0px !important;
+	
 }
 #ultimaPartida{
 	font-weight:bold;
@@ -275,6 +298,9 @@ table{
 @media (min-width: 1500px){
 	#cjInformacion{
 		width: 104.7% !important;
+	}
+	#estadisticas{
+		margin-left:-12px;
 	}	
 }
 @media (max-width: 900px){
@@ -284,5 +310,10 @@ table{
 	#carrusel>span, #carrusel-ant, #carrusel-sig{
 		width:100px !important;
 		float:left !important;
+	}
+}
+@media (max-width: 900px){
+	rect{
+		width:auto !important;
 	}
 }
