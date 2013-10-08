@@ -1,354 +1,111 @@
-/*CSS de la vista de vinicio*/
-
-/**GENERAL**/
-	
-label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
-form:not("iSesion-form"){
-	width:190px;
-	height:170px;
-	padding-left:5px;
-	position:absolute;
-}
-/* Clase que define a todos los botones de la vista inicio */
-#atras1{margin-left:-150px;}
-.ins{font-size:10px; color: #D9E021; margin-top:-10px; margin-bottom:15px; width:150px;}
-.boton{ background:#D9E021; border-color: #D9E021; font-size:12px;}
-
-/*Mesa del centro */
-/* posición del primer botón que aparece en el registro */
-.mesa{
-	background-image:url("../img/mesa.png");
-	background-repeat:no-repeat;
-	float: left;
-	width:432px;
-	height:354px;
-	margin-top:190px;
-	margin-left:40px
-}
-#sig1{ margin-top:12px;
-	float:right;
-	margin-right:90px;
-}
-.sig1-atras{ margin-top:22px;	margin-left:0px;}
-
-/* posición del segundo botón que aparece en el registro */
-#sig2{ margin-top:12px;	margin-left:85px;}
-.centro{ margin-left:17%;width: 90%;}
-
-/**CAJÓN LATERAL */
-
-#atras2{float:left;	margin-top:105px;}
-#enviar{margin-left:20px;margin-top:105px;}
-#iSesion-boton{	margin-left:-55px;}
-#usrError, #emailExisteError, #emailDominioError, #edadError{
-	font-size:11px;
-	width:auto;
-	padding:5px;
-	height:auto;
-    background-color: #D9E021;
-    -moz-box-shadow: 3px 2px 5px #000;
-    -webkit-box-shadow: 3px 2px 5px #000;
-    box-shadow: 3px 2px 5px #000;
-	margin-left:162px;
-	position: absolute;
-	z-index:4;
-}
-#usrError{margin-top:-39px;}
-#emailExisteError, #emailDominioError{margin-top:-34px;}
-#edadError{margin-top: -33px;}
-
-.error_validation{font-size:8px; color:#000 !important; margin-top:-10px;}
-.rotar{ /* Rota el texto registro en una orientación de 90 grados */
-	-ms-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	margin-top:30px;
-	width:auto;
-}
-.amarillo-lat{ /* Fondo amarillo del cajón lateral */
-	margin-top:-138px;
-	margin-left:193px;
-	background:#D9E021;
-	height:179px;
-	width:25px;
-	float:right;
-	padding: 7px 15px;
-	position:absolute;
+#seccion-formularios, #seccion-informacion{	
+	margin-top:50px;
 }
 
-#usuario_edad{margin-bottom:3px}
-
-#usuario_comunidadUniversitaria{
-	position:absolute;
-	
+#seccion-formularios{
+	border: 3px solid #fff;	
+	padding: 25px 20px;
+	background:#333;
+	min-height: 620px;
+	max-height: auto;
 }
-
-#usuario_gradoActivo{margin-right:-46px; margin-top:30px; position:absolute}
-#usuario_division{margin-right:-46px; margin-top:60px; position:absolute}
-#usuario_posgrado{margin-right:-46px; margin-top:60px; position:absolute}
-#usuario_area{margin-right:-46px; margin-top:30px; position:absolute}
-#usuario_cargo{margin-right:-46px; margin-top:60px; position:absolute}
-
-.cajonLateral-cerrado{ /* Clase que define al cajón lateral en estado cerrado */
-	padding:20px 10px;
-	background-image:url("../img/cajon_reg.png");
-	background-repeat:no-repeat;
-	margin-top:310px;
-	background-position:-195px 0px;
-	width:272px;
-	height:188px;
-	float: left;	
+#formularioIsesion, #formularioRegistro{
+	margin-top:50px;
 }
-
-.cajonLateral-abierto{	/* Clase que define al cajón lateral en estado abierto */
-	padding:20px 10px;
-	background-image:url("../img/cajon_reg.png");
-	background-repeat:no-repeat;
-	margin-top:310px;
-	width:272px;
-	height:188px;
-	float: left;
+#formularioIsesion img, #formularioRegistro img{
+	margin-top:-60px;
+	margin-bottom:20px;
 }
-
-label.sexo{ /* Acomoda los radio inputs y los label en una sola línea */
-	color:#D9E021;
-	margin: 0px 0px 0px 10px; float: left;	
-	font-size:12px;
+#i_uami{
+	float:left !important;
+	margin-right:50px;
 }
-
-p.sexo{margin: 0px 0px 10px 0px; } /* Acomoda los radio inputs y los label en una sola línea */
-
-input.sexo{ float: left; width: 40px;} /* Acomoda los radio inputs y los label en una sola línea */
-
-/* Estilo de los inputs */
-input[type="text"]{ 
-	background: #181907;
-	outline: none !important; 
-	color:#D9E021;
-	font-size:10px;
+#i_virtuami{
+	float:right !important;
 }
-input[type="text"]:focus {
-	background: #181907;  
-	outline: none !important; 
-	color:#D9E021;
+.boton{
+	margin:30px 0px !important;
+	height: 40px;
+	border-radius:10px;	
+	background:#078d7b;
+	border:none;
+	color:#fff;
 	font-weight:bold;
 }
-
-input[type="password"]:focus {
-	background: #181907;  
-	outline: none !important; 
-	border-color: #000;
-	color:#D9E021;
-	font-weight:bold;
-}
-input[type="password"]{
-	background: #181907;
-	outline: none !important; 
-	border-color: #000000;
-	color:#D9E021;
-	font-size:10px;
-}
-input[type="email"]{
-	background: #181907;
-	outline: none !important; 
-	border-color: #000000;
-	color:#D9E021;
-	font-size:10px;
-}
-input[type="email"]:focus {
-	background: #181907;  
-	outline: none !important; 
-	border-color: #000;
-	color:#D9E021;
-	font-weight:bold;
+#texto{
+	margin-bottom:100px;
+	font-weight: bold;
 }
 
-input.lateral{
-	width:160px;
-	height:25px;
-	margin-top:-6px;
-	border-radius:5px;
+
+select{
+	margin-bottom:5%;
+	height:7%;
+	width:80%;
+	margin-left:10%;
 }
 
-select {width: 162px; margin-top:2.6px; margin-bottom:8px; font-size:11px; }
-/* Clases para la validación de los campos en le registro*/
+video{margin-bottom:50px; margin-top:15px;}
+
+#seccion-informacion img{
+	margin-top:10px;
+	margin-bottom:80px;
+}
 
 .vacio{	border-color: #000 !important;}
 .correcto {border-color: #005702 !important;}
 .incorrecto{border-color: #A70000 !important;}
 
-/* Estilo para el label cuando el cajón lateral está cerrado */ 
-label.CL-cerrado{ color:#D9E021; margin-top:75px; margin-left:-40px; width:100px;}
-/*CAJÓN SUPERIOR*/
-
-#labelRecuperar{ /*Posición del texto "recuperar contraseña" */
-	margin-left:-160px;
+input[type="text"], input[type="email"], input[type="password"]{
+	background:#fff;
+	border-radius: 10px;
+	border: 1px solid #fff !important;
+	height:38px;
+	width: 80%;
+	margin-bottom:5%;
+	margin-left:10%;
 }
 
-#Isesion, #recuperaContrasena{
-	width:160px;
-	color:#D9E021;
-	margin-top:15px;
-	margin-left:-128px;
-	font-size:12px;
+:-moz-placeholder { /* Firefox 18- */
+   color: #078D7B;  
 }
 
-#Isesion:hover, #recuperaContrasena:hover{text-decoration:underline;}
-#Isesion{margin-left:-90px !important;}
-#recuperaContrasena-boton{margin-left:-70px;}
-.cajonSuperior-abierto{	
-	background-image:url("../img/cajon_login.png");
-	background-repeat:no-repeat;
-	margin-left:260PX;
-	height:240px;
-	width:177px;
-	padding-left: 170px;
-	margin-top:45px;
-	position:absolute;
-	float: left;
-}
-.Inisesion{
-	background:red;
-	width:176px;
-	height:239px;
-	margin-left:170px;
-	position:absolute;
-	float:left;
-	margin-top:45px;
-}
-.cajonSuperior-cerrado{	
-	background-image:url("../img/cajon_login.png");
-	background-repeat:no-repeat;
-	margin-left:260PX;
-	height:240px;
-	width:177px;
-	padding-left: 170px;
-	margin-top:45px;
-	position:absolute;
-	float: left;
-	background-position:0px 175px;
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #078D7B;  
 }
 
-input.superior{
-	margin-left:-161px;	width:160px;
-	height:25px;
-	border: 1px solid #000; 
-	border-radius:5px;
+:-ms-input-placeholder {  
+   color: #078D7B;  
 }
 
-.amarillo-sup{
-	margin-top:30px;
-	margin-bottom:10px;
-	margin-right:6px;
-	background:#D9E021;
-	height:30px;
-	width:165px;
-	float:right;
-	padding: 7px 15px;	
+.labelRegistro{
+	width: 80%;
+	margin-left:10%;
+	color: #fff;
+	margin-bottom:5px;
 }
 
-.iSesion-form{margin-top:70px;}
-.i-sesion, .rotar, .CS-cerrado, .CL-cerrado, .CL-cerrado2{font-size:19px;	font-weight:bold;}
-.i-sesion{
-	margin-top:-2px;
-	margin-left:-12px;
-	width:155px;
-	height:20px;
-	padding:2px;
-	float:left;
+.error{
+	width: 80%;
+	margin-left:10%;
+	color: red;
+	margin-bottom:15px;
+	margin-top:-10px;	
+}
+#cajaSexo{
+	height:38px;
+	width:80%;
+	margin-left:10% !important;
+	background:#fff;
+	margin: 10px 0px;
+	padding: 10px;
+	border-radius: 10px;
 }
 
-label.CS-cerrado{
-	color:#D9E021;
-	width:120px;
-	width:155px;
-	margin-top:210px;
-	margin-left:-155px;
-}
+#sig1{margin: 20px 0px;}
 
-/*ACERCA DEL JUEGO*/
-
-.acerca{margin-top:100px;background: #2E3116;height:auto;}
-#logoUAM{ margin-top:60px;}
-.acerca p, h2{ color: #D9E021;}
-
-/*MediaQuerys*/
-
-/*@media screen and (max-width: 1100px) {
-	label.CL-cerrado{color:#D9E021; margin-top:190px; margin-left:20px; width:100px;}
-	.cajonLateral-cerrado{
-		padding:20px 10px;
-		background-image:url("../img/cajon_login.png");
-		background-repeat:no-repeat;
-		-webkit-transform: rotate(180deg);
-		-moz-transform: rotate(180deg);
-		-ms-transform: rotate(180deg);
-		-o-transform: rotate(180deg);
-		transform: rotate(180deg);
-		margin-top:517px;
-		margin-left:-208px;
-		background-position:0px 175px;
-		width:177px;
-		height:240px;
-		float: left;
-		z-index:2;		
-	}
-	.rotar{ 
-		-ms-transform: rotate(-180deg);
-		-o-transform: rotate(-180deg);
-		transform: rotate(-180deg);
-		-webkit-transform: rotate(-180deg);
-		margin-top:0px;
-		width:100px;
-		margin-left:10px;
-	}
-
-	.cajonLateral-abierto{
-		background-image:url("../img/cajon_login.png");
-		background-repeat:no-repeat;
-		-webkit-transform: rotate(180deg);
-		-moz-transform: rotate(180deg);
-		-ms-transform: rotate(180deg);
-		-o-transform: rotate(180deg);
-		transform: rotate(180deg);
-		margin-left:260PX;
-		height:240px;
-		width:177px;
-		padding-left: 170px;
-		margin-top:517px;
-		position:absolute;
-		float: left;		
+@media (min-width: 1500px){
+	#seccion-formularios{
+		height: 700px;
 	}	
-	
-	.amarillo-lat{
-		float:left;
-		height:30px;
-		width:165px;
-		background:none repeat scroll 0 0 #D9E021;
-		margin-top:48px;
-		margin-left:-1px;
-
-	}
-	
-	#formRegistro{
-		-webkit-transform: rotate(180deg);
-		-moz-transform: rotate(180deg);
-		-ms-transform: rotate(180deg);
-		-o-transform: rotate(180deg);
-		transform: rotate(180deg);		
-		margin-top:95px;
-	}
-	
-	.acerca{
-		margin-top:300px;
-	}
-
-	p.sexo{margin: 0px 0px -15px 0px;} 
-	label.sexo{ 
-		color:#D9E021;
-		margin: -10px 0px -5px 0px; float: left;	
-		font-size:12px;
-	}
-
-}*/
+}

@@ -43,15 +43,12 @@ $(document).ready(function() {
 	$("#editarFoto").click(function(){
 		$("#galeriaEditarFoto").css({ "opacity": "10", "z-index": "4" }) 
 	})
-	$("#galeriaEditarFoto > img").click(function(){
-		url = $(this).attr('src');
-		$(".foto").prop('src',url);
-		$("#usuario_avatar").prop('value',url);
-	})
 	$("#closeGaleriaEditarFoto").click(function(){
 		$("#galeriaEditarFoto").css({"opacity":"0","z-index":"-4"});
 	})
-	
+	$(".close").click(function(){
+		$("#lightbox").hide();
+	})	
 	
 	$("#cancelarGuardaCambios").click(function(){
 		muestraPerfil();
@@ -66,7 +63,7 @@ $(document).ready(function() {
 	$("#nav-estadistica").click(function(){
 		$("#informacion, #galeria, #foto-nombreUsr").hide();
 		$("#estadisticas, #foto-nombreUsr").show();
-		$("#lnombreUsr").hide()
+		$("#lnombreUsr, #lightbox").hide()
 		$("#nombreUsuario>h1").removeClass("underline").css("color","#fff");
 		
 	})
@@ -280,7 +277,7 @@ function muestraInfoCarta(idcarta){
 
 function inicio(){
 	$('#contrasenaActual, #estadisticas, #galeria, #editarFoto').hide()
-	$("#carrusel>span").hide()
+	$("#carrusel>span, #lightbox").hide(100)
 }
 
 function limpiaInfoCarta(){
@@ -300,51 +297,58 @@ function muestraPerfil(){
 	$('#BtnEditar').show()
 }
 
-//Esta función recibe como parámetro el id de la carta que se está viendo
-// function muestraRimas(idcarta){ 
-	// total = $("#totalRima").val()
-	// numRima = $("#numRima").val() //Obtengo el número de rima que mostrará
-	// if(numRima < total){
-		// $.ajax({
-			// url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
-			// dataType: "json",
-			// type: "POST",
-			// success:function(ri){ //Obteniendo los datos vía AJAX
-				// $("#descripcionCarta").html(ri) //Se muestra la rima
-				// //Se crea el botón "siguiente para ver el resto de las rimas"
-			// }
-		// })	
-		// $("#masInfoCarta").html("<input type='button' value='sig' id='infCartaSig' onclick='sumaRima("+idcarta+")'/>")
-		// $("#incarat").html("<input type='button' value='atras' id='infCartaAtras' onclick='restaRima("+idcarta+")'/>")
-	// }else{
-		// $.ajax({
-			// url: base+'index.php/cDatosPerfil/traeRimaCarta/'+idcarta+'/'+numRima, //Obtengo datos vía AJAX
-			// dataType: "json",
-			// type: "POST",
-			// success:function(ri){ //Obteniendo los datos vía AJAX
-				// $("#descripcionCarta").html(ri) //Se muestra la rima
-				// //Se crea el botón "siguiente para ver el resto de las rimas"
-			// }
-		// })	
-		// $("#masInfoCarta").html("")
-	// }
-// 
-// }
+function cambiaImagenFoto(idImagen, urlImagen){
+	url = base+urlImagen;
+	$(".foto").prop('src',url);
+	$("#usuario_avatar").prop('value',url);
+	$("#id_avatar").val(idImagen);
+	
+}
 
+function muestraInfoTrofeo(idTrofeo){
+	if(trofeos[idTrofeo].Estado == 0){
+		$(".trofeo-grande").attr('src',base+"media/img/trofeo/gn_carbon.png");
+		$(".descripcionTrofeo").html("trofeo no ganado");
+		$(".condicionTrofeo").html("¿?");
+	}else{
+		$(".trofeo-grande").attr('src',base+trofeos[idTrofeo].imagen);
+		$(".descripcionTrofeo").html(trofeos[idTrofeo].descripcion);
+		$(".condicionTrofeo").html(trofeos[idTrofeo].condicion);
+	}
+	$(".nombreTrofeo").html(trofeos[idTrofeo].nombre);
+	
+	$("#lightbox").show();
+	
+	$("#rTizq").click(function(){
+		if(idTrofeo>1 && idTrofeo <= 24){
+			idTrofeo--;
+			if(trofeos[idTrofeo].Estado == 0){
+				$(".trofeo-grande").attr('src',base+"media/img/trofeo/gn_carbon.png");
+				$(".descripcionTrofeo").html("trofeo no ganado");
+				$(".condicionTrofeo").html("¿?");
 
-// function sumaRima(idcarta){
-	// numRima = $("#numRima").val()
-	// suma = parseInt(numRima)+1
-	// $("#numRima").val(suma)
-	// muestraRimas(idcarta)
-// }
-// 
-// function restaRima(idcarta){
-	// numRima = $("#numRima").val()
-	// resta = parseInt(numRima)-1
-	// $("#numRima").val(resta)
-	// muestraRimas(idcarta)
-	// if(numRima == 0){
-		// muestraInfoCarta(idcarta)
-	// }
-// }
+			}else{
+				$(".trofeo-grande").attr('src',base+trofeos[idTrofeo].imagen);
+				$(".descripcionTrofeo").html(trofeos[idTrofeo].descripcion);
+				$(".condicionTrofeo").html(trofeos[idTrofeo].condicion);
+			}
+			$(".nombreTrofeo").html(trofeos[idTrofeo].nombre);
+		}
+		
+	})
+	$("#rTder").click(function(){
+		if(idTrofeo>=1 && idTrofeo < 24){
+			idTrofeo++;
+			if(trofeos[idTrofeo].Estado == 0){
+				$(".trofeo-grande").attr('src',base+"media/img/trofeo/gn_carbon.png");
+				$(".descripcionTrofeo").html("trofeo no ganado");
+				$(".condicionTrofeo").html("¿?");
+			}else{
+				$(".trofeo-grande").attr('src',base+trofeos[idTrofeo].imagen);
+				$(".descripcionTrofeo").html(trofeos[idTrofeo].descripcion);
+				$(".condicionTrofeo").html(trofeos[idTrofeo].condicion);
+			}	
+			$(".nombreTrofeo").html(trofeos[idTrofeo].nombre);
+		}
+	})
+}

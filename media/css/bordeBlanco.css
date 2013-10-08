@@ -3,4 +3,22 @@
 	border: 10px #fff solid;
 	margin: 1%;
 }
-#cajaHija{border: 5px #fff solid; margin:1%; padding:0.5% 0.5% 0 0.5%;}
+#cajaHija{
+	border: 5px #fff solid; margin:1%; padding:0.5% 0.5% 0 0.5%;
+	
+    /*-moz-box-shadow: 3px 10px 75px #000000;
+    -webkit-box-shadow: 3px 10px 75px #000000;
+    box-shadow: 3px 10px 75px #000000;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=’#000000′, Direction=90, Strength=4);*/
+}
+
+.sombra1{
+box-shadow: 100px 0px 600px 50px #000000;
+-moz-box-shadow: 100px 0px 600px 50px #000000;
+-webkit-box-shadow: 100px 0px 600px 50px #000000;
+}
+.sombra2{
+box-shadow: 50px 8px 300px 120px #000000;
+-moz-box-shadow: 50px 8px 300px 120px #000000;
+-webkit-box-shadow: 50px 8px 300px 120px #000000;
+}
