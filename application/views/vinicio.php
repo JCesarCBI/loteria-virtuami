@@ -3,7 +3,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio2.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/bordeBlanco.css">
 
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
@@ -13,10 +13,11 @@
 	</head>
 
 	<body>
+		<div class="twelve sombra2"></div>
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
 				<div class="one columns"></div>
-				<div id="seccion-informacion" class="four columns">
+				<div id="seccion-informacion" class="four columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
 					<div class="twelve columns" id="texto">
 						Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos 
@@ -30,12 +31,9 @@
 						como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
 					</div>
 					<div id="footer" class="twelve columns">
-						<span id="logoUam" class="six columns">
-							<img src="<?= base_url() ?>media/img/uami.png">
-						</span>
-						<span id="logoVirtuami" class="six columns">
-							<img src="<?= base_url() ?>media/img/virtuami_logo.png">
-						</span>
+						<img id="i_uami" src="<?= base_url() ?>media/img/i_uami.png">
+						<img id="i_virtuami" src="<?= base_url() ?>media/img/i_virtuami.png">
+						<!-- </span> -->
 					</div>
 				</div> <!--seccion-informacion-->
 				<div class="one columns"></div>
@@ -53,6 +51,7 @@
 						</div>	
 						<!-- primera parte registro -->
 						<form id="formularioRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro/RegistraUsuario">
+							<center><img src="<?= base_url()?>media/img/i_registro.jpg"></center>
 							<div id="paso1">
 				                <input autofocus class="vacio" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="*Usuario"/>
 								<label id="usuarioVacio" class="error"></label>
@@ -114,6 +113,7 @@
 		        		</form>    
 		        		       			
 						<div id="formularioIsesion">
+							<center id="center1"><img src="<?= base_url()?>media/img/i_sesion.jpg"/></center>
 							<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
 				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
 				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
@@ -126,5 +126,6 @@
 				<div class="one columns"></div>
 			</div><!--caja hija-->
 		</div> <!--twelve columns--->
+		<div class="twelve columns sombra2"></div>
 	</body>
 </html>

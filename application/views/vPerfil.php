@@ -40,9 +40,17 @@
 
 	</head>
 
-	<body>						
+	<body>
+
+		<script>
+		
+			<?php
+			$js_array = json_encode($trofeos);
+			echo "var trofeos = ". $js_array . ";\n";
+			?>			
+		</script>						
 		<title>Editar perfil</title>
-		<div id="barraUsuario" class="twelve columns header">
+		<div id="barraUsuario" class="twelve columns header sombra2">
 			<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
 			<a href="#" id="usuario"><?=$nombreUsr?></a>
 			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
@@ -51,7 +59,7 @@
 			<div id="cajaHija" class="twelve columns">
 				<div class="five columns"></div>
 				<ul class="navegacion seven columns">
-					<li id="" class="three column"><img src="<?= base_url()?>media/img/_j.jpg">uego</li>
+					<li id="" class="three column"><a href="<?= base_url()?>index.php/cpruebasLuisa/modalidad"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
 					<li id="nav-informacion" class="three column"><img src="<?= base_url()?>media/img/_i.jpg">nformación</li>
 					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
 					<li id="nav-galeria" class="three column"><img src="<?= base_url()?>media/img/_g.jpg">alería</li>
@@ -62,32 +70,39 @@
 					<div id="nombreUsuario" class="nine columns">
 						<h1 class="underline"><?= $nombreUsr?></h1>
 						<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
-					</div>
-										
-					<div class="nine columns">
-						<input type="button" id="editarFoto" value="Editar foto"/>
-					</div>
+					</div>										
+
 				</div>
 				<div id="informacion" class="twelve columns">
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
-						
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
-							<center id="guardaCambios" class="twelve columns"> 
+							<center><input type="button" id="editarFoto" value="Editar foto" class="six columns centered"/></center>
+							<div id="galeriaEditarFoto">
+								<?php
+									foreach ($avatares as $avatar) { ?>
+										<img src="<?php print_r(base_url().$avatar['icnAvatar'])?>" onclick="cambiaImagenFoto(<?=$avatar['idAvatar']?>,'<?= $trofeos[$avatar['idAvatar']]['imagen']?>')" />
+										
+								<?php }
+								?>
+								<label id="closeGaleriaEditarFoto" href="#"></label>
+							</div>
+							<center id="guardaCambios"> 
 								<input class="six columns centered" type="submit" id="BtnGuardaCambios" value="Guardar cambios"><br>
 								<input class="six columns centered" type="button" id="cancelarGuardaCambios" value="Cancelar">
 							</center>
 							<center id="editarSeccion"> <!--Editar información-->
 								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar información"></span>
 								<div id="contrasenaActual" class="twelve columns">
-									<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual" >
-									<input type="button" id="BtnConfirmContrasena" value="Confirmar">
-									<input type="button" id="BtnCancelarEditar" value="Cancelar" >
+									<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
+									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns centered">
+									<input type="button" id="BtnCancelarEditar" value="Cancelar" class="six columns centered">
 								</div>
 							</center>
+
 						</div>
 						
 						<div id="c2" class="four columns">
@@ -148,13 +163,4 @@
 
 						</div>
 					</form>
-					<div id="galeriaEditarFoto">
-						<?php
-							foreach ($avatares as $avatar) { ?>
-								<img src="<?php print_r(base_url().$avatar['icnAvatar'])?>" onclick("cambiaIdImagenFoto(<?=$avatar['idAvatar']?>)") />
-								
-						<?php }
-						?>
-						<a id="closeGaleriaEditarFoto" href="#"></a>
-					</div>
 				</div> <!--información-->

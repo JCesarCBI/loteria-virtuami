@@ -1,35 +1,18 @@
 <div class="twelve columns" id="estadisticas">
 					<div id="lightbox">
-						<?php
-							if($trofeos != NULL){
-								foreach ($trofeos as $indice=>$trofeo) {
-									if($trofeo['Estado'] == 1){ ?>
-										<center>
-											<div id="trofeo<?=$indice?>" class="trofeo-popup">
-												<h3>Trofeos</h3>
-												<img class="trofeo-grande" src="<?= base_url() ?><?= $trofeo['imagen']?>"><hr class="lineaCentro">
-												<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
-												<p class="descripcionTrofeo"><?= $trofeo['descripcion']?></p>
-												<p class="descripcionTrofeo"><?= $trofeo['condicion']?></p>
-												<a class="close" href="#"></a>
-											</div>
-										</center>
-									<?php }else{ ?>
-										<center>
-											<div id="trofeo<?=$indice?>" class="trofeo-popup">
-												<h3>Trofeos</h3>
-						 						<img class="trofeo-grande" src="<?= base_url() ?>media/img/trofeo/gn_carbon.png"><hr class="lineaCentro">
-												<h3 class="nombreTrofeo"><?= $trofeo['nombre']?></h3>
-												<p class="descripcionTrofeo">Trofeo no ganado</p>
-												<a class="close" href="#"></a>
-											</div>
-										</center>
-								<?php }
-									}
-							}else{
-								echo "<label>No hay trofeos ganados</label>";
-							}		 
-							?>
+
+						<center>
+							<img id="rTizq" src="<?= base_url()?>media/img/fg_izq.png"/>
+							<h3>Trofeos</h3>
+							<img class="trofeo-grande" src=""><hr class="lineaCentro">
+							<h3 class="nombreTrofeo"></h3>
+							<p class="descripcionTrofeo"></p>
+							<p class="condicionTrofeo"></p>
+							<label class="close"></label>
+							<img id="rTder" src="<?= base_url()?>media/img/fg_der.png"/>
+						</center>
+
+
 					</div>
 					<div id="trofeos" class="four columns">
 						<div id="cajaImgLoteria" class="twelve columns">
@@ -44,15 +27,15 @@
 								foreach ($trofeos as $indice=>$trofeo) {
 									if($trofeo['Estado'] == 1){ ?>
 										<li>
-											<a class="two" href="#trofeo<?=$indice?>">
-												<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>">
-											</a>
+											<span class="two">
+												<img class="trofeo-chico" src="<?= base_url() ?><?= $trofeo['imagenIcon']?>" onclick="muestraInfoTrofeo(<?= $trofeo['idTrofeo']?>)">
+											</span>
 										</li>
 									<?php }else{ ?>
 										<li>
-											<a class="two" href="#trofeo<?=$indice?>">
-												<img class="trofeo-chico" src="<?= base_url() ?>/media/img/trofeo/icn_carbon.png">
-											</a>	
+											<span class="two">
+												<img class="trofeo-chico" src="<?= base_url() ?>/media/img/trofeo/icn_carbon.png" onclick="muestraInfoTrofeo(<?= $trofeo['idTrofeo']?>)">
+											</span>	
 										</li>
 							<?php }
 								$i++;	

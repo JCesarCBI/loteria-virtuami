@@ -36,13 +36,13 @@
 										</span>									
 							<?php	} }?>
 	
-							<span id="carrusel-sig" class="one columns recorre"><img src="<?=base_url()?>media/img/fg_der	.png"></span>
+							<span id="carrusel-sig" class="one columns recorre"><img src="<?=base_url()?>media/img/fg_der.png"></span>
 							<br><br>
 						</div>
 					</div>
 				</div>
 		</div> <!--cajaHija-->
 		</div> <!-- caja madre -->
-		
+		<div class="twelve columns sombra2"></div>		
 	</body>
 </html>
