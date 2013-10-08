@@ -9,6 +9,7 @@
 			$this->load->helper('date');
 		}
 		
+		//Función para guardar record y score por partida de usuario
 		public function setScore($score, $record, $idEstadoPartida)
 		{
 			$idUser = $score["idUsr"];
@@ -48,6 +49,7 @@
 			
 		}
 		
+		//Funcion para extraer el score total
 		public function getScoreTotal($idUser, $idJuego)
 		{
 			$this->db->SELECT('scoreTotal');
