@@ -5,6 +5,7 @@ class CEditarPerfilJugador extends CI_Controller {
 	function __construct() {    
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
+		$this->load->library('form_validation');
 		$this->load->model('usuario/mdatosperfil');
 		$this->load->model('estadisticas/mestadisticas');
 		$this->load->model('usuario/mregistro');
@@ -164,8 +165,8 @@ class CEditarPerfilJugador extends CI_Controller {
 					
 				}
 				// echo "<pre> Arreglo ";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
+				 //print_r($datosPerfilOrdenados);
+				//echo "</pre>";
 				$this->load->view('pruebaPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);
@@ -204,35 +205,38 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 
 
-		//Apartir de aquí se hacen validaciones de los datos a actualizar 
+		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
 		echo"<pre>";
 		print_r($_POST);
 		echo"</pre>";
 	
-		
-		/*
-		$nuevo['idUsr']=$_POST['idUsuario'];
-        $nuevo['nombre']=$_POST['usuario_nombre'];
-        $nuevo['aPaterno']=$_POST['usuario_Apat'];
-        $nuevo['aMaterno']=$_POST['usuario_Amat'];
-       // $nuevo['sexo']=$_POST['sexo'];
-        $nuevo['edad']=$_POST['usuario_sexo']; 
-        $nuevo['correo']=$_POST['usr_correo'];
-        $nuevo['idTipoUsuario']=$_POST['usuario_comunidadUniversitaria'];
-        $nuevo['idDivision']=$_POST['usuario_division'];
-        $nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
-        $nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
-        $nuevo['idAvatar']=3;
-        $nuevo['cargo']= $_POST['usuario_area'];
-        $nuevo['area']= $_POST['usuario_cargo'];
-		*/
-	/*	
+		/*Post array
+		 *  [usuario_avatar] => /media/img/avatar/av_us_coleccionista.jpg
+    	    [id_avatar] => /media/img/avatar/av_us_coleccionista.jpg
+    		[usuario_contrasenaActual] => 123456
+    		[idUsuario] => 4
+		    [usuario_nombre]=> Guillermo
+    		[usuario_Apat] => Torres
+    		[usuario_Amat] => Lopez
+    		[usr_correo] => guillermotorres@xanum.uam.mx
+    		[usuario_sexo] => H
+    		[usuario_edad] => 29
+    		[usuario_comunidadUniversitaria] => 4
+    		[usuario_gradoActivo] => 1
+    		[usuario_division] => 2
+    		[usuario_posgrado] => 1
+    		[usuario_area] => 
+    		[usuario_cargo] => 
+    		[usuario_contrasena] => 123456
+		 	* */
+		 	
+		 	
+		 	
 			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
         	$this->form_validation->set_rules('usr_correo','Correo','required|trim|valid_email');//
-			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
-        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
-			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');		
+  			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
 			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
 			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
 			//Si la validavión es correcta
@@ -240,117 +244,54 @@ class CEditarPerfilJugador extends CI_Controller {
 			
 		    if($this->form_validation->run()!= FALSE){
 		    	
-				//Guardando datos en el arreglo "datosUsuario" que se reciben por POST y se enviarán al modelo
-				$datosUsuario= array(
-                'nombreUsr'=>$this->input->post('usuario_nombreUsr',TRUE),
-                'correo'=>$this->input->post('usuario_correo',TRUE),
-                'contrasena'=>$this->input->post('usuario_contrasena',TRUE),
-                'sexo'=>$this->input->post('usuario_sexo',TRUE),
-                'nombre'=>$this->input->post('usuario_nombre',TRUE),
-                'aPaterno'=>$this->input->post('usuario_aPaterno',TRUE),
-                'aMaterno'=>$this->input->post('usuario_aMaterno',TRUE),
-				'edad'=>$this->input->post('usuario_edad',TRUE),
-				'cargo'=>$this->input->post('usuario_cargo',TRUE),
-				'area'=>$this->input->post('usuario_area',TRUE),
-				'idTipoUsuario'=>$this->input->post('usuario_comunidadUniversitaria',TRUE),
-				'idDivision'=>$this->input->post('usuario_division',TRUE),
-				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
-				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
-				'idAvatar'=>1,
-				'fechaRegistro'=>date('Y-m-d H:i:s'),
-				'codigoActivacion'=>uniqid(),
-				'estatus'=>0
-				);
+				$nuevo['idUsr']=$_POST['idUsuario'];
+       		    $nuevo['nombre']=$_POST['usuario_nombre'];
+        		$nuevo['aPaterno']=$_POST['usuario_Apat'];
+        		$nuevo['aMaterno']=$_POST['usuario_Amat'];
+       			$nuevo['sexo']=$_POST['usuario_sexo'];
+        		$nuevo['edad']=$_POST['usuario_edad']; 
+        		$nuevo['correo']=$_POST['usr_correo'];
+        		$nuevo['idTipoUsuario']=$_POST['usuario_comunidadUniversitaria'];
+        		$nuevo['idDivision']=$_POST['usuario_division'];
+        		$nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
+        		$nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
+        		$nuevo['idAvatar']=3;
+        		$nuevo['cargo']= $_POST['usuario_area'];
+        		$nuevo['area']= $_POST['usuario_cargo'];
 				
-			//Valido casos especiales de registro.
-				if($datosUsuario['idDivision']==-1)$datosUsuario['idDivision']=null;
-				if($datosUsuario['idGradoActivo']==-1)$datosUsuario['idGradoActivo']=null;
-		    	if($datosUsuario['idGradoPosgrado']==-1)$datosUsuario['idGradoPosgrado']=null;			
-				if($datosUsuario['cargo']=="")$datosUsuario['cargo']=null;
-				if($datosUsuario['area']=="")$datosUsuario['area']=null;
-			//Si la validación es correcta
+			//Válido casos especiales de registro.
+				
+			echo "Datos Nuevos:";
+			echo "<pre>";
+			print_r($nuevo);
+			echo "</pre>";
 			
-			echo "<script>
-				alert('¡Estás a un paso de comenzar a jugar! Por favor, confirma tu solicitud a través de la liga que ha sido enviada a tu correo')
-			</script>";	
+			$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
+		
+			echo "Datos en la base de datos antes de actualizar...";
+		     echo"<pre>";
+	      	 print_r($actuales);
+		     echo"</pre>";
 			
-			
-			
-			
-			
-			
+			//$this->analizarDatos($nuevo, $actuales);
+			$this->mdatosperfil->setActualizaUsuario($nuevo['idUsr'], $nuevo);
 				
 			}
 			
 			else{
-			echo "<script>
-			alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
-			</script>";
+				
+				echo"ERROR...";
+				/*echo "<script>
+				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
+				</script>";
+				*/
 		
 		
-		$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
-		//$nuevos=$_POST;
-		
-		echo"<pre>";
-		print_r($actuales);
-		echo"</pre>";
-		$this->analizarDatos($nuevo, $actuales);
-		*/
-		}
 		
 		
-		/*[usuario_avatar] => /media/img/avatar/avatarE.pn~/.dropbox-dist/dropboxdg
-    	[idUsuario] => 1
-    	[usuario_nombre] => Flor Nallely
-    	[usuario_Apat] => Flores
-    	[usuario_Amat] => Vicente
-    	[usr_correo] => anjudark@xanum.uam.mx
-    	[usuario_sexo] => 22
-    	[usuario_comunidadUniversitaria] => 1
-    	[usuario_area] => 
-    	[usuario_cargo] => 
-    	[usuario_gradoActivo] => 1
-    	[usuario_division] => 2
-    	[usuario_posgrado] => 1*/
-
-    	
-    	/*[idUsr] => 1
-            [nombreUsr] => anjudark89
-            [nombre] => Flor Nallely
-            [aPaterno] => Flores
-            [aMaterno] => Vicente
-            [sexo] => M
-            [edad] => 22
-            [correo] => anjudark@xanum.uam.mx
-            [contrasena] => 123456
-            [idTipoUsuario] => 1
-            [idDivision] => 2
-            [idGradoPosgrado] => 
-            [idGradoActivo] => 1
-            [avatar] => /media/img/avatar/avatarE.png
-            [cargo] => 
-            [area] => */	
-            
-            
-            
-            
-            /*
-			 * $nuevo['idUsr']=$_POST['idUsuario'];
-        $nuevo['nombre']=$_POST['usuario_nombre'];
-        $nuevo['aPaterno']=$_POST['usuario_Apat'];
-        $nuevo['aMaterno']=$_POST['usuario_Amat'];
-       // $nuevo['sexo']=$_POST['sexo'];
-        $nuevo['edad']=$_POST['usuario_sexo']; 
-        $nuevo['correo']=$_POST['usr_correo'];
-        $nuevo['idTipoUsuario']=$_POST['usuario_comunidadUniversitaria'];
-        $nuevo['idDivision']=$_POST['usuario_division'];
-        $nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
-        $nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
-        $nuevo['idAvatar']=1;
-        $nuevo['cargo']= $_POST['usuario_area'];
-        $nuevo['area']= $_POST['usuario_cargo'];
-			 * 
-			 * */	
+			}
+		}	
+		
 		public function analizarDatos($datosNuevos, $datosActuales){
 			
 		
@@ -363,7 +304,7 @@ class CEditarPerfilJugador extends CI_Controller {
 						$datosNuevos['cargo']= null;
         				$datosNuevos['area']=null;
 						$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-					}
+					} 
 					echo 'actualizado...';
 					break;
 				case '2':
