@@ -86,7 +86,7 @@
 				'idDivision'=>$this->input->post('usuario_division',TRUE),
 				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
-				'idAvatar'=>1,
+				'idAvatar'=>25,
 				'fechaRegistro'=>date('Y-m-d H:i:s'),
 				'codigoActivacion'=>uniqid(),
 				'estatus'=>0
