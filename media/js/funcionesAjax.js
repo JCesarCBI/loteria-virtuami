@@ -25,7 +25,8 @@ function ajax_escribeRima(id) {
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_sonido(id, tipoAudio) {
 	var sonido;
-	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+tipoAudio;
+	var idNivel=document.getElementById('idNivel').value;
+	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+tipoAudio+'/'+idNivel;
 
 	$.ajax({
 
@@ -50,7 +51,8 @@ function ajax_sonido(id, tipoAudio) {
 function ajax_validarRespuesta(id, respuesta) {
 
 	var respuestaCorrecta = 1;
-	var url = base + 'index.php/cpruebasLuisa/respuestaCorrecta/'+ id;
+	var idModalidad=document.getElementById('idModalidad').value;
+	var url = base + 'index.php/cpruebasLuisa/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
 	var data = 'respuesta='+respuesta;
 
 	$.ajax({
@@ -75,33 +77,3 @@ function ajax_validarRespuesta(id, respuesta) {
 
 }
 
-
-function ajax_validarRespuesta2(id, respuesta) {
-	
-	var modalidad=2;
-	var respuestaCorrecta = 1;
-	var url = base + 'index.php/cSinonimos/seleccionarPosibleRespuesta/'+id+'/'+modalidad;
-	var data = 'respuesta='+respuesta;
-
-	$.ajax({
-
-		url : url,
-	    data: data,
-	    type: 'POST',
-		async : false,
-
-		success : function(data) {
-			
-			respuestaCorrecta = data;
-			$('#contenido').html(data);
-
-		},
-
-		error : function() {
-			alert("Error al traer la respuesta");
-		}
-	});
-
-	return respuestaCorrecta;
-
-}

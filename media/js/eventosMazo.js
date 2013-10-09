@@ -12,6 +12,9 @@ function presionaEnter(evt, op) {
 
 	var charCode = (evt.which) ? evt.which : event.keyCode
 	var respuesta2 = document.getElementById('respuestaBaraja').value;
+	var idNivel=document.getElementById('idNivel').value;
+	var idPartida=document.getElementById('idPartida').value;
+	var idModalidad=document.getElementById('idModalidad').value;
 	
 	var restarLong = respuesta2.length;
 	var longitudchar = document.getElementById('vallong').value;

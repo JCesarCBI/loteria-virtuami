@@ -44,6 +44,49 @@ function cartaCorrecta(indice){
 	$('#plantilla-frijolito-' + indice).addClass("frijolito");
 }
 
+function cartaRecuperada(indice){
+	
+	var clases = $('#plantilla-frijolito-' + indice).attr( "class" );
+		
+	if(clases!="frijolitoGris"){
+			
+		$('#plantilla-frijolito-' + indice).addClass("frijolitoDorado");
+		
+	} else{
+	
+		$('#plantilla-frijolito-' + indice).removeClass("frijolitoGris");
+		$('#plantilla-frijolito-' + indice).addClass("frijolitoDorado");
+		
+	}
+}
+
+function cartaPasada(numCarta){
+	
+	 id=obternerId(numCarta);
+ 	var arregloCarta = document.getElementById('IdMazoReversa').value;
+	cartasId = arregloCarta.split("*");
+	var voF = cartasId.indexOf(id);
+	id = id + "";
+	
+	if (voF>-1) {
+		
+		var clases = $('#plantilla-frijolito-' + voF).attr( "class" );
+		
+
+		if((clases!="frijolito") && (clases != "frijolitoDorado")){
+		//Si pasa la carta la agrego al arreglo de cartas que se tienen que recuperar
+		controlError.push(voF);
+		//alert("cadena de control de error"+ controlError);
+		//como tengo un error verifico si tengo comodines
+		$('#plantilla-frijolito-' + voF).addClass("frijolitoGris");
+		validarComodines()
+			
+		}
+	};
+
+	
+}
+
 function quitarMarco(indice){
 	$('#plantilla-' + indice).removeClass("cartaClick", 105, "easeOutQuart");
 }

@@ -88,7 +88,7 @@
 									$cont=1;
 								 foreach ($lote as $key => $carta) {
 									
-									echo "<div class='mazoTemp' ><span id='plantilla-frijolito-".$cont2."' class=''></span><img class='cartaMazo' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/> </div> " ;
+									echo "<div class='mazoTemp' ><div id='plantilla-frijolito-".$cont2."' class=''></div><img class='cartaMazo' id=plantilla-".$cont2." src='".base_url().$carta['imgPlantilla']."' onclick='clickPlantilla(".$cont2.")'/> </div> " ;
 									
 									$cont2++;
 									if (($cont % 4)==0 && $cont>1) 
@@ -189,6 +189,7 @@
 				<input type="hidden"  id="tiempoJuego"  value="<?= $tiempo?>" />
 				<input type="hidden"  id="idNivel"  value="<?= $juego['idNivel']?>" />
 				<input type="hidden"  id="idModalidad"  value="<?= $juego['idModalidad']?>" />
+				<input type="hidden"  id="idPartida"  value="<?= $juego['idPartida']?>" />
 				<input type="hidden"  id="tiempoReloj"  value="0" />
 				<input type="hidden"  id="multiplicadorValor" value="1" />
 				<input type="hidden"  id="multiplicadorValorAux" value="1" />
@@ -202,7 +203,6 @@
 				<input type="hidden"  id="loteriaCadena" value="" />
 				<input type="hidden"  id="bonusCartasRestantes" value="" />
 				<input type="hidden"  id="vallong" value="" />
-				<input type="hidden"  id="quitaErrorC" value="" />
 				
 		</div>
 	</body>	

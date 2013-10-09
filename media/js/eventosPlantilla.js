@@ -42,13 +42,14 @@ function presionaEnterPlantilla(evt, op) {
 				$('#respuestaInput').html(' ');
 				errores(indice);
 				rompeCadenas()
-				$('#plantilla-' + indice).addClass("cartaError");
+				//$('#plantilla-' + indice).addClass("cartaError");
+				borrarInputCambiarCarta();
 			}
 		} else {
 			puntos();
-			borrarInputCambiarCarta();
 			cartaCorrecta(indice);
 			cartasLoteria(indice);
+			borrarInputCambiarCarta();
 		}
 
 	}

@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
     	
 
 });
-
+	var controlError = new Array(); 
 	var tiempo = "";
 	var tiempo2 = "";
 	var NoClickLoteria=""
@@ -97,12 +97,19 @@ function cambiaCarta(numCarta, mult) {
 	tiempo2 = temporizador(document.getElementById('tiempoReloj').value);
 	idCarta = obternerId(numCarta);
 	
+	
 	//Ayudas del nivel básico
 	if (document.getElementById('idNivel').value == "1") {
 		longitudRespuesta(idCarta);
 		iluminaCartaPlantilla(numCarta);
 		
 	};
+	
+	
+	if((numCarta - 1) >= 0){
+		
+		cartaPasada(numCarta-1);
+	}
 	//Terminan ayudas nivel básico
 
 	//elimino el input para que clickeen la nueva carta
@@ -147,8 +154,10 @@ function cambiaCarta(numCarta, mult) {
 		clearInterval(tiempo2);
 		numCarta--;
 		$('#baraja-' + numCarta).addClass("Escondido");
-		hojaResultados()
+		loteria();
 	};
+	
+	
 
 }
 
@@ -168,16 +177,16 @@ function validaPlantillaBaraja(indice) {
 }
 
 function quitaErrores(){
-	//El arreglo de la carta va #deError, posicionPlantilla
-	var error1=document.getElementById('quitaErrorC').value
-	var posicion=error1.lenght;
-	error1=error1.split("-");
-	var carta1=error1[posicion-1]
-	carta1=carta1.split("*");
-	$('#plantilla-' + carta1[1]).removeClass("cartaError");
-	//alert('#plantilla-' + carta1[1]);
-	cartaCorrecta(carta1[1]);
-	cartasLoteria(carta1[1]);
+	
+	
+	//alert(controlError +  "  valor del control error");
+	if(controlError.length >= 1){	
+		var cartaS=controlError.pop();
+		//alert(cartaS +  "  id de la carta");
+		cartaRecuperada(cartaS);
+		cartasLoteria(cartaS);
+		
+	}
 	
 }
 
@@ -197,6 +206,15 @@ function validarComodines() {
 		pintaErrores(erroresTotales);
 		return erroresTotales;
 	} else {
+		//Si hay comodines y cartas por salvar, pero no hay errores,entonces se recuperan esas cartas
+		// y se actualizan la cantidad de comodines
+		if((comodines > 0) && (controlError.length>0)){
+			quitaErrores()
+			comodines--;
+			document.getElementById('comodinesTotales').value = comodines;
+			pintaComodines(comodines);
+		}
+		
 		return -1;
 	}
 
@@ -241,7 +259,7 @@ function multiplicadores() {
 
 function errores(id) {
 	
-	document.getElementById('estadoPartida').value=1;
+	document.getElementById('estadoPartida').value=3;
 	cadena2 = document.getElementById('cartaVisible').value;
 	cadena = document.getElementById('errorCadena').value;
 	cadena = cadena + cadena2 + "*";
@@ -249,7 +267,15 @@ function errores(id) {
 	var errorTotal = document.getElementById('errorValor').value;
 	errorTotal++;
 	document.getElementById('errorValor').value = errorTotal;
-	document.getElementById('quitaErrorC').value = errorTotal+"*"+id+"-";
+
+	//Me aseguro que la carta este en la plantilla
+	
+	resultado = barajaPlantilla(id);
+	resultado2 =validaPlantillaBaraja(id);
+	
+	if ((resultado == 0) && (resultado2>=0) ) {
+		controlError.push(id);
+	} 	
 
 	var cantidadErrores = validarComodines();
 	//alert(cadena.split('*'));
@@ -258,7 +284,7 @@ function errores(id) {
 	}
 	if (errorTotal == 5) {
 		document.getElementById('estadoPartida').value=3;
-		hojaResultados();	
+		loteria();	
 	};
 
 }
@@ -299,7 +325,7 @@ function rompeCadenas() {
 
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
-	document.getElementById('estadoPartida').value=1;
+	document.getElementById('estadoPartida').value=3;
 	$('#multiplicadorVisible').html('x1');
 	
 
@@ -313,7 +339,7 @@ function borrarInputCambiarCarta() {
 }
 
 function cartasLoteria(indice){
-	alert(indice+"  caraloteria");
+
 	cartas=document.getElementById('loteriaCadena').value;
 	cartas=cartas+indice+"*";
 	document.getElementById('loteriaCadena').value=cartas;
@@ -324,7 +350,8 @@ function cartasLoteria(indice){
 		arreglo=cartas.split('*');
 		
 		if (arreglo.length==17) {
-			marcaBtonLoteria();	
+			marcaBtonLoteria();
+			//alert(document.getElementById('cartaClickPlantilla').value);	
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
 	};
@@ -337,10 +364,10 @@ function pierdeNoLoteria(cartaActual){
 		
 	if (cartaActual!=carta) {
 		
-		hojaResultados();
+		loteria();
 
 	} else{
-		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 1000);
+		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 10000);
 		
 	};
 	
@@ -358,10 +385,9 @@ function loteria(){
 			document.getElementById('estadoPartida').value=1;
 		};
 		
-	}else{
-			document.getElementById('estadoPartida').value=3;
-		
-	};
+	}//else{
+			//document.getElementById('estadoPartida').value=3;
+	// };
 	hojaResultados();	
 }
 

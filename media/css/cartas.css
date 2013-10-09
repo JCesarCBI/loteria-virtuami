@@ -312,18 +312,40 @@ input[type="button"]
 }
 
 .mazoTemp .frijolito {
+
 	z-index: 2 !important;
-    background:transparent url(close.png) no-repeat !important;
+    background:transparent url(frijol_a.png) no-repeat !important;
     cursor:pointer;
     color:#000000;
-    height:35px;
+    height:100px;
+    width:100px;
     position:absolute;
     text-align:center;
     text-decoration:none;
-    width:34px;
-    opacity: 0.8;
-    left: 37px;
-    top: 42px;
+}
+
+.mazoTemp .frijolitoDorado {
+	z-index: 2 !important;
+    background:transparent url(frijol_b.png) no-repeat !important;
+    cursor:pointer;
+    color:#000000;
+    height:100px;
+    width:100px;
+    position:absolute;
+    text-align:center;
+    text-decoration:none;
+}
+
+.mazoTemp .frijolitoGris {
+	z-index: 2 !important;
+    background:transparent url(frijol_c.png) no-repeat !important;
+    cursor:pointer;
+    color:#000000;
+    height:100px;
+    width:100px;
+    position:absolute;
+    text-align:center;
+    text-decoration:none;
 }
 
 .estrella{

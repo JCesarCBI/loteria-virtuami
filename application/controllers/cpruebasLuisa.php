@@ -6,6 +6,7 @@ class cpruebasLuisa extends CI_Controller {
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->library('form_validation');
 		$this->load->model('juego/mJuegoLibre');
+		$this->load->model('juego/mjuegoavanzado');
 	}
 	
 	public function modalidad(){
@@ -34,7 +35,7 @@ class cpruebasLuisa extends CI_Controller {
 					$puntaje = 20;
 					$tiempo = 10000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
-					$data['audio'] = 1;
+					$data['audio'] = 2;
 				}
 				if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
 					$puntaje = 60;
@@ -157,9 +158,15 @@ public function descripcion($id=-1, $tipoAudio=-1){
 }
 
 /******Función que trae el audio de una carta en la baraja********/
-public function audio($id=-1, $audio=-1){
+public function audio($id=-1, $audio=-1, $mazoFrase=-1){
 	
-	$baraja = $this->mJuegoLibre->getMazoFrase();
+	if ($mazoFrase==1) {
+		$baraja = $this->mJuegoLibre->getMazoCarta();
+		
+	} else {
+		$baraja = $this->mJuegoLibre->getMazoFrase();
+	}
+	
 			
 	//Si el id es correcto y la carta existe busco la descripción
 	if ($id>-1 && isset($baraja[$id]['audioMP3'])) {
@@ -191,6 +198,120 @@ public function audio($id=-1, $audio=-1){
 	
 }
 
+/*********************************/
+
+	
+		public function validarSinonimo($respuestaCarta, $idCarta){	//Valida si el 
+			$sinonimo=$this->mjuegoavanzado->getCartaSinonimo($idCarta); 
+		
+			
+			$valor=0;
+			$i=1;
+			foreach ($sinonimo as $key) {
+				$resultado['respuestas'][$i]=$key['sinonimo'];
+				$i++;
+			}
+			
+			
+			foreach ($resultado['respuestas'] as $value) {
+				if ($respuestaCarta==$value) {
+					$valor=1;
+					}
+			}	
+			
+			return $valor;
+		}
+		
+		public function validarAdjetivos($respuestaCarta, $idCArta){
+			$adjetivos= $this->mjuegoavanzado->getCartaAdjetivo($idCArta);
+			
+			
+			$valor =0;
+			$i=1;
+			foreach ($adjetivos as $key) {
+				$resultado['respuestas'][$i]=$key['adjetivo'];
+				$i++;
+			}
+			
+			foreach ($resultado['respuestas'] as $value) {
+				if ($respuestaCarta==$value) {
+					$valor=1;
+					}
+			}	
+			echo $valor;
+			return $valor;
+			
+		}
+		
+		public function validarDiminutivos($respuestaCarta, $idCArta){
+			$diminutivos= $this->mjuegoavanzado->getCartaDiminutivo($idCArta);
+			
+			
+			$valor =0;
+			$i=1;
+			foreach ($diminutivos as $key) {
+				$resultado['respuestas'][$i]=$key['diminutivo'];
+				$i++;
+			}
+			
+			foreach ($resultado['respuestas'] as $value) {
+				if ($respuestaCarta==$value) {
+					$valor=1;
+					}
+			}	
+			echo $valor;
+			return $valor;
+			
+		} 
+		
+public function seleccionarPosibleRespuesta($id, $modalidad){
+	
+	
+	//Respuesta via post 
+	$respuesta=$_POST['respuesta'];
+	
+	switch ($modalidad) {
+		case 1:// Juego Libre	
+		
+			$baraja = $this->mJuegoLibre->getMazoCarta();
+					
+			//Si el id es correcto y la carta existe busco la descripción
+			if ($id>-1 && isset($baraja[$id]['nombre'])) {
+				
+				$datos=$baraja[$id]['nombre'];
+				if ($datos==$respuesta) {
+					$resultado=0;
+				} else {
+					$resultado=1;
+				}
+				
+				//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+				echo($resultado);
+		
+			}
+			//si no lo encuentra me manda 1
+			else{
+				echo 1;
+			}
+			
+		break;
+		case 2://Diminutivos
+			if($this->validarDiminutivos($respuesta, $id)== 1) echo 0;
+			else echo 1;
+		break;
+		case 3://Adjetivos
+			if($this->validarAdjetivos($respuesta, $id)== 1) echo 0;
+			else echo 1;
+		break;
+		case 4://Sinonimos				
+			if($this->validarSinonimo($respuesta, $id)== 1) echo 0;
+			else echo 1;										
+		break;
+		//Agregar aquí las otras modalidades ...
+	}	
+}	
+
+
 //******Función que escribe trae larespuesta correcta********/
 public function respuestaCorrecta($id){
 	
@@ -212,7 +333,7 @@ public function respuestaCorrecta($id){
 		echo($resultado);
 
 	}
-	//si no lo encuentra me manda una cadena vacía
+	//si no lo encuentra me manda 1
 	else{
 		echo 1;
 	}
