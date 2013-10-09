@@ -32,10 +32,13 @@ class CLogin extends CI_Controller {
 					$this->session->set_userdata('idJuego', 1);
 					$this->session->set_userdata('avatar', $jugador[0]->gdeAvatar);
 					$this->session->set_userdata('icnavatar', $jugador[0]->icnAvatar);
+					$datos['usuario']['idUsuario'] = $jugador[0]->idUsr;
+					$datos['usuario']['nomUsuario'] = $usr;
+					$datos['usuario']['avatar'] = $jugador[0]->gdeAvatar;
 					// echo "<pre>";
-					// print_r($this->session->all_userdata());
-					// echo "</pre>";	
-					$this->load->view('vModalidad');  //aqui se cargara vPruebaEfrenLogin
+					// print_r($datos);
+					// echo "</pre>";
+					$this->load->view('vconfiguracionJuego', $datos);  //aqui se cargara vPruebaEfrenLogin
 				} else {
 					$datos = $this->micombobox->datosComboBox();
 					//Agrega este índice para que se emita la alerta correspondiente
