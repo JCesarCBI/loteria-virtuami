@@ -41,12 +41,10 @@
 	</head>
 
 	<body>
-
-		<script>
-		
+		<script>		
 			<?php
-			$js_array = json_encode($trofeos);
-			echo "var trofeos = ". $js_array . ";\n";
+				$js_array = json_encode($trofeos);
+				echo "var trofeos = ". $js_array . ";\n";
 			?>			
 		</script>						
 		<title>Editar perfil</title>

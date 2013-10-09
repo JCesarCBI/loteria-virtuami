@@ -15,11 +15,6 @@
 	<body>
 		
 		<div class="twelve columns">
-			<!-- botón ver perfil -->
-			<div class="row">
-			<a href="<?=base_url()?>index.php/cDatosPerfil/PerfilUsuario/<?=$idJuego=1?>/<?=$idUsuario=-1?>" id="bPerfil" class="large button round offset-by-ten"> Ver perfil</a>
-			</div>
-
 			<!-- sección donde el usuario elegirá la modalidad a jugar -->
 			<div class="row">
 				<div class="two columns"></div>

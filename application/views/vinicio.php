@@ -126,6 +126,6 @@
 				<div class="one columns"></div>
 			</div><!--caja hija-->
 		</div> <!--twelve columns--->
-		<div class="twelve columns sombra2"></div>
+		<!-- <div id="pie" class="twelve column sombra2"></div> -->
 	</body>
 </html>
