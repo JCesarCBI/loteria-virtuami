@@ -25,7 +25,13 @@ class cpruebasNaye extends CI_Controller {
 	}
 	
 	public function modalidadPrueba(){
-		$this->load->view('vconfiguracionJuego');
+		$datos = array ( 
+			'idUsr' => 1,
+			'nombreUsr' => 'anjudark89',
+			'idAvatar' => '1',
+			'icnAvatar' => '/media/img/avatar/av_ic_aguadulce.jpg'			
+		);
+		$this->load->view('vconfiguracionJuego', $datos);
 	}
 	
 	//Función AJAX que verifica si el usuario existe o no existe en la BD
