@@ -3,6 +3,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/bordeBlanco.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/lecciones.css">
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
@@ -11,26 +12,25 @@
 
 	<body>
 		<title>Lecciones</title>
-		
-		<div class="twelve header">
-		
-		<div class="row">
-			<div class="one columns"></div>
-			<div class="ten columns mueble">
-				<div class="offset-by-eight two columns" id="flechas">
-					<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
-					<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
-				</div>
+		<div id="cajaMadre" class="twelve columns">
+		<div id="cajaHija" class="twelve columns">
+			<div class="four columns">
+				<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png"></center>
 				<div id="labels" class="twelve columns">
-					<label id="lb-reglas" class="rotar libro">Reglas</label>
-					<label id="lb-lecciones" class="rotar libro">Lecciones</label>
-					<label id="lb-diminutivos" class="rotar libro">Diminutivos</label>
-					<label id="lb-derivaciones" class="rotar libro">Derivaciones</label>
-					<label id="lb-sinonimos" class="rotar libro">Sinónimos</label>
-				</div>
+					<label id="lb-reglas" class="libro">Reglas</label>
+					<label id="lb-lecciones" class="libro">Lecciones</label>
+					<label id="lb-diminutivos" class="libro">Diminutivos</label>
+					<label id="lb-derivaciones" class="libro">Derivaciones</label>
+					<label id="lb-sinonimos" class="libro">Sinónimos</label>
+				</div>			
+				<center><img id="botonL" src="<?= base_url()?>media/img/j_bloteria.jpg"></center>
+
+			</div>
+			<div class="one columns"></div>
+			<div id="cajaLecciones" class="seven columns">
 				<!-- <center><img class="ten columns centered" id="mueble-img" src="<?= base_url()?>media/img/mueble.png" /></center> -->
 				<input id="seccion" type="hidden" value="reglas">	
-				<div id="reglas-txt" class="cajas-txt-lecciones">
+				<div id="reglas-txt" class="cajas-txt-lecciones ten columns">
 					<h3>Reglas</h3>
 						<ul class="plecciones">
 							<li class="uno">
@@ -60,7 +60,7 @@
 						</ul>
 				</div>
 				
-				<div id="lecciones-txt" class="cajas-txt-lecciones">
+				<div id="lecciones-txt" class="cajas-txt-lecciones ten columns">
 					<h3>Lecciones</h3>
 					
 					<ul class="plecciones">
@@ -82,8 +82,8 @@
 						</li>
 					</ul>
 				</div>
-
-				<div id="diminutivos-txt" class="cajas-txt-lecciones">
+	
+				<div id="diminutivos-txt" class="cajas-txt-lecciones ten columns">
 					<h3>Diminutivos</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -100,8 +100,8 @@
 						</li>
 					</ul>
 				</div>
-
-				<div id="derivaciones-txt" class="cajas-txt-lecciones">
+	
+				<div id="derivaciones-txt" class="cajas-txt-lecciones ten columns">
 					<h3>Derivaciones</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -115,7 +115,7 @@
 					</ul>
 				</div>
 				
-				<div id="sinonimos-txt" class="cajas-txt-lecciones">
+				<div id="sinonimos-txt" class="cajas-txt-lecciones ten columns">
 					<h3>Sinónimos</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -128,12 +128,16 @@
 						</li>
 					</ul>
 				</div>
-				<div class="offset-by-eight two columns" id="flechas2">
+				<div class="two columns" id="flechas">
+					<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
+					<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
+				</div>
+				<div class="two columns" id="flechas2">
 					<img id="flecha-izq2" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
 					<img id="flecha-der2" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
 				</div>
-			</div> <!--mueble -->
-			<div class="one columns"></div>
-		</div>
+			</div>  <!--cajaLecciones-->
+		</div> <!--caja hija-->
+		</div> <!-- caja madre -->
 	</body>
 </html>
