@@ -22,3 +22,9 @@ box-shadow: 50px 8px 300px 120px #000000;
 -moz-box-shadow: 50px 8px 300px 120px #000000;
 -webkit-box-shadow: 50px 8px 300px 120px #000000;
 }
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}

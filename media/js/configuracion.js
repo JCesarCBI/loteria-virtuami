@@ -80,25 +80,25 @@ $(document).ready(function(){
 })
 
 function inicio(){
-	$("#tipoJuego, #nivelJuego, #modalidadJuego, #jugarc").hide();
+	$("#tipoJuego, #nivelJuego, #modalidadJuego, #jugar, #tipo, #nivelc, #modalidadc").hide();
 }
 
 function jugar(){
-	$("#tipoJuego, #nivelJuego, #modalidadJuego").hide();
-	$("#jugarc").show();
+	$("#tipoJuego, #nivelJuego, #modalidadJuego, #tipo, #nivelc, #modalidadc").hide();
+	$("#jugar").show();
 	tiempo("#jugar","magictime swashIn");
 }
 function elijeTipoJuego(){
-	$("#nivelJuego, #modalidadJuego, #jugarc").hide();
-	$("#tipoJuego").show();
+	$("#nivelJuego, #modalidadJuego, #jugar, #nivelc, #modalidadc").hide();
+	$("#tipo, #tipoJuego").show();
 	tiempo("#tipo","magictime swashIn");
 	tiempo("#cPartCompleta","magictime swashIn");
 	tiempo("#cPartRapida","magictime swashIn");
 }
 
 function elijeNivel(){
-	$("#tipoJuego, #modalidadJuego, #jugarc").hide();
-	$("#nivelJuego").show();
+	$("#tipoJuego, #modalidadJuego, #jugar, #tipo, #modalidadc").hide();
+	$("#nivelc, #nivelJuego").show();
 	tiempo("#nivelc","magictime swashIn");
 	tiempo("#nBasico","magictime swashIn");
 	tiempo("#nAvanzado","magictime swashIn");
@@ -106,8 +106,8 @@ function elijeNivel(){
 }
 
 function elijeModalidad(){
-	$("#tipoJuego, #nivelJuego, #jugarc	").hide();
-	$("#modalidadJuego").show();
+	$("#tipoJuego, #nivelJuego, #jugar, #tipo, #nivelc").hide();
+	$("#modalidadc, #modalidadJuego").show();
 	tiempo("#modalidadc","magictime swashIn");
 	tiempo("#libre","magictime swashIn");
 	tiempo("#diminutivo","magictime swashIn");

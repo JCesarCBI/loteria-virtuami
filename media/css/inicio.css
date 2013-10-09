@@ -8,6 +8,7 @@
 	background:#333;
 	min-height: 620px;
 	max-height: auto;
+	margin-bottom:7%;
 }
 #formularioIsesion, #formularioRegistro{
 	margin-top:50px;
@@ -36,17 +37,13 @@
 	margin-bottom:100px;
 	font-weight: bold;
 }
-
-
 select{
 	margin-bottom:5%;
 	height:7%;
 	width:80%;
 	margin-left:10%;
 }
-
 video{margin-bottom:50px; margin-top:15px;}
-
 #seccion-informacion img{
 	margin-top:10px;
 	margin-bottom:80px;
@@ -65,7 +62,10 @@ input[type="text"], input[type="email"], input[type="password"]{
 	margin-bottom:5%;
 	margin-left:10%;
 }
-
+#cajaSexo>span{
+	color: #078D7B;
+	margin-left:20px;
+}
 :-moz-placeholder { /* Firefox 18- */
    color: #078D7B;  
 }
@@ -88,7 +88,7 @@ input[type="text"], input[type="email"], input[type="password"]{
 .error{
 	width: 80%;
 	margin-left:10%;
-	color: red;
+	color: #078D7B !important;
 	margin-bottom:15px;
 	margin-top:-10px;	
 }

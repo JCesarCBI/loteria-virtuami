@@ -1,16 +1,10 @@
-#info{
-	margin-top:180px;
-	height:70px;
-}
-#info label{
-	color:red;
-	text-align: center;
-}
+#info{margin-top:10px;	height:70px;}
+label{font-weight:bold;}
+#info label{color:#EE4036; text-align: center;}
 .carta{
-	height:300px;
+	height:350px;
 	background-image:url("../img/m_tipo.jpg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 100% 100% !important;	
+	border:1px solid #fff;
 }
 .labelConf{
 	font-size:20px;
@@ -20,24 +14,32 @@
 	margin-top:50px;
 	margin-bottom:20px;
 }
-
-.negro{
-	height:130px;
-	background:#000;
+#tipoJuego, #nivelJuego, #modalidadJuego{
+	margin-top:50px;
 }
-
-.rojo{
-	height:100px;
-	background:red;
-
-}
+.negro{	height:130px; background:#333; color:#fff;}
+.rojo{	height:100px; background:#EE4036; color:#fff;}
 .ultima{float:left !important;}
-.two{border:#000000 solid 1px; background-repeat:no-repeat;	background-size: 80% 100%;	background:#fff;}
-#cConfiguracion{margin-top:100px;}
+#cConfiguracion{
+	margin-top:50px;
+}
 #configuracion{
-	background-image:url("../img/m_config.jpg") !important;
-	background-repeat: no-repeat;
-	background-size: 100% 100%;	
+	background: #333 !important;
+	border: 1px solid #fff;
+}
+#Configuracion_del_juego{
+	font-weight:bold;
+	font-size:25px;
+	color: #fff;
+}
+input[type="button"]{
+	margin:10px 0px !important;
+	height: 40px;
+	border-radius:10px;	
+	background:#078d7b;
+	border:none;
+	color:#fff;
+	font-weight:bold;
 }
 body {
   -webkit-backface-visibility: hidden;

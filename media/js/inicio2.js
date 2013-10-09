@@ -34,6 +34,15 @@ $(document).ready(function() {
 	$("#usuario_gradoActivo").change(function(){
 		evaluaGradoActivo();
 	})
+	
+	// $("#iSesion-boton").click(function(){
+		// console.log("jojo")
+		// if(validaIsesion()){
+			// $("#iSesion-boton").removeAttr("disabled");
+		// }else{
+			// console.log("error");
+		// }
+	// })
 });
 
 
@@ -58,6 +67,15 @@ function muestraIsesionForm(){
 function inicio(){
 	$("input[type='text'], input[type='password'], input[type='email']").val("");
 	$("#formularioRegistro, #formularioIsesion, #paso1, #paso2, #paso3, #prof-admin, .error").hide();
- }
-
+}
+// function validaIsesion(){
+	// usuario = $("#Lusuario_nombreUsr").val();
+	// pass = $("#Lusuario_contrasena").val();
+// 	
+	// if(usuario == "" || pass == ""){
+		// return false;
+	// }else{
+		// return true;
+	// }
+// }
 	
