@@ -7,15 +7,18 @@ $(document).ready(function(){
 		ocultaTipoJuego();
 	})
 
+	//PARTIDA
 	$("#cPartCompleta").click(function(){
 		ocultaTipoJuego();
 		$("#juego").html("Partida Completa");
+		$("#vPartida").val(1)
 		elijeNivel();
 
 	})
 	$("#cPartRapida").click(function(){
 		ocultaTipoJuego();
 		$("#juego").html("Partida Rapida");
+		$("#vPartida").val(2)
 		elijeNivel();
 
 	})
@@ -28,17 +31,20 @@ $(document).ready(function(){
 	$("#nBasico").click(function(){
 		ocultaNivelJuego();
 		$("#nivel").html("Nivel Básico");
+		$("#vNivel").val(1)
 		elijeModalidad();
 	});
 	$("#nAvanzado").click(function(){
 		ocultaNivelJuego();
 		$("#nivel").html("Nivel Avanzado");
+		$("#vNivel").val(2)
 		elijeModalidad();
 
 	});
 	$("#nExperto").click(function(){
 		ocultaNivelJuego();
 		$("#nivel").html("Nivel Experto");
+		$("#vNivel").val(3)
 		elijeModalidad();
 	});	
 	
@@ -50,22 +56,26 @@ $(document).ready(function(){
 	});
 	$("#libre").click(function(){
 		ocultaModalidad();
-		$("#modalidad").html("Juego libre");
+		$("#vModalidad").val(1)
+		$("#modalidad").html("Juego libre");		
 		jugar()
 	})
 	$("#diminutivo").click(function(){
 		ocultaModalidad();
+		$("#vModalidad").val(2)
 		$("#modalidad").html("Diminutivos");
 		jugar()
 	})	
 	$("#der-adj").click(function(){
 		ocultaModalidad();
+		$("#vModalidad").val(3)
 		$("#modalidad").html("Derivados y adjetivos");
 		jugar()
 	})
 	$("#sinonimo").click(function(){
 		ocultaModalidad();
 		$("#modalidad").html("Sinónimos");
+		$("#vModalidad").val(4)
 		jugar()
 	})
 	
