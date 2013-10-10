@@ -25,7 +25,7 @@ select{margin-bottom:10px; height:35px}
 #logoLoteria{margin-top:-40px;}
 .foto{margin:0; width:250px; height:250px; float:left; border: 2px solid #fff; padding: 15px 10px;}
 label{color:#727b7a;margin-bottom:20px;} 
-#lnombreUsr{color:#000000; font-size:20px;}
+#lnombreUsr{color:#000; font-size:20px;}
 #c1,#c2,#c3{margin-top:50px; padding:0px 50px; height:500px;}
 #c1,#c2{border-right: 3px solid #fff;}
 form > hr {
@@ -117,14 +117,14 @@ h2{color:#fff;}
 	color:#fff;
 }
 #rTizq{
-	float:left;
-	margin-top:200px;
-	position: absolute;
+	/*float:left;*/
+	/*margin-top:200px;*/
+	/*position: absolute;*/
 }
 #rTder{
-	float:right;
-	margin-top:-289px;
-	position: absolute;
+	/*float:right;*/
+	/*margin-top:-289px;*/
+	/*position: absolute;*/
 
 }
 #logoLoteriaEst{

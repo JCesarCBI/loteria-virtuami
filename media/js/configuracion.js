@@ -29,23 +29,38 @@ $(document).ready(function(){
 		elijeTipoJuego();
 	});
 	$("#nBasico").click(function(){
-		ocultaNivelJuego();
-		$("#nivel").html("Nivel Básico");
-		$("#vNivel").val(1)
-		elijeModalidad();
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaNivelJuego();
+			$("#nivel").html("Nivel Básico");
+			$("#vNivel").val(1)
+			$("#diminutivo, #der-adj, #sinonimo").addClass("bloqueado");
+			elijeModalidad();
+		}
 	});
 	$("#nAvanzado").click(function(){
-		ocultaNivelJuego();
-		$("#nivel").html("Nivel Avanzado");
-		$("#vNivel").val(2)
-		elijeModalidad();
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaNivelJuego();
+			$("#nivel").html("Nivel Avanzado");
+			$("#vNivel").val(2)
+			$("#diminutivo, #der-adj, #sinonimo").removeClass("bloqueado");
+			elijeModalidad();
+		}
 
 	});
+	
 	$("#nExperto").click(function(){
-		ocultaNivelJuego();
-		$("#nivel").html("Nivel Experto");
-		$("#vNivel").val(3)
-		elijeModalidad();
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaNivelJuego();
+			$("#nivel").html("Nivel Experto");
+			$("#vNivel").val(3)
+			elijeModalidad();
+		}
 	});	
 	
 	
@@ -55,28 +70,44 @@ $(document).ready(function(){
 		elijeNivel();
 	});
 	$("#libre").click(function(){
-		ocultaModalidad();
-		$("#vModalidad").val(1)
-		$("#modalidad").html("Juego libre");		
-		jugar()
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaModalidad();
+			$("#vModalidad").val(1)
+			$("#modalidad").html("Juego libre");		
+			jugar()
+		}
 	})
 	$("#diminutivo").click(function(){
-		ocultaModalidad();
-		$("#vModalidad").val(2)
-		$("#modalidad").html("Diminutivos");
-		jugar()
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{		
+			ocultaModalidad();
+			$("#vModalidad").val(2)
+			$("#modalidad").html("Diminutivos");
+			jugar()
+		}
 	})	
 	$("#der-adj").click(function(){
-		ocultaModalidad();
-		$("#vModalidad").val(3)
-		$("#modalidad").html("Derivados y adjetivos");
-		jugar()
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaModalidad();
+			$("#vModalidad").val(3)
+			$("#modalidad").html("Derivados y adjetivos");
+			jugar()
+		}
 	})
 	$("#sinonimo").click(function(){
-		ocultaModalidad();
-		$("#modalidad").html("Sinónimos");
-		$("#vModalidad").val(4)
-		jugar()
+		if($(this).hasClass("bloqueado")){
+			alert("elemento bloqueado")
+		}else{
+			ocultaModalidad();
+			$("#modalidad").html("Sinónimos");
+			$("#vModalidad").val(4)
+			jugar()
+		}
 	})
 	
 	//COMENZAR A JUGAR!
@@ -94,11 +125,13 @@ function inicio(){
 }
 
 function jugar(){
+	$("#cConfiguracion").css("height","100%");
 	$("#tipoJuego, #nivelJuego, #modalidadJuego, #tipo, #nivelc, #modalidadc").hide();
 	$("#jugar").show();
 	tiempo("#jugar","magictime swashIn");
 }
 function elijeTipoJuego(){
+	$("#cConfiguracion").css("height","auto");
 	$("#nivelJuego, #modalidadJuego, #jugar, #nivelc, #modalidadc").hide();
 	$("#tipo, #tipoJuego").show();
 	tiempo("#tipo","magictime swashIn");

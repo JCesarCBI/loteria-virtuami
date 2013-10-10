@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 	
 	$("#bNuevoJuego").click(function(){
-		window.location.href=base+'index.php/cpruebasLuisa/modalidad';
+		window.location.href=base+'index.php/cpruebasNaye/modalidad';
 	})
 	
 	inicio=$("#carrusel-inicio").val();
@@ -84,13 +84,14 @@ function hojaResultados(){
 	botonFace='<button class="small button" onclick="reintentar()" type="button">Reintentar</button>'
 	
 	if (estadoPartida=="3") {		
-		$('#resultadosJuego').html('<h2>'+estado+'</h2>');
+		$('#resultadosJuego').html('<h2>'+estado+'</h2>' +
+			'<label id="puntuacion">Puntuación:<br><br>'+'0'+'</label><br/><br/>'
+		);
 		
 	} else{		
 		$('#resultadosJuego').html('<h2>'+estado+'<h2/>'+
-									'<label id="puntuacion">Puntuación:<br>'+puntos+'</label><br/><br/>'
-									// '<label id="bonus" >Bonus por cartas en el mazo: </label>'+bonus+'<br /><br />'
-								)
+			'<label id="puntuacion">Puntuación:<br><br>'+puntos+'</label><br/><br/>'
+		);
 			
 	}
 	

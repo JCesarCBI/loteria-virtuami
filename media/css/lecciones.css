@@ -40,33 +40,11 @@ li{	list-style:none;}
 #labels label:hover{
 	font-size: 13px;
 }
-/*#lb-reglas{
-	margin-left:28.5%;
-	float:right;
-	position:absolute;
-}
 
-#lb-lecciones{
-	margin-left:38%;
-	float:left;
-}
-#lb-diminutivos{
-	margin-left:5%;
-	float:left;
-}
-#lb-derivaciones{
-	margin-left:-1%;
-	float:left;
-}
-#lb-sinonimos{
-	margin-left:6%;
-	float:left;
-}*/
 .plecciones{
 	margin-top:17px;
 	padding-left:40px;
-	padding-right:15px;
-	position:absolute;	
+	/*padding-right:15px;*/
 }
 
 .plecciones li{
@@ -74,9 +52,15 @@ li{	list-style:none;}
 	color:#fff;
 	text-align:justify;
 }
-
 #flechas2{
 	margin-top:100%;
-
 }
-
+#i_uami{
+	float:left;
+}
+#i_virtuami{
+	float:right;
+}
+#i_uami, #i_virtuami{
+	margin-bottom:50px;
+}

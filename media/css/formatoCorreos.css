@@ -1,15 +1,48 @@
-body{background:#ffe599;}
+@font-face {font-family: 'Gabriela'; font-style: normal; font-weight: 400;
+  src: local('Gabriela'), local('Gabriela'), url(Gabriela-Regular.ttf) format('Gabriela');
+}
+body{ font-family:"Arial";font-size:15px;background-image:url("../img/fondo-general.jpg");}
+.header{
+	background:#333;
+	padding: 15px;
+}
+a, a:hover{	color: #fff; }
+p{
+	font-family:"Arial";
+	text-align:justify;
+	font-size:18px;
+}
+h2{
+	font-family:"Gabriela";
+	margin-top:40px;
+	margin-bottom:70px; 
+	float:right !important;
+	color:#fff;
+	font-size:60px;
+}
+.dato{font-weight:bold; color:#fff;}
 
-p{text-align:justify;text-indent: 50px;}
-h2{	margin-top:40px;margin-bottom:70px;}
-.dato{font-weight:bold;}
-
-#segundo{margin-top:150px;}
+#datosUsuario > span {
+	font-size: 18px;
+}
+#mensaje{
+	font-size:16px;
+	text-align:center;
+}
+#segundo{
+	margin:50px 0px;
+}
+#segundo p{
+	margin:0px;
+}
 
 #loteria-img{
-	margin-top:50px;
 	height:500px;
 	width:300px;
 }
-
 #datosUsuario{margin:40px 0px;}
+
+/*Usado en vrecuperaPass*/
+#estimada, #loteria-img{
+	margin-top:50px;
+}

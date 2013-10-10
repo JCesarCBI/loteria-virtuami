@@ -59,9 +59,7 @@ $(document).ready(function() {
 		if(id != 'final' && id != 'unaPag'){
 			$('.muestra').hide().addClass('ant');
 			$('.muestra').next().show().addClass('muestra').removeClass('desp ant');
-			$('.ant').removeClass('muestra');	
-		}else{
-			// alert("No puedo recorrer más hacia delante ¬¬")
+			$('.ant').removeClass('muestra');
 		}			
 	});
 	
