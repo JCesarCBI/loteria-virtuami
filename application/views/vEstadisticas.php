@@ -1,18 +1,15 @@
 <div class="twelve columns" id="estadisticas">
-					<div id="lightbox">
-
+					<div id="lightbox" >
+						<center><img id="rTizq" src="<?= base_url()?>media/img/fg_izq.png"/></center>
 						<center>
-							<img id="rTizq" src="<?= base_url()?>media/img/fg_izq.png"/>
 							<h3>Trofeos</h3>
 							<img class="trofeo-grande" src=""><hr class="lineaCentro">
 							<h3 class="nombreTrofeo"></h3>
 							<p class="descripcionTrofeo"></p>
 							<p class="condicionTrofeo"></p>
 							<label class="close"></label>
-							<img id="rTder" src="<?= base_url()?>media/img/fg_der.png"/>
 						</center>
-
-
+						<center><img id="rTder" src="<?= base_url()?>media/img/fg_der.png"/></center>
 					</div>
 					<div id="trofeos" class="four columns">
 						<div id="cajaImgLoteria" class="twelve columns">

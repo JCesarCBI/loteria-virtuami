@@ -24,13 +24,14 @@
 					<label id="lb-sinonimos" class="libro">Sinónimos</label>
 				</div>			
 				<center><img id="botonL" src="<?= base_url()?>media/img/j_bloteria.jpg"></center>
-
+				<img id="i_uami" src="<?= base_url()?>media/img/i_uami.png">
+				<img id="i_virtuami" src="<?= base_url()?>media/img/i_virtuami.png">
 			</div>
 			<div class="one columns"></div>
 			<div id="cajaLecciones" class="seven columns">
 				<!-- <center><img class="ten columns centered" id="mueble-img" src="<?= base_url()?>media/img/mueble.png" /></center> -->
 				<input id="seccion" type="hidden" value="reglas">	
-				<div id="reglas-txt" class="cajas-txt-lecciones ten columns">
+				<div id="reglas-txt" class="cajas-txt-lecciones eleven columns">
 					<h3>Reglas</h3>
 						<ul class="plecciones">
 							<li class="uno">
@@ -60,7 +61,7 @@
 						</ul>
 				</div>
 				
-				<div id="lecciones-txt" class="cajas-txt-lecciones ten columns">
+				<div id="lecciones-txt" class="cajas-txt-lecciones eleven columns">
 					<h3>Lecciones</h3>
 					
 					<ul class="plecciones">
@@ -83,7 +84,7 @@
 					</ul>
 				</div>
 	
-				<div id="diminutivos-txt" class="cajas-txt-lecciones ten columns">
+				<div id="diminutivos-txt" class="cajas-txt-lecciones eleven columns">
 					<h3>Diminutivos</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -101,7 +102,7 @@
 					</ul>
 				</div>
 	
-				<div id="derivaciones-txt" class="cajas-txt-lecciones ten columns">
+				<div id="derivaciones-txt" class="cajas-txt-lecciones eleven columns">
 					<h3>Derivaciones</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -115,7 +116,7 @@
 					</ul>
 				</div>
 				
-				<div id="sinonimos-txt" class="cajas-txt-lecciones ten columns">
+				<div id="sinonimos-txt" class="cajas-txt-lecciones eleven columns">
 					<h3>Sinónimos</h3>
 					<ul class="plecciones">
 						<li class="uno">
@@ -128,11 +129,12 @@
 						</li>
 					</ul>
 				</div>
-				<div class="two columns" id="flechas">
+				<div class="one columns" id="flechas">
 					<img id="flecha-izq" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
+					<!-- <span id="num_i">1</span>/<span id="numf"></span> -->
 					<img id="flecha-der" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
 				</div>
-				<div class="two columns" id="flechas2">
+				<div class="one columns" id="flechas2">
 					<img id="flecha-izq2" src="<?=base_url()?>/media/img/izq.png" class="reglas-pag-sig" />
 					<img id="flecha-der2" src="<?=base_url()?>/media/img/der.png" class="reglas-pag-ant"/>
 				</div>

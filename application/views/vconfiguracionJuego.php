@@ -77,7 +77,7 @@
 					<label id="avanzado" class="labelConf rojo">Avanzado</label>
 				</span>
 				<span class="one columns"></span>
-				<span class="two columns carta ultima" id="nExperto">
+				<span class="two columns carta ultima bloqueado" id="nExperto">
 					<label id="experto" class="labelConf rojo">Experto</label>
 				</span>
 			</span>
