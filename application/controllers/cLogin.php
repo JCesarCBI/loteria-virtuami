@@ -32,9 +32,9 @@ class CLogin extends CI_Controller {
 					$this->session->set_userdata('idJuego', 1);
 					$this->session->set_userdata('avatar', $jugador[0]->gdeAvatar);
 					$this->session->set_userdata('icnavatar', $jugador[0]->icnAvatar);
-					$datos['usuario']['idUsuario'] = $jugador[0]->idUsr;
-					$datos['usuario']['nomUsuario'] = $usr;
-					$datos['usuario']['avatar'] = $jugador[0]->gdeAvatar;
+					$datos['idUsr'] = $jugador[0]->idUsr;
+					$datos['nombreUsr'] = $usr;
+					$datos['icnAvatar'] = $jugador[0]->gdeAvatar;
 					// echo "<pre>";
 					// print_r($datos);
 					// echo "</pre>";
