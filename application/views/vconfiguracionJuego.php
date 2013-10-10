@@ -13,9 +13,10 @@
 	
 	<body>
 		<div id="barraUsuario" class="twelve columns header sombra2">
-			<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
-			<a href="#" id="usuario"><?=$nombreUsr?></a>
-			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
+			<!-- <img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/> -->
+			<img src="<?= base_url() ?>media/img/avatar/av_ic_aguadulce.jpg" title="avatar"/>
+			<!-- <a href="#" id="usuario"><?=$nombreUsr?></a> -->
+			<a href="#" id="usuario">anjudark89</a>
 		</div>
 		<div id="cajaMadre" class="twelve columns">
 		<div id="cajaHija" class="twelve columns">
@@ -97,7 +98,7 @@
 					<label id="sinonimos" class="labelConf rojo">Sinónimos</label>
 				</span>					
 			</span>
-			<form method="post" action="<?=base_url(); ?>index.php/cpruebasLuisa/juegoLibre2" >
+			<form method="post" action="<?=base_url(); ?>index.php/cJuego/configuracionJuego" >
 				<input type="hidden" id="vPartida" name="vPartida" value="0" />
 				<input type="hidden" id="vNivel" name="vNivel" value="0" />
 				<input type="hidden" id="vModalidad" name="vModalidad" value="0" />
