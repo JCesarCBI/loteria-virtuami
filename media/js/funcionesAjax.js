@@ -77,3 +77,26 @@ function ajax_validarRespuesta(id, respuesta) {
 
 }
 
+//Esta funcion se encarga de escribir la rima del elemento
+function ajax_guardaScore(score, edoPartida) {
+
+	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida;
+
+	$.ajax({
+
+		url : url,
+		async : false,
+
+		success : function(data) {
+
+			alert(data);
+
+		},
+
+		error : function() {
+
+			$('#contenido').html("");
+		}
+	});
+
+}

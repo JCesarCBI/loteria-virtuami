@@ -118,7 +118,7 @@
 							<div><h4><?=$jugador['nombre']?> </h4> </div>
 							 <input id="subtitulos"  type="button" class="fondoSubs" value="Activado" /><br />
 							 <input id="audioBoton"   type="button" class="fondoAudio" value="Activado" /><br />
-							 <input type="button" value="Abandonar partida" />
+							 <input type="button" onclick='abandonarPartida()' value="Abandonar partida" />
 							<br /> 
 							<br /> 
 							<br /> 

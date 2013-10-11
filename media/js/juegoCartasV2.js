@@ -405,5 +405,5 @@ function loteria(){
 }
 
 function abandonarPartida(){
-	
+	ajax_guardaScore(50000, 1)
 }
