@@ -193,7 +193,7 @@ public function audio($id=-1, $audio=-1, $mazoFrase=-1){
 	}
 	//si no lo encuentra me manda una cadena vacía
 	else{
-		echo "asdassadasd";
+		echo "";
 	}
 	
 }

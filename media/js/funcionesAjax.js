@@ -1,7 +1,7 @@
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_escribeRima(id) {
 	var audioTipo=document.getElementById('tipoDeAudio').value;
-	var url = base + 'index.php/cpruebasLuisa/descripcion/' + id+'/'+audioTipo;
+	var url = base + 'index.php/cAjaxJuego/descripcion/' + id+'/'+audioTipo;
 
 	$.ajax({
 
@@ -26,7 +26,7 @@ function ajax_escribeRima(id) {
 function ajax_sonido(id, tipoAudio) {
 	var sonido;
 	var idNivel=document.getElementById('idNivel').value;
-	var url = base + 'index.php/cpruebasLuisa/audio/' + id+'/'+tipoAudio+'/'+idNivel;
+	var url = base + 'index.php/cAjaxJuego/audio/' + id+'/'+tipoAudio+'/'+idNivel;
 
 	$.ajax({
 
@@ -52,7 +52,7 @@ function ajax_validarRespuesta(id, respuesta) {
 
 	var respuestaCorrecta = 1;
 	var idModalidad=document.getElementById('idModalidad').value;
-	var url = base + 'index.php/cpruebasLuisa/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
+	var url = base + 'index.php/cAjaxJuego/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
 	var data = 'respuesta='+respuesta;
 
 	$.ajax({
