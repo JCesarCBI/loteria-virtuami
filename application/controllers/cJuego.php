@@ -11,6 +11,16 @@ class CJuego extends CI_Controller {
 		$this->load->model('juego/mtrofeo');
 	}
 	
+	public function opcionesJuego(){
+		$datos['idUsr'] = $this->session->userdata('idUsuario');
+		$datos['nombreUsr'] = $this->session->userdata('usuario');
+		$datos['icnAvatar'] = $this->session->userdata('avatar');
+		// echo "<pre>";
+		// print_r($datos);
+		// echo "</pre>";
+		$this->load->view('vconfiguracionJuego', $datos);
+	}
+	
 	public function configuracionJuego(){
 	//Traigo la baraja y la acomodo para mandar las imagenes del tablero y del mazo
 		$this->form_validation->set_rules('vPartida','','required');
@@ -18,7 +28,7 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vModalidad', '', 'required');
         if ($this->form_validation->run() == FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
-			$this->load->view('vModalidad');
+			$this->load->view('vconfiguracionJuego');
             // $this->load->view('vinicio');
             //header("Location: " . "http://" . $_SERVER['HTTP_HOST']."index.php/");
         }else{
@@ -148,7 +158,10 @@ class CJuego extends CI_Controller {
 		if ($trofeoGanado) {
 			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
 		}
-		
+		$trofeoGanado = $this->validarTrofeosConstancia($idUsr, $idEdoPartida);
+		if ($trofeoGanado) {
+			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
+		}
 		
 		
 		if (isset($misTrofeosGanados)) {
@@ -161,6 +174,100 @@ class CJuego extends CI_Controller {
 		
 		
 		
+	}
+	
+	public function validarTrofeosConstancia($idUsr,$idEstPartida){
+		$numPartidasExitosas = $this->mtrofeo->getConstancia($idUsr, 1, $idEstPartida);
+		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
+		$trofeos = $this->mestadisticas->getTodosTrofeos();
+		$ganado = -1;
+		$idJuego = 1;
+		if ($numPartidasExitosas >= 10) {
+			if ($misTrofeos) {
+				foreach ($misTrofeos as $key) {
+					if ($key == 7) {
+						$ganado = 7;
+					}
+				}
+			}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, 7);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == 7){
+						return $key;
+					}
+				}
+			}
+		}
+		if ($numPartidasExitosas >= 25) {
+			if ($misTrofeos) {
+				foreach ($misTrofeos as $key) {
+					if ($key == 8) {
+						$ganado = 8;
+					}
+				}
+			}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, 8);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == 8){
+						return $key;
+					}
+				}
+			}
+		}
+		if ($numPartidasExitosas >= 50) {
+			if ($misTrofeos) {
+				foreach ($misTrofeos as $key) {
+					if ($key == 9) {
+						$ganado = 9;
+					}
+				}
+			}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, 9);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == 9){
+						return $key;
+					}
+				}
+			}
+		}
+		if ($numPartidasExitosas >= 75) {
+			if ($misTrofeos) {
+				foreach ($misTrofeos as $key) {
+					if ($key == 10) {
+						$ganado = 10;
+					}
+				}
+			}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, 10);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == 10){
+						return $key;
+					}
+				}
+			}
+		}
+		if ($numPartidasExitosas >= 100) {
+			if ($misTrofeos) {
+				foreach ($misTrofeos as $key) {
+					if ($key == 11) {
+						$ganado = 11;
+					}
+				}
+			}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, 11);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == 11){
+						return $key;
+					}
+				}
+			}
+		}
+		return FALSE;
 	}
 	
 	public function validarTrofeos($score, $idEdoPartida){
