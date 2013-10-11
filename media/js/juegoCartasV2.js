@@ -338,6 +338,35 @@ function borrarInputCambiarCarta() {
 
 }
 
+
+function pintaPuntos() {
+	
+	var valor = document.getElementById('puntajeCarta').value;
+	var m = document.getElementById('multiplicadorValor').value;
+	var mult = parseInt(m)
+	var puntos = valor * mult;
+
+	$('#posiblePuntuacion').html(puntos+" pts");
+	
+
+}
+function pierdeNoLoteria(cartaActual){
+		
+		cartaActual=parseInt(cartaActual)
+		document.getElementById('estadoPartida').value=3;
+		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
+		
+	if (cartaActual!=carta) {
+		
+		loteria();
+
+	} else{
+		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 10000);
+		
+	};
+	
+}
+
 function cartasLoteria(indice){
 
 	cartas=document.getElementById('loteriaCadena').value;
@@ -355,22 +384,6 @@ function cartasLoteria(indice){
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
 	};
-}
-function pierdeNoLoteria(cartaActual){
-		
-		cartaActual=parseInt(cartaActual)
-		document.getElementById('estadoPartida').value=3;
-		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
-		
-	if (cartaActual!=carta) {
-		
-		loteria();
-
-	} else{
-		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 10000);
-		
-	};
-	
 }
 function loteria(){
 	
@@ -391,15 +404,6 @@ function loteria(){
 	hojaResultados();	
 }
 
-
-function pintaPuntos() {
+function abandonarPartida(){
 	
-	var valor = document.getElementById('puntajeCarta').value;
-	var m = document.getElementById('multiplicadorValor').value;
-	var mult = parseInt(m)
-	var puntos = valor * mult;
-
-	$('#posiblePuntuacion').html(puntos+" pts");
-	
-
 }

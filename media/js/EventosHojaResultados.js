@@ -63,6 +63,11 @@ function hojaResultados(){
 	var puntos=parseInt(puntos);
 	puntos=bonus+puntos;
 	estadoPartida=document.getElementById('estadoPartida').value;
+	
+	if (bonus== 540) {
+		estadoPartida="3";
+	};
+	
 	switch(estadoPartida)
 		{
 			case "1":
