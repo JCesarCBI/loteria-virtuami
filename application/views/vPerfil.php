@@ -20,9 +20,7 @@
 			          ['avanzadoGanados',  <?= $estadisticas['avanzadoGanados'] ?>],
 			          ['partidasPerdidas',  <?= $estadisticas['partidasPerdidas'] ?>],
 			          ['Experto', 0],
-	
-			        ]);
-		
+		        ]);
 	        var options = {
 				backgroundColor: '#17343C',
 		       	legend: 'none',
@@ -31,15 +29,12 @@
 		       		width:"auto"
 		       	},
 		       	width:"auto",			       	
-	        };
-		
+	        };		
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 	        chart.draw(data, options);
 		  }
     	</script>
-
 	</head>
-
 	<body>
 		<script>		
 			<?php

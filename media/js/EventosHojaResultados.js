@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 	
 	$("#bNuevoJuego").click(function(){
-		window.location.href=base+'index.php/cpruebasNaye/modalidad';
+		window.location.href=base+'index.php/cJuego/opcionesJuego';
 	})
 	
 	inicio=$("#carrusel-inicio").val();

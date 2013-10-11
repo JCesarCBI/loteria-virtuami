@@ -9,15 +9,15 @@
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
 		<script src="<?= base_url()?>media/js/validaCampos.js"></script>
-		<script src="<?= base_url()?>media/js/inicio2.js"></script>
+		<script src="<?= base_url()?>media/js/inicio.js"></script>
 	</head>
 
 	<body>
 		<div class="twelve sombra2"></div>
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
-				<div class="one columns"></div>
-				<div id="seccion-informacion" class="four columns ">
+				<!-- <div class="one columns"></div> -->
+				<div id="seccion-informacion" class="five columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
 					<div class="twelve columns" id="texto">
 						Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos 
@@ -30,19 +30,20 @@
 						las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición,
 						como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
 					</div>
-					<div id="footer" class="twelve columns">
-						<img id="i_uami" src="<?= base_url() ?>media/img/i_uami.png">
-						<img id="i_virtuami" src="<?= base_url() ?>media/img/i_virtuami.png">
-						<!-- </span> -->
-					</div>
+					<span class="six columns">
+						<center><img id="i_uami" src="<?= base_url() ?>media/img/i_uami.png"></center>
+					</span>
+					<span class="six columns">
+						<center><img id="i_virtuami" src="<?= base_url() ?>media/img/i_virtuami.png"></center>
+					</span>
 				</div> <!--seccion-informacion-->
 				<div class="one columns"></div>
 					<div id="seccion-formularios" class="five columns">
 						<div id="video" class="twelve columns">
-							<center><video width="100%" height="auto" controls>
+							<center><video id="vid" width="100%" height="auto" controls>
 							  <source src="<?= base_url()?>/media/video/remember.mp4" type="video/mp4"/>
 							  <source src="<?= base_url()?>/media/video/remember.webm" type="video/webm"/>
-							Your browser does not support the video tag.
+							  Tu navegador no implementa el elemento <code>video</code>
 							</video></center> 					
 						</div>
 						<div id="botones" class="twelve columns">
@@ -115,9 +116,9 @@
 						<div id="formularioIsesion">
 							<center id="center1"><img src="<?= base_url()?>media/img/i_sesion.jpg"/></center>
 							<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
-				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
-				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
-				                <center><span class="twelve columns"><input class="six columns boton centered" type="submit" id="iSesion-boton" value="Entrar"></span>
+				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" placeholder="usuario"/>
+				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" placeholder="contraseña"/>
+				                <center><span class="twelve columns"><input class="six columns boton centered valError" disabled="disabled" type="button" id="iSesion-boton" value="Entrar"></span>
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr class="linea3">
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>
 				           	</form>

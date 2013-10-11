@@ -37,6 +37,6 @@
 				</span></center>
 			</form>
 		</span>
-		<a class="close" href="<?=base_url();?>index.php/cpruebasLuisa/modalidad"></a>
+		<a class="close" href="<?=base_url();?>index.php/cJuego/opcionesJuego"></a>
 	</div>
 </div>
