@@ -52,7 +52,7 @@ function ajax_validarRespuesta(id, respuesta) {
 
 	var respuestaCorrecta = 1;
 	var idModalidad=document.getElementById('idModalidad').value;
-	var url = base + 'index.php/cAjaxJuego/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
+	var url = base + 'index.php/cpruebasLuisa/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
 	var data = 'respuesta='+respuesta;
 
 	$.ajax({
