@@ -178,6 +178,7 @@ class CJuego extends CI_Controller {
 	
 	public function validarTrofeosConstancia($idUsr,$idEstPartida){
 		$numPartidasExitosas = $this->mtrofeo->getConstancia($idUsr, 1, $idEstPartida);
+		echo "Partidas Ganadas ".$numPartidasExitosas;
 		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
 		$trofeos = $this->mestadisticas->getTodosTrofeos();
 		$ganado = -1;
