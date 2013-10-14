@@ -8,28 +8,6 @@
 			parent::__construct();
 		}
 		
-		// public function getHabilidad($idUsr, $idJuego, $modalidad, $nivel)
-		// {
-			// $this->db->SELECT_SUM('record.record', 'scoreTotal');
-			// $this->db->FROM('record');
-			// $this->db->JOIN('score', 'score.idScore = record.idScore');
-			// $this->db->WHERE('score.idUsr', $idUsr);
-			// $this->db->WHERE('score.idJuego', $idJuego);
-			// $this->db->WHERE('score.idModalidad', $modalidad);
-			// $this->db->WHERE('score.idNivel', $nivel);
-// 			
-			// $query = $this->db->get();
-// 			
-			// if ($query->num_rows()!=0) {
-				// foreach ($query->result_array() as $key => $value) {
-					// $scoreTotal[$key] = $value['scoreTotal'];
-				// }
-				// return $scoreTotal[0];
-			// } else {
-				// return FALSE;
-			// }
-		// }
-		
 		//Función que obtiene el numero de partidas ganadas/perdidas/perfectas por usuario
 		public function getConstancia($idUsr, $idJuego, $idEstPartida)
 		{
@@ -98,6 +76,239 @@
 			}
 		}
 		
+		public function getGane($idUsr, $idJuego, $idModalidad, $idNivel)
+		{
+			$this->db->SELECT('idScore');
+			$this->db->FROM('score');
+			$this->db->JOIN('record', 'record.idScore = score.idScore');
+			$this->db->WHERE('score.idUsr', $idUsr);
+			$this->db->WHERE('score.idJuego', $idJuego);
+			$this->db->WHERE('score.idModalidad', $idModalidad);
+			$this->db->WHERE('score.idNivel', $idNivel);
+			$this->db->WHERE('record.idEstadoPartida', 1);
+			$this->db->OR_WHERE('record.idEstadoPartida', 2);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()==1) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		}
+		
+		public function getLobodeMar($idUsr, $idJuego, $idModalidad, $idNivel)
+		{
+			//----------Modalidad Juego Libre----------
+			if ($idModalidad == 1 && $idNivel == 1) {
+				if (($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 1 && $idNivel == 3) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 1 && $idNivel == 4) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			//----------Modalidad Diminutivos----------
+			if ($idModalidad == 2 && $idNivel == 1) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 2 && $idNivel == 3) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 2 && $idNivel == 4) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			//----------Modalidad Adjetivos----------
+			if ($idModalidad == 3 && $idNivel == 1) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 3 && $idNivel == 3) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 3 && $idNivel == 4) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			//----------Modalidad Sinonimos----------
+			if ($idModalidad == 5 && $idNivel == 1) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 5 && $idNivel == 3) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 4)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+			if ($idModalidad == 5 && $idNivel == 4) {
+				if (($this->getGane($idUsr, $idJuego, 1, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 1, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 2, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 3)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 3, 4)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 1)==TRUE)&&
+					($this->getGane($idUsr, $idJuego, 5, 3)==TRUE)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}	
+			}
+		}
+				
 		public function setTrofeo($idUsr, $idJuego, $idTrofeo)
 		{
 			$trofeo = array(

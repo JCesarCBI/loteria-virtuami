@@ -75,5 +75,15 @@
 				return FALSE;
 			}
 		}
+		
+		public function setGaleria($idUser, $idJuego, $idCarta)
+		{
+			$galeria = array(	'idUsr' => $idUser,
+								'idJuego' => $idJuego,
+								'idCarta' => $idCarta
+								);
+			$this->db->INSERT('galeria', $galeria);
+		}
+		
 	}
 ?>
