@@ -14,8 +14,18 @@ class CLecciones extends CI_Controller {
 	  }
 	
 	public function index()	{
- 		$this->load->view('vlecciones');
+ 		
 		
+	}
+	
+	public function cargarLecciones(){
+		$datos['idUsr'] = $this->session->userdata('idUsuario');
+		$datos['nombreUsr'] = $this->session->userdata('usuario');
+		$datos['icnAvatar'] = $this->session->userdata('avatar');
+		// echo "<pre>";
+		// print_r($datos);
+		// echo "</pre>";
+		$this->load->view('vlecciones', $datos);
 	}
 	
 }
