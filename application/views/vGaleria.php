@@ -1,7 +1,7 @@
 				<div class="twelve columns" id="galeria">
 					<div id="infCarta">
 						<span class="six columns">
-							<center><img id="imgCarta" class="six columns centered" src="<?=base_url()?>media/img/mazo/reversa.png"/></center>
+							<center><img id="imgCarta" class="six columns centered" src="<?=base_url()?>media/img/galeria/g_reverso.jpg"/></center>
 						</span>
 						
 						<div id="datosCarta" class="six columns">
@@ -32,7 +32,7 @@
 										</span>
 								<?php } else { ?>
 										<span id="carrusel-img<?=$imagen['idCarta']?>" class="one columns carrusel-apaga imgCarrusel">
-											<img class="" src="<?php print_r(base_url().'media/img/mazo/reversa.png')?>" onclick="limpiaInfoCarta()"/>
+											<img class="" src="<?=base_url()?>media/img/galeria/g_reverso.jpg" onclick="limpiaInfoCarta()"/>
 										</span>									
 							<?php	} }?>
 	

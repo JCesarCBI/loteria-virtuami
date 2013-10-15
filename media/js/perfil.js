@@ -306,7 +306,7 @@ function inicio(){
 
 //Función que se mandará a llamar si una de las cartas de la galería no ha sido desbloqueada.
 function limpiaInfoCarta(){
-	$("#imgCarta").removeAttr('src').attr('src',base+'media/img/mazo/reversa.png').removeClass('fondo-amarillo') //Agregando efecto
+	$("#imgCarta").removeAttr('src').attr('src',base+'media/img/galeria/g_reverso.jpg').removeClass('fondo-amarillo') //Agregando efecto
 	$("#nombreCarta").html('Carta no desbloqueada') //Se agrega el nombre de la carta
 	$("#descripcionCarta").html('Aún te faltan puntos para desbloquear esta carta. ¡Sigue adelante!') //Se agrega su descripción
 	$("#incarat, #masInfoCarta"). hide()
