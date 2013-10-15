@@ -331,10 +331,10 @@ class CJuego extends CI_Controller {
 		} else {
 			$datos['trofeos'] = -1;
 		}
-		echo json_encode(array_pop($datos));
-		// echo "<pre>";
-		// print_r($datos);
-		// echo "</pre>";
+		//echo json_encode(array_pop($datos));
+		echo "<pre>";
+		print_r($datos);
+		echo "</pre>";
 		
 		
 	}
