@@ -37,9 +37,6 @@
 			
 			$scoreTotal = $this->getScoreTotal($idUser, $idJuego);
 			
-			print_r($scoreTotal);
-			print_r($record);
-			
 			$total = $scoreTotal+$record;
 						
 			$data = array('scoreTotal'=>$total);
