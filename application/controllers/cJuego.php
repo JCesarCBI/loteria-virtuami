@@ -124,7 +124,14 @@ class CJuego extends CI_Controller {
 			$data['jugador']['nombre'] = $this->session->userdata('usuario');
 			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
 			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
-			$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+			
+			
+			$datos['idUsr'] = $this->session->userdata('idUsuario');
+			$datos['nombreUsr'] = $this->session->userdata('usuario');
+			$datos['icnAvatar'] = $this->session->userdata('avatar');
+			$data['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+			
+			
 			// $data['barraUsuario'] = "barraUsuario";
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
