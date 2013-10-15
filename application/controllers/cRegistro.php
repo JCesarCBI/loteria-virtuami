@@ -192,11 +192,11 @@
 		
 		if(!$mail->Send())
 		{
-			echo "No se pudo enviar el Mensaje.";
+			echo "0";
 		}
 		else
 		{
-			echo "Mensaje enviado"; 
+			echo "1"; 
 		}
 	}
 }
