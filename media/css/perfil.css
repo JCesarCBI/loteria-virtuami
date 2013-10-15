@@ -125,17 +125,16 @@ h2{color:#fff;}
 #leyendaNaranja{
 	background:#ff9900;
 }
-#rTizq{
-	/*float:left;*/
-	/*margin-top:200px;*/
-	/*position: absolute;*/
+#leyendaAzul{
+	background:#3366cc;
 }
-#rTder{
-	/*float:right;*/
-	/*margin-top:-289px;*/
-	/*position: absolute;*/
+#leyendaRojo{
+	background:#dc3912;
+}
+#leyendaVerde{
+	background:#5fb965;
+}
 
-}
 #logoLoteriaEst{
 	margin-bottom:30px;
 }
@@ -158,8 +157,6 @@ h2{color:#fff;}
 	margin-bottom:50px;
 	/*border-left:3px solid #fff;*/
 }
-
-
 .trofeo-chico{width:40px; height:40px;}
 .trofeo-grande{	opacity:1;}
 .TseccionesEst{
@@ -173,7 +170,7 @@ h2{color:#fff;}
 }
 .blanco{
 	color:#FFF !important;
-	text-align:center !important;
+	/*text-align:center !important;*/
 }
 table, td{
 	background: #17343C !important;

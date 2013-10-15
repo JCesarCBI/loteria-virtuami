@@ -45,7 +45,7 @@ $(document).ready(function(){
 		}else{
 			ocultaNivelJuego();
 			$("#nivel").html("Nivel Avanzado");
-			$("#vNivel").val(2)
+			$("#vNivel").val(3)
 			$("#diminutivo, #der-adj, #sinonimo").removeClass("bloqueado");
 			elijeModalidad();
 		}
@@ -58,7 +58,7 @@ $(document).ready(function(){
 		}else{
 			ocultaNivelJuego();
 			$("#nivel").html("Nivel Experto");
-			$("#vNivel").val(3)
+			$("#vNivel").val(-1)
 			elijeModalidad();
 		}
 	});	
@@ -105,7 +105,7 @@ $(document).ready(function(){
 		}else{
 			ocultaModalidad();
 			$("#modalidad").html("Sinónimos");
-			$("#vModalidad").val(5)
+			$("#vModalidad").val(4)
 			jugar()
 		}
 	})
