@@ -26,6 +26,7 @@
 
 	</head>
 	<body>
+		<?= $barraUsuario ?>
 		<div class="twelve columns conteidoMargen">
 			<div id="segundoMargen" class="twelve columns segundoM">
 				<div class="contenidoCentrado">		  
