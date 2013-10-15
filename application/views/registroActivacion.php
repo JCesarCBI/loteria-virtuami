@@ -34,7 +34,7 @@
 					</p>
 			</span>
 			<span class="four columns">
-				<center><img id="loteria-img" src="<?=base_url()?>/media/img/loteria.jpg"/></center>
+				<center><img id="loteria-img" src="<?=base_url()?>/media/img/m_cartas.png"/></center>
 			</span>
 		</div>
 		

@@ -8,10 +8,27 @@
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
 		<script src="<?= base_url()?>media/js/lecciones.js"></script>
+		<script src="<?= base_url()?>media/js/menu.js"></script>
 	</head>
 
 	<body>
 		<title>Lecciones</title>
+		
+		<div id="barraUsuario" class="twelve columns header sombra2">
+			<span id="menu" class="eleven columns ocultaMenu">
+				<ul id="dropdown">
+				  <li><a href="#" id="usuario"><?= $nombreUsr ?></a></li>
+				  <li><a href="<?= base_url()?>index.php/cDatosPerfil/PerfilUsuario/1/-1">Perfil</a></li>
+				  <li><a href="<?= base_url()?>index.php/cLecciones">Lecciones</a></li>
+				  <li><a href="<?= base_url()?>index.php/cJuego/opcionesJuego">Juego</a></li>
+				  <li><a href="#">Créditos</a></li>
+				  <li><a href="#">Salir</a></li>
+				</ul>
+			</span>
+			<span id="avatarIcn" class="one columns" >
+				<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
+			</span>			
+		</div>		
 		<div id="cajaMadre" class="twelve columns">
 		<div id="cajaHija" class="twelve columns">
 			<div class="four columns">

@@ -43,6 +43,5 @@
 				</div>
 		</div> <!--cajaHija-->
 		</div> <!-- caja madre -->
-		<div class="twelve columns sombra2"></div>		
 	</body>
 </html>

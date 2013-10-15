@@ -10,9 +10,39 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
     margin-bottom: 30px;
     margin-left: 1%;
 }
-.header a{padding:15px 20px;font-size:20px;	color:#D9E021;float:right;}
+.header a{
+	/*padding:15px 20px;*/
+	font-size:20px;	
+	color:#D9E021;
+	/*float:right;*/
+}
+
+.header ul{
+	padding: 8px 16px;
+	float:right;
+}
+#avatarIcn img{
+	float:left;
+}
+#menu{
+   position: relative;
+   z-index: 1;
+}
 .header img{padding:2px 2px; width:40px; height:40px; float:right; margin-top:3px;}
 .linea3{
 	height:3px;
 	background:#fff;
+}
+
+.ocultaMenu ul >li:not(:first-child){
+	display: none;
+}
+
+#barraUsuario > span ul{
+	list-style: none;
+	background:#2E3116;
+	
+}
+#barraUsuario > span ul >li:not(:first-child) a:hover{
+	text-decoration:underline;
 }

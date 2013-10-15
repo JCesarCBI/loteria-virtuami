@@ -33,16 +33,25 @@
 	border:none;
 	color:#fff;
 	font-weight:bold;
+	font-size:15px;
 }
 #texto{
+	color: #FFFFFF;
 	margin-bottom:100px;
 	font-weight: bold;
+	font-size:15px;
+	line-height: 1.4em;
+	text-shadow: 1px 1px 3px #000;
 }
 select{
 	margin-bottom:5%;
-	height:7%;
+	height:38px;
 	width:80%;
 	margin-left:10%;
+	background: #fff;
+	color: #078D7B;
+	border-radius:10px;
+	
 }
 video{margin-bottom:50px; margin-top:15px;}
 #seccion-informacion img{
@@ -82,8 +91,8 @@ input[type="text"], input[type="email"], input[type="password"]{
 .labelRegistro{
 	width: 80%;
 	margin-left:10%;
-	color: #fff;
-	margin-bottom:5px;
+	color: #078D7B;
+	margin-bottom:7px;
 }
 
 .error{

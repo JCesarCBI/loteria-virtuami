@@ -24,42 +24,56 @@ $(document).ready(function() {
 		if($("#usuario_contrasenaActual").val()==""){
 			alert("campo vacío");
 		}else{
+			
+			datos = new Array();
+			datos[0]=$("#usuario_contrasenaActual").val()
+			datos[1] = $("#usuario_id").val()
 			//Enviará la contraseña vía AJAX para validarla
 			$.ajax({
-				url: base+'index.php/cDatosPerfil/confirmaContrasena/'+$("#usuario_contrasenaActual").val()+'/'+$("#usuario_id").val(),
+				//Se conectará al siguiente controlador, enviando como parámetros contraseñaActual / usuarioId
+				url: base+'index.php/cDatosPerfil2/confirmaContrasena',
+				data: {data :  datos.join(",")},
 				dataType: "json",
 				type: "POST",
 				success:function(correcto){ //Si el dominio no es correcto, mostrará la clase incorrecto y el mensaje de alerta
+					console.log(correcto)
 					if(correcto == 0){
 						editaPerfil();
 					}else{
-						alert("contraseña incorrecta");
+						alert("Contraseña incorrecta");
 					}
 				}
 			})	
 		}
 	})
 	
+	//Eventos que abren la galería de avatares para editar la imágen de perfil
 	$("#editarFoto").click(function(){
 		$("#galeriaEditarFoto").css({ "opacity": "10", "z-index": "4" }) 
 	})
 	$("#closeGaleriaEditarFoto").click(function(){
 		$("#galeriaEditarFoto").css({"opacity":"0","z-index":"-4"});
 	})
+	
+	//Evento para cerrar el popup-carrusel de trofeos
 	$(".close").click(function(){
 		$("#lightbox").hide();
 	})	
 	
+	//Evento para cancelar la edición de información del perfil de usuario
 	$("#cancelarGuardaCambios").click(function(){
 		muestraPerfil();
 	})	
 
 	//Navegación del usuario
+	//Evento para ver la sección del perfil
 	$("#nav-informacion").click(function(){
 		$("#informacion, #foto-nombreUsr, #lnombreUsr").show();
 		$("#nombreUsuario>h1").addClass("underline");
 		$("#estadisticas, #galeria").hide();
 	})	
+	
+	//Evento para ver la sección de estadísticas
 	$("#nav-estadistica").click(function(){
 		$("#informacion, #galeria, #foto-nombreUsr").hide();
 		$("#estadisticas, #foto-nombreUsr").show();
@@ -67,8 +81,9 @@ $(document).ready(function() {
 		$("#nombreUsuario>h1").removeClass("underline").css("color","#fff");
 		
 	})
+	
+	//Evento para ver la sección de galería
 	$("#nav-galeria").click(function(){
-		//Traigo galería de cartas con AJAX
 		$("#informacion, #estadisticas, #foto-nombreUsr").hide();
 		$("#galeria").show()
 		inicio=$("#carrusel-inicio").val();
@@ -78,6 +93,7 @@ $(document).ready(function() {
 		}
 		$("#carrusel-sig, #carrusel-ant, #logoLoteria").show();
 	})	
+
 
 	$("#carrusel>span:not(.recorre)").bind({
 		click: function(){
@@ -127,6 +143,7 @@ $(document).ready(function() {
 		}
 	})
 	
+	//Evento para guardar los cambios realizados en perfil	
 	$("#BtnGuardaCambios").click(function(){
 		if(validaCampos()){
 			alert("datos correctos");
@@ -137,6 +154,8 @@ $(document).ready(function() {
 
 }); //Fin Document Ready
 
+
+//Realiza todas las validaciones de los campos en perfil de usuario.
 function validaCampos(){
 	errorVacio = new Array();
 	$(".error").hide();
@@ -186,7 +205,8 @@ function validaCampos(){
 		errorVacio[3]= "#amatVacio";
 	}
 
-	//Correo
+	//Correo.
+	//Se revisará el si el correo es del dominio correcto. Además, si el correo existe o no. 
 	if($("#usuario_correo").val() != ""){
 		correoLleno = true;
 		$.ajax({
@@ -210,7 +230,7 @@ function validaCampos(){
 		errorVacio[4]= "#emailVacio";
 	}
 	
-	//Contrasena
+	//Contrasena. La contrasena debe tener al menos 6 carácteres.
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
 		if($("#usuario_contrasena").val().length < 6){
@@ -236,6 +256,7 @@ function validaCampos(){
 
 
 }
+
 //Desenmascarar contraseña
 function desenmascaraPass(){
 	checked=0;
@@ -255,6 +276,9 @@ function editaPerfil(){
 	$("#BtnEditar,#contrasenaActual").hide()
 	$("#guardaCambios, #editarFoto").show()
 }
+
+//Función para mostrar la información de la carta seleccionada en el carrusel de la sección galería. 
+//La información es traída de la base de datos mediante AJAX y JSON.
 function muestraInfoCarta(idcarta){
 	$("#numRima").val(1)
 	//Llama al AJAX para traer la información de la carta
@@ -280,10 +304,11 @@ function inicio(){
 	$("#carrusel>span, #lightbox").hide(100)
 }
 
+//Función que se mandará a llamar si una de las cartas de la galería no ha sido desbloqueada.
 function limpiaInfoCarta(){
 	$("#imgCarta").removeAttr('src').attr('src',base+'media/img/mazo/reversa.png').removeClass('fondo-amarillo') //Agregando efecto
-	$("#nombreCarta").html('') //Se agrega el nombre de la carta
-	$("#descripcionCarta").html('') //Se agrega su descripción
+	$("#nombreCarta").html('Carta no desbloqueada') //Se agrega el nombre de la carta
+	$("#descripcionCarta").html('Aún te faltan puntos para desbloquear esta carta. ¡Sigue adelante!') //Se agrega su descripción
 	$("#incarat, #masInfoCarta"). hide()
 
 }

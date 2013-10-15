@@ -190,9 +190,7 @@ class CDatosPerfil2 extends CI_Controller {
 					
 					
 				}
-				echo "<pre>";
-				print_r($datosPerfilOrdenados);
-				echo "</pre>";
+				
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);
@@ -200,33 +198,34 @@ class CDatosPerfil2 extends CI_Controller {
 		}
 	}
 
-
-		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
-		//Se recibe mediante AJAX 
-		public function confirmaContrasena($contrasena,$idusuario){
-			//Mandas a llamar el modelo y recibes la contraseña actual del usuario
-			$contrasenaUsuario = $this->mdatosperfil->getContrasena($idusuario);//"a1b1c2d3"; //suponiendo que se recibe esto del modelo
-			$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
-			echo json_encode(strcmp($contrasenaUsuario, $contrasena));	
+	//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
+	//Se recibe mediante AJAX 
+	public function confirmaContrasena(){
+		//Mandas a llamar el modelo y recibes la contraseña actual del usuario			
+		//El arreglo que se recibe es de la forma array[0]=> contraseña, [1]=>idUsuario
+		$data = explode(",",$_POST['data']);
+		$contrasenaUsuario = $this->mdatosperfil->getContrasena($data[1]);//"a1b1c2d3"; //suponiendo que se recibe esto del modelo
+		$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
+		echo json_encode(strcmp($contrasenaUsuario, $data[0]));	
+	}
+	
+	public function traeDatosCarta($idcarta){
+		//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
+		//El siguiente arreglo deberá ser traído desde la BD
+		//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
+		//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
+		$mazoCartas = $this->mestadisticas->getCartas();
+		echo json_encode($mazoCartas[$idcarta]);
+	}
+	
+	public function traeRimaCarta($idcarta, $rima){
+		$resultado = $this->mestadisticas->getRima($idcarta);
+		if(count($resultado) < $rima){
+			echo json_encode(array_pop($resultado));
+		}else{
+			echo json_encode($resultado[$rima-1]);
 		}
-		
-		public function traeDatosCarta($idcarta){
-			//Esta función recibirá vía AJAX el idcarta de la cual se mostrará la información
-			//El siguiente arreglo deberá ser traído desde la BD
-			//El id del arreglo $cartas debe ser similiar al id de la carta de la que se está guardando información
-			//Se recomienda sea de la siguiente manera, para facilitar el retorno de datos vía JSON
-			$mazoCartas = $this->mestadisticas->getCartas();
-			echo json_encode($mazoCartas[$idcarta]);
-		}
-		
-		public function traeRimaCarta($idcarta, $rima){
-			$resultado = $this->mestadisticas->getRima($idcarta);
-			if(count($resultado) < $rima){
-				echo json_encode(array_pop($resultado));
-			}else{
-				echo json_encode($resultado[$rima-1]);
-			}
-		}
+	}
 }
 
 

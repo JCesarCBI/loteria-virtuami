@@ -10,6 +10,7 @@
 		<script> base = "<?= base_url() ?>"</script>
 		<script src="<?= base_url()?>media/js/validaCampos.js"></script>
 		<script src="<?= base_url()?>media/js/perfil.js"></script>
+		<script src="<?= base_url()?>media/js/menu.js"></script>
 	    <script type="text/javascript">
 	      google.load("visualization", "1", {packages:["corechart"]});
 	      google.setOnLoadCallback(drawChart);
@@ -19,7 +20,7 @@
 			          ['basicoGanados',    <?= $estadisticas['basicoGanados'] ?>],
 			          ['avanzadoGanados',  <?= $estadisticas['avanzadoGanados'] ?>],
 			          ['partidasPerdidas',  <?= $estadisticas['partidasPerdidas'] ?>],
-			          ['Experto', 0],
+			          ['expertoGanados', <?= $estadisticas['expertoGanados'] ?>],
 		        ]);
 	        var options = {
 				backgroundColor: '#17343C',
@@ -43,16 +44,30 @@
 			?>			
 		</script>						
 		<title>Editar perfil</title>
+		
 		<div id="barraUsuario" class="twelve columns header sombra2">
-			<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
-			<a href="#" id="usuario"><?=$nombreUsr?></a>
-			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
+			<!-- <img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/> -->
+			<span id="menu" class="eleven columns ocultaMenu">
+				<ul id="dropdown">
+				  <li><a href="#" id="usuario"><?= $nombreUsr ?></a></li>
+				  <li><a href="<?= base_url()?>index.php/cDatosPerfil/PerfilUsuario">Perfil</a></li>
+				  <li><a href="<?= base_url()?>index.php/cLecciones">Lecciones</a></li>
+				  <li><a href="<?= base_url()?>index.php/cJuego/opcionesJuego">Juego</a></li>
+				  <li><a href="#">Créditos</a></li>
+				  <li><a href="#">Salir</a></li>
+				</ul>
+			</span>
+			<span id="avatarIcn" class="one columns" >
+				<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
+			</span>
+			
 		</div>
+		
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
 				<div class="five columns"></div>
 				<ul class="navegacion seven columns">
-					<li id="" class="three column"><a href="<?= base_url()?>index.php/cpruebasLuisa/modalidad"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
+					<li id="" class="three column"><a href="<?= base_url()?>index.php/cJuego/opcionesJuego"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
 					<li id="nav-informacion" class="three column"><img src="<?= base_url()?>media/img/_i.jpg">nformación</li>
 					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
 					<li id="nav-galeria" class="three column"><img src="<?= base_url()?>media/img/_g.jpg">alería</li>
@@ -71,6 +86,7 @@
 						<hr><hr>
 						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
+						<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr?>"/>
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
 							<center><input type="button" id="editarFoto" value="Editar foto" class="six columns centered"/></center>
@@ -101,19 +117,19 @@
 						<div id="c2" class="four columns">
 							<input type="hidden" value="<?= $idUsr?>" name="idUsuario"/>
 
-							<input id="usuario_nombre" name="usuario_nombre" class="tarjeta" type="text" autofocus="" disabled value="<?= $nombre ?>">							
+							<input id="usuario_nombre" name="usuario_nombre" class="tarjeta" type="text" disabled value="<?= $nombre ?>">							
 							<label id="nombreVacio" class="error"></label>
 							<label for="usuario_nombre">Nombre</label>
 
-							<input type="text" id="usuario_aPaterno" name="usuario_Apat" value="<?= $aPaterno?>" autofocus>
+							<input type="text" id="usuario_aPaterno" name="usuario_Apat" value="<?= $aPaterno?>" >
 							<label id="apatVacio" class="error"></label>
 							<label>Apellido paterno</label>
 							
-							<input type="text" id="usuario_aMaterno" name="usuario_Amat" value="<?= $aMaterno?>" autofocus>
+							<input type="text" id="usuario_aMaterno" name="usuario_Amat" value="<?= $aMaterno?>" >
 							<label id="amatVacio" class="error"></label>
 							<label>Apellido materno</label>
 
-							<input type="email" id="usuario_correo" name="usr_correo" value="<?= $correo?>" autofocus>
+							<input type="email" id="usuario_correo" name="usr_correo" value="<?= $correo?>" >
 							<label id="emailVacio" class="error"></label>
 							<label >Correo</label>
 
@@ -138,11 +154,11 @@
 				        	</div>
 						    <div id="prof-admin">
 								<div id="area" class="">
-							        <input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
+							        <input class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
 									<label for="usuario_area">Área</label>
 							    </div>
 								<div id="cargo" class="">
-									<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
+									<input class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
 									<label for="usuario_cargo">Cargo</label>
 								</div>
 							</div>
@@ -153,7 +169,6 @@
 							<input id="desenmascarar" class="four columns" type="checkbox" />
 							<label for="desenmascarar">Desenmascarar</label>
 							<div class="four columns"></div>
-
 						</div>
 					</form>
 				</div> <!--información-->
