@@ -37,6 +37,15 @@ function presionaEnter(evt, op) {
 		id = obternerId(indice);
 
 		var vOf = ajax_validarRespuesta(id, respuesta)
+		
+		//valido easterEgg para sinonimos
+		if (document.getElementById('idModalidad').value == 5) {
+			
+			trofeosEE(id, respuesta)
+			
+		};
+		 
+		
 		if (vOf == 1) {
 			//rompo cadenas
 			rompeCadenas();

@@ -7,6 +7,10 @@ class cpruebasLuisa extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('juego/mJuegoLibre');
 		$this->load->model('juego/mjuegoavanzado');
+		$this->load->model('juego/mscore');
+		$this->load->model('estadisticas/mestadisticas');
+		$this->load->model('juego/mtrofeo');
+		
 	}
 	
 	public function modalidad(){
@@ -105,13 +109,25 @@ class cpruebasLuisa extends CI_Controller {
 		}
 	}
 
-	public function guardarScore($record, $idEdoPartida){
-		
-		$score = array('idPartida' => $this->session->userdata('idPartida') ,
-						'idNivel' =>  $this->session->userdata('idNivel'),
-						'idModalidad' => $this->session->userdata('idModalidad'),
-						'idUsr' => $this->session->userdata('idUsuario'),
-						'idJuego' => $this->session->userdata('idJuego'));
+/**************************************************************/
+/**************************************************************/
+/**************************************************************/
+
+	public function guardarScore($record, $idEdoPartida, $cthulu, $ofortuna, $tinieblas){
+		$idUsr = $this->session->userdata('idUsuario');
+		$ganado = -1;
+		$idJuego = 1;
+		$trofeos = $this->mestadisticas->getTodosTrofeos();
+		// $score = array('idPartida' => $this->session->userdata('idPartida') ,
+						// 'idNivel' =>  $this->session->userdata('idNivel'),
+						// 'idModalidad' => $this->session->userdata('idModalidad'),
+						// 'idUsr' => $this->session->userdata('idUsuario'),
+						// 'idJuego' => $this->session->userdata('idJuego'));
+		$score = array('idPartida' => 1 ,
+						'idNivel' =>  1,
+						'idModalidad' => 1,
+						'idUsr' => 1,
+						'idJuego' => 1);
 		
 		// echo "<pre>";
 		// print_r($this->session->all_userdata());
@@ -119,16 +135,198 @@ class cpruebasLuisa extends CI_Controller {
 		// print_r($score);
 		// echo "</pre>";
 		$this->mscore->setScore($score, $record, $idEdoPartida);
-		
-			
-			/**Código mio  **/
+		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
+		$idTrofeo = 20;
+		if ($cthulu) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 18;
+		if ($ofortuna) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 19;
+		if ($tinieblas) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 6;//Precision quirurgica
+		if ($idEdoPartida == 2) { 
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		//$misTrofeosGanados = -1;
+		$trofeoGanado = $this->validarTrofeos($record, $idEdoPartida); //Validamos y asignamos los trofeos de habilidad
+		if ($trofeoGanado) {
+			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
+		}
+		$trofeoGanado = $this->validarTrofeosConstancia($idUsr, $idEdoPartida);
+		if ($trofeoGanado) {
+			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
+		}
+		$trofeoGanado = $this->validarTrofeosEventos($idEdoPartida);
+		if ($trofeoGanado) {
+			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
+		}
+		//Validar trofeos de las cartas ganadas
+		$numCartas = $this->mtrofeo->getTermino($idUsr, $idJuego);
+		$ganado = -1;
+		$idTrofeo = 21;//Coleecionista
+		if ($numCartas >= 18) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 22;//Galerista
+		if ($numCartas >= 33) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 23;//Museografo
+		if ($numCartas >= 54) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$ganado = -1;
+		$idTrofeo = 24;//Leyenda
+		$leyenda = $this->mtrofeo->getLeyenda($idUsr, $idJuego);
+		if ($leyenda == 1) {
+			if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+			if($ganado == -1){
+				$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+				foreach ($trofeos as $key) {
+					if($key["idTrofeo"] == $idTrofeo){
+						$misTrofeosGanados[$key["idTrofeo"]] = $key;
+					}
+				}
+			}
+		}
+		$misCartasDesbloqueadas = $this->desbloquearCartas($idUsr, $idJuego);
+		if (($misCartasDesbloqueadas)) {
+			$datos['cartas'] = $misCartasDesbloqueadas;
 			// echo "<pre>";
-			// print_r($baraja);
+			// print_r(($misCartasDesbloqueadas));
 			// echo "</pre>";
-			/**Código mio**/
-			
+		} else {
+			$datos['cartas'] = -1;
+		}
+		if (isset($misTrofeosGanados)) {
+			$datos['trofeos'] = $misTrofeosGanados;
+		} else {
+			$datos['trofeos'] = -1;
+		}
+		//echo json_encode(array_pop($datos));
+		echo "<pre>";
+		print_r($datos);
+		echo "</pre>";
+		
+		
 	}
-	
+
+
+
 
 /******Función que escribe la descripción una carta en la baraja********/
 public function descripcion($id=-1, $tipoAudio=-1){

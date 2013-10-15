@@ -9,6 +9,7 @@
 	<script>var base = "<?=base_url(); ?>"</script>
 	<?= (isset($juego['idPartida']) && ($juego['idPartida']== 2)) ? '<script src="'.base_url().'media/js/juegoCartas4x4.js" type="text/javascript" charset="utf-8"></script>' : '<script src="'.base_url().'media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>' ;?> 
 	
+	<script src="<?=base_url(); ?>media/js/easterEggs.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/eventosMazo.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/eventosPlantilla.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/EventosHojaResultados.js" type="text/javascript" charset="utf-8"></script>
@@ -162,16 +163,6 @@
 
 		<div id="inputsHidden">
 			
-			<!-- $data['puntaje']=$puntaje;//Listo
-			$data['tiempo']=$tiempo; //tiempo
-			$data['juego']['idPartida'] = $idPartida;//listo
-			$data['juego']['idNivel'] = $idPartida; //listo
-			$data['juego']['idModalidad'] = $idPartida;//listo
-			$data['jugador']['nombre'] = $this->session->userdata('usuario');
-			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
-			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
-			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
-			 -->
 				<input type="hidden"  id="cartaVisible"  value="" />
 				<input type="hidden"  id="linea1"  value="" />
 				<input type="hidden"  id="linea2"  value="" />
@@ -203,6 +194,9 @@
 				<input type="hidden"  id="loteriaCadena" value="" />
 				<input type="hidden"  id="bonusCartasRestantes" value="" />
 				<input type="hidden"  id="vallong" value="" />
+				<input type="hidden"  id="cthuluEE" value="" />
+				<input type="hidden"  id="salinasEE" value="" />
+				<input type="hidden"  id="oFortuna" value="" />
 				
 		</div>
 	</body>	

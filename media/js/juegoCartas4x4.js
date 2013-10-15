@@ -1,5 +1,8 @@
 jQuery(document).ready(function($) {
-
+	
+	document.getElementById('oFortuna').value = 0;
+	document.getElementById('salinasEE').value = 0;
+	document.getElementById('cthuluEE').value = 0;
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
 	document.getElementById('errorValor').value = 0;
@@ -518,6 +521,33 @@ function loteria(){
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	
+	/***Modificaciones finales***/
+	clearInterval(NoClickLoteria);
+	clearInterval(tiempo2);
+	clearInterval(tiempo);
+	bonus=document.getElementById('bonusCartasRestantes').value;
+	var bonus = parseInt(bonus);
+	bonus=54-bonus;
+	bonus=bonus*10;
+	puntos=document.getElementById('puntos').value;
+	var puntos=parseInt(puntos);
+	puntos=bonus+puntos;
+	
+	cartas=document.getElementById('loteriaCadena').value;
+	estadoPartida=document.getElementById('estadoPartida').value;
+	arreglo=cartas.split('*');
+	
+	if (bonus== 310) {
+		
+		document.getElementById('oFortuna').value=1;
+		
+	};
+	
+	if (bonus== 540) {
+		document.getElementById('estadoPartida').value="3";
+	};
+	/***Terminan modificaciones finales***/
+	
 	
 	if (cartas == 4) {
 		
@@ -530,4 +560,9 @@ function loteria(){
 		
 	};
 	hojaResultados();	
+}
+
+
+function abandonarPartida(){
+	ajax_guardaScore(0, 4);
 }

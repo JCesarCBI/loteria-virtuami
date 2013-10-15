@@ -51,22 +51,17 @@ $(document).ready(function() {
 	})
 });
 
-function hojaResultados(){
-	clearInterval(NoClickLoteria);
-	clearInterval(tiempo2);
-	clearInterval(tiempo);
-	bonus=document.getElementById('bonusCartasRestantes').value;
-	var bonus = parseInt(bonus);
-	bonus=54-bonus;
-	bonus=bonus*10;
-	puntos=document.getElementById('puntos').value;
-	var puntos=parseInt(puntos);
-	puntos=bonus+puntos;
+
+function guardaScore(score, ePartida) {
+	//alert("Entra a guarda score "+score+" estado Partida "+ePartida);
+	ajax_guardaScore(50000, ePartida);
+  
+}	
+
+
+function hojaResultados(puntos){
 	estadoPartida=document.getElementById('estadoPartida').value;
-	
-	if (bonus== 540) {
-		estadoPartida="3";
-	};
+	guardaScore(puntos, estadoPartida);
 	
 	switch(estadoPartida)
 		{
@@ -100,4 +95,5 @@ function hojaResultados(){
 			
 	}
 	
-}	
+}
+

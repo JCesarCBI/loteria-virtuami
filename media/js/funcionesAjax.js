@@ -79,23 +79,27 @@ function ajax_validarRespuesta(id, respuesta) {
 
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_guardaScore(score, edoPartida) {
+	
+	var oFortuna=document.getElementById('oFortuna').value;
+	var salinasEE=document.getElementById('salinasEE').value;
+	var cthuluEE=document.getElementById('cthuluEE').value;
 
-	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida;
+	//var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
+	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/1/1/1';
 
 	$.ajax({
 
 		url : url,
 		async : false,
-
+		dataType:"json",
 		success : function(data) {
-
-			alert(data);
+			console.log(data.trofeos)
+			// alert(data+" data.cartas="+data.cartas+" cartas['cartas']="+data['cartas']);
 
 		},
 
 		error : function() {
-
-			$('#contenido').html("");
+			alert('Error')
 		}
 	});
 

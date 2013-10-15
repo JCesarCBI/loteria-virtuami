@@ -1,5 +1,8 @@
 jQuery(document).ready(function($) {
 
+	document.getElementById('oFortuna').value = 0;
+	document.getElementById('salinasEE').value = 0;
+	document.getElementById('cthuluEE').value = 0;
 	document.getElementById('multiplicadorValor').value = 1;
 	document.getElementById('multiplicadorValorAux').value = 1;
 	document.getElementById('errorValor').value = 0;
@@ -378,32 +381,54 @@ function cartasLoteria(indice){
 		cartas=document.getElementById('loteriaCadena').value;
 		arreglo=cartas.split('*');
 		
-		if (arreglo.length==17) {
+		if (arreglo.length==2) {
 			marcaBtonLoteria();
 			//alert(document.getElementById('cartaClickPlantilla').value);	
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
 	};
 }
-function loteria(){
-	
+
+function loteria(){	
 	bPreguntar = false;	
+	clearInterval(NoClickLoteria);
+	clearInterval(tiempo2);
+	clearInterval(tiempo);
+	bonus=document.getElementById('bonusCartasRestantes').value;
+	var bonus = parseInt(bonus);
+	bonus=54-bonus;
+	bonus=bonus*10;
+	puntos=document.getElementById('puntos').value;
+	var puntos=parseInt(puntos);
+	puntos=bonus+puntos;
+	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	arreglo=cartas.split('*');
 	
-	if (arreglo.length == 17) {
+	if (bonus== 310) {
+		
+		document.getElementById('oFortuna').value=1;
+		
+	};
+	
+	if (bonus== 540) {
+		document.getElementById('estadoPartida').value="3";
+	};
+	
+	if (arreglo.length == 2) {
 		
 		if (estadoPartida!=2) {
 			document.getElementById('estadoPartida').value=1;
 		};
 		
-	}//else{
-			//document.getElementById('estadoPartida').value=3;
-	// };
-	hojaResultados();	
+	}
+	
+	hojaResultados(puntos);	
 }
 
+
 function abandonarPartida(){
-	ajax_guardaScore(50000, 1)
+	ajax_guardaScore(0, 4);
+	window.location.href=base+'index.php/cJuego/opcionesJuego';
 }
