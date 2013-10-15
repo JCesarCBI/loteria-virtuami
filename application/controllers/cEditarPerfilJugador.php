@@ -234,11 +234,11 @@ class CEditarPerfilJugador extends CI_Controller {
 		 	
 		 	
 			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
-        	$this->form_validation->set_rules('usr_correo','Correo','required|trim|valid_email');//
-			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');		
-  			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
-			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
-			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
+        	$this->form_validation->set_rules('usr_correo','Correo','required|trim|valid_email|xss_clean');//
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]|xss_clean');		
+  			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]|xss_clean');//min3 max db
+			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|xss_clean');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]|xss_clean');//17-60
 			//Si la validavión es correcta
 			
 			
@@ -270,17 +270,18 @@ class CEditarPerfilJugador extends CI_Controller {
 		
 			echo "Datos en la base de datos antes de actualizar...";
 		     echo"<pre>";
+			 echo "Datos Actuales en la base";
 	      	 print_r($actuales);
 		     echo"</pre>";
 			
-			//$this->analizarDatos($nuevo, $actuales);
-			$this->mdatosperfil->setActualizaUsuario($nuevo['idUsr'], $nuevo);
+			$this->analizarDatos($nuevo, $actuales);
+			//$this->mdatosperfil->setActualizaUsuario($nuevo['idUsr'], $nuevo);
 				
 			}
 			
 			else{
 				
-				echo"ERROR...";
+				echo"ERROR NO ANALIZO...";
 				/*echo "<script>
 				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
 				</script>";
@@ -295,34 +296,133 @@ class CEditarPerfilJugador extends CI_Controller {
 		public function analizarDatos($datosNuevos, $datosActuales){
 			
 		
+			echo "Dentro de analizar datos";
+			
+				
+			echo "Datos Nuevos:";
+			echo "<pre>";
+			print_r($datosNuevos);
+			echo "</pre>";
 			
 			switch ($datosActuales[0]['idTipoUsuario']) {
-				case '1':
+				case 1:
 					echo 'Es alumno...';
-					if($datosNuevos['idGradoActivo']== 2){
-						$datosNuevos['idDivision']= null;
-						$datosNuevos['cargo']= null;
-        				$datosNuevos['area']=null;
-						$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-					} 
-					echo 'actualizado...';
+					switch($datosNuevos['idTipoUsuario']){
+						case 1: //Sigue siendo alumno
+							if($datosNuevos['idGradoActivo']== 2){//es de posgrado 
+								echo"Cambia a posgrado...";
+								$datosNuevos['idDivision']= null;
+								$datosNuevos['cargo']= null;
+        						$datosNuevos['area']=null;
+								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							}
+							else{
+								if($datosNuevos['idGradoActivo']==1){//es Licenciatura
+									echo "Es licenciatura";
+									$datosNuevos['cargo']=null;
+									$datosNuevos['area']=null;
+									$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+									
+								}
+								else
+								echo 'Error Grado Activo Incorrecto';
+						}
+							echo"Actualizado";
+							break;
+						
+						case 2://Cambia a profesor
+							echo "ahora es profesor";
+							$datosNuevos['idDivision']=null;
+							$datosNuevos['idGradoPosgrado']=null;
+							$datosNuevos['idGradoActivo']=null;
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							break;
+						case 3://Ahora es administrativo
+							echo "ahora es administrativo";
+							$datosNuevos['idDivision']=null;
+							$datosNuevos['idGradoActivo']=null;
+							$datosNuevos['idGradoPosgrado']=null;
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+						default:
+							echo 'ERROR NO DISPONIBLE...';
+							
+							
+							
+					 
+					echo 'Fin caso 1 Alumno actualizado...';
+					}				
 					break;
-				case '2':
-					echo 'Es Profesor';
+				case 2:
+					echo ' Es Profesor';
+					switch($datosNuevos['idTipoUsuario']){
+						case 1: //De profesor a alumno
+								echo "Ahora es alumno";
+								$datosNuevos['cargo']= null;
+        						$datosNuevos['area']=null;
+								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							
+							echo"Actualizado alumno";
+							break;
+						
+						case 2://sigue siendo profesor
+							echo "sigue siendo profesor";
+							
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							break;
+						case 3://Ahora es administrativo
+							echo "ahora es administrativo";
+							
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+						default:
+							echo 'ERROR NO DISPONIBLE...';
+							
+							
+							
+					 
+					echo "Fin caso 2 profesor actualizado";
+					}				
+					
 					break;	
-				case '3':
+				case 3:
 					echo 'Es Administrativo';
+					switch($datosNuevos['idTipoUsuario']){
+						case 1: //De Administrativo a alumno
+								echo "Ahora es alumno";
+								$datosNuevos['cargo']= null;
+        						$datosNuevos['area']=null;
+								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							
+							echo"Actualizado alumno";
+							break;
+						
+						case 2://Ahora es profesor
+							echo "sigue siendo profesor";
+							
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							break;
+						case 3://Sigue siendo administrativo
+							echo "ahora es administrativo";
+							
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+						default:
+							echo 'ERROR NO DISPONIBLE...';
+							
+							
+							
+					 
+					echo "Fin caso 3 Administrativo actualizado";
+					}	
 					break;
 				
-				case '4':
+				case 4:
 					echo 'Es otro';
-				
+					
 				default:
 					echo 'Error';
 					break;
 			}
 			
-		}
+		}//Fin funcion analizar
 
 
 	//public function validacionFormulario($datos)
