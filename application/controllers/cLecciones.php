@@ -23,9 +23,7 @@ class CLecciones extends CI_Controller {
 		$datos['nombreUsr'] = $this->session->userdata('usuario');
 		$datos['icnAvatar'] = $this->session->userdata('avatar');
 		$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
-		//echo "<pre>";
-		//print_r($datos);
-		//echo "</pre>";
+		
 		//$this->load->view('barraUsuario',$datos);
 		$this->load->view('vlecciones', $datos);
 		
