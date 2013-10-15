@@ -54,7 +54,10 @@
 
 						<table id="tablaEst" class="twelve columns">
 							<tr class="azul">
-								<td class="blanco">P. PERDIDAS</td>
+								<td class="blanco">
+									<span id="leyendaNaranja" class="leyenda"></span>
+									P. PERDIDAS
+								</td>
 								<?php if($estadisticas['partidasPerdidas'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
 								<?php }else { ?>
@@ -62,7 +65,10 @@
 								<?php } ?>
 							</tr>
 							<tr class="azul">
-								<td class="blanco">BÁSICO</td>
+								<td class="blanco">
+									<span id="leyenda" class="leyenda"></span>
+									BÁSICO
+								</td>
 								<?php if($estadisticas['basicoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
 								<?php }else { ?>

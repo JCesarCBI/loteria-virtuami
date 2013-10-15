@@ -105,7 +105,7 @@ $(document).ready(function(){
 		}else{
 			ocultaModalidad();
 			$("#modalidad").html("Sinónimos");
-			$("#vModalidad").val(4)
+			$("#vModalidad").val(5)
 			jugar()
 		}
 	})
