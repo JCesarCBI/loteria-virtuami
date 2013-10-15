@@ -48,7 +48,7 @@
 			$correo_docencia = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]docencia[.]uam[.]mx$/', $term);
 			//Comprobando si el dominio es correcto
 				if($correo_xanum == FALSE && $correo_titlani==FALSE && $correo_docencia == FALSE){
-					echo json_encode(0);	
+					echo json_encode(1);	
 				}else{
 					echo json_encode(1);
 				}
@@ -160,7 +160,7 @@
 		$mail->From = "remitente@dominio.com";
 		$mail->FromName = "Loteria VIRTU@MI";
 		$mail->IsHTML(true);
-		$mail->Subject = "Test phpMailer";
+		$mail->Subject = "Correo de confirmacion Loteria Virtuami";
 		
 		//$correo=$datosUsr['correo'];
 		$correo=$datosUsr['correo'];
