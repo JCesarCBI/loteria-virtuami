@@ -190,7 +190,14 @@ class CDatosPerfil extends CI_Controller {
 					
 					
 				}
-				
+				// $datosPerfilOrdenados['idUsr'] = $this->session->userdata('idUsuario');
+				// $datosPerfilOrdenados['nombreUsr'] = $this->session->userdata('usuario');
+				// $datosPerfilOrdenados['icnAvatar'] = $this->session->userdata('avatar');
+				$datos['idUsr'] = $this->session->userdata('idUsuario');
+				$datos['nombreUsr'] = $this->session->userdata('usuario');
+				$datos['icnAvatar'] = $this->session->userdata('avatar');
+				$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);

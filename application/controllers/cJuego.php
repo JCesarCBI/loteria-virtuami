@@ -30,7 +30,14 @@ class CJuego extends CI_Controller {
 		$this->form_validation->set_rules('vModalidad', '', 'required');
         if ($this->form_validation->run() == FALSE){
         	echo "<script> alert('Debe selecionar un modo completo de juego'); </script>";
-			$this->load->view('vconfiguracionJuego');
+			$datos['idUsr'] = $this->session->userdata('idUsuario');
+			$datos['nombreUsr'] = $this->session->userdata('usuario');
+			$datos['icnAvatar'] = $this->session->userdata('avatar');
+			$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+			$this->load->view('vconfiguracionJuego', $datos);
+			
+			
+			// $this->load->view('vconfiguracionJuego');
             // $this->load->view('vinicio');
             //header("Location: " . "http://" . $_SERVER['HTTP_HOST']."index.php/");
         }else{
@@ -117,7 +124,8 @@ class CJuego extends CI_Controller {
 			$data['jugador']['nombre'] = $this->session->userdata('usuario');
 			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
 			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
-			$data['barraUsuario'] = "barraUsuario";
+			$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+			// $data['barraUsuario'] = "barraUsuario";
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";
@@ -331,7 +339,8 @@ class CJuego extends CI_Controller {
 		} else {
 			$datos['trofeos'] = -1;
 		}
-		echo json_encode(array_pop($datos));
+		echo json_encode($datos);
+		// echo json_encode(array_pop($datos));
 		// echo "<pre>";
 		// print_r($datos);
 		// echo "</pre>";

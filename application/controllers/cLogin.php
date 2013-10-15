@@ -38,6 +38,7 @@ class CLogin extends CI_Controller {
 					// echo "<pre>";
 					// print_r($datos);
 					// echo "</pre>";
+					$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 					$this->load->view('vconfiguracionJuego', $datos);  //aqui se cargara vPruebaEfrenLogin
 				} else {
 					$datos = $this->micombobox->datosComboBox();
