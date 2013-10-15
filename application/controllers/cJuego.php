@@ -15,7 +15,7 @@ class CJuego extends CI_Controller {
 		$datos['idUsr'] = $this->session->userdata('idUsuario');
 		$datos['nombreUsr'] = $this->session->userdata('usuario');
 		$datos['icnAvatar'] = $this->session->userdata('avatar');
-		$datos['barraUsuario'] = "barraUsuario";
+		$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 		$this->load->view('vconfiguracionJuego', $datos);
 		// echo "<pre>";
 		// print_r($datos);

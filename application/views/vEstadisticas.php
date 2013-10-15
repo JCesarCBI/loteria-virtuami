@@ -66,7 +66,7 @@
 							</tr>
 							<tr class="azul">
 								<td class="blanco">
-									<span id="leyenda" class="leyenda"></span>
+									<span id="leyendaAzul" class="leyenda"></span>
 									BÁSICO
 								</td>
 								<?php if($estadisticas['basicoGanados'] == -1){ ?>
@@ -76,7 +76,10 @@
 								<?php } ?>							
 							</tr>
 							<tr class="azul">
-								<td class="blanco">AVANZADO</td>
+								<td class="blanco">
+									<span id="leyendaRojo" class="leyenda"></span>
+									AVANZADO
+								</td>
 								<?php if($estadisticas['avanzadoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
 								<?php }else { ?>
@@ -84,7 +87,10 @@
 								<?php } ?>
 							</tr>
 							<tr class="azul">
-								<td class="blanco">EXPERTO</td>
+								<td class="blanco">
+									<span id="leyendaVerde" class="leyenda"></span>
+									EXPERTO
+								</td>
 								<?php if($estadisticas['expertoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
 									
