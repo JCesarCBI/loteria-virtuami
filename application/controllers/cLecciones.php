@@ -25,7 +25,9 @@ class CLecciones extends CI_Controller {
 		// echo "<pre>";
 		// print_r($datos);
 		// echo "</pre>";
+		$this->load->view('barraUsuario',$datos);
 		$this->load->view('vlecciones', $datos);
+		
 	}
 	
 }
