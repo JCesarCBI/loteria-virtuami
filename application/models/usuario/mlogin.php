@@ -59,33 +59,34 @@
 			}
 		}
 		
-		//Obtiene el codigo de activacion
-		public function getCodigoActivacion($nombreUsr)
+		//Verifica que el nombre de usuario y codigo de confirmacion concuerden con la base de datos
+		public function getCodigoActivacion($userName, $codigoActivacion)
 		{
-			$this->db->SELECT('codigoActivacion');
+			$this->db->SELECT('idUsr');
 			$this->db->FROM('usuario');
-			$this->db->WHERE('nombreUsr', $nombreUsr);
+			$this->db->WHERE('nombreUsr', $userName);
+			$this->db->WHERE('codigoActivacion', $codigoActivacion);
 			$this->db->LIMIT(1);
 			
 			$query = $this->db->get();
 			
 			if ($query-> num_rows() == 1) {
-				return $query->result_array();
+				return TRUE;
 			} else {
 				return FALSE;
 			}
 		}
 		
 		//Actualiza el estado del usuario a Activo
-		public function setEstatus($nombreUsr, $activo = 1)
+		public function setEstatus($userName, $codigoActivacion)
 		{
-			if ($this->getExisteUsuario($nombreUsr) == TRUE) {
+			if ($this->getCodigoActivacion($userName, $codigoActivacion) == TRUE) {
 			
 				$data = array(
-					'estatus' => $activo
+					'estatus' => 1
 				);
 					
-				$this->db->WHERE('nombreUsr', $nombreUsr);
+				$this->db->WHERE('codigoActivacion', $codigoActivacion);
 				$this->db->UPDATE('usuario', $data);
 			
 				return TRUE;
