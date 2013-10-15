@@ -15,10 +15,12 @@ class CJuego extends CI_Controller {
 		$datos['idUsr'] = $this->session->userdata('idUsuario');
 		$datos['nombreUsr'] = $this->session->userdata('usuario');
 		$datos['icnAvatar'] = $this->session->userdata('avatar');
+		$datos['barraUsuario'] = "barraUsuario";
+		$this->load->view('vconfiguracionJuego', $datos);
 		// echo "<pre>";
 		// print_r($datos);
 		// echo "</pre>";
-		$this->load->view('vconfiguracionJuego', $datos);
+		
 	}
 	
 	public function configuracionJuego(){
@@ -115,6 +117,7 @@ class CJuego extends CI_Controller {
 			$data['jugador']['nombre'] = $this->session->userdata('usuario');
 			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
 			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
+			$data['barraUsuario'] = "barraUsuario";
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";
