@@ -26,7 +26,7 @@
 						<span>Contraseña:</span><span class="dato"><?=$contrasena?></span><br>
 					</div>
 					<p>Para completar tu registro y comenzar a jugar, da click aquí:
-						<br><a href="">Código de activación</a>
+						<br><a href="http://148.206.34.85/index.php/cActivacion/accountActivation/<?=$nombreUsr?>/<?=$codigoActivacion?>">Código de activación</a>
 					</p>
 					<p id="mensaje" class="twelve columns">
 						¡Haz uso de tus habilidades de velocidad y precisión y de tu conocimiento<br> gramatical para mejorar tu competencia
