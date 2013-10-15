@@ -3,9 +3,10 @@
 	<span id="menu" class="eleven columns ocultaMenu">
 		<ul id="dropdown">
 		  <li><a href="#" id="usuario"><?= $nombreUsr ?></a></li>
-		  <li><a href="<?= base_url()?>index.php/cDatosPerfil/PerfilUsuario/1/-1">Perfil del jugador</a></li>
-		  <li><a href="<?= base_url()?>index.php/cLecciones">Lecciones</a></li>
-		  <li><a href="<?= base_url()?>index.php/cJuego/opcionesJuego">Acerca del juego</a></li>
+		  <li><a href="<?= base_url()?>index.php/cDatosPerfil/PerfilUsuario/cargarLecciones">Perfil del jugador</a></li>
+		  <li><a href="<?= base_url()?>index.php/cLecciones/cargarLecciones">Lecciones</a></li>
+		  <li><a href="<?= base_url()?>index.php/cJuego/opcionesJuego">Juego</a></li>
+		  <li><a href="#">Acerca del juego</a></li>
 		  <!-- <li><a href="#">Créditos</a></li> -->
 		  <li><a href="<?= base_url()?>index.php/cLogin/terminarSesion">Salir</a></li>
 		</ul>

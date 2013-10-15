@@ -45,24 +45,8 @@
 		</script>						
 		<title>Editar perfil</title>
 		
-		<div id="barraUsuario" class="twelve columns header sombra2">
-			<!-- <img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/> -->
-			<span id="menu" class="eleven columns ocultaMenu">
-				<ul id="dropdown">
-				  <li><a href="#" id="usuario"><?= $nombreUsr ?></a></li>
-				  <li><a href="<?= base_url()?>index.php/cDatosPerfil/PerfilUsuario">Perfil</a></li>
-				  <li><a href="<?= base_url()?>index.php/cLecciones">Lecciones</a></li>
-				  <li><a href="<?= base_url()?>index.php/cJuego/opcionesJuego">Juego</a></li>
-				  <li><a href="#">Créditos</a></li>
-				  <li><a href="#">Salir</a></li>
-				</ul>
-			</span>
-			<span id="avatarIcn" class="one columns" >
-				<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
-			</span>
-			
-		</div>
-		
+		<!--sección de la barra de usuario en donde se encuentra el avatar y el menú para dirigirse a secciones como perfil, lecciones, juego, etc. -->
+		<?= $barraUsuario ?>		
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
 				<div class="five columns"></div>
@@ -104,7 +88,7 @@
 								<input class="six columns centered" type="button" id="cancelarGuardaCambios" value="Cancelar">
 							</center>
 							<center id="editarSeccion"> <!--Editar información-->
-								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar información"></span>
+								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar"></span>
 								<div id="contrasenaActual" class="twelve columns">
 									<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
 									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns centered">
