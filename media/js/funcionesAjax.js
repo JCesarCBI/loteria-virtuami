@@ -77,6 +77,7 @@ function ajax_validarRespuesta(id, respuesta) {
 
 }
 
+
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_guardaScore(score, edoPartida) {
 	
@@ -84,8 +85,8 @@ function ajax_guardaScore(score, edoPartida) {
 	var salinasEE=document.getElementById('salinasEE').value;
 	var cthuluEE=document.getElementById('cthuluEE').value;
 
-	//var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
-	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/1/1/1';
+	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
+	//var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/1/1/1';
 
 	$.ajax({
 
@@ -93,8 +94,56 @@ function ajax_guardaScore(score, edoPartida) {
 		async : false,
 		dataType:"json",
 		success : function(data) {
-			console.log(data.trofeos)
-			// alert(data+" data.cartas="+data.cartas+" cartas['cartas']="+data['cartas']);
+			
+			var trofeosAux =data.trofeos;
+			var cartasAux = data.cartas;
+			// console.log(data)
+			// console.log(cartasAux+" tipo de datos= "+typeof(cartasAux));
+			
+			cont=0;
+			cont2=0;
+			
+			if (trofeosAux!=-1) {
+				
+			
+				for (i in trofeosAux){
+					
+					if (cont==0) {
+						
+					var imagenUrl= base+trofeosAux[i].imagen;
+						
+					};
+	
+					cont++;
+				}
+			
+				$('#trofeo').html('<center><img clas="six columns" src="'+imagenUrl+'"><span clas="six columns" id="numTrofeos">+'+
+								cont+'</span></center>' );
+			
+
+			}
+			else{
+				$('#trofeo').html("");
+			};
+
+			if (cartasAux != -1) {
+				
+				for (i in cartasAux){
+					
+					if (cont2==0) {
+						
+					var cartaUrl= base+cartasAux[i].imagen;
+						
+					};
+	
+					cont2++;
+				}
+				$('#carta').html('<center><img clas="six columns" src="'+cartaUrl+'"><span clas="six columns" id="numTrofeos">+'+
+								cont2+'</span></center>' );
+			}
+			else{
+				$('#carta').html("");
+			};
 
 		},
 

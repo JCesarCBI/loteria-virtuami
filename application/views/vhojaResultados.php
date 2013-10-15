@@ -17,7 +17,7 @@
 		<span class="two columns"></span>
 		
 		<span id="botones" class="twelve columns">
-			<form action="<?=base_url();?>index.php/cpruebasLuisa/juegoLibre2" method="post" enctype="multipart/form-data" id="menuForm" name="menuForm">
+			<form action="<?=base_url();?>index.php/cJuego/configuracionJuego" method="post" enctype="multipart/form-data" id="menuForm" name="menuForm">
 				<input type="hidden" name="vPartida" id="vPartida" value="1" />
 				<input type="hidden" name="vModalidad" id="vPartida" value="1" />
 				<input type="hidden" name="vNivel" id="vPartida" value="1" />

@@ -381,7 +381,7 @@ function cartasLoteria(indice){
 		cartas=document.getElementById('loteriaCadena').value;
 		arreglo=cartas.split('*');
 		
-		if (arreglo.length==2) {
+		if (arreglo.length==17) {
 			marcaBtonLoteria();
 			//alert(document.getElementById('cartaClickPlantilla').value);	
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
@@ -416,7 +416,7 @@ function loteria(){
 		document.getElementById('estadoPartida').value="3";
 	};
 	
-	if (arreglo.length == 2) {
+	if (arreglo.length == 17) {
 		
 		if (estadoPartida!=2) {
 			document.getElementById('estadoPartida').value=1;

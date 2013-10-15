@@ -52,16 +52,9 @@ $(document).ready(function() {
 });
 
 
-function guardaScore(score, ePartida) {
-	//alert("Entra a guarda score "+score+" estado Partida "+ePartida);
-	ajax_guardaScore(50000, ePartida);
-  
-}	
-
-
 function hojaResultados(puntos){
 	estadoPartida=document.getElementById('estadoPartida').value;
-	guardaScore(puntos, estadoPartida);
+	ajax_guardaScore(puntos, estadoPartida);
 	
 	switch(estadoPartida)
 		{
