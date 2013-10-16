@@ -59,12 +59,12 @@
 			
 			//Realiza validaciones
 			$this->form_validation->set_rules('usuario_nombreUsr', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
-        	$this->form_validation->set_rules('usuario_correo','Correo','required|trim|valid_email');//
-			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]');
-        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|alpha|min_length[3]|max_length[50]');//min 4 max db	
-			$this->form_validation->set_rules('usuario_aPaterno','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]');//min3 max db
-			$this->form_validation->set_rules('usuario_aMaterno','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|');//min 3 max db
-			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]');//17-60
+        	$this->form_validation->set_rules('usuario_correo','Correo','required|trim|valid_email|xss_clean');//
+			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]|xss_clean');
+        	$this->form_validation->set_rules('usuario_nombre','Nombre','required|trim|min_length[3]|max_length[50]|xss_clean');//min 4 max db	
+			$this->form_validation->set_rules('usuario_aPaterno','ApellidoPaterno','required|trim|min_length[3]|max_length[25]|xss_clean');//min3 max db
+			$this->form_validation->set_rules('usuario_aMaterno','ApellidoMaterno','required|trim|min_length[3]|max_length[25]|xss_clean');//min 3 max db
+			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]|xss_clean');//17-60
 			//Si la validavión es correcta
 			
 			
@@ -86,7 +86,7 @@
 				'idDivision'=>$this->input->post('usuario_division',TRUE),
 				'idGradoActivo'=>$this->input->post('usuario_gradoActivo',TRUE),
 				'idGradoPosgrado'=>$this->input->post('usuario_posgrado',TRUE),
-				'idAvatar'=>25,
+				'idAvatar'=>3,
 				'fechaRegistro'=>date('Y-m-d H:i:s'),
 				'codigoActivacion'=>uniqid(),
 				'estatus'=>0
@@ -179,9 +179,9 @@
 		
 		$body = $this->load->view('registroActivacion', $datosCorreo, true);
 		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg");
-		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
-		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
-		$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
+		$mail->AddAttachment(base_url()."loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
+		$mail->AddAttachment(base_url()."loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
+		$mail->AddAttachment(base_url()."loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
 		
 		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
 		//$mail-­>AddAttachment("/var/www/loteriaVIRTUAMI/media/img/uamizt.png","uamizt.png");
