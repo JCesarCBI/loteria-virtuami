@@ -65,7 +65,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
 					$puntaje = 120;
-					$tiempo = 6000;
+					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 1;
 					$this->session->set_userdata('idTrofeo', 3);
@@ -73,7 +73,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
 					$puntaje = 240;
-					$tiempo = 6000;
+					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 1;
 					$this->session->set_userdata('idTrofeo', 4);
@@ -81,7 +81,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
 					$puntaje = 360;
-					$tiempo = 6000;
+					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 1;
 					$this->session->set_userdata('idTrofeo', 5);
@@ -89,7 +89,7 @@ class CJuego extends CI_Controller {
 				}
 			} else {  //Configuración para las partidas rapidas
 				$puntaje = 400;
-				$tiempo = 4000;
+				$tiempo = 6000;
 				$baraja = $this->mJuegoLibre->getMazoFrase();
 				$data['audio'] = 2;
 				$this->session->set_userdata('idTrofeo', 0);
