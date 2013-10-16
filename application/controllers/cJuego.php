@@ -136,7 +136,7 @@ class CJuego extends CI_Controller {
 			
 			
 			// $data['barraUsuario'] = "barraUsuario";
-			$data['hojaResultado'] = $this->load->view('vhojaResultados', "", true);
+			$data['hojaResultado'] = $this->load->view('vhojaResultados', $data, true);
 			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
 			// echo "<pre> Baraja con audio ";
 			// print_r($data);
