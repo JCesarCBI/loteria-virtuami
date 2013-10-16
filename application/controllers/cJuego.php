@@ -147,16 +147,16 @@ class CJuego extends CI_Controller {
 		$ganado = -1;
 		$idJuego = 1;
 		$trofeos = $this->mestadisticas->getTodosTrofeos();
-		// $score = array('idPartida' => $this->session->userdata('idPartida') ,
-						// 'idNivel' =>  $this->session->userdata('idNivel'),
-						// 'idModalidad' => $this->session->userdata('idModalidad'),
-						// 'idUsr' => $this->session->userdata('idUsuario'),
-						// 'idJuego' => $this->session->userdata('idJuego'));
-		$score = array('idPartida' => 1 ,
-						'idNivel' =>  1,
-						'idModalidad' => 1,
-						'idUsr' => 1,
-						'idJuego' => 1);
+		$score = array('idPartida' => $this->session->userdata('idPartida') ,
+						'idNivel' =>  $this->session->userdata('idNivel'),
+						'idModalidad' => $this->session->userdata('idModalidad'),
+						'idUsr' => $this->session->userdata('idUsuario'),
+						'idJuego' => $this->session->userdata('idJuego'));
+		// $score = array('idPartida' => 1 ,
+						// 'idNivel' =>  1,
+						// 'idModalidad' => 1,
+						// 'idUsr' => 1,
+						// 'idJuego' => 1);
 		
 		// echo "<pre>";
 		// print_r($this->session->all_userdata());
