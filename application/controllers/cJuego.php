@@ -609,10 +609,10 @@ class CJuego extends CI_Controller {
 	
 	public function validarTrofeos($score, $idEdoPartida){
 		$idJuego = 1;
-		$idPartida = 1;//$this->session->userdata('idPartida');
-		$idNivel = 1;//$this->session->userdata('idNivel');
-		$idTrofeo = 3;//$this->session->userdata('idTrofeo');
-		$idModalidad = 1;//$this->session->userdata('idModalidad');
+		$idPartida = $this->session->userdata('idPartida');
+		$idNivel = $this->session->userdata('idNivel');
+		$idTrofeo = $this->session->userdata('idTrofeo');
+		$idModalidad = $this->session->userdata('idModalidad');
 		$idUsr = $this->session->userdata('idUsuario');
 		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
 		$trofeos = $this->mestadisticas->getTodosTrofeos();
