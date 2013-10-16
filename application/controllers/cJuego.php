@@ -384,9 +384,7 @@ class CJuego extends CI_Controller {
 						foreach ($resultado as $key) {
 							$this->mJuegoLibre->setGaleria($idUser, $idJuego, $key["idCarta"]);
 						}
-						echo "<pre>";
-						print_r($resultado);
-						echo "</pre>";
+						
 						return $resultado;
 						
 						
