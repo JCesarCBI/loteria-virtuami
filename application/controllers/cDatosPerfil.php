@@ -157,7 +157,7 @@ class CDatosPerfil extends CI_Controller {
 					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = -1;
 				}			
 				//Datos para la galeria de cartas
-				$idGaleria = $this->mestadisticas->getGaleria(1,1);
+				$idGaleria = $this->mestadisticas->getGaleria($idUsuario,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
 
 				if($idGaleria != FALSE){
@@ -190,9 +190,6 @@ class CDatosPerfil extends CI_Controller {
 					
 					
 				}
-				// $datosPerfilOrdenados['idUsr'] = $this->session->userdata('idUsuario');
-				// $datosPerfilOrdenados['nombreUsr'] = $this->session->userdata('usuario');
-				// $datosPerfilOrdenados['icnAvatar'] = $this->session->userdata('avatar');
 				$datos['idUsr'] = $this->session->userdata('idUsuario');
 				$datos['nombreUsr'] = $this->session->userdata('usuario');
 				$datos['icnAvatar'] = $this->session->userdata('avatar');
@@ -201,6 +198,10 @@ class CDatosPerfil extends CI_Controller {
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "</pre>";
+				
 			}
 		}
 	}
