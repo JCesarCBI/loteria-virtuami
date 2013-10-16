@@ -378,10 +378,14 @@ class CJuego extends CI_Controller {
 						/*
 						 * Hacer insercion en la base de datos de las cartas adquiridas
 						 */
+						foreach ($resultado as $key) {
+							$this->mJuegoLibre->setGaleria($idUser, $idJuego, $key["idCarta"]);
+						}
+						echo "<pre>";
+						print_r($resultado);
+						echo "</pre>";
 						return $resultado;
-						// echo "<pre> div ";
-						// print_r($resultado);
-						// echo "</pre>";
+						
 						
 					}
 				}else{
