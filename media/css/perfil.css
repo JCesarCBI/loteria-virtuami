@@ -16,6 +16,7 @@ select{margin-bottom:10px; height:35px}
 	color:#fff;
 	display:inline;
 	padding:10px;
+	font-size:16px;
 }
 .navegacion > li:hover, .navegacion>li a:hover{font-weight:bold;}
 
@@ -76,7 +77,6 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
 	border-bottom: 3px solid #fff;
 	-webkit-appearance: none;
 	-moz-appearance:none;
-	-moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
 	text-align:center;
@@ -95,10 +95,13 @@ input[type="button"], input[type="submit"]{
 }
 
 input[type="text"], input[type="password"], input[type="email"], select{
+	-webkit-appearance: none;
+	-moz-appearance:none;
 	background:#17343c !important;
 	height:40px;
 	color:#000;
 	border:2px solid #FFF;
+	
 }
 
 #c2 > label, #c3>label, #alumno>label, #prof-admin>label{text-align:center;}
@@ -170,7 +173,6 @@ h2{color:#fff;}
 }
 .blanco{
 	color:#FFF !important;
-	/*text-align:center !important;*/
 }
 table, td{
 	background: #17343C !important;

@@ -16,6 +16,7 @@
 	<script src="<?=base_url(); ?>media/js/eventosVisuales.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/funcionesAjax.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url(); ?>media/js/ayuda.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?= base_url()?>media/js/menu.js"></script>
 
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">

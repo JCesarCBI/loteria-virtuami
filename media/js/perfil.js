@@ -246,10 +246,8 @@ function validaCampos(){
 	}
 	//Realiza validación 
 	if(longNombre && usuarioLleno && correoLleno && passLleno && paternoLleno && maternoLleno && longApat && longMat && correoNoExiste &&passLong){
-		alert("regresare true")
 		return true;
 	}else{
-		alert("regresare false")
 		muestraErrores(errorVacio);
 		return false;
 	}

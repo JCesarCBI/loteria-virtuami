@@ -20,15 +20,16 @@
 				<div id="seccion-informacion" class="five columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
 					<div class="twelve columns" id="texto">
-						Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos 
-						de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias 
-						desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la
-						imprenta) desconocido usó una galería de textos y los mezcló de tal manera 
-						que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
-						sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. 
-						Fue popularizado en los 60s con la creación de las hojas "Letraset", 
-						las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición,
-						como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+						Este entornos lúdico, en el que a través del juego tradicional de Lotería - en donde
+						un gritón o gritona canta una rima que corresponde a la ilustración de la carta que sale -,
+						tiene como propósito apoyar a quien lo juege a fortalecer su conocimiento y práctica del español
+						en dos líneas: <br><br>
+						
+						a) Que mejore su competencia lingüística y se apropie y sensibilice sobre aspectos fundamentales
+						de la gramática del español.<br><br>
+						b) Que el usuario disfrute con elementos de las tradiciones popular y culta, mediante las ilustraciones
+						y las adivinanzas: rimas y citas provenientes de canciones, poemas, dichos y frases.				
+
 					</div>
 					<span class="six columns">
 						<center><img id="i_uami" src="<?= base_url() ?>media/img/i_uami.png"></center>

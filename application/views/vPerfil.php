@@ -90,7 +90,7 @@
 							<center id="editarSeccion"> <!--Editar información-->
 								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar"></span>
 								<div id="contrasenaActual" class="twelve columns">
-									<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
+									<input class="twelve columns" type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
 									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns centered">
 									<input type="button" id="BtnCancelarEditar" value="Cancelar" class="six columns centered">
 								</div>
