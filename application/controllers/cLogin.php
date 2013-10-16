@@ -5,6 +5,7 @@ class CLogin extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->helper('form');
+		$this->load->library('user_agent');
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mlogin');
 		//$this->ci->load->model('usuario/mregistro');
