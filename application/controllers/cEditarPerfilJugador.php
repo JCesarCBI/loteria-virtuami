@@ -425,8 +425,7 @@ class CEditarPerfilJugador extends CI_Controller {
 		}//Fin funcion analizar
 
 
-	//public function validacionFormulario($datos)
-	/*
+	
 		function usuario(){
 			$term = $this->input->post('usuario',TRUE); //Recibo variable "usuario" a través de AJAX. Archivo media/js/inicio.js. Línea 90
 			$valor= $this->mregistro->getExisteUsuario($term);//La función 'getExisteUsuario' regresa true si el ususario existe y false en caso contrario.
@@ -437,8 +436,8 @@ class CEditarPerfilJugador extends CI_Controller {
 				echo json_encode(0);
 			}		
 		}
-	*/
-		/*function correo(){
+	
+		function correo(){
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
 			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
 			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
@@ -450,5 +449,10 @@ class CEditarPerfilJugador extends CI_Controller {
 				//Correo no existe
 				echo json_encode(0);
 			}					
-		}*/
+		}
+		
+		function validaUsuarioCorreo($datos){
+			
+			
+		}
 }
