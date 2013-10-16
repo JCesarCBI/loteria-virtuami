@@ -4,6 +4,7 @@ class CEditarPerfilJugador extends CI_Controller {
 	
 	function __construct() {    
         parent::__construct();
+		$this->load->library('session');
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mdatosperfil');
@@ -15,8 +16,8 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 		
 	}
-	
-	public function PerfilUsuario($idJuego, $idUsuario){
+		public function PerfilUsuario($idJuego, $idUsuario){
+		
 		if($idUsuario == 0){
 			echo "<script>alert('Usuario no existe')</script>";
 		}else{
@@ -39,7 +40,15 @@ class CEditarPerfilJugador extends CI_Controller {
 					$trofeos = $this->mestadisticas->getTodosTrofeos();
 					//Se obtiene lista de trofeos ganados por el jugador en el juego
 					$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
-					
+					$numTrofeos = count($trofeosJugador);
+					for ($i=0; $i < $numTrofeos; $i++) {
+						$aux[$i+1] = $trofeosJugador[$i];
+						unset($trofeosJugador[$i]);
+					}
+					$trofeosJugador = $aux;
+					// echo "<pre>OOOOOOOOOOOOOOOOOOOOO";
+					// print_r($trofeosJugador);
+					// echo "</pre>";
 					//Verificamos si el jugador ha ganado o no trofeos
 					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
 						//Se agrega el edo de no ganado a todos los trofeos
@@ -75,7 +84,6 @@ class CEditarPerfilJugador extends CI_Controller {
 					echo "no trofeos ganados";
 					return FALSE;
 				}
-								
 				for($i=1; $i<45; $i++){
 					$datosPerfilOrdenados["Edades"][$i+16] = $i+16;	
 				}
@@ -106,37 +114,72 @@ class CEditarPerfilJugador extends CI_Controller {
 				$datosPerfilOrdenados['datos']['pos'] = $gradoPos;
 				$datosPerfilOrdenados['idTipoUsr'] = $datosPerfilOrdenados['idTipoUsuario'];
 				unset($datosPerfilOrdenados['idTipoUsuario']);
-// 				
-				// //Estadisticas de juegos ganados y perdidos, en cuanto a rapidas y completas
-				// $datosPerfilOrdenados['estadisticas']['partida']['rapidasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 1); //Ganadas
-								
 				
-				// $datosPerfilOrdenados['estadisticas']['partida']['rapidasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 2, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['partida']['completasGanadas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['partida']['completasPerdidas'] = $this->mestadisticas->getPartidas($idUsuario, $idJuego, 1, 3); //Perdidas
-				// //Estadisticas de juegos en sus diferentes niveles que haya perdido y ganado
-				// $datosPerfilOrdenados['estadisticas']['juego']['basicoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['juego']['basicoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 1, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['juego']['intermedioGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['juego']['intermedioPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 2, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['juego']['avanzadoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['juego']['avanzadoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 3, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['juego']['expertoGanados'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['juego']['expertoPerdidos'] = $this->mestadisticas->getNiveles($idUsuario, $idJuego, 4, 3); //Perdidas
-				// //Estadisticas de juegos ganados y perdidos por modalidad
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibreGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['juegoLibrePerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 1, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['diminutivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 2, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['adjetivosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 3, 3); //Perdidas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosGanados'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 1); //Ganadas
-				// $datosPerfilOrdenados['estadisticas']['modalidad']['sinonimosPerdidos'] = $this->mestadisticas->getModalidades($idUsuario, $idJuego, 5, 3); //Perdidas
-				
+				//Los tres primeros lugares del juego de loteria
+				$auxiliar =  $this->mestadisticas->getRanking();
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['ranking'] = $auxiliar;
+				} else {
+					$datosPerfilOrdenados['estadisticas']['ranking'] = -1;
+				}
+				//Datos de la ultima partida jugada por el usuario
+				$auxiliar =  $this->mestadisticas->getUltimoScore($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['ultimoScore'] = $auxiliar[0];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['ultimoScore'] = -1;
+				}				
+				//Mejor puntuacion en una partida
+				$auxiliar =  $this->mestadisticas->getMejorPuntuacion($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['mejorScore'] = $auxiliar[0]["record"];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['mejorScore'] = -1;
+				}
+				$datosPerfilOrdenados['estadisticas']['numPartidas'] = 0;
+				//Numero de partidas ganadas en modo básico
+				$auxiliar =  $this->mestadisticas->getBasicoGanadas($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['basicoGanados'] = $auxiliar;
+					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['basicoGanados'] = -1;
+				}
+				//Numero de partidas ganadas en modo avanzado
+				$auxiliar =  $this->mestadisticas->getAvanzadoGanadas($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['avanzadoGanados'] = $auxiliar;
+					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['avanzadoGanados'] = -1;
+				}
+				//Numero de partidas ganadas en modo experto
+				$auxiliar =  $this->mestadisticas->getExpertoGanadas($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['expertoGanados'] = $auxiliar;
+					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['expertoGanados'] = -1;
+				}				
+				//Numero de partidas perdidas
+				$auxiliar =  $this->mestadisticas->getPartidasPerdidas($idUsuario);
+				if ($auxiliar) {
+					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = $auxiliar;
+					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
+				} else {
+					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = -1;
+				}			
 				//Datos para la galeria de cartas
-				$idGaleria = $this->mestadisticas->getGaleria(1,1);
+				$idGaleria = $this->mestadisticas->getGaleria($idUsuario,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
-
+				foreach ($idGaleria as $key) {
+					$auxIdGaleria[$key] = $key;
+					unset($idGaleria[$key]);
+				}
+				$idGaleria = $auxIdGaleria;
+				// echo "<pre> AQUIIIIIIIIIIIIIIIIIIIIIIIII ";
+				// print_r($idGaleria);
+				// echo "</pre>";
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
@@ -167,18 +210,23 @@ class CEditarPerfilJugador extends CI_Controller {
 					
 					
 				}
-				// echo "<pre> Arreglo ";
-				 //print_r($datosPerfilOrdenados);
-				//echo "</pre>";
-				$this->load->view('pruebaPerfil', $datosPerfilOrdenados);
+				$datos['idUsr'] = $this->session->userdata('idUsuario');
+				$datos['nombreUsr'] = $this->session->userdata('usuario');
+				$datos['icnAvatar'] = $this->session->userdata('avatar');
+				$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);
-				
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "</pre>";
 				
 			}
 		}
 	}
-
+	
+		
 
 		//Confirmará si la contraseña del usuario es correcta a través de AJAX. $contrasena es la contraseña que el usuario escribe y 
 		//Se recibe mediante AJAX 
@@ -206,41 +254,20 @@ class CEditarPerfilJugador extends CI_Controller {
 				echo json_encode($resultado[$rima-1]);
 			}
 		}
-
-
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
 		echo"<pre>";
-		print_r($_POST);
-		echo"</pre>";
-	
-		/*Post array
-		 *  [usuario_avatar] => /media/img/avatar/av_us_coleccionista.jpg
-    	    [id_avatar] => /media/img/avatar/av_us_coleccionista.jpg
-    		[usuario_contrasenaActual] => 123456
-    		[idUsuario] => 4
-		    [usuario_nombre]=> Guillermo
-    		[usuario_Apat] => Torres
-    		[usuario_Amat] => Lopez
-    		[usr_correo] => guillermotorres@xanum.uam.mx
-    		[usuario_sexo] => H
-    		[usuario_edad] => 29
-    		[usuario_comunidadUniversitaria] => 4
-    		[usuario_gradoActivo] => 1
-    		[usuario_division] => 2
-    		[usuario_posgrado] => 1
-    		[usuario_area] => 
-    		[usuario_cargo] => 
-    		[usuario_contrasena] => 123456
-		 	* */
+		 print_r($_POST);
+		 echo"</pre>";
+ 		
+ 			
 		 	
-		 	
-		 	
+		 	//----------------------------------------------Comienza UPDATE-------------------------
 			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
         	$this->form_validation->set_rules('usr_correo','Correo','required|trim|valid_email|xss_clean');//
 			$this->form_validation->set_rules('usuario_contrasena','Contrasena','required|trim|min_length[6]|xss_clean');		
-  			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|alpha|min_length[3]|max_length[25]|xss_clean');//min3 max db
-			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|alpha|min_length[3]|max_length[25]|xss_clean');//min 3 max db
+  			$this->form_validation->set_rules('usuario_Apat','ApellidoPaterno','required|trim|min_length[3]|max_length[25]|xss_clean');//min3 max db
+			$this->form_validation->set_rules('usuario_Amat','ApellidoMaterno','required|trim|min_length[3]|max_length[25]|xss_clean');//min 3 max db
 			$this->form_validation->set_rules('usuario_edad','edad','trim|greater_than[17]|less_than[60]|xss_clean');//17-60
 			//Si la validavión es correcta
 			
@@ -258,33 +285,44 @@ class CEditarPerfilJugador extends CI_Controller {
         		$nuevo['idDivision']=$_POST['usuario_division'];
         		$nuevo['idGradoPosgrado']= $_POST['usuario_posgrado'] ;
         		$nuevo['idGradoActivo']= $_POST['usuario_gradoActivo'];
-        		$nuevo['idAvatar']=3;
+        		$nuevo['idAvatar']=$_POST['id_avatar'];
         		$nuevo['cargo']= $_POST['usuario_area'];
         		$nuevo['area']= $_POST['usuario_cargo'];
-				
+				$nuevo['contrasena']=$_POST['usuario_contrasenaActual'];
 			//Válido casos especiales de registro.
 				
-			echo "Datos Nuevos:";
-			echo "<pre>";
-			print_r($nuevo);
-			echo "</pre>";
+			// echo "Datos Nuevos:";
+			// echo "<pre>";
+			// print_r($nuevo);
+			// echo "</pre>";
 			
 			$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
 		
-			echo "Datos en la base de datos antes de actualizar...";
-		     echo"<pre>";
-			 echo "Datos Actuales en la base";
-	      	 print_r($actuales);
-		     echo"</pre>";
+			// echo "Datos en la base de datos antes de actualizar...";
+		     // echo"<pre>";
+			 // echo "Datos Actuales en la base";
+	      	 // print_r($actuales);
+		     // echo"</pre>";
 			
 			$this->analizarDatos($nuevo, $actuales);
-			//$this->mdatosperfil->setActualizaUsuario($nuevo['idUsr'], $nuevo);
-				
-			}
+		
+				// $datos['idUsr'] = $this->session->userdata('idUsuario');
+				// $datos['nombreUsr'] = $this->session->userdata('usuario');
+				// $datos['icnAvatar'] = $this->session->userdata('avatar');
+				// $datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				// $datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				// $this->load->view('vPerfil', $datosPerfilOrdenados);
+				// $this->load->view('vEstadisticas', $datosPerfilOrdenados);
+				// $this->load->view('vGaleria', $datosPerfilOrdenados);
+				//$idUsuario = $this->session->userdata('idUsuario');
+				$idJue = $this->session->userdata('idJuego');
+				$this->PerfilUsuario($idJue, $nuevo['idUsr']);
+				}
 			
 			else{
 				
 				echo"ERROR NO ANALIZO...";
+				$this->PerfilUsuario($idJue, $nuevo['idUsr']);
 				/*echo "<script>
 				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
 				</script>";
@@ -299,127 +337,141 @@ class CEditarPerfilJugador extends CI_Controller {
 		public function analizarDatos($datosNuevos, $datosActuales){
 			
 		
-			echo "Dentro de analizar datos";
-			
-				
-			echo "Datos Nuevos:";
-			echo "<pre>";
-			print_r($datosNuevos);
-			echo "</pre>";
+			// echo "Dentro de analizar datos";
+// 			
+// 				
+			// echo "Datos Nuevos:";
+			// echo "<pre>";
+			// print_r($datosNuevos);
+			// echo "</pre>";
 			
 			switch ($datosActuales[0]['idTipoUsuario']) {
 				case 1:
-					echo 'Es alumno...';
+					//echo 'Es alumno...';
 					switch($datosNuevos['idTipoUsuario']){
 						case 1: //Sigue siendo alumno
 							if($datosNuevos['idGradoActivo']== 2){//es de posgrado 
-								echo"Cambia a posgrado...";
+								//echo"Cambia a posgrado...";
 								$datosNuevos['idDivision']= null;
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+								//$this->cargarVista();
+								
 							}
 							else{
 								if($datosNuevos['idGradoActivo']==1){//es Licenciatura
-									echo "Es licenciatura";
+									//echo "Es licenciatura";
 									$datosNuevos['cargo']=null;
 									$datosNuevos['area']=null;
 									$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-									
+									//$this->cargarVista();
 								}
 								else
 								echo 'Error Grado Activo Incorrecto';
+								//$this->cargarVista();
 						}
-							echo"Actualizado";
+							//echo"Actualizado";
 							break;
 						
 						case 2://Cambia a profesor
-							echo "ahora es profesor";
+							//echo "ahora es profesor";
 							$datosNuevos['idDivision']=null;
 							$datosNuevos['idGradoPosgrado']=null;
 							$datosNuevos['idGradoActivo']=null;
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
 							break;
 						case 3://Ahora es administrativo
-							echo "ahora es administrativo";
+							//echo "ahora es administrativo";
 							$datosNuevos['idDivision']=null;
 							$datosNuevos['idGradoActivo']=null;
 							$datosNuevos['idGradoPosgrado']=null;
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
+							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
+							//$this->cargarVista();
 							
 							
 							
 					 
-					echo 'Fin caso 1 Alumno actualizado...';
+					//echo 'Fin caso 1 Alumno actualizado...';
 					}				
 					break;
 				case 2:
-					echo ' Es Profesor';
+					//echo ' Es Profesor';
 					switch($datosNuevos['idTipoUsuario']){
 						case 1: //De profesor a alumno
-								echo "Ahora es alumno";
+								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							
-							echo"Actualizado alumno";
+								//$this->cargarVista();							
+							//echo"Actualizado alumno";
 							break;
 						
 						case 2://sigue siendo profesor
-							echo "sigue siendo profesor";
+							//echo "sigue siendo profesor";
 							
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
 							break;
 						case 3://Ahora es administrativo
-							echo "ahora es administrativo";
+							//echo "ahora es administrativo";
 							
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
+							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
 							
 							
 							
 					 
-					echo "Fin caso 2 profesor actualizado";
+					//echo "Fin caso 2 profesor actualizado";
 					}				
 					
 					break;	
 				case 3:
-					echo 'Es Administrativo';
+					//echo 'Es Administrativo';
 					switch($datosNuevos['idTipoUsuario']){
 						case 1: //De Administrativo a alumno
-								echo "Ahora es alumno";
+								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							
-							echo"Actualizado alumno";
+								//$this->cargarVista();
+							//echo"Actualizado alumno";
 							break;
 						
 						case 2://Ahora es profesor
-							echo "sigue siendo profesor";
+							//echo "sigue siendo profesor";
 							
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
 							break;
 						case 3://Sigue siendo administrativo
-							echo "ahora es administrativo";
+							//echo "ahora es administrativo";
 							
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							//$this->cargarVista();
+							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
-							
+							//$this->cargarVista();
 							
 							
 					 
-					echo "Fin caso 3 Administrativo actualizado";
+					//echo "Fin caso 3 Administrativo actualizado";
 					}	
 					break;
 				
 				case 4:
 					echo 'Es otro';
-					
+					//$this->cargarVista();
+					break;
 				default:
 					echo 'Error';
 					break;
@@ -453,6 +505,17 @@ class CEditarPerfilJugador extends CI_Controller {
 				echo json_encode(0);
 			}					
 		}
+		function cargarVista(){
+				$datos['idUsr'] = $this->session->userdata('idUsuario');
+				$datos['nombreUsr'] = $this->session->userdata('usuario');
+				$datos['icnAvatar'] = $this->session->userdata('avatar');
+				$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
+				$this->load->view('vPerfil', $datosPerfilOrdenados);
+				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
+				$this->load->view('vGaleria', $datosPerfilOrdenados);
+		}
+		
 		
 		function validaUsuarioCorreo($datos){
 			
