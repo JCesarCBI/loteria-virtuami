@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
 		}*/
 		if (($this->agent->is_mobile())) {
 			$datos['mensaje'] = "Loteria Virtu@mi no es soportado para dispositivos moviles";
-			$datos['depuracion'] = "Pendiente por entregar este diseno por parte del equipo de diseno";
+			$datos['depuracion'] = "Pendiente por entregar esta vista por parte del equipo de disenio";
 			$this->load->view('vMensaje', $datos);
 			//echo "No soporta moviles";
 		} else {
