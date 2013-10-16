@@ -159,7 +159,14 @@ class CDatosPerfil extends CI_Controller {
 				//Datos para la galeria de cartas
 				$idGaleria = $this->mestadisticas->getGaleria($idUsuario,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
-
+				foreach ($idGaleria as $key) {
+					$auxIdGaleria[$key] = $key;
+					unset($idGaleria[$key]);
+				}
+				$idGaleria = $auxIdGaleria;
+				// echo "<pre> AQUIIIIIIIIIIIIIIIIIIIIIIIII ";
+				// print_r($idGaleria);
+				// echo "</pre>";
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
@@ -195,12 +202,12 @@ class CDatosPerfil extends CI_Controller {
 				$datos['icnAvatar'] = $this->session->userdata('avatar');
 				$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
-				// $this->load->view('vPerfil', $datosPerfilOrdenados);
-				// $this->load->view('vEstadisticas', $datosPerfilOrdenados);
-				// $this->load->view('vGaleria', $datosPerfilOrdenados);
-				echo "<pre>";
-				print_r($datosPerfilOrdenados);
-				echo "</pre>";
+				$this->load->view('vPerfil', $datosPerfilOrdenados);
+				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
+				$this->load->view('vGaleria', $datosPerfilOrdenados);
+				// echo "<pre>";
+				// print_r($datosPerfilOrdenados);
+				// echo "</pre>";
 				
 			}
 		}
