@@ -10,6 +10,9 @@ class CEditarPerfilJugador extends CI_Controller {
 		$this->load->model('estadisticas/mestadisticas');
 		$this->load->model('usuario/mregistro');
 		$this->load->model('juego/mJuegoLibre');
+		if (($this->session->userdata('logeado') != 1)) {
+			exit("Acceso denegado 403, pedir vista al equipo de diseño");
+		}
 		
 	}
 	

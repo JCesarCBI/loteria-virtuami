@@ -9,6 +9,9 @@ class CJuego extends CI_Controller {
 		$this->load->model('juego/mscore');
 		$this->load->model('estadisticas/mestadisticas');
 		$this->load->model('juego/mtrofeo');
+		if (($this->session->userdata('logeado') != 1)) {
+			exit("Acceso denegado 403, pedir vista al equipo de diseño");
+		}
 	}
 	
 	public function opcionesJuego(){

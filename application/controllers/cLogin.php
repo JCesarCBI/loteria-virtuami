@@ -29,6 +29,7 @@ class CLogin extends CI_Controller {
 			if($jugador){
 				if ($jugador[0]->estatus == 1) {
 					$this->session->set_userdata('usuario', $usr);
+					$this->session->set_userdata('logeado', 1);
 					$this->session->set_userdata('idUsuario', $jugador[0]->idUsr);
 					$this->session->set_userdata('idJuego', 1);
 					$this->session->set_userdata('avatar', $jugador[0]->gdeAvatar);

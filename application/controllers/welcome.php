@@ -39,7 +39,5 @@ class Welcome extends CI_Controller {
 			// echo "<pre>";
 			$this->load->view('vinicio', $datos);
 		}
-		
-		
 	}
 }

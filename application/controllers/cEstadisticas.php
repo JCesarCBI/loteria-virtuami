@@ -5,6 +5,9 @@ class CEstadisticas extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url', 'form'));
 		$this->load->model('estadisticas/mestadisticas');
+		if (($this->session->userdata('logeado') != 1)) {
+			exit("Acceso denegado 403, pedir vista al equipo de diseño");
+		}
 		//$this->ci->load->model('usuario/mregistro');
 		// $this->load->library('micombobox');
 		
