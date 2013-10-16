@@ -35,7 +35,15 @@ class CDatosPerfil extends CI_Controller {
 					$trofeos = $this->mestadisticas->getTodosTrofeos();
 					//Se obtiene lista de trofeos ganados por el jugador en el juego
 					$trofeosJugador = $this->mestadisticas->getTrofeos($idUsuario, $idJuego);
-					
+					$numTrofeos = count($trofeosJugador);
+					for ($i=0; $i < $numTrofeos; $i++) {
+						$aux[$i+1] = $trofeosJugador[$i];
+						unset($trofeosJugador[$i]);
+					}
+					$trofeosJugador = $aux;
+					// echo "<pre>OOOOOOOOOOOOOOOOOOOOO";
+					// print_r($trofeosJugador);
+					// echo "</pre>";
 					//Verificamos si el jugador ha ganado o no trofeos
 					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
 						//Se agrega el edo de no ganado a todos los trofeos
