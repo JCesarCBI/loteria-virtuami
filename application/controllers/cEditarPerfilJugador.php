@@ -256,9 +256,9 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
-		echo"<pre>";
-		 print_r($_POST);
-		 echo"</pre>";
+		// echo"<pre>";
+		 // print_r($_POST);
+		 // echo"</pre>";
  		
  			
 		 	
@@ -492,18 +492,17 @@ class CEditarPerfilJugador extends CI_Controller {
 			}		
 		}
 	
-		function correo(){
+		function dominio(){
 			$term = $this->input->post('correo',TRUE); //Recibo variable "correo" a través de AJAX. Archivo media/js/inicio.js. Línea 119
-			$valor= $this->mregistro->getExisteCorreo($term);//La función 'getExisteCorreo' regresa true si el correo existe y false en caso contrario.
 			$correo_xanum = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]xanum[.]uam[.]mx$/', $term);
 			$correo_titlani = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]titlani[.]uam[.]mx$/', $term);
-			if( $valor || ($correo_xanum == FALSE && $correo_titlani==FALSE)){
-				//Correo existe   
-				echo json_encode(1);	
-			}else{
-				//Correo no existe
-				echo json_encode(0);
-			}					
+			$correo_docencia = preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@]docencia[.]uam[.]mx$/', $term);
+			//Comprobando si el dominio es correcto
+				if($correo_xanum == FALSE && $correo_titlani==FALSE && $correo_docencia == FALSE){
+					echo json_encode(1);	
+				}else{
+					echo json_encode(1);
+				}
 		}
 		function cargarVista(){
 				$datos['idUsr'] = $this->session->userdata('idUsuario');
@@ -518,6 +517,18 @@ class CEditarPerfilJugador extends CI_Controller {
 		
 		
 		function validaUsuarioCorreo($datos){
+			$valor= $this->mregistro->getExisteCorreo($datos['idUsuario']);
+			$resultado=$this->mregistro->getCodigoActivacion($datos['idUsuario']);
+			$correoIdUsr=$resultado['correo'];
+			
+			if($correoIdUsr == $datos['correo'] && $valor==TRUE){
+				echo json_encode(1);
+				
+			}
+			else {
+				echo json_encode(0);
+			}
+			
 			
 			
 		}
