@@ -3,134 +3,164 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/foundation.css">
 		<link rel="stylesheet" href="<?=base_url(); ?>media/css/general.css">
-		<link rel="stylesheet" href="<?=base_url(); ?>media/css/inicio.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/perfil.css">
+		<link rel="stylesheet" href="<?=base_url(); ?>media/css/bordeBlanco.css">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script src="<?= base_url()?>media/js/jquery-1.9.1.min.js"></script>
 		<script> base = "<?= base_url() ?>"</script>
-		<script src="<?= base_url()?>media/js/inicio.js"></script>
+		<script src="<?= base_url()?>media/js/validaCampos.js"></script>
+		<script src="<?= base_url()?>media/js/perfil.js"></script>
+	    <script type="text/javascript">
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      function drawChart() {
+			var data = google.visualization.arrayToDataTable([
+			          ['Tipo Partida', 'Numero'],
+			          ['basicoGanados',    <?= $estadisticas['basicoGanados'] ?>],
+			          ['avanzadoGanados',  <?= $estadisticas['avanzadoGanados'] ?>],
+			          ['partidasPerdidas',  <?= $estadisticas['partidasPerdidas'] ?>],
+			          ['Experto', 0],
+	
+			        ]);
+		
+	        var options = {
+				backgroundColor: '#17343C',
+		       	legend: 'none',
+		       	enableInteractivity:false,
+		       	chartArea:{
+		       		width:"auto"
+		       	},
+		       	width:"auto",			       	
+	        };
+		
+	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	        chart.draw(data, options);
+		  }
+    	</script>
+
 	</head>
 
 	<body>
+
 		<script>
-			$(document).ready(function() {	
-				if(<?=$noExiste?>==1){
-					alert('Usuario o contraseña incorrecto')
-				}
-			})
-		</script>
-		<title>Inicio</title>
-		<div class="twelve header">
+		
+			<?php
+			$js_array = json_encode($trofeos);
+			echo "var trofeos = ". $js_array . ";\n";
+			?>			
+		</script>						
+		<title>Editar perfil</title>
+		<div id="barraUsuario" class="twelve columns header sombra2">
+			<img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/>
+			<a href="#" id="usuario"><?=$nombreUsr?></a>
+			<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr ?>">
+		</div>
+		<div id="cajaMadre" class="twelve columns">
+			<div id="cajaHija" class="twelve columns">
+				<div class="five columns"></div>
+				<ul class="navegacion seven columns">
+					<li id="" class="three column"><a href="<?= base_url()?>index.php/cpruebasLuisa/modalidad"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
+					<li id="nav-informacion" class="three column"><img src="<?= base_url()?>media/img/_i.jpg">nformación</li>
+					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
+					<li id="nav-galeria" class="three column"><img src="<?= base_url()?>media/img/_g.jpg">alería</li>
+				</ul>
+				<div id="foto-nombreUsr" class="twelve columns">
+					<center><img class="two columns foto" src="<?= base_url() ?><?= $gdeAvatar ?>" title=""/></center>
+					<div class="one columns"></div>
+					<div id="nombreUsuario" class="nine columns">
+						<h1 class="underline"><?= $nombreUsr?></h1>
+						<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
+					</div>										
 
-		<div class="nine columns">
-			<div class="mesa"></div>
-			
-			<!--CAJÓN SUPERIOR -->
-			<div id="cajonSupCerrado" class="cajonSuperior-cerrado">
-				<label class="CS-cerrado">Iniciar sesión</label>				
-			</div>			
-			
-			<div class="cajonSuperior-abierto">
-				<div class="amarillo-sup">				
-					<label class="i-sesion">Iniciar sesión</label>
 				</div>
-				<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin2/validarLogin">
-	                <input autofocus class="superior vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" required placeholder="usuario"/>
-	                <input autofocus class="superior vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" required placeholder="contraseña"/>
-	                <input class="sup boton" type="submit" id="iSesion-boton" name="iniciar-sesion" value="entrar">
-    	        </form>
-    	        <label id="recuperaContrasena">recuperar contraseña</label>
+				<div id="informacion" class="twelve columns">
+					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
+						<hr><hr>
+						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
+						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
+						<div id="c1" class="four columns">
+							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
+							<center><input type="button" id="editarFoto" value="Editar foto" class="six columns centered"/></center>
+							<div id="galeriaEditarFoto">
+								<?php
+									foreach ($avatares as $avatar) { ?>
+										<img src="<?php print_r(base_url().$avatar['icnAvatar'])?>" onclick="cambiaImagenFoto(<?=$avatar['idAvatar']?>,'<?= $trofeos[$avatar['idAvatar']]['imagen']?>')" />
+										
+								<?php }
+								?>
+								<label id="closeGaleriaEditarFoto" href="#"></label>
+							</div>
+							<center id="guardaCambios"> 
+								<input class="six columns centered" type="submit" id="BtnGuardaCambios" value="Guardar cambios"><br>
+								<input class="six columns centered" type="button" id="cancelarGuardaCambios" value="Cancelar">
+							</center>
+							<center id="editarSeccion"> <!--Editar información-->
+								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar información"></span>
+								<div id="contrasenaActual" class="twelve columns">
+									<input type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
+									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns centered">
+									<input type="button" id="BtnCancelarEditar" value="Cancelar" class="six columns centered">
+								</div>
+							</center>
 
-    	        <!-- formulario que se mostrará si el usuario elige "recuperar contraseña"
-    	        	Se mantiene oculto y se activa con jquery -->
-    	        <div class="recuperarContrasena">
-	    	        <label id="labelRecuperar" class="ins">Ingresa el correo al que se enviará tu contraseña</label>
-					<form class="recuperarContrasena-form" method="post" action="<?= base_url();?>index.php/cLogin2/recuperarContrasena">
-		                <input autofocus class="superior vacio"  type="email" id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" required placeholder="correo"/>
-		                <input class="sup boton" type="submit" id="recuperaContrasena-boton" name="recuperaContrasena-boton" value="enviar">
-	    	        </form>
-           	        <label id="Isesion">Iniciar sesión</label>
-    	        </div>    	        
-			</div> 
-			<!--TERMINA cajón superior-->
-			
-			<!--CAJÓN LATERAL-->
-			<div class="cajonLateral-cerrado">
-				<label class="rotar CL-cerrado">Registro</label>				
-			</div>
-			
-			<div class="cajonLateral-abierto">
-				<form id="formRegistro" method="post" action="<?php print_r(base_url())?>index.php/cRegistro/RegistraUsuario">
-					<label class="ins">Campos con * son obligatorios</label>
-					<!-- primera parte registro -->
-					<div id="paso1">
-		                <input autofocus class="lateral vacio primero" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="* usuario"/>
-		                <input id="usr_ok" type="hidden" value="0"> <!-- indica si el nombre de usuario es correcto o incorrecto. Modificado en inicio.js -->
-						<label id="usrError" class="error_validation">El alias ya existe</label>
-	
-		                <input autofocus class="lateral vacio primero" type="email" id="usuario_correo" name="usuario_correo" required placeholder="* e-mail"/>
-		                <input id="email_ok" type="hidden" value="0"> <!-- indica si el correo es correcto o incorrecto. Modificado en inicio.js -->
-	   					<label id="emailExisteError" class="error_validation">El correo ya está registrado</label>
-						<label id="emailDominioError" class="error_validation">El dominio no es válido,<br> usa tu cuenta de titlani/xanum/docencia</label>
+						</div>
 						
-		                <input autofocus class="lateral vacio primero"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
-	
-		                <p class="sexo">
-		                	<label class="sexo" for="usuario_sexo">hombre</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
-		                </p>
-		                <p class="sexo"> 
-		                	<label class="sexo" for="usuario_sexo">mujer</label><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
-		                </p><br>
-	                </div>
-					<!-- segunda parte registro -->
-					<div id="paso2">
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
-						<input autofocus class="lateral vacio segundo" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><br>
-					</div>
-					<!--tercera parte registro-->
-					<div id="paso3">
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_edad" name="usuario_edad" required placeholder="* edad" />
-						<label id="edadError" class="error_validation">Tu edad debe ser escrita con números</label>
-						<?php  echo form_dropdown('usuario_comunidadUniversitaria', $comunidad_universitaria, -1, 'id=usuario_comunidadUniversitaria class="tercero"'); ?>
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
-						<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
-						<?php  echo form_dropdown('usuario_gradoActivo', $gradoActivo, -1, 'id=usuario_gradoActivo class="tercero"'); ?>
-		        		<?php  echo form_dropdown('usuario_division', $division, -1, 'id=usuario_division class="tercero"'); ?>
-		        		<?php  echo form_dropdown('usuario_posgrado', $pos, -1, 'id=usuario_posgrado class="tercero"'); ?>
-	        		</div>
-	                <!-- botones siguiente y submit -->
-	                <input type="button" class="boton" id="sig1" value="siguiente" disabled/>
-	                <input type="button" class="boton" id="sig2" value="siguiente" disabled />
-	                <input type="button" class="boton" id="atras1" value="atrás" />
-					<input type="button" class="boton atras2" id="atras2" value="atrás" />
-					<input type="submit" class="boton" id="enviar" value="enviar" disabled />
-					
-					<!-- envio de correo de confirmación -->
-					<input type="hidden" value="0" id="seEnvioCorreoRegistro">
-	                <div id="amarillo-lat" class="amarillo-lat">
-	                	<label class="rotar">Registro</label>
-	                </div>
-                </form>
-			</div> <!--canjonLateral-abierto-->			
+						<div id="c2" class="four columns">
+							<input type="hidden" value="<?= $idUsr?>" name="idUsuario"/>
 
-		</div><!-- nine columns-->
-		
-		
-		<div class="three columns"></div> <!-- completa las 12 columnas-->
-		
-		<!--Sección de ACERCA DEL JUEGO -->
-		<div class="twelve columns acerca">
-				<div class="nine columns">
-					<h2>Acerca del juego</h2>
-					<p>dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-						dsdasdasd adjaoisjdajsoda adjaoidjoajdoiajosidjaosd adjaodjoaijdojajdsoiajsodja aoijdoiajsdoja
-					</p>
-				</div>
-				<div class="three columns">
-					<img id="logoUAM" src="<?= base_url()?>media/img/uami.png"/>
-				</div>
-		</div> <!--termina sección ACERCA DEL JUEGO -->
-	</body>
-</html>
+							<input id="usuario_nombre" name="usuario_nombre" class="tarjeta" type="text" autofocus="" disabled value="<?= $nombre ?>">							
+							<label id="nombreVacio" class="error"></label>
+							<label for="usuario_nombre">Nombre</label>
+
+							<input type="text" id="usuario_aPaterno" name="usuario_Apat" value="<?= $aPaterno?>" autofocus>
+							<label id="apatVacio" class="error"></label>
+							<label>Apellido paterno</label>
+							
+							<input type="text" id="usuario_aMaterno" name="usuario_Amat" value="<?= $aMaterno?>" autofocus>
+							<label id="amatVacio" class="error"></label>
+							<label>Apellido materno</label>
+
+							<input type="email" id="usuario_correo" name="usr_correo" value="<?= $correo?>" autofocus>
+							<label id="emailVacio" class="error"></label>
+							<label >Correo</label>
+
+							<?php echo form_dropdown('usuario_sexo', $Sexo, $sexo, 'id=usuario_sexo'); ?>
+							<label>Sexo</label>
+						</div>
+						
+						<div id="c3" class="four columns"> 
+				        	<?php echo form_dropdown('usuario_edad', $Edades, $edad, 'id=usuario_edad'); ?>
+							<label>Edad</label>
+
+				        	<?php echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idUsr, 'id=usuario_comunidadUniversitaria'); ?>
+							<label>Comunidad Universitaria</label>
+
+							<div id="alumno">
+								<?php  echo form_dropdown('usuario_gradoActivo', $datos['gradoActivo'], $idGradoActivo, 'id=usuario_gradoActivo'); ?>
+								<label>Grado Activo</label>
+				        		<?php  echo form_dropdown('usuario_division', $datos['division'], $idDivision, 'id=usuario_division'); ?>
+								<label id="ldivision">División</label>
+				        		<?php  echo form_dropdown('usuario_posgrado', $datos['pos'], -1, 'id=usuario_posgrado'); ?>
+								<label id="lposgrado">Posgrado</label>
+				        	</div>
+						    <div id="prof-admin">
+								<div id="area" class="">
+							        <input autofocus class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
+									<label for="usuario_area">Área</label>
+							    </div>
+								<div id="cargo" class="">
+									<input autofocus class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
+									<label for="usuario_cargo">Cargo</label>
+								</div>
+							</div>
+
+							<input class="four columns" id="usuario_contrasena" name="usuario_contrasena" type="password" value="<?php print_r($contrasena)?>" >
+							<label id="passVacio" class="error"></label>
+							<label for="usuario_contrasena">Contraseña</label>
+							<input id="desenmascarar" class="four columns" type="checkbox" />
+							<label for="desenmascarar">Desenmascarar</label>
+							<div class="four columns"></div>
+
+						</div>
+					</form>
+				</div> <!--información-->
