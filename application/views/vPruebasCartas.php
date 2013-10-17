@@ -50,7 +50,7 @@
 								</div>
 								
 							<div id="espacioCartaReversa">
-								<img src="<?= base_url()?>media/img/mazo/reversa.png" onclick="cambiaCarta(0)" class="cartaReversa pasarCarta" id="cartaReversaClick"/>
+								<img src="<?= base_url()?>media/img/mazo/reversa.png" onclick="cambiaCarta(0,1)" class="cartaReversa pasarCarta" id="cartaReversaClick"/>
 								<div id="cartaEfecto"> </div>
 							</div>
 						</div>			
@@ -199,6 +199,8 @@
 				<input type="hidden"  id="cthuluEE" value="" />
 				<input type="hidden"  id="salinasEE" value="" />
 				<input type="hidden"  id="oFortuna" value="" />
+				<input type="hidden"  id="inicio" value="" />
+				<input type="hidden"  id="PierdeNC" value="" />
 				
 		</div>
 	</body>	

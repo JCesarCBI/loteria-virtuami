@@ -1,5 +1,8 @@
 jQuery(document).ready(function($) {
 
+	document.getElementById('PierdeNC').value = 0;
+	document.getElementById('inicio').value = 0;
+	document.getElementById('estadoPartida').value = 2;
 	document.getElementById('oFortuna').value = 0;
 	document.getElementById('salinasEE').value = 0;
 	document.getElementById('cthuluEE').value = 0;
@@ -88,7 +91,8 @@ function audioRima(indice) {
 
 
 function cambiaCarta(numCarta, mult) {
-	
+
+	document.getElementById('inicio').value=1;
 	$('#posiblePuntuacion').html("   ");
 	if (mult != 1) {
 		rompeCadenas();
@@ -355,12 +359,13 @@ function pintaPuntos() {
 }
 function pierdeNoLoteria(cartaActual){
 		
+		
 		cartaActual=parseInt(cartaActual)
-		document.getElementById('estadoPartida').value=3;
 		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
 		
 	if (cartaActual!=carta) {
-		
+		document.getElementById('PierdeNC').value = 1;
+		document.getElementById('estadoPartida').value=3;
 		loteria();
 
 	} else{
@@ -418,7 +423,7 @@ function loteria(){
 	
 	if (arreglo.length == 17) {
 		
-		if (estadoPartida!=2) {
+		if ((estadoPartida!=2) && (document.getElementById('PierdeNC').value == 0)) {
 			document.getElementById('estadoPartida').value=1;
 		};
 		
@@ -429,6 +434,7 @@ function loteria(){
 
 
 function abandonarPartida(){
+	bPreguntar = false;	
 	ajax_guardaScore(0, 4);
 	window.location.href=base+'index.php/cJuego/opcionesJuego';
 }

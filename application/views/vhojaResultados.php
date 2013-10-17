@@ -18,9 +18,10 @@
 		
 		<span id="botones" class="twelve columns">
 			<form action="<?=base_url();?>index.php/cJuego/configuracionJuego" method="post" enctype="multipart/form-data" id="menuForm" name="menuForm">
-				<input type="hidden" name="vPartida" id="vPartida" value="1" />
-				<input type="hidden" name="vModalidad" id="vPartida" value="1" />
-				<input type="hidden" name="vNivel" id="vPartida" value="1" />
+				
+				<input type="hidden" name="vPartida" id="vPartida" value="<?= $juego['idPartida']?>" />
+				<input type="hidden" name="vModalidad" id="vModalidad" value="<?= $juego['idModalidad']?>" />
+				<input type="hidden" name="vNivel" id="vNivel" value="<?= $juego['idNivel']?>" />
 				<center><span class="ten columns centered">
 					<span class="four columns">
 						<input id="reintentarB" type="submit" value="" class="sombra"/>

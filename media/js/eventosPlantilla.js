@@ -1,7 +1,6 @@
 
 function presionaEnterPlantilla(evt, op) {
 	
-	
 	var charCode = (evt.which) ? evt.which : event.keyCode
 	var respuesta2 = document.getElementById('respuestaBaraja').value;
 	
@@ -63,22 +62,29 @@ function presionaEnterPlantilla(evt, op) {
 }
 
 function clickPlantilla(indice) {
-	pintaPuntos();
-	var respuesta = validaPlantillaBaraja(indice);
-
-	if (respuesta > 0) {
-		//Escribo el input en el cual se escribirá la respuesta
-		$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeyup="javascript:return presionaEnterPlantilla(event, 1)">');
-		//pongo el curso en el input
-		$('#respuestaBaraja').focus();
-
-	} else {
-		errores(indice);
-		rompeCadenas();
-	}
 	
-	$('#plantilla-' + indice).addClass("cartaClick", 95, "easeOutQuart");
-	setTimeout("quitarMarco(" + indice + ")", 1000);
+	if (document.getElementById('inicio').value==1) {
+		
+		pintaPuntos();
+		var respuesta = validaPlantillaBaraja(indice);
+	
+		if (respuesta > 0) {
+			//Escribo el input en el cual se escribirá la respuesta
+			$('#respuestaInput').html('<input type="text" name="respuestaBaraja" id="respuestaBaraja" value="" onkeyup="javascript:return presionaEnterPlantilla(event, 1)">');
+			//pongo el curso en el input
+			$('#respuestaBaraja').focus();
+	
+		} else {
+			errores(indice);
+			rompeCadenas();
+		}
+		
+		$('#plantilla-' + indice).addClass("cartaClick", 95, "easeOutQuart");
+		setTimeout("quitarMarco(" + indice + ")", 1000);
+		
+	} else{
+		alert("Da click al mazo para iniciar el juego :D");
+	};
 
 }
 
