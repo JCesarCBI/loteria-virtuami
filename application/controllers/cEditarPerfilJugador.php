@@ -256,9 +256,10 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
-		// echo"<pre>";
-		 // print_r($_POST);
-		 // echo"</pre>";
+		echo"POST...";
+		 echo"<pre>";
+		 print_r($_POST);
+		 echo"</pre>";
  		
  			
 		 	
@@ -314,15 +315,20 @@ class CEditarPerfilJugador extends CI_Controller {
 				// $this->load->view('vPerfil', $datosPerfilOrdenados);
 				// $this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				// $this->load->view('vGaleria', $datosPerfilOrdenados);
-				//$idUsuario = $this->session->userdata('idUsuario');
+				$idUsuario = $this->session->userdata('idUsuario');
 				$idJue = $this->session->userdata('idJuego');
-				$this->PerfilUsuario($idJue, $nuevo['idUsr']);
+				$this->PerfilUsuario($idJue, $idUsuario);
 				}
 			
 			else{
 				
 				echo"ERROR NO ANALIZO...";
-				$this->PerfilUsuario($idJue, $nuevo['idUsr']);
+				//$datos=$this->session->all_userdata();
+				$idJue = $this->session->userdata('idJuego');
+				 $idUser= $this->session->userdata('idUsuario');
+				
+// 				
+				 $this->PerfilUsuario($idJue,$idUser);
 				/*echo "<script>
 				alert('Alguno de los datos que ingresaste no está siendo aceptado por nuestro servidor :()')
 				</script>";
@@ -340,10 +346,10 @@ class CEditarPerfilJugador extends CI_Controller {
 			// echo "Dentro de analizar datos";
 // 			
 // 				
-			// echo "Datos Nuevos:";
-			// echo "<pre>";
-			// print_r($datosNuevos);
-			// echo "</pre>";
+			 echo "Datos Nuevos:";
+			 echo "<pre>";
+			 print_r($datosNuevos);
+			 echo "</pre>";
 			
 			switch ($datosActuales[0]['idTipoUsuario']) {
 				case 1:
@@ -355,6 +361,12 @@ class CEditarPerfilJugador extends CI_Controller {
 								$datosNuevos['idDivision']= null;
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
+								
+								echo "Datos Nuevos:";
+			 					echo "<pre>";
+			 					print_r($datosNuevos);
+			 					echo "</pre>";
+			
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 								//$this->cargarVista();
 								
@@ -362,8 +374,15 @@ class CEditarPerfilJugador extends CI_Controller {
 							else{
 								if($datosNuevos['idGradoActivo']==1){//es Licenciatura
 									//echo "Es licenciatura";
+									
+									
+									
 									$datosNuevos['cargo']=null;
 									$datosNuevos['area']=null;
+									 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 									$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 									//$this->cargarVista();
 								}
@@ -379,6 +398,12 @@ class CEditarPerfilJugador extends CI_Controller {
 							$datosNuevos['idDivision']=null;
 							$datosNuevos['idGradoPosgrado']=null;
 							$datosNuevos['idGradoActivo']=null;
+							
+							echo "Datos Nuevos:";
+							echo "<pre>";
+							print_r($datosNuevos);
+							echo "</pre>";
+									
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
@@ -387,6 +412,10 @@ class CEditarPerfilJugador extends CI_Controller {
 							$datosNuevos['idDivision']=null;
 							$datosNuevos['idGradoActivo']=null;
 							$datosNuevos['idGradoPosgrado']=null;
+							 echo "Datos Nuevos:";
+							 echo "<pre>";
+							 print_r($datosNuevos);
+							 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
@@ -407,6 +436,10 @@ class CEditarPerfilJugador extends CI_Controller {
 								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
+								 echo "Datos Nuevos:";
+							     echo "<pre>";
+								 print_r($datosNuevos);
+								 echo "</pre>";
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 								//$this->cargarVista();							
 							//echo"Actualizado alumno";
@@ -414,13 +447,19 @@ class CEditarPerfilJugador extends CI_Controller {
 						
 						case 2://sigue siendo profesor
 							//echo "sigue siendo profesor";
-							
+							 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
 						case 3://Ahora es administrativo
 							//echo "ahora es administrativo";
-							
+							 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
@@ -441,6 +480,10 @@ class CEditarPerfilJugador extends CI_Controller {
 								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
+								 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 								//$this->cargarVista();
 							//echo"Actualizado alumno";
@@ -448,13 +491,19 @@ class CEditarPerfilJugador extends CI_Controller {
 						
 						case 2://Ahora es profesor
 							//echo "sigue siendo profesor";
-							
+							 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
 						case 3://Sigue siendo administrativo
 							//echo "ahora es administrativo";
-							
+							 echo "Datos Nuevos:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							//$this->cargarVista();
 							break;
@@ -516,7 +565,8 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 		
 		
-		function validaUsuarioCorreo($datos){
+		function validaUsuarioCorreo(){
+			
 			$valor= $this->mregistro->getExisteCorreo($datos['idUsuario']);
 			$resultado=$this->mregistro->getCodigoActivacion($datos['idUsuario']);
 			$correoIdUsr=$resultado['correo'];
