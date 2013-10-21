@@ -166,7 +166,14 @@ class CJuego extends CI_Controller {
 		// echo "   ";
 		// print_r($score);
 		// echo "</pre>";
-		$this->mscore->setScore($score, $record, $idEdoPartida);
+		if ($idEdoPartida == 2) {
+			$record = 0;
+			$this->mscore->setScore($score, $record, $idEdoPartida);
+		} else {
+			$this->mscore->setScore($score, $record, $idEdoPartida);
+		}
+		
+		
 		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
 		$idTrofeo = 20;
 		if ($cthulu) {
