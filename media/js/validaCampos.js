@@ -22,7 +22,7 @@ function validaPaso2(){
 		usuarioLleno = true;
 		if($("#usuario_nombre").val().length<3 || $("#usuario_nombre").val().length>25){
 			longNombre = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longNombre").attr("class", "error ");
+			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longNombre").attr("class", "error ");
 			$("#usuario_nombre").after(label)
 		}else{
 			longNombre = true;
@@ -36,7 +36,7 @@ function validaPaso2(){
 		paternoLleno = true;
 		if($("#usuario_aPaterno").val().length<3 || $("#usuario_aPaterno").val().length>25){
 			longApat = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longApat").attr("class", "error ");
+			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longApat").attr("class", "error ");
 			$("#usuario_aPaterno").after(label)
 		}else{
 			longApat = true;
@@ -50,7 +50,7 @@ function validaPaso2(){
 		maternoLleno = true;
 		if($("#usuario_aMaterno").val().length<3 || $("#usuario_aMaterno").val().length>25){
 			longMat = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 carácteres").attr("id","longMat").attr("class", "error ");
+			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longMat").attr("class", "error ");
 			$("#usuario_aMaterno").after(label)
 		}else{
 			longMat = true;
@@ -133,7 +133,7 @@ function validaPaso1(){
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
 		if($("#usuario_contrasena").val().length < 6){
-			var label = $("<label>").text("Mínimo 6 carácteres").attr("id","passLong").attr("class", "error ");
+			var label = $("<label>").text("Mínimo 6 caracteres").attr("id","passLong").attr("class", "error ");
 			$("#usuario_contrasena").after(label)
 			passLong = false;
 		}else{
@@ -155,7 +155,7 @@ function validaPaso1(){
 function muestraErrores(cadena){ //Recibe un arreglo
 	for ( i in cadena){
 		console.log(cadena[i]);
-		$(cadena[i]).html("Este campo no puede ser vacío");		
+		$(cadena[i]).html("Este campo no debe quedar vacío.");		
 		$(cadena[i]).show();
 	}
 }
@@ -163,7 +163,6 @@ function muestraErrores(cadena){ //Recibe un arreglo
 function muestraCamposAlumno(){
 	$("#prof-admin").hide();
 	$("#alumno, #usuario_gradoActivo").show();
-	$("#usuario_gradoActivo").val(1);
 	$("#usuario_division,#usuario_posgrado, #lposgrado, #ldivision").hide();
 	$("#usuario_area, #usuario_cargo").removeAttr("required");
 	evaluaGradoActivo();

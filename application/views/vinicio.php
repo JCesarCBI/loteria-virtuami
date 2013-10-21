@@ -20,16 +20,13 @@
 				<div id="seccion-informacion" class="five columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
 					<div class="twelve columns" id="texto">
-						Este entornos lúdico, en el que a través del juego tradicional de Lotería - en donde
-						un gritón o gritona canta una rima que corresponde a la ilustración de la carta que sale -,
-						tiene como propósito apoyar a quien lo juege a fortalecer su conocimiento y práctica del español
-						en dos líneas: <br><br>
-						
-						a) Que mejore su competencia lingüística y se apropie y sensibilice sobre aspectos fundamentales
-						de la gramática del español.<br><br>
-						b) Que el usuario disfrute con elementos de las tradiciones popular y culta, mediante las ilustraciones
-						y las adivinanzas: rimas y citas provenientes de canciones, poemas, dichos y frases.				
-
+						Juego de la Lotería para la práctica del español. <br><br>
+						Este entorno lúdico tiene como propósito apoyar al jugador a fortalecer su conocimiento 
+						y práctica del español en dos líneas:<br><br>
+						<ul>
+							<li>Que mejore su competencia lingüística y se apropie y sensibilice sobre  aspectos fundamentales de la gramática del español.	</li><br>
+							<li>Que el usuario disfrute con elementos de las tradiciones popular y culta, mediante las ilustraciones y las adivinanzas: rimas y citas provenientes de canciones, poemas, dichos y frases.</li>
+						</ul>				
 					</div>
 					<span class="six columns">
 						<center><img id="i_uami" src="<?= base_url() ?>media/img/i_uami.png"></center>
@@ -58,33 +55,33 @@
 				                <input autofocus class="vacio" type="text" id="usuario_nombreUsr" name="usuario_nombreUsr" required placeholder="*Usuario"/>
 								<label id="usuarioVacio" class="error"></label>
 			
-				                <input autofocus class="vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="*e-mail"/>
+				                <input autofocus class="vacio" type="email" id="usuario_correo" name="usuario_correo" required placeholder="*E-mail"/>
 								<label id="emailVacio" class="error"></label>
 															
-				                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* contraseña" />
+				                <input autofocus class="lateral vacio"  type="password" id="usuario_contrasena" name="usuario_contrasena" required	placeholder="* Contraseña" />
 								<label id="passVacio" class="error"></label>
 			
 				                <div id="cajaSexo">
-				                	<span for="usuario_sexo">hombre</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
-				                    <span for="usuario_sexo">mujer</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
+				                	<span for="usuario_sexo">Hombre</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="h" checked/>
+				                    <span for="usuario_sexo">Mujer</span><input autofocus class="sexo" type="radio" id="usuario_sexo" name="usuario_sexo" value="m">
 				                </div>
 		
-		       	                <center><input class="six columns boton centered" type="button" id="sig1" value="siguiente"/><hr class="linea3">
+		       	                <center><input class="six columns boton centered" type="button" id="sig1" value="Siguiente"/><hr class="linea3">
 		       	                <input type="button" class="boton six columns centered" id="iniciarSesionBtn2" value="Iniciar sesión"/></center>
 		       	            </div> <!--paso1-->		
 					
 							<div id="paso2">
-								<input autofocus class="vacio" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* nombre(s)" />
+								<input autofocus class="vacio" type="text" id="usuario_nombre" name="usuario_nombre" required placeholder="* Nombre(s)" />
 								<label id="nombreVacio" class="error"></label>
-								<input autofocus class="vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* apellido paterno" />
+								<input autofocus class="vacio" type="text" id="usuario_aPaterno" name="usuario_aPaterno" required placeholder="* Apellido paterno" />
 								<label id="apatVacio" class="error"></label>
-								<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* apellido materno" /><hr class="linea3">
+								<input autofocus class="vacio" type="text" id="usuario_aMaterno" name="usuario_aMaterno" required placeholder="* Apellido materno" /><hr class="linea3">
 								<label id="amatVacio" class="error"></label>
 				                <center>
 				                	<span class="one centered columns"></span>
-				                	<input type="button" class="boton centered four columns" id="atras1" value="atrás" />
+				                	<input type="button" class="boton centered four columns" id="atras1" value="Atrás" />
 				                	<span class="one centered columns"></span>
-				                	<input type="button" class="boton centered four columns" id="sig2" value="siguiente" />
+				                	<input type="button" class="boton centered four columns" id="sig2" value="Siguiente" />
 				                	<span class="one columns centered"></span>
 				                </center>
 							</div> <!--paso2-->	                
@@ -100,15 +97,15 @@
 					        		<?php  echo form_dropdown('usuario_posgrado', $pos, 1, 'id=usuario_posgrado'); ?>					        		
 				        		</div>
 								<div id="prof-admin">
-									<input autofocus class="vacio" type="text" id="usuario_area" name="usuario_area" required placeholder="* área">
-									<input autofocus class="vacio" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* cargo">
+									<input autofocus class="vacio" type="text" id="usuario_area" name="usuario_area" required placeholder="* Área">
+									<input autofocus class="vacio" type="text" id="usuario_cargo" name="usuario_cargo" required placeholder="* Cargo">
 								</div>
 				        		<center>
 				        			<hr>
 				                	<span class="one centered columns"></span>
-				        			<input type="button" class="boton centered four columns" id="atras2" value="atrás" />
+				        			<input type="button" class="boton centered four columns" id="atras2" value="Atrás" />
 				                	<span class="one centered columns"></span>
-									<input type="submit" class="boton centered four columns" id="enviar" value="enviar">
+									<input type="submit" class="boton centered four columns" id="enviar" value="Enviar">
 				                	<span class="one centered columns"></span>
 								</center>
 			        		</div> <!--paso3-->	     
@@ -117,8 +114,8 @@
 						<div id="formularioIsesion">
 							<center id="center1"><img src="<?= base_url()?>media/img/i_sesion.jpg"/></center>
 							<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
-				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" placeholder="usuario"/>
-				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" placeholder="contraseña"/>
+				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" placeholder="Usuario"/>
+				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" placeholder="Contraseña"/>
 				                <center><span class="twelve columns"><input class="six columns boton centered valError" disabled="disabled" type="button" id="iSesion-boton" value="Entrar"></span>
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr class="linea3">
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>

@@ -95,7 +95,7 @@ $(document).ready(function(){
 		}else{
 			ocultaModalidad();
 			$("#vModalidad").val(3)
-			$("#modalidad").html("Derivados y adjetivos");
+			$("#modalidad").html("Adjetivos");
 			jugar()
 		}
 	})

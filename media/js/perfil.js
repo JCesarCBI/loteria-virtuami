@@ -146,9 +146,9 @@ $(document).ready(function() {
 	//Evento para guardar los cambios realizados en perfil	
 	$("#BtnGuardaCambios").click(function(){
 		if(validaCampos()){
-			alert("datos correctos");
+			// alert("datos correctos");
 		}else{
-			alert("datos incorrectos");
+			alert("Datos incorrectos");
 		}
 	})
 
@@ -219,7 +219,7 @@ function validaCampos(){
 				if(existe == 1){
 					correoNoExiste = true;
 					var label = $("<label>").text("El correo ya existe o el dominio es inválido (la cuenta debe ser de titlani/xanum/docencia)").attr({id:"emailExiste", class:"error"})
-					$("#usuario_correo").after(label);
+					// $("#usuario_correo").after(label);
 				}else{ 	//si el correo no existe, verifica que el campo no esté vacío para añadir la clase correcto
 					correoNoExiste = true;
 				}
@@ -320,12 +320,12 @@ function muestraPerfil(){
 	$('#BtnEditar').show()
 }
 
-function cambiaImagenFoto(idImagen, urlImagen){
-	url = base+urlImagen;
-	$(".foto").prop('src',url);
+function cambiaImagenFoto(idImagen, urlImagenG){
+	urlG = base+urlImagenG;
+	$(".foto").prop('src',urlG);
 	$("#usuario_avatar").prop('value',url);
-	$("#id_avatar").val(idImagen);
-	
+	$("#avatarIcn img").prop()
+	$("#id_avatar, #id_avatarIcn").val(idImagen);	
 }
 
 function muestraInfoTrofeo(idTrofeo){

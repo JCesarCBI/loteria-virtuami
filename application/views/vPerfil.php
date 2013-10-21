@@ -44,7 +44,7 @@
 			?>			
 		</script>						
 		<title>Editar perfil</title>
-		
+	
 		<!--sección de la barra de usuario en donde se encuentra el avatar y el menú para dirigirse a secciones como perfil, lecciones, juego, etc. -->
 		<?= $barraUsuario ?>		
 		<div id="cajaMadre" class="twelve columns">
@@ -68,9 +68,12 @@
 				<div id="informacion" class="twelve columns">
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
-						<input id="usuario_avatar" name="usuario_avatar" type="hidden" value="<?= $gdeAvatar ?>"/>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
+						<input id="id_avatar" name="id_avatarIcn" type="hidden" value="<?= $idAvatar ?>"/>
+										
 						<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr?>"/>
+						
+						
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
 							<center><input type="button" id="editarFoto" value="Editar foto" class="six columns centered"/></center>
@@ -125,7 +128,7 @@
 				        	<?php echo form_dropdown('usuario_edad', $Edades, $edad, 'id=usuario_edad'); ?>
 							<label>Edad</label>
 
-				        	<?php echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idUsr, 'id=usuario_comunidadUniversitaria'); ?>
+				        	<?php echo form_dropdown('usuario_comunidadUniversitaria', $datos['comunidad_universitaria'], $idTipoUsr, 'id=usuario_comunidadUniversitaria'); ?>
 							<label>Comunidad Universitaria</label>
 
 							<div id="alumno">
@@ -133,7 +136,7 @@
 								<label>Grado Activo</label>
 				        		<?php  echo form_dropdown('usuario_division', $datos['division'], $idDivision, 'id=usuario_division'); ?>
 								<label id="ldivision">División</label>
-				        		<?php  echo form_dropdown('usuario_posgrado', $datos['pos'], -1, 'id=usuario_posgrado'); ?>
+				        		<?php  echo form_dropdown('usuario_posgrado', $datos['pos'], $idGradoPosgrado, 'id=usuario_posgrado'); ?>
 								<label id="lposgrado">Posgrado</label>
 				        	</div>
 						    <div id="prof-admin">

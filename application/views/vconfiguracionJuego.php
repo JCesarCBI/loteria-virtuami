@@ -35,24 +35,24 @@
 					<label id="modalidad"></label>
 					<label></label>
 				</div>
-				<input type="button" class="twelve columns" value="inicio" id="inicioConfig">
+				<input type="button" class="twelve columns" value="Inicio" id="inicioConfig">
 			</span> 
 			<span class="one columns"></span> <!--contenido que sólo da un espacio de una columna -->
 			
 			<!-- Cartas que sirven únicamente como cartel para que el usuario sepa qué es lo que está seleccionado -->
 			<span id="tipo" class="two columns carta"> 
-				<label id="tipodeJuego" class="labelConf negro"><hr>TIPO DE JUEGO<hr></label>
-				<input type="button" class="twelve columns" value="regresar" id="tipoJuegoRegresar"/>
+				<label id="tipodeJuego" class="labelConf negro"><hr>Tipo de juego<hr></label>
+				<input type="button" class="twelve columns" value="Regresar" id="tipoJuegoRegresar"/>
 			</span>
 			<span id="nivelc" class="two columns carta">
-				<label id="nivelDelJuego" class="labelConf negro"><hr>Nivel de Juego<hr></label>
-				<input type="button" class="twelve columns" value="regresar" id="nivelJuegoRegresar">
+				<label id="nivelDelJuego" class="labelConf negro"><hr>Nivel de juego<hr></label>
+				<input type="button" class="twelve columns" value="Regresar" id="nivelJuegoRegresar">
 			</span>
 			<span id="modalidadc" class="two columns carta">
 				<label class="labelConf negro">
 					<hr>Modalidad<hr>
 				</label>
-				<input type="button" class="twelve columns" value="regresar" id="modalidadJuegoRegresar">
+				<input type="button" class="twelve columns" value="Regresar" id="modalidadJuegoRegresar">
 			</span>
 			
 			<!-- Los siguientes juegos de carta son los que envían la información sobre la modalidad de juego a jugar -->
@@ -60,11 +60,11 @@
 			<span id="tipoJuego" class="twelve columns">
 				<span class="three columns"></span>
 				<span class="two columns carta" id="cPartCompleta">
-					<label id="partidaCompleta" class="labelConf rojo">Partida Completa</label>
+					<label id="partidaCompleta" class="labelConf rojo">Partida completa</label>
 				</span>
 				<span class="one columns"></span>
 				<span class="two columns carta ultima" id="cPartRapida">
-					<label id="partidaRapida" class="labelConf rojo">Partida Rápida</label>
+					<label id="partidaRapida" class="labelConf rojo">Partida rápida</label>
 				</span>
 			</span>
 			<!--Cartas de nivel-->
@@ -91,7 +91,7 @@
 					<label id="diminutivos" class="labelConf rojo">Diminutivos</label>
 				</span>	<span class="one columns"></span>
 				<span class="two columns carta" id="der-adj">
-					<label id="derivadosAdjetivos" class="labelConf rojo">Derivados y adjetivos</label>
+					<label id="derivadosAdjetivos" class="labelConf rojo">Adjetivos</label>
 				</span><span class="one columns"></span>
 				<span class="two columns carta ultima" id="sinonimo">
 					<label id="sinonimos" class="labelConf rojo">Sinónimos</label>
@@ -107,7 +107,7 @@
 				<!-- Carta que enviará la información (submit con background) -->
 				<span id="jugar" class="two columns carta">
 					<input type="submit" class="twelve columns labelConf negro" value="¡Jugar!"></input>
-					<input type="button" class="twelve columns" value="regresar" id="jugarRegresar">
+					<input type="button" class="twelve columns" value="Regresar" id="jugarRegresar">
 				</span>	
 		    </form>	
 		</div> 

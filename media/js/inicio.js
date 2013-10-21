@@ -43,11 +43,11 @@ $(document).ready(function() {
 		}else{
 			$("#iSesion-boton").attr("type","button").attr("disabled","disabled").addClass("valError");
 			if(!validaLoginUsr()){
-				var label = $("<label>").text("El campo no puede ser vacío").attr("class", "error ");
+				var label = $("<label>").text("Este campo no debe quedar vacío.").attr("class", "error ");
 				$("#Lusuario_nombreUsr").after(label)
 			}
 			if(!validaLoginPass()){
-				var label = $("<label>").text("El campo no puede ser vacío").attr("class", "error ");
+				var label = $("<label>").text("Este campo no debe quedar vacío.").attr("class", "error ");
 				$("#Lusuario_contrasena").after(label)
 			}
 
