@@ -27,8 +27,8 @@ class Welcome extends CI_Controller {
 			}
 		}*/
 		if (($this->agent->is_mobile())) {
-			$datos['mensaje'] = "Loteria Virtu@mi no es soportado para dispositivos moviles";
-			$datos['depuracion'] = "Pendiente por entregar esta vista por parte del equipo de disenio";
+			$datos['mensaje'] = "La aplicación no ha sido optimizada para dispositivos móviles, por lo que aún no está disponible por esta vía. Por favor, ingresa de nuevo desde tu computadora. Atentamente, Coordinación de Educación Virtual, Universidad Autónoma Metropolitana Unidad Iztapalapa.";
+			$datos['depuracion'] = " ";
 			$this->load->view('vMensaje', $datos);
 			//echo "No soporta moviles";
 		} else {
