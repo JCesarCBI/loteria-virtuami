@@ -46,9 +46,7 @@ class CEditarPerfilJugador extends CI_Controller {
 						unset($trofeosJugador[$i]);
 					}
 					$trofeosJugador = $aux;
-					// echo "<pre>OOOOOOOOOOOOOOOOOOOOO";
-					// print_r($trofeosJugador);
-					// echo "</pre>";
+					
 					//Verificamos si el jugador ha ganado o no trofeos
 					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
 						//Se agrega el edo de no ganado a todos los trofeos
@@ -177,9 +175,7 @@ class CEditarPerfilJugador extends CI_Controller {
 					unset($idGaleria[$key]);
 				}
 				$idGaleria = $auxIdGaleria;
-				// echo "<pre> AQUIIIIIIIIIIIIIIIIIIIIIIIII ";
-				// print_r($idGaleria);
-				// echo "</pre>";
+				
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
@@ -256,11 +252,7 @@ class CEditarPerfilJugador extends CI_Controller {
 		}
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
-		echo"POST...";
-		 echo"<pre>";
-		 print_r($_POST);
-		 echo"</pre>";
- 		
+		
  			
 		 	
 		 	//----------------------------------------------Comienza UPDATE-------------------------
@@ -290,31 +282,16 @@ class CEditarPerfilJugador extends CI_Controller {
         		$nuevo['cargo']= $_POST['usuario_area'];
         		$nuevo['area']= $_POST['usuario_cargo'];
 				$nuevo['contrasena']=$_POST['usuario_contrasenaActual'];
-			//Válido casos especiales de registro.
+			
 				
-			// echo "Datos Nuevos:";
-			// echo "<pre>";
-			// print_r($nuevo);
-			// echo "</pre>";
+			
 			
 			$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
 		
-			// echo "Datos en la base de datos antes de actualizar...";
-		     // echo"<pre>";
-			 // echo "Datos Actuales en la base";
-	      	 // print_r($actuales);
-		     // echo"</pre>";
 			
 			$this->analizarDatos($nuevo, $actuales);
 		
-				// $datos['idUsr'] = $this->session->userdata('idUsuario');
-				// $datos['nombreUsr'] = $this->session->userdata('usuario');
-				// $datos['icnAvatar'] = $this->session->userdata('avatar');
-				// $datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
-				// $datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
-				// $this->load->view('vPerfil', $datosPerfilOrdenados);
-				// $this->load->view('vEstadisticas', $datosPerfilOrdenados);
-				// $this->load->view('vGaleria', $datosPerfilOrdenados);
+				
 				$idUsuario = $this->session->userdata('idUsuario');
 				$idJue = $this->session->userdata('idJuego');
 				$this->PerfilUsuario($idJue, $idUsuario);
@@ -343,14 +320,7 @@ class CEditarPerfilJugador extends CI_Controller {
 		public function analizarDatos($datosNuevos, $datosActuales){
 			
 		
-			// echo "Dentro de analizar datos";
-// 			
-// 				
-			 echo "Datos Nuevos:";
-			 echo "<pre>";
-			 print_r($datosNuevos);
-			 echo "</pre>";
-			
+	
 			switch ($datosActuales[0]['idTipoUsuario']) {
 				case 1:
 					//echo 'Es alumno...';
@@ -368,7 +338,7 @@ class CEditarPerfilJugador extends CI_Controller {
 			 					echo "</pre>";
 			
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-								//$this->cargarVista();
+								
 								
 							}
 							else{
@@ -384,13 +354,13 @@ class CEditarPerfilJugador extends CI_Controller {
 									 print_r($datosNuevos);
 									 echo "</pre>";
 									$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-									//$this->cargarVista();
+									
 								}
 								else
 								echo 'Error Grado Activo Incorrecto';
-								//$this->cargarVista();
+								
 						}
-							//echo"Actualizado";
+							
 							break;
 						
 						case 2://Cambia a profesor
@@ -405,8 +375,7 @@ class CEditarPerfilJugador extends CI_Controller {
 							echo "</pre>";
 									
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
-							break;
+							
 						case 3://Ahora es administrativo
 							//echo "ahora es administrativo";
 							$datosNuevos['idDivision']=null;
@@ -417,11 +386,11 @@ class CEditarPerfilJugador extends CI_Controller {
 							 print_r($datosNuevos);
 							 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
+							
 							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
-							//$this->cargarVista();
+							
 							
 							
 							
@@ -436,32 +405,31 @@ class CEditarPerfilJugador extends CI_Controller {
 								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
-								 echo "Datos Nuevos:";
-							     echo "<pre>";
-								 print_r($datosNuevos);
-								 echo "</pre>";
+								 // echo "Datos Nuevos:";
+							     // echo "<pre>";
+								 // print_r($datosNuevos);
+								 // echo "</pre>";
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-								//$this->cargarVista();							
-							//echo"Actualizado alumno";
+								
 							break;
 						
 						case 2://sigue siendo profesor
 							//echo "sigue siendo profesor";
 							 echo "Datos Nuevos:";
-									 echo "<pre>";
-									 print_r($datosNuevos);
-									 echo "</pre>";
+									 // echo "<pre>";
+									 // print_r($datosNuevos);
+									 // echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
+							
 							break;
 						case 3://Ahora es administrativo
 							//echo "ahora es administrativo";
 							 echo "Datos Nuevos:";
-									 echo "<pre>";
-									 print_r($datosNuevos);
-									 echo "</pre>";
+									 // echo "<pre>";
+									 // print_r($datosNuevos);
+									 // echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
+							
 							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
@@ -485,31 +453,30 @@ class CEditarPerfilJugador extends CI_Controller {
 									 print_r($datosNuevos);
 									 echo "</pre>";
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-								//$this->cargarVista();
-							//echo"Actualizado alumno";
+								
 							break;
 						
 						case 2://Ahora es profesor
 							//echo "sigue siendo profesor";
-							 echo "Datos Nuevos:";
-									 echo "<pre>";
-									 print_r($datosNuevos);
-									 echo "</pre>";
+							 // echo "Datos Nuevos:";
+									 // echo "<pre>";
+									 // print_r($datosNuevos);
+									 // echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
+							
 							break;
 						case 3://Sigue siendo administrativo
 							//echo "ahora es administrativo";
-							 echo "Datos Nuevos:";
-									 echo "<pre>";
-									 print_r($datosNuevos);
-									 echo "</pre>";
+							 // echo "Datos Nuevos:";
+									 // echo "<pre>";
+									 // print_r($datosNuevos);
+									 // echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							//$this->cargarVista();
+							
 							break;
 						default:
 							echo 'ERROR NO DISPONIBLE...';
-							//$this->cargarVista();
+							
 							
 							
 					 
@@ -519,7 +486,13 @@ class CEditarPerfilJugador extends CI_Controller {
 				
 				case 4:
 					echo 'Es otro';
-					//$this->cargarVista();
+							$datosNuevos['idDivision']=null;
+							$datosNuevos['idGradoActivo']=null;
+							$datosNuevos['idGradoPosgrado']=null;
+							$datosNuevos['cargo']= null;
+        					$datosNuevos['area']=null;
+							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
+							
 					break;
 				default:
 					echo 'Error';
