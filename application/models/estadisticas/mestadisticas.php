@@ -172,8 +172,8 @@
 			$this->db->FROM('score');
 			$this->db->JOIN('record','record.idScore = score.idScore');
 			$this->db->JOIN('partida','partida.idPartida = score.idPartida');
-			$this->db->JOIN('nivel','nivel.idNivel = score.idPartida');
-			$this->db->JOIN('modalidad','modalidad.idModalidad = score.idPartida');
+			$this->db->JOIN('nivel','nivel.idNivel = score.idNivel');
+			$this->db->JOIN('modalidad','modalidad.idModalidad = score.idModalidad');
 			$this->db->WHERE('score.idUsr',$idUsr);
 			// $this->db->WHERE_NOT_IN('record.idEstadoPartida', 3);
 			$this->db->ORDER_BY('record.fecha', 'desc');

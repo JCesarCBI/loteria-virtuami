@@ -12,7 +12,7 @@
 				function __construct() {
 					parent::__construct();
 					$this->load->helper(array('html', 'url', 'form'));
-					$this->load->model('XXXX/YYYY');
+					$this->load->model('estadisticas/mestadisticas');
 				}
 				
 				public function getDatos(){
@@ -39,7 +39,7 @@
 					echo $aleatorio;
 					
 					if ($idUser != 0) {
-						$datos = $this->mlogin->modeloDataBase();
+						$datos = $this->mestadisticas->getUltimoScore($idUser);
 						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
 						// $datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();
