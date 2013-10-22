@@ -253,7 +253,9 @@ class CEditarPerfilJugador extends CI_Controller {
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
 		
- 			
+ 			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
 		 	
 		 	//----------------------------------------------Comienza UPDATE-------------------------
 			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
@@ -332,7 +334,7 @@ class CEditarPerfilJugador extends CI_Controller {
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
 								
-								echo "Datos Nuevos:";
+								echo "Datos Nuevos: Alumno Posgrado";
 			 					echo "<pre>";
 			 					print_r($datosNuevos);
 			 					echo "</pre>";
@@ -369,19 +371,19 @@ class CEditarPerfilJugador extends CI_Controller {
 							$datosNuevos['idGradoPosgrado']=null;
 							$datosNuevos['idGradoActivo']=null;
 							
-							echo "Datos Nuevos:";
+							echo "Datos Nuevos ALumno Profe:";
 							echo "<pre>";
 							print_r($datosNuevos);
 							echo "</pre>";
 									
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
-							
+							break;
 						case 3://Ahora es administrativo
 							//echo "ahora es administrativo";
 							$datosNuevos['idDivision']=null;
 							$datosNuevos['idGradoActivo']=null;
 							$datosNuevos['idGradoPosgrado']=null;
-							 echo "Datos Nuevos:";
+							 echo "Datos Nuevos:alumno Admin";
 							 echo "<pre>";
 							 print_r($datosNuevos);
 							 echo "</pre>";
@@ -405,20 +407,20 @@ class CEditarPerfilJugador extends CI_Controller {
 								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
-								 // echo "Datos Nuevos:";
-							     // echo "<pre>";
-								 // print_r($datosNuevos);
-								 // echo "</pre>";
+								 echo "Datos Nuevos: Profe --Alumno";
+							     echo "<pre>";
+								 print_r($datosNuevos);
+								 echo "</pre>";
 								$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 								
 							break;
 						
 						case 2://sigue siendo profesor
 							//echo "sigue siendo profesor";
-							 echo "Datos Nuevos:";
-									 // echo "<pre>";
-									 // print_r($datosNuevos);
-									 // echo "</pre>";
+							 echo "Datos Nuevos:Profe Profe";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							
 							break;
@@ -448,7 +450,7 @@ class CEditarPerfilJugador extends CI_Controller {
 								//echo "Ahora es alumno";
 								$datosNuevos['cargo']= null;
         						$datosNuevos['area']=null;
-								 echo "Datos Nuevos:";
+								 echo " ADmin Datos Nuevos Alumno:";
 									 echo "<pre>";
 									 print_r($datosNuevos);
 									 echo "</pre>";
@@ -458,19 +460,19 @@ class CEditarPerfilJugador extends CI_Controller {
 						
 						case 2://Ahora es profesor
 							//echo "sigue siendo profesor";
-							 // echo "Datos Nuevos:";
-									 // echo "<pre>";
-									 // print_r($datosNuevos);
-									 // echo "</pre>";
+							 echo "Datos Nuevos Admin PRofe:";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							
 							break;
 						case 3://Sigue siendo administrativo
 							//echo "ahora es administrativo";
-							 // echo "Datos Nuevos:";
-									 // echo "<pre>";
-									 // print_r($datosNuevos);
-									 // echo "</pre>";
+							 echo "Datos Nuevos: Admin --Admin";
+									 echo "<pre>";
+									 print_r($datosNuevos);
+									 echo "</pre>";
 							$this->mdatosperfil->setActualizaUsuario($datosNuevos['idUsr'], $datosNuevos);
 							
 							break;
