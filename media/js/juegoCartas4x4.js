@@ -35,16 +35,7 @@ jQuery(document).ready(function($) {
 	var tiempo = "";
 	var tiempo2 = "";
 	var NoClickLoteria=""
-    var bPreguntar = true;
-     
-    window.onbeforeunload = preguntarAntesDeSalir;
-     
-function preguntarAntesDeSalir()
-{	
-	
-	if (bPreguntar==true)
-    return "¿Seguro que quieres salir?";
-}
+
     
 function reproduceSonidoNavegador(indiceAudio){
 	
@@ -521,7 +512,6 @@ function cartasLoteria(indice){
 
 
 function loteria(){
-	bPreguntar = false;	
 	cartas=document.getElementById('loteriaCadena').value;
 	estadoPartida=document.getElementById('estadoPartida').value;
 	
@@ -569,7 +559,6 @@ function loteria(){
 
 
 function abandonarPartida(){
-	bPreguntar = false;	
 	ajax_guardaScore(0, 4);
 	window.location.href=base+'index.php/cJuego/opcionesJuego';
 }

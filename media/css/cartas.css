@@ -44,6 +44,7 @@ input[type="button"]
 .conteidoMargen{
 	border:solid 10px #FFFFFF !important;
 	margin: 1% !important;
+	margin-top:-30px!important;
   	height: 96%;
   	min-height:698px !important;
 }
@@ -231,7 +232,7 @@ input[type="button"]
 	width: 528px;
 	background-color: #333333;
 	min-height: 15px !important;
-	font-size: 87%;
+	font-size: 100%;
 	color: white;
 	margin-bottom: 5px;
 	padding:2px;
@@ -365,4 +366,5 @@ input[type="button"]
 
 .botonLT{
 	max-width:150px;
+	box-shadow: 0 5px 15px #000000;
 }

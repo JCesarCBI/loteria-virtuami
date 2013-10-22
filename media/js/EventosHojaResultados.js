@@ -52,9 +52,21 @@ $(document).ready(function() {
 });
 
 
+
 function hojaResultados(puntos){
+	
 	estadoPartida=document.getElementById('estadoPartida').value;
-	ajax_guardaScore(puntos, estadoPartida);
+	
+	
+	if ((estadoPartida=="3" || estadoPartida=="4")) {
+		ajax_guardaScore(0, estadoPartida);
+		
+	} else{		
+		if ((document.getElementById('seguro').value==0)) {
+			ajax_guardaScore(puntos, estadoPartida);
+		};
+	};
+	
 	
 	switch(estadoPartida)
 		{

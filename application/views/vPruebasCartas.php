@@ -26,12 +26,12 @@
 	<link rel="stylesheet" href="<?=base_url(); ?>media/css/hojaRes.css">
 
 	</head>
-	<body>
+	<body >
 		<?= $barraUsuario ?>
 		<div class="twelve columns conteidoMargen">
 			<div id="segundoMargen" class="twelve columns segundoM">
 				<div class="contenidoCentrado">		  
-					<div id="hojaDeResultados">
+					<div id="hojaDeResultados" >
 						<?=$hojaResultado?>				  
 					</div>
 				
@@ -63,16 +63,16 @@
 						<div class="contenidoSuperior" id="contenidoSuperior">
 							<div class="fondosup" id="fondosup">
 								<div class="puntosTotal">
-									PUNTOS TOTAL<br />
+									Puntos total<br />
 								</div>
 								<div class="multiplicador">
-									MULTIPLICADORES<br />
+									Multiplicadores <br />
 								</div>
 								<div class="comodines">
-									COMODINES<br />
+									Comodines<br />
 								</div>
 								<div class="errores">
-									ERRORES<br />
+									Errores<br />
 								</div>
 							</div>	
 							<div class="textoLetra">
@@ -201,6 +201,7 @@
 				<input type="hidden"  id="oFortuna" value="" />
 				<input type="hidden"  id="inicio" value="" />
 				<input type="hidden"  id="PierdeNC" value="" />
+				<input type="hidden"  id="seguro" value="" />
 				
 		</div>
 	</body>	

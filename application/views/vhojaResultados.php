@@ -5,13 +5,13 @@
 		<span class="two columns"></span>
 		<span id="trofeos" class="eight columns">
 			<span id="trofeo" class="five columns">
-				<center><img clas="six columns" src="<?= base_url()?>media/img/trofeo/gn_cthulhu.png">
-				<span clas="six columns" id="numTrofeos">+4</span></center>
+				<!-- <center><img clas="six columns" src="<?= base_url()?>media/img/trofeo/gn_cthulhu.png"> -->
+				<span clas="six columns" id="numTrofeos"></span></center>
 			</span>
 			<span class="one columns"></span>
 			<span id="carta" class="five columns" >
-				<center><img clas="six columns" src="<?= base_url()?>media/img/plantilla/01_gallo.jpg">
-				<span clas="six columns" id="numCartas">+4</span></center>
+				<!-- <center><img clas="six columns" src="<?= base_url()?>media/img/plantilla/01_gallo.jpg"> -->
+				<span clas="six columns" id="numCartas"></span></center>
 			</span>
 		</span>
 		<span class="two columns"></span>
