@@ -38,7 +38,7 @@
 				<div class="one columns"></div>
 					<div id="seccion-formularios" class="five columns">
 						<div id="video" class="twelve columns">
-							<center><video id="vid" width="100%" height="auto" controls>
+							<center><video id="vid" width="100%" height="auto" controls poster="<?= base_url()?>/media/img/poster.png">
 							  <source src="<?= base_url()?>/media/video/remember.mp4" type="video/mp4"/>
 							  <source src="<?= base_url()?>/media/video/remember.webm" type="video/webm"/>
 							  Tu navegador no implementa el elemento <code>video</code>
