@@ -13,9 +13,20 @@
 	</head>
 
 	<body>
+		<title>Lotería VIRTUAMI</title>
 		<div class="twelve sombra2"></div>
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
+
+			<!-- RECUPERARA CONTRASEÑA						 -->
+			<div id="formalarioRecuperarContrasena">
+				<form method="post" action="<?=base_url()?>index.php/cLogin/recuperarContrasena">
+					<label class="labelRegistro">Ingresa tu correo con el que registraste para que se haga envío de tu contraseña</label>
+					<input id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" type="email" required>
+					<center><input type="submit" id="recuperarCBtn" class="boton centered"></center>
+				</form>	
+				<a class="close"></a>
+			</div>
 				<!-- <div class="one columns"></div> -->
 				<div id="seccion-informacion" class="five columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
@@ -111,11 +122,12 @@
 			        		</div> <!--paso3-->	     
 		        		</form>    
 		        		       			
+		        	 	<!-- INICIO DE SESIÓN -->
 						<div id="formularioIsesion">
 							<center id="center1"><img src="<?= base_url()?>media/img/i_sesion.jpg"/></center>
 							<form class="iSesion-form" method="post" action="<?= base_url();?>index.php/cLogin/validarLogin">
-				                <input autofocus class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" placeholder="Usuario"/>
-				                <input autofocus class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" placeholder="Contraseña"/>
+				                <input class="vacio"  type="text" id="Lusuario_nombreUsr" name="Lusuario_nombreUsr" placeholder="Usuario"/>
+				                <input class="vacio" type="password" id="Lusuario_contrasena" name="Lusuario_contrasena" placeholder="Contraseña"/>
 				                <center><span class="twelve columns"><input class="six columns boton centered valError" disabled="disabled" type="button" id="iSesion-boton" value="Entrar"></span>
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr class="linea3">
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>
@@ -125,6 +137,6 @@
 				<div class="one columns"></div>
 			</div><!--caja hija-->
 		</div> <!--twelve columns--->
-		<!-- <div id="pie" class="twelve column sombra2"></div> -->
+		
 	</body>
 </html>

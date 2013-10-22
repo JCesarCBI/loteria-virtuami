@@ -54,6 +54,14 @@ $(document).ready(function() {
 
 		}
 	})
+	
+	//Muestra la sección para recuperar contraseña
+	$("#recuperaContrasena-boton").click(function(){
+		$("#formalarioRecuperarContrasena").show();
+	})
+	$(".close").click(function(){
+		$("#formalarioRecuperarContrasena").hide();
+	})
 });
 
 
@@ -95,9 +103,14 @@ function muestraIsesionForm(){
 	$("#botones, #video, #formularioRegistro").hide();
 	$("#formularioIsesion").show();
 }
+
+function muestraRecuperaContrasenaForm(){
+	$("#formularioRegistro, #formularioIsesion").hide();
+	$("#formalarioRecuperarContrasena").show();
+}
 function inicio(){
 	$("input[type='text'], input[type='password'], input[type='email']").val("");
-	$("#formularioRegistro, #formularioIsesion, #paso1, #paso2, #paso3, #prof-admin, .error").hide();
+	$("#formularioRegistro, #formularioIsesion, #formalarioRecuperarContrasena, #paso1, #paso2, #paso3, #prof-admin, .error").hide();
 }
 
 	
