@@ -30,7 +30,7 @@ $(document).ready(function(){
 	});
 	$("#nBasico").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaNivelJuego();
 			$("#nivel").html("Nivel Básico");
@@ -41,7 +41,7 @@ $(document).ready(function(){
 	});
 	$("#nAvanzado").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaNivelJuego();
 			$("#nivel").html("Nivel Avanzado");
@@ -54,7 +54,7 @@ $(document).ready(function(){
 	
 	$("#nExperto").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaNivelJuego();
 			$("#nivel").html("Nivel Experto");
@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 	$("#libre").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaModalidad();
 			$("#vModalidad").val(1)
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	})
 	$("#diminutivo").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{		
 			ocultaModalidad();
 			$("#vModalidad").val(2)
@@ -91,7 +91,7 @@ $(document).ready(function(){
 	})	
 	$("#der-adj").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaModalidad();
 			$("#vModalidad").val(3)
@@ -101,7 +101,7 @@ $(document).ready(function(){
 	})
 	$("#sinonimo").click(function(){
 		if($(this).hasClass("bloqueado")){
-			alert("elemento bloqueado")
+			alert("¡Próximamente!")
 		}else{
 			ocultaModalidad();
 			$("#modalidad").html("Sinónimos");

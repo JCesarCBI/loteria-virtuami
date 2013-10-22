@@ -11,7 +11,9 @@ function eligeTipoUsuario(){
 			muestraCamposProfAdmin();
 			break;
 		case "4": //Otro
-			$("#alumno, #prof-admin").hide();
+			alert("Tipo de usuario no está disponible para esta versión");
+			$("#usuario_comunidadUniversitaria").val(1);
+			muestraCamposAlumno();
 			break;
 	}	
 }
@@ -22,7 +24,7 @@ function validaPaso2(){
 		usuarioLleno = true;
 		if($("#usuario_nombre").val().length<3 || $("#usuario_nombre").val().length>25){
 			longNombre = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longNombre").attr("class", "error ");
+			var label = $("<label>").text("La longitud máxima de tu nombre es de 25 carácteres y debe tener al menos 3 caracteres").attr("id","longNombre").attr("class", "error ");
 			$("#usuario_nombre").after(label)
 		}else{
 			longNombre = true;
@@ -36,7 +38,7 @@ function validaPaso2(){
 		paternoLleno = true;
 		if($("#usuario_aPaterno").val().length<3 || $("#usuario_aPaterno").val().length>25){
 			longApat = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longApat").attr("class", "error ");
+			var label = $("<label>").text("La longitud máxima de tu apellido es de 25 carácteres y debe tener al menos 3 caracteres").attr("id","longApat").attr("class", "error ");
 			$("#usuario_aPaterno").after(label)
 		}else{
 			longApat = true;
@@ -50,7 +52,7 @@ function validaPaso2(){
 		maternoLleno = true;
 		if($("#usuario_aMaterno").val().length<3 || $("#usuario_aMaterno").val().length>25){
 			longMat = false;
-			var label = $("<label>").text("Mínimo 3, Máx 25 caracteres").attr("id","longMat").attr("class", "error ");
+			var label = $("<label>").text("La longitud máxima de tu apellido es de 25 carácteres y debe tener al menos 3 caracteres").attr("id","longMat").attr("class", "error ");
 			$("#usuario_aMaterno").after(label)
 		}else{
 			longMat = true;
@@ -82,7 +84,7 @@ function validaPaso1(){
 		success:function(existe){ 
 			if(existe == 1){
 				usuarioNoExiste = false;
-				var label = $("<label>").text("El usuario ya existe").attr({id:"usrError", class:"error"})
+				var label = $("<label>").text("Este nombre de usuario ya existe.").attr({id:"usrError", class:"error"})
 				$('#usuario_nombreUsr').after(label)
 			}else{//Si el usuario no existe 
 				usuarioNoExiste = true;
@@ -94,7 +96,7 @@ function validaPaso1(){
 	if($("#usuario_nombreUsr").val() != ""){
 		usuarioLleno = true;
 		if($("#usuario_nombreUsr").val().length < 5){ //Verificamos la longitud
-			var label = $("<label>").text("Mínimo 5 caracteres").attr({id:"usuarioLong", class:"error"})
+			var label = $("<label>").text("El nombre de usuario debe tener al menos 5 caracteres.").attr({id:"usuarioLong", class:"error"})
 			$("#usuario_nombreUsr").after(label);
 			longUsuario = false;
 		}else{
@@ -133,7 +135,7 @@ function validaPaso1(){
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
 		if($("#usuario_contrasena").val().length < 6){
-			var label = $("<label>").text("Mínimo 6 caracteres").attr("id","passLong").attr("class", "error ");
+			var label = $("<label>").text("Tu contraseña debe tener al menos 6 caracteres").attr("id","passLong").attr("class", "error ");
 			$("#usuario_contrasena").after(label)
 			passLong = false;
 		}else{

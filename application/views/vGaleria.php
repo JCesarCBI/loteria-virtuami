@@ -22,17 +22,17 @@
 							<center><img class="centered" src="<?= base_url() ?>media/img/logo_loteria.png"/></center>
 						</span>
 						<div class="ten columns" id="carrusel">
-							<input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="10">
+							<!-- <input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="5"> -->
 							<span id="carrusel-ant"  class="one columns recorre"><img src="<?=base_url()?>media/img/fg_izq.png"></span>
 							<?php 
 								foreach ($galeriaCartas as $imagen) {
 									if($imagen['Estado'] == 1){	 ?>
-										<span id="carrusel-img<?=$imagen['idCarta']?>" class="one columns carrusel-apaga imgCarrusel">
-											<img class="" src="<?php print_r(base_url().$imagen['imgPlantilla'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
+										<span id="carrusel-img<?=$imagen['idCarta']?>" class="two columns">
+											<img class="imgCarrusel carrusel-apaga centered" src="<?php print_r(base_url().$imagen['imgPlantilla'])?>" onclick="muestraInfoCarta(<?= $imagen['idCarta']?>);"/>
 										</span>
 								<?php } else { ?>
-										<span id="carrusel-img<?=$imagen['idCarta']?>" class="one columns carrusel-apaga imgCarrusel">
-											<img class="" src="<?=base_url()?>media/img/galeria/g_reverso.jpg" onclick="limpiaInfoCarta()"/>
+										<span id="carrusel-img<?=$imagen['idCarta']?>" class="two columns">
+											<img class="carrusel-apaga imgCarrusel centered" src="<?=base_url()?>media/img/galeria/g_reverso.jpg" onclick="limpiaInfoCarta()"/>
 										</span>									
 							<?php	} }?>
 	

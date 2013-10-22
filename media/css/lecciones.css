@@ -1,5 +1,5 @@
 /*center{	positon:absolute;}*/
-h3{	color:#fff;	margin-left:10px; font-size:30px;}
+h3{	color:#fff;	margin-left:10px; font-size:30px; font-family:'Gabriela';}
 li{	list-style:none;}
 #cajaLecciones{
 	background:#333;
@@ -15,7 +15,7 @@ li{	list-style:none;}
 	margin-bottom:50px;
 }
 .cajas-txt-lecciones{
-	height:600px;
+	min-height:700px;
 	margin-top:10px;
 }
 
@@ -46,15 +46,17 @@ li{	list-style:none;}
 	padding-left:40px;
 }
 
-.plecciones li{
-	font-size:16px !important;
+.plecciones{
+	font-size:15px !important;
 	color:#fff;
 	text-align:justify;
 	line-height: 1.8em !important;
 	
 }
-#flechas2{
-	margin-top:100%;
+
+#flecha-izq{
+	margin-left:85%;
+	margin-right:1%;
 }
 #i_uami{
 	float:left;

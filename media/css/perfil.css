@@ -3,7 +3,7 @@
 											
 /*.header{height:50px; margin-bottom:30px; margin-left:1%;}*/
 select{margin-bottom:10px; height:35px}
-.underline{text-decoration:underline; color:#FFF;}
+.underline{ border-bottom: solid 2px #fff; color:#FFF;}
 .hilera{
 	background-image:url("../img/cenefa.png") !important;
 	height:21px;
@@ -14,9 +14,10 @@ select{margin-bottom:10px; height:35px}
 .navegacion{margin-top:10px;}
 .navegacion >li, .navegacion>li a{
 	color:#fff;
+	font-family:'Gabriela';
 	display:inline;
 	padding:10px;
-	font-size:16px;
+	font-size:25px;
 }
 .navegacion > li:hover, .navegacion>li a:hover{font-weight:bold;}
 
@@ -83,7 +84,9 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
 }
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus{
 	border:2px solid #078d7b;
+	color: #fff;
 }
+
 input[type="button"], input[type="submit"]{
 	background:#17343c;
 	border: 3px solid #fff;
@@ -165,6 +168,7 @@ h2{color:#fff;}
 .TseccionesEst{
 	text-align:center;
 	color:#eeb81c;
+	font-size:19px;
 	font-weight: bold;
 	font-size:15px;
 }
@@ -197,10 +201,11 @@ table{
 #gallery li{position: relative;	list-style: none;	display:inline;}
 #gallery img{
 	position: relative;
+	box-shadow: 0 0 10px #eeb81c;
 	-moz-transition: border 0.6s ease-out;
 	-o-transition: border 0.6s ease-out;
 	-webkit-transition: border 0.6s ease-out;
-	border: 2px solid #D9E021;
+	border: 2px solid #fff;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -275,13 +280,13 @@ table{
 #nombreCarta{color:#fff; font-size:43px; font-weight:bold; text-shadow:1px 1px 3px #000;}
 #imgCarta{width:450px;height:450px; padding:5px}
 .borde-amarillo{
-	border: 5px solid #D9E021;
+	border: 5px solid #eeb81c;
     -moz-box-shadow: 4px 3px 5px #000000;
     -webkit-box-shadow: 4px 3px 5px #000000;
     box-shadow: 4px 3px 5px #000000;
 }
 .fondo-amarillo{
-	background-color:#D9E021; 
+	background-color:#eeb81c; 
     -moz-box-shadow: 4px 3px 5px #000000;
     -webkit-box-shadow: 4px 3px 5px #000000;
     box-shadow: 4px 3px 5px #000000;

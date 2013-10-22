@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//Oculta y muestra el menú cada vez que el usuario de click al nombre de usuario 
 	//de la barra
-	$("span ul > li:first-child").click(function(){
+	$("span ul > li:first-child, #avatarIcn>img").click(function(){
 		$("#menu").toggleClass("ocultaMenu");
 	})
 	

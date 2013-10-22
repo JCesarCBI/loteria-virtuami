@@ -81,21 +81,27 @@ $(document).ready(function() {
 		$("#nombreUsuario>h1").removeClass("underline").css("color","#fff");
 		
 	})
-	
+
+	var inicioG;
+	var finG;
+
 	//Evento para ver la sección de galería
 	$("#nav-galeria").click(function(){
 		$("#informacion, #estadisticas, #foto-nombreUsr").hide();
-		$("#galeria").show()
-		inicio=$("#carrusel-inicio").val();
-		fin = $("#carrusel-final").val();
-		for(i=inicio; i<=fin; i++){
+		$("#galeria").show();
+		inicioG=1;
+		finG = 5;
+		console.log("inicio "+inicioG)
+		console.log("fin "+finG)
+		$("#carrusel>span:not(.recorre)").hide();
+		for(i=inicioG; i<=finG; i++){
 			$("#carrusel-img"+i).show();
 		}
 		$("#carrusel-sig, #carrusel-ant, #logoLoteria").show();
 	})	
 
 
-	$("#carrusel>span:not(.recorre)").bind({
+	$("#carrusel>span:not(.recorre) >img").bind({
 		click: function(){
 			$(this).unbind('mouseleave');
 			$(this).removeClass('carrusel-apaga').addClass('borde-amarillo');
@@ -111,42 +117,39 @@ $(document).ready(function() {
 	//Navegación del carrusel
 	$("#carrusel-ant").click(function(){
 		$("#carrusel>span:not(.recorre)").hide();
-		inicio = parseInt($("#carrusel-inicio").val())-1
-		fin = parseInt($("#carrusel-final").val())-1
-		if(inicio>0){
-			$("#carrusel-inicio").val(inicio);
-			$("#carrusel-final").val(fin);
-			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show();
-			}
+		if(inicioG>1){
+			inicioG = inicioG-1;
+			finG = finG-1;
 		}else{
-			for(i=1; i<=10; i++){
-				$("#carrusel-img"+i).show();
-			}			
+			inicioG=1;
+			finG=5;
 		}		
+		console.log("inicio "+inicioG)
+		console.log("fin "+finG)
+		for(i=inicioG; i<=finG; i++){
+			$("#carrusel-img"+i).show();
+		}
 	})
 
 	$("#carrusel-sig").click(function(){
 		$("#carrusel>span:not(.recorre)").hide();
-		inicio = parseInt($("#carrusel-inicio").val())+1
-		fin = parseInt($("#carrusel-final").val())+1
-		if(fin<=54){
-			$("#carrusel-final").val(fin);
-			$("#carrusel-inicio").val(inicio);
-			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show();
-			}
+		if(finG<54){
+			inicioG = inicioG+1;
+			finG = finG+1;
 		}else{
-			for(i=45; i<=54; i++){
-				$("#carrusel-img"+i).show();
-			}				
+			inicioG=50;
+			finG=54;			
+		}
+		console.log("inicio "+inicioG)
+		console.log("fin "+finG)
+		for(i=inicioG; i<=finG; i++){
+			$("#carrusel-img"+i).show();
 		}
 	})
-	
+
 	//Evento para guardar los cambios realizados en perfil	
 	$("#BtnGuardaCambios").click(function(){
 		if(validaCampos()){
-			// alert("datos correctos");
 		}else{
 			alert("Datos incorrectos");
 		}

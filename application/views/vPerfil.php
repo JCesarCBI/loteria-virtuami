@@ -49,8 +49,8 @@
 		<?= $barraUsuario ?>		
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
-				<div class="five columns"></div>
-				<ul class="navegacion seven columns">
+				<div class="two columns"></div>
+				<ul class="navegacion ten columns">
 					<li id="" class="three column"><a href="<?= base_url()?>index.php/cJuego/opcionesJuego"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
 					<li id="nav-informacion" class="three column"><img src="<?= base_url()?>media/img/_i.jpg">nformación</li>
 					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
@@ -61,7 +61,7 @@
 					<div class="one columns"></div>
 					<div id="nombreUsuario" class="nine columns">
 						<h1 class="underline"><?= $nombreUsr?></h1>
-						<center><label id="lnombreUsr">NOMBRE DE USUARIO</label></center>
+						<center><label id="lnombreUsr">Nombre de usuario</label></center>
 					</div>										
 
 				</div>
@@ -94,8 +94,8 @@
 								<span class="twelve columns"><input type="button" id="BtnEditar" class="seven columns centered" value="Editar"></span>
 								<div id="contrasenaActual" class="twelve columns">
 									<input class="twelve columns" type="password" id="usuario_contrasenaActual" placeholder="Confirma tu contraseña actual" name="usuario_contrasenaActual">
-									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns centered">
-									<input type="button" id="BtnCancelarEditar" value="Cancelar" class="six columns centered">
+									<input type="button" id="BtnConfirmContrasena" value="Confirmar" class="six columns">
+									<input type="button" id="BtnCancelarEditar" value="Cancelar" class="six columns">
 								</div>
 							</center>
 

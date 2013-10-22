@@ -56,7 +56,7 @@
 							<tr class="azul">
 								<td class="blanco">
 									<span id="leyendaNaranja" class="leyenda"></span>
-									P. PERDIDAS
+									P. perdidas
 								</td>
 								<?php if($estadisticas['partidasPerdidas'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
@@ -67,7 +67,7 @@
 							<tr class="azul">
 								<td class="blanco">
 									<span id="leyendaAzul" class="leyenda"></span>
-									BÁSICO
+									Básico
 								</td>
 								<?php if($estadisticas['basicoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
@@ -78,7 +78,7 @@
 							<tr class="azul">
 								<td class="blanco">
 									<span id="leyendaRojo" class="leyenda"></span>
-									AVANZADO
+									Avanzado
 								</td>
 								<?php if($estadisticas['avanzadoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
@@ -89,7 +89,7 @@
 							<tr class="azul">
 								<td class="blanco">
 									<span id="leyendaVerde" class="leyenda"></span>
-									EXPERTO
+									Experto
 								</td>
 								<?php if($estadisticas['expertoGanados'] == -1){ ?>
 									<td class="blanco">No ha jugado</td>
@@ -103,10 +103,12 @@
 					
 					<div id="ranking" class="four columns">
 						<div id="ultimaPartidaS" class="twelve columns">
-							<p class="TseccionesEst">Descripción De Última Partida</p>
-							<p id="ultimaPartida"><?= $estadisticas['ultimoScore']['partida']?>/
-							 <?= $estadisticas['ultimoScore']['nivel']?>/
-							 <?= $estadisticas['ultimoScore']['modalidad']?>
+							<p class="TseccionesEst">Última partida</p>
+							<p id="ultimaPartida">
+								<?php print_r(ucwords($estadisticas['ultimoScore']['partida']).'/'.
+							 		  ucwords($estadisticas['ultimoScore']['nivel']).'/'.
+							 		  ucwords($estadisticas['ultimoScore']['modalidad']));
+								?>
 							</p>
 							<p id="totalUltimaPartida">
 								Puntuación:<br>

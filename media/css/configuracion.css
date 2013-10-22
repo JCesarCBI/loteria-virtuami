@@ -29,8 +29,8 @@ label{font-weight:bold;}
 #tipoJuego, #nivelJuego, #modalidadJuego{
 	margin:50px 0px;
 }
-.negro{	height:130px; background:#333; color:#fff;}
-.rojo{	height:100px; background:#EE4036; color:#fff;}
+.negro{	height:130px; background:#333; color:#fff; font-family:'Gabriela';}
+.rojo{	height:100px; background:#EE4036; color:#fff; font-family:'Gabriela';}
 .ultima{float:left !important;}
 #cConfiguracion{
 	margin-top:50px;

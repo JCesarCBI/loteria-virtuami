@@ -3,7 +3,7 @@
 }
 
 body{ font-family:"Arial";font-size:15px;background-image:url("../img/fondo-general.jpg");}
-label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Gabriela'; }
+label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Arial'; }
 .header{
 	background:#2E3116;     
 	height: 50px;
