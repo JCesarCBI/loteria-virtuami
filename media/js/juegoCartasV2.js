@@ -406,7 +406,7 @@ function loteria(){
 		
 	};
 	
-	if (bonus== 550) {
+	if (bonus== 540) {
 		document.getElementById('estadoPartida').value="3";
 	};
 	

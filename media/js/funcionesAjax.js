@@ -80,7 +80,6 @@ function ajax_validarRespuesta(id, respuesta) {
 
 //Esta funcion se encarga de escribir la rima del elemento
 function ajax_guardaScore(score, edoPartida) {
-	
 	var oFortuna=document.getElementById('oFortuna').value;
 	var salinasEE=document.getElementById('salinasEE').value;
 	var cthuluEE=document.getElementById('cthuluEE').value;
@@ -97,8 +96,6 @@ function ajax_guardaScore(score, edoPartida) {
 			
 			var trofeosAux =data.trofeos;
 			var cartasAux = data.cartas;
-			// console.log(data)
-			// console.log(cartasAux+" tipo de datos= "+typeof(cartasAux));
 			
 			cont=0;
 			cont2=0;
@@ -132,13 +129,12 @@ function ajax_guardaScore(score, edoPartida) {
 					
 					if (cont2==0) {
 						
-					var cartaUrl= base+cartasAux[i].imagen;
-						
+					var cartaUrl2= base+cartasAux[i].imgGaleria;
 					};
 	
 					cont2++;
 				}
-				$('#carta').html('<center><img clas="six columns" src="'+cartaUrl+'"><span clas="six columns" id="numTrofeos">+'+
+				$('#carta').html('<center><img clas="six columns" src="'+cartaUrl2+'"><span clas="six columns" id="numTrofeos">+'+
 								cont2+'</span></center>' );
 			}
 			else{
