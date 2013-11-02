@@ -39,7 +39,7 @@ function presionaEnter(evt, op) {
 		var vOf = ajax_validarRespuesta(id, respuesta)
 		
 		//valido easterEgg para sinonimos
-		if (document.getElementById('idModalidad').value == 5) {
+		if (document.getElementById('idModalidad').value == 4) {
 			
 			trofeosEE(id, respuesta)
 			

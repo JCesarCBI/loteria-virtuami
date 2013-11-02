@@ -7,7 +7,6 @@ function trofeosEE(id, respuesta){
 	};
 	
 	if (respuesta=="cthulu"){
-		
 		document.getElementById("cthuluEE").value=1;
 		
 	};

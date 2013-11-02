@@ -70,7 +70,7 @@ class CJuego extends CI_Controller {
 					$puntaje = 120;
 					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
-					$data['audio'] = 1;
+					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 3);
 					$this->session->set_userdata('idTrofeoEvento', 14);
 				}
@@ -78,7 +78,7 @@ class CJuego extends CI_Controller {
 					$puntaje = 240;
 					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
-					$data['audio'] = 1;
+					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 4);
 					$this->session->set_userdata('idTrofeoEvento', 15);
 				}
@@ -86,7 +86,7 @@ class CJuego extends CI_Controller {
 					$puntaje = 360;
 					$tiempo = 8000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
-					$data['audio'] = 1;
+					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 5);
 					$this->session->set_userdata('idTrofeoEvento', 16);
 				}
