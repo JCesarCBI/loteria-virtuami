@@ -118,7 +118,7 @@
 					<div class="three columns" id="ColumnaDer">
 						<center>	
 							<img src="<?= base_url().$jugador['avatarGde']?>" class="botonLT" />
-							<div><h4><?=$jugador['nombre']?> </h4> </div>
+							<div><h4  class="tGabriela"><?=$jugador['nombre']?> </h4> </div>
 							 <input id="subtitulos"  type="button" class="fondoSubs" value="Activado" /><br />
 							 <input id="audioBoton"   type="button" class="fondoAudio" value="Activado" /><br />
 							 <input type="button" onclick='abandonarPartida()' value="Abandonar partida" />
@@ -131,13 +131,9 @@
 							 
 							<div  id="contenidoDerecho">
 								
-								<ul id="gallery">
-									<li>
-										<a id="ayudaLoteriaBoton" >
-											<img class="botonLT" src="<?= base_url()?>media/img/boton.png" id="botonLoteria"  onclick='loteria()'/>
-										</a>
-									</li>
-								</ul>
+								<a id="ayudaLoteriaBoton" >
+									<img class="botonLT" src="<?= base_url()?>media/img/boton.png" id="botonLoteria"  onclick='loteria()'/>
+								</a>
 							</div>
 						</center>
 					</div>	

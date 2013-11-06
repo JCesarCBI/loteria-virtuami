@@ -28,8 +28,8 @@
 						<label class="cartelito">Reintentar</label>
 					</span>
 					<span class="four columns">
-						<img src="<?= base_url()?>/media/img/hr_compartir.png"  id="bPerfil" class="sombra" />
-						<label class="cartelito">Perfil</label>
+						<!-- <img src="<?= base_url()?>/media/img/hr_compartir.png"  id="bPerfil" class="sombra" />
+						<label class="cartelito">Perfil</label> -->
 					</span>
 					<span class="four columns">
 						<img src="<?= base_url()?>/media/img/hr_nuevo.png" id="bNuevoJuego" class="sombra"/>

@@ -1,54 +1,17 @@
 $(document).ready(function() {
-	
-	$("#carrusel>img:not(.recorre)").hide()
-   	$("#bPerfil").click(function(){
-		window.location.href=base+'index.php/cDatosPerfil/PerfilUsuario/1/-1';
-	});
-	
+
 	$("#bNuevoJuego").click(function(){
 		window.location.href=base+'index.php/cJuego/opcionesJuego';
 	})
 	
-	inicio=$("#carrusel-inicio").val();
-	fin = $("#carrusel-final").val();
-	for(i=inicio; i<=fin; i++){
-		$("#carrusel-img"+i).show()
-	}
-
-	//Navegación del carrusel
-	$("#carrusel-ant").click(function(){
-		$("#carrusel>img:not(.recorre)").hide()
-		inicio = parseInt($("#carrusel-inicio").val())-1
-		fin = parseInt($("#carrusel-final").val())-1
-		if(inicio>0){
-			$("#carrusel-inicio").val(inicio)
-			$("#carrusel-final").val(fin)
-			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show()
-			}
-		}else{
-			for(i=1; i<=$("#numTrofeosGanados").val(); i++){
-				$("#carrusel-img"+i).show()
-			}			
-		}		
+	$("#trofeo").click(function(){
+		window.location.href=base+'index.php/cDatosPerfil/PerfilUsuario/1/-1';
+	})
+	
+	$("#carta").click(function(){
+		window.location.href=base+'index.php/cDatosPerfil/PerfilUsuario/1/-1';
 	})
 
-	$("#carrusel-sig").click(function(){
-		$("#carrusel>img:not(.recorre)").hide()
-		inicio = parseInt($("#carrusel-inicio").val())+1
-		fin = parseInt($("#carrusel-final").val())+1
-		if(fin<=$("#numTrofeosGanados").val()){
-			$("#carrusel-final").val(fin)
-			$("#carrusel-inicio").val(inicio)
-			for(i=inicio; i<=fin; i++){
-				$("#carrusel-img"+i).show()
-			}
-		}else{
-			for(i=$("#numTrofeosGanados").val()-3; i<=$("#numTrofeosGanados").val(); i++){
-				$("#carrusel-img"+i).show()
-			}				
-		}
-	})
 });
 
 

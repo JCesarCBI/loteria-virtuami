@@ -84,6 +84,7 @@ function ajax_guardaScore(score, edoPartida) {
 	var salinasEE=document.getElementById('salinasEE').value;
 	var cthuluEE=document.getElementById('cthuluEE').value;
 
+
 	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
 	//var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/1/1/1';
 
@@ -114,7 +115,7 @@ function ajax_guardaScore(score, edoPartida) {
 					cont++;
 				}
 			
-				$('#trofeo').html('<center><img clas="six columns" src="'+imagenUrl+'"><span clas="six columns" id="numTrofeos">+'+
+				$('#trofeo').html('<center><span class="six columns"><img src="'+imagenUrl+'"></span><span style="margin-top:10px !important;float:right;" clas="six columns" id="numTrofeos">+'+
 								cont+'</span></center>' );
 			
 
@@ -134,7 +135,7 @@ function ajax_guardaScore(score, edoPartida) {
 	
 					cont2++;
 				}
-				$('#carta').html('<center><img clas="six columns" src="'+cartaUrl2+'"><span clas="six columns" id="numTrofeos">+'+
+				$('#carta').html('<center><span class="six columns"><img src="'+cartaUrl2+'"></span><span style="margin-top:10px !important; float:right;" clas="six columns" id="numTrofeos">+'+
 								cont2+'</span></center>' );
 			}
 			else{

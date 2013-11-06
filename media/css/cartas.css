@@ -7,10 +7,22 @@ body {
   min-height: 100%;
 }
 
+.tGabriela{
+	font-family:Gabriela;
+}
+
 .contenidoCentrado{
 	margin:0px auto !important;
 	padding:0px auto !important;
 	min-width: 1080px;
+}
+
+#trofeo{
+	cursor: hand; 
+}
+
+#carta{
+	cursor: hand; 
 }
 
 input[type="button"]
