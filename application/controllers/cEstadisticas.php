@@ -8,9 +8,6 @@ class CEstadisticas extends CI_Controller {
 		if (($this->session->userdata('logeado') != 1)) {
 			exit("Acceso denegado 403, pedir vista al equipo de diseño");
 		}
-		//$this->ci->load->model('usuario/mregistro');
-		// $this->load->library('micombobox');
-		
 	}
 	
 	public function getTrofeos(){  //posiblemente reciba como parametros el id de usuario y el id de juego

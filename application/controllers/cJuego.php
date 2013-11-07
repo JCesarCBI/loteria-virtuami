@@ -20,10 +20,6 @@ class CJuego extends CI_Controller {
 		$datos['icnAvatar'] = $this->session->userdata('avatar');
 		$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 		$this->load->view('vconfiguracionJuego', $datos);
-		// echo "<pre>";
-		// print_r($datos);
-		// echo "</pre>";
-		
 	}
 	
 	public function configuracionJuego(){
@@ -38,11 +34,6 @@ class CJuego extends CI_Controller {
 			$datos['icnAvatar'] = $this->session->userdata('avatar');
 			$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 			$this->load->view('vconfiguracionJuego', $datos);
-			
-			
-			// $this->load->view('vconfiguracionJuego');
-            // $this->load->view('vinicio');
-            //header("Location: " . "http://" . $_SERVER['HTTP_HOST']."index.php/");
         }else{
 	        $idPartida = $this->input->post('vPartida');
 			$idNivel = $this->input->post('vNivel');
@@ -60,7 +51,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 1) {	//Nivel Avanzado Libre
 					$puntaje = 60;
-					$tiempo = 6000;
+					$tiempo = 12000;
 					$baraja = $this->mJuegoLibre->getMazoFrase();
 					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 2);
@@ -68,7 +59,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 2) {	//Nivel Avanzado Diminutivos
 					$puntaje = 120;
-					$tiempo = 8000;
+					$tiempo = 12000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 3);
@@ -76,7 +67,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 3) {	//Nivel Avanzado Adjetivos
 					$puntaje = 240;
-					$tiempo = 8000;
+					$tiempo = 12000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 4);
@@ -84,7 +75,7 @@ class CJuego extends CI_Controller {
 				}
 				if ($idNivel == 3 && $idModalidad == 4) {	//Nivel Avanzado Sinonimos
 					$puntaje = 360;
-					$tiempo = 8000;
+					$tiempo = 12000;
 					$baraja = $this->mJuegoLibre->getMazoCarta();
 					$data['audio'] = 2;
 					$this->session->set_userdata('idTrofeo', 5);
@@ -92,7 +83,7 @@ class CJuego extends CI_Controller {
 				}
 			} else {  //Configuración para las partidas rapidas
 				$puntaje = 400;
-				$tiempo = 6000;
+				$tiempo = 12000;
 				$baraja = $this->mJuegoLibre->getMazoFrase();
 				$data['audio'] = 2;
 				$this->session->set_userdata('idTrofeo', 0);
@@ -127,20 +118,12 @@ class CJuego extends CI_Controller {
 			$data['jugador']['nombre'] = $this->session->userdata('usuario');
 			$data['jugador']['avatarGde'] = $this->session->userdata('avatar');
 			$data['jugador']['avatarCh'] = $this->session->userdata('icnavatar');
-			
-			
 			$datos['idUsr'] = $this->session->userdata('idUsuario');
 			$datos['nombreUsr'] = $this->session->userdata('usuario');
 			$datos['icnAvatar'] = $this->session->userdata('avatar');
 			$data['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
-			
-			
-			// $data['barraUsuario'] = "barraUsuario";
 			$data['hojaResultado'] = $this->load->view('vhojaResultados', $data, true);
-			$baraja2 = $this->mJuegoLibre->getMazoFrase();	
-			// echo "<pre> Baraja con audio ";
-			// print_r($data);
-			// echo "</pre>";
+			$baraja2 = $this->mJuegoLibre->getMazoFrase();
 			$this->load->view('vPruebasCartas', $data);
 		}
 	}
@@ -155,25 +138,12 @@ class CJuego extends CI_Controller {
 						'idModalidad' => $this->session->userdata('idModalidad'),
 						'idUsr' => $this->session->userdata('idUsuario'),
 						'idJuego' => $this->session->userdata('idJuego'));
-		// $score = array('idPartida' => 1 ,
-						// 'idNivel' =>  1,
-						// 'idModalidad' => 1,
-						// 'idUsr' => 1,
-						// 'idJuego' => 1);
-		
-		// echo "<pre>";
-		// print_r($this->session->all_userdata());
-		// echo "   ";
-		// print_r($score);
-		// echo "</pre>";
 		if ($idEdoPartida == 3) {
 			$record = 0;
 			$this->mscore->setScore($score, $record, $idEdoPartida);
 		} else {
 			$this->mscore->setScore($score, $record, $idEdoPartida);
 		}
-		
-		
 		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
 		$idTrofeo = 20;
 		if ($cthulu) {
@@ -250,7 +220,6 @@ class CJuego extends CI_Controller {
 				}
 			}
 		}
-		//$misTrofeosGanados = -1;
 		$trofeoGanado = $this->validarTrofeos($record, $idEdoPartida); //Validamos y asignamos los trofeos de habilidad
 		if ($trofeoGanado) {
 			$misTrofeosGanados[$trofeoGanado["idTrofeo"]] = $trofeoGanado;
@@ -345,9 +314,6 @@ class CJuego extends CI_Controller {
 		$misCartasDesbloqueadas = $this->desbloquearCartas($idUsr, $idJuego);
 		if (($misCartasDesbloqueadas)) {
 			$datos['cartas'] = $misCartasDesbloqueadas;
-			// echo "<pre>";
-			// print_r(($misCartasDesbloqueadas));
-			// echo "</pre>";
 		} else {
 			$datos['cartas'] = -1;
 		}
@@ -357,12 +323,6 @@ class CJuego extends CI_Controller {
 			$datos['trofeos'] = -1;
 		}
 		echo json_encode($datos);
-		// echo json_encode(array_pop($datos));
-		// echo "<pre>";
-		// print_r($datos);
-		// echo "</pre>";
-		
-		
 	}
 
 	public function desbloquearCartas($idUser, $idJuego){
@@ -385,16 +345,11 @@ class CJuego extends CI_Controller {
 						for ($i=0; $i < 3; $i++) { 
 							$resultado[$galeria[$i]["idCarta"]] = $galeria[$i];
 						}
-						/*
-						 * Hacer insercion en la base de datos de las cartas adquiridas
-						 */
 						foreach ($resultado as $key) {
 							$this->mJuegoLibre->setGaleria($idUser, $idJuego, $key["idCarta"]);
 						}
 						
 						return $resultado;
-						
-						
 					}
 				}else{
 					return FALSE;
@@ -503,30 +458,29 @@ class CJuego extends CI_Controller {
 					}
 				}
 			}
-			// if ($idTrofeo == 17) { *******************************Lobo de mar
-				// if ($misTrofeos) {
-					// foreach ($misTrofeos as $key) {
-						// if ($key == $idTrofeo) {
-							// $ganado = $idTrofeo;
-						// }
-					// }
-				// }
-				// if($ganado == -1){
-					// $this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
-					// foreach ($trofeos as $key) {
-						// if($key["idTrofeo"] == $idTrofeo){
-							// return $key;
-						// }
-					// }
-				// }
-			// }
+			if ($idTrofeo == 17) { //*******************************Lobo de mar
+				if ($misTrofeos) {
+					foreach ($misTrofeos as $key) {
+						if ($key == $idTrofeo) {
+							$ganado = $idTrofeo;
+						}
+					}
+				}
+				if($ganado == -1){
+					$this->mtrofeo->setTrofeo($idUsr, $idJuego, $idTrofeo);
+					foreach ($trofeos as $key) {
+						if($key["idTrofeo"] == $idTrofeo){
+							return $key;
+						}
+					}
+				}
+			}
 		}
 		return FALSE;
 	}
 	
 	public function validarTrofeosConstancia($idUsr,$idEstPartida){
 		$numPartidasExitosas = $this->mtrofeo->getConstancia($idUsr, 1, $idEstPartida);
-		//echo "Partidas Ganadas ".$numPartidasExitosas;
 		$misTrofeos = $this->mestadisticas->getTrofeos($idUsr,1);
 		$trofeos = $this->mestadisticas->getTodosTrofeos();
 		$ganado = -1;
@@ -718,66 +672,46 @@ class CJuego extends CI_Controller {
 	}
 
 
-/******Función que escribe la descripción una carta en la baraja********/
-public function descripcion($id=-1){
-	
-
-	//Voy por el mazo de las cartas    
-	$barajas = $this->mJuegoLibre->getMazo();
-
+	/******Función que escribe la descripción una carta en la baraja********/
+	public function descripcion($id=-1){
+		//Voy por el mazo de las cartas    
+		$barajas = $this->mJuegoLibre->getMazo();
 		$k = 0;
 		foreach ($barajas as $key) {
-
 			$baraja[$k+1] = $barajas[$k];
 			$k++;
-
 		}
-			
-	//Si el id es correcto y la carta existe busco la descripción
-	if ($id>-1 && isset($baraja[$id]['nombre'])) {
-		
-		//$datos=$baraja[$id]['nombre']."   ".$id."<img src='".base_url().$baraja[$id]['imagen']."' style='width:90px; height:80px'/>";
-		$datos=$baraja[$id]['nombre'];
-		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
-		print_r($datos);
-
+		//Si el id es correcto y la carta existe busco la descripción
+		if ($id>-1 && isset($baraja[$id]['nombre'])) {	
+			//$datos=$baraja[$id]['nombre']."   ".$id."<img src='".base_url().$baraja[$id]['imagen']."' style='width:90px; height:80px'/>";
+			$datos=$baraja[$id]['nombre'];
+			//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+			print_r($datos);
+		}
+		//si no lo encuentra me manda una cadena vacía
+		else{
+			echo "";
+		}
 	}
-	//si no lo encuentra me manda una cadena vacía
-	else{
-		echo "";
-	}
-	
-}
 
-//******Función que escribe la trae larespuesta correcta********/
-public function respuestaCorrecta($id=-1){
-	
-
-	//Voy por el mazo de las cartas    
-	$barajas = $this->mJuegoLibre->getMazo();
-
+	//******Función que escribe la trae larespuesta correcta********/
+	public function respuestaCorrecta($id=-1){
+		//Voy por el mazo de las cartas    
+		$barajas = $this->mJuegoLibre->getMazo();
 		$k = 0;
 		foreach ($barajas as $key) {
-
 			$baraja[$k+1] = $barajas[$k];
 			$k++;
-
+		}		
+		//Si el id es correcto y la carta existe busco la descripción
+		if ($id>-1 && isset($baraja[$id]['nombre'])) {	
+			$datos=$baraja[$id]['nombre'];
+			//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+			print_r($datos);
 		}
-			
-	//Si el id es correcto y la carta existe busco la descripción
-	if ($id>-1 && isset($baraja[$id]['nombre'])) {
-		
-		$datos=$baraja[$id]['nombre'];
-		//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
-		print_r($datos);
-
+		//si no lo encuentra me manda una cadena vacía
+		else{
+			echo 0;
+		}
 	}
-	//si no lo encuentra me manda una cadena vacía
-	else{
-		echo 0;
-	}
-	
-}
-
-
 }

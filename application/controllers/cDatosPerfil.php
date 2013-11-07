@@ -44,9 +44,6 @@ class CDatosPerfil extends CI_Controller {
 						unset($trofeosJugador[$i]);
 					}
 					$trofeosJugador = $aux;
-					// echo "<pre>OOOOOOOOOOOOOOOOOOOOO";
-					// print_r($trofeosJugador);
-					// echo "</pre>";
 					//Verificamos si el jugador ha ganado o no trofeos
 					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
 						//Se agrega el edo de no ganado a todos los trofeos
@@ -69,7 +66,6 @@ class CDatosPerfil extends CI_Controller {
 							}else{
 								$trof['Estado'] =0; //Trofeo no ganado
 							}
-
 							$trofeos[$i] = $trof; //Se "actualiza" el arreglo
 						}
 						//Una vez agregado el estado a todos los trofeos, se agregan
@@ -175,9 +171,6 @@ class CDatosPerfil extends CI_Controller {
 					unset($idGaleria[$key]);
 				}
 				$idGaleria = $auxIdGaleria;
-				// echo "<pre> AQUIIIIIIIIIIIIIIIIIIIIIIIII ";
-				// print_r($idGaleria);
-				// echo "</pre>";
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
@@ -215,11 +208,7 @@ class CDatosPerfil extends CI_Controller {
 				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
-				$this->load->view('vGaleria', $datosPerfilOrdenados);
-				// echo "<pre>";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
-				
+				$this->load->view('vGaleria', $datosPerfilOrdenados);				
 			}
 		}
 	}
@@ -252,8 +241,3 @@ class CDatosPerfil extends CI_Controller {
 			}
 		}
 }
-
-
-
-
-

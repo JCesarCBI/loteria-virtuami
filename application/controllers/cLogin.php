@@ -8,7 +8,6 @@ class CLogin extends CI_Controller {
 		$this->load->library('user_agent');
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mlogin');
-		//$this->ci->load->model('usuario/mregistro');
 		$this->load->library('micombobox');
 		
 	}
@@ -23,9 +22,6 @@ class CLogin extends CI_Controller {
         	$usr = $this->input->post('Lusuario_nombreUsr');
 			$psw = $this->input->post('Lusuario_contrasena');
         	$jugador = $this->mlogin->login_usuario($usr, $psw);
-			// echo "<pre>";
-			// print_r($jugador);
-			// echo "</pre>";
 			if($jugador){
 				if ($jugador[0]->estatus == 1) {
 					$this->session->set_userdata('usuario', $usr);
@@ -37,9 +33,6 @@ class CLogin extends CI_Controller {
 					$datos['idUsr'] = $jugador[0]->idUsr;
 					$datos['nombreUsr'] = $usr;
 					$datos['icnAvatar'] = $jugador[0]->gdeAvatar;
-					// echo "<pre>";
-					// print_r($datos);
-					// echo "</pre>";
 					$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 					$this->load->view('vconfiguracionJuego', $datos);  //aqui se cargara vPruebaEfrenLogin
 				} else {
@@ -50,7 +43,6 @@ class CLogin extends CI_Controller {
 					echo "<script>alert('Activa tu cuenta para poder jugar')</script>";
 				}
 			}else{
-				
 				//Envíame los datos de esta manera, por favor
 				$datos = $this->micombobox->datosComboBox();
 				//Agrega este índice para que se emita la alerta correspondiente
@@ -75,7 +67,6 @@ class CLogin extends CI_Controller {
 			$datos['noExiste'] = 0;
 			$this->load->view('vinicio', $datos);
         }else{
-        	// $correo = "cbi202318574@titlani.uam.mx";
         	$correo = $this->input->post('usuario_correo_recuperarContrena');
         	$Usuario = $this->mlogin->getContrasena($correo);
 			$nombreUsr = $Usuario[0]->nombreUsr;
@@ -124,11 +115,6 @@ class CLogin extends CI_Controller {
 				$mail->Subject = "Test phpMailer";
 				// $correo=$datosUsr['correo'];
 				$mail->AddAddress($correo);
-				// $datosCorreo['nombreUsr']=$datosUsr['nombreUsr'];
-				// $datosCorreo['correo']=$datosUsr['correo'];
-				// $datosCorreo['contrasena']=$datosUsr['contrasena'];
-				// $datosCorreo['codigoActivacion']=$datosUsr['codigoActivacion'];
-				// $body = $this->load->view('registroActivacion', $datosCorreo, true);
 				$body = $miMensaje;
 				$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/loteria.jpg","loteria.jpg");
 				$mail->AddAttachment("/var/www/loteriaVIRTUAMI/media/img/virtuami_logo.png","virtuami_logo.png");
@@ -148,6 +134,5 @@ class CLogin extends CI_Controller {
 				$this->load->view('vinicio', $datos);
 			}        	
         }
-		// $this->load->view('vinicio',$this->micombobox->datosComboBox());
 	}
 }
