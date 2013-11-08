@@ -24,7 +24,26 @@
 			$respuesta=$_POST['respuesta'];
 			switch ($modalidad) {
     			case 1:// Juego Libre
-        			echo "i es igual a 1";
+        			$baraja = $this->mJuegoLibre->getMazoCarta();
+					
+			//Si el id es correcto y la carta existe busco la descripción
+				if ($id>-1 && isset($baraja[$id]['nombre'])) {
+				
+					$datos=$baraja[$id]['nombre'];
+					if ($datos==$respuesta) {
+						$resultado=0;
+					} else {
+					$resultado=1;
+					}
+				
+				//Le mando los datos a la función juegoCartas.js/ajax_compararCarta
+				echo($resultado);
+		
+				}
+				//si no lo encuentra me manda 1
+				else{
+					echo 1;
+				}
         		break;
     			case 2://Diminutivos
         			if($this->validarDiminutivos($respuesta, $id)== 1) echo 0;
