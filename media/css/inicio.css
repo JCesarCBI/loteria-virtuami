@@ -34,6 +34,7 @@
 	color:#fff;
 	font-weight:bold;
 	font-size:15px;
+	cursor: pointer;
 }
 #texto{
 	color: #FFFFFF;
@@ -51,9 +52,10 @@ select{
 	background: #fff;
 	color: #078D7B;
 	border-radius:10px;
+	cursor: pointer;
 	
 }
-video{margin-bottom:50px; margin-top:15px;}
+video{margin-bottom:50px; margin-top:15px; cursor: pointer;}
 #seccion-informacion img{
 	margin-top:10px;
 	margin-bottom:80px;
@@ -71,6 +73,7 @@ input[type="text"], input[type="email"], input[type="password"]{
 	width: 80%;
 	margin-bottom:5%;
 	margin-left:10%;
+	cursor: pointer;
 }
 #cajaSexo>span{
 	color: #078D7B;
@@ -152,4 +155,5 @@ input[type="text"], input[type="email"], input[type="password"]{
 	position: absolute;
 	top: -15px;
 	right: -15px;
+	cursor:pointer;
 }

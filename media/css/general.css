@@ -12,20 +12,23 @@ label, p, a, input, h1, h2, h3, h4, h5, select{ font-family: 'Arial'; }
 .header a{
 	font-size:20px;	
 	color:#D9E021;
+	cursor:pointer;
 }
 
 .header ul{
 	padding: 8px 16px;
 	float:right;
+	cursor:pointer;
 }
 #avatarIcn img{
 	float:left;
+	cursor:pointer;
 }
 #menu{
    position: relative;
    z-index: 1;
 }
-.header img{padding:2px 2px; width:40px; height:40px; float:right; margin-top:3px;}
+.header img{padding:2px 2px; width:40px; height:40px; float:right; margin-top:3px; cursor:pointer;}
 .linea3{
 	height:3px;
 	background:#fff;

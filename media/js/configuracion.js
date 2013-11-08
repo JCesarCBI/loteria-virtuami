@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	inicio();
+	inicioPredeterminado();
 	$("#inicioConfig").click(function(){
 		elijeTipoJuego();
 	})
@@ -120,6 +120,10 @@ $(document).ready(function(){
 	})			
 })
 
+//Se muestra partica completa y partida rápida inmediatamente al cargar la página
+function inicioPredeterminado(){
+	$("#nivelJuego, #modalidadJuego, #jugar, #nivelc, #modalidadc").hide();	
+}
 function inicio(){
 	$("#tipoJuego, #nivelJuego, #modalidadJuego, #jugar, #tipo, #nivelc, #modalidadc").hide();
 }
