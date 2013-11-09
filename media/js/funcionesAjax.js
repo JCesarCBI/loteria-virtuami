@@ -52,7 +52,7 @@ function ajax_validarRespuesta(id, respuesta) {
 
 	var respuestaCorrecta = 1;
 	var idModalidad=document.getElementById('idModalidad').value;
-	var url = base + 'index.php/cpruebasLuisa/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
+	var url = base + 'index.php/cSinonimos/seleccionarPosibleRespuesta/'+ id+'/'+idModalidad;
 	var data = 'respuesta='+respuesta;
 
 	$.ajax({
@@ -86,8 +86,7 @@ function ajax_guardaScore(score, edoPartida) {
 
 
 	var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
-	//var url = base + 'index.php/cJuego/guardarScore/' + score+'/'+edoPartida+'/1/1/1';
-
+	
 	$.ajax({
 
 		url : url,

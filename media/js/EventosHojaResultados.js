@@ -62,6 +62,8 @@ function hojaResultados(puntos){
 		);
 			
 	}
+	$( "#cartaReversaClick" ).attr( "onclick", "regresarJuego()" );
+	$( "#botonLoteria" ).attr( "onclick", "regresarJuego()" );
 	
 }
 

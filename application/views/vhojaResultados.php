@@ -19,6 +19,8 @@
 		<span id="botones" class="twelve columns">
 			<form action="<?=base_url();?>index.php/cJuego/configuracionJuego" method="post" enctype="multipart/form-data" id="menuForm" name="menuForm">
 				
+				<input type="hidden" id="nolose" value="" />
+				
 				<input type="hidden" name="vPartida" id="vPartida" value="<?= $juego['idPartida']?>" />
 				<input type="hidden" name="vModalidad" id="vModalidad" value="<?= $juego['idModalidad']?>" />
 				<input type="hidden" name="vNivel" id="vNivel" value="<?= $juego['idNivel']?>" />

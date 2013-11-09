@@ -7,6 +7,11 @@
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	
 	<script>var base = "<?=base_url(); ?>"</script>
+	 <script type="text/javascript">
+        if(window.history.forward(1) != null){
+	        window.history.forward(1);
+        }
+  	</script>
 	<?= (isset($juego['idPartida']) && ($juego['idPartida']== 2)) ? '<script src="'.base_url().'media/js/juegoCartas4x4.js" type="text/javascript" charset="utf-8"></script>' : '<script src="'.base_url().'media/js/juegoCartasV2.js" type="text/javascript" charset="utf-8"></script>' ;?> 
 	
 	<script src="<?=base_url(); ?>media/js/easterEggs.js" type="text/javascript" charset="utf-8"></script>
@@ -121,13 +126,8 @@
 							<div><h4  class="tGabriela"><?=$jugador['nombre']?> </h4> </div>
 							 <input id="subtitulos"  type="button" class="fondoSubs" value="Activado" /><br />
 							 <input id="audioBoton"   type="button" class="fondoAudio" value="Activado" /><br />
-							 <input type="button" onclick='abandonarPartida()' value="Abandonar partida" />
-							<br /> 
-							<br /> 
-							<br /> 
-							<br /> 
-							<br /> 
-							 
+							 <input type="button" onclick='abandonarPartida()' value="Abandonar partida" class="espacioInfAband"/>
+
 							 
 							<div  id="contenidoDerecho">
 								

@@ -426,3 +426,9 @@ function abandonarPartida(){
 	ajax_guardaScore(0, 4);
 	window.location.href=base+'index.php/cJuego/opcionesJuego';
 }
+
+
+function regresarJuego(){
+	ajax_guardaScore(0, 4);
+	window.location.href=base+'index.php/cJuego/opcionesJuego';
+}

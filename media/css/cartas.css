@@ -2,6 +2,8 @@
 
 html{
   height: 100%;
+  min-height:720px;
+  min-width:1200px;
 }
 body {
   min-height: 100%;
@@ -9,6 +11,10 @@ body {
 
 .tGabriela{
 	font-family:Gabriela;
+}
+
+.espacioInfAband{
+	margin-bottom:20%;
 }
 
 .contenidoCentrado{
@@ -50,7 +56,7 @@ input[type="button"]
 	margin: 1% !important;
 	padding:0.5%;
   	height: 96%;
-  	min-height:0px auto !important;
+  min-height:645px;
 }
 
 .conteidoMargen{
