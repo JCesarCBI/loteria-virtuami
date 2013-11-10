@@ -31,7 +31,7 @@ $(document).ready(function() {
 			//Enviará la contraseña vía AJAX para validarla
 			$.ajax({
 				//Se conectará al siguiente controlador, enviando como parámetros contraseñaActual / usuarioId
-				url: base+'index.php/cDatosPerfil2/confirmaContrasena',
+				url: base+'index.php/cExtras/confirmaContrasena',
 				data: {data :  datos.join(",")},
 				dataType: "json",
 				type: "POST",
@@ -237,7 +237,7 @@ function validaCampos(){
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
 		if($("#usuario_contrasena").val().length < 6){
-			var label = $("<label>").text("Mínimo 6 carácteres").attr("id","passLong").attr("class", "error ");
+			var label = $("<label>").text("Por tu seguridad, tu contraseña debe contar con al menos 6 caracteres").attr("id","passLong").attr("class", "error ");
 			$("#usuario_contrasena").after(label)
 			passLong = false;
 		}else{
@@ -249,8 +249,10 @@ function validaCampos(){
 	}
 	//Realiza validación 
 	if(longNombre && usuarioLleno && correoLleno && passLleno && paternoLleno && maternoLleno && longApat && longMat && correoNoExiste &&passLong){
+		$("#BtnGuardaCambios").attr('type','submit');
 		return true;
 	}else{
+		$("#BtnGuardaCambios").attr('type','button');
 		muestraErrores(errorVacio);
 		return false;
 	}
@@ -324,11 +326,11 @@ function muestraPerfil(){
 }
 
 function cambiaImagenFoto(idImagen, urlImagenG){
+	// console.log(idImagen)
 	urlG = base+urlImagenG;
 	$(".foto").prop('src',urlG);
-	$("#usuario_avatar").prop('value',url);
-	$("#avatarIcn img").prop()
-	$("#id_avatar, #id_avatarIcn").val(idImagen);	
+	// $("#avatarIcn > img").prop('src',urlG);
+	$("#id_avatar").val(idImagen);	
 }
 
 function muestraInfoTrofeo(idTrofeo){

@@ -116,7 +116,16 @@ input[type="text"], input[type="password"], input[type="email"], select{
 
 /*------------------------------------------------------------------------------------------------------------*/
 											/*Estadísticas */
-										
+#rTder, #rTizq{
+	cursor:pointer;
+	margin-top:20%;
+}										
+#rTizq{
+	float:left;
+}
+#rTder{
+	float:right;
+}
 p.descripcionTrofeo,p.condicionTrofeo{color:#fff;}
 h3{color:#fff;}
 h2{color:#fff;}
@@ -168,7 +177,7 @@ h2{color:#fff;}
 	margin-bottom:50px;
 	/*border-left:3px solid #fff;*/
 }
-.trofeo-chico{width:40px; height:40px;}
+.trofeo-chico{width:40px; height:40px; cursor:pointer;}
 .trofeo-grande{	opacity:1;}
 .TseccionesEst{
 	text-align:center;
@@ -234,7 +243,7 @@ table{
 	opacity:0;
 }
 
-#galeriaEditarFoto>img{	width:60px;	height:60px;}
+#galeriaEditarFoto>img{	width:60px;	height:60px; cursor: pointer;}
 #closeGaleriaEditarFoto {
 	background: url(../img/close.png) no-repeat left top;
 	height: 32px;
@@ -242,6 +251,7 @@ table{
 	position: absolute;
 	top: -15px;
 	right: -15px;
+	cursor:pointer;
 }
 #lightbox{
     background-color: rgba(178, 44, 44, 0.8);
@@ -307,7 +317,7 @@ table{
 	width:50px !important;
 	height:50px !important;
 	margin:20px 20px !important;
-	
+	cursor:pointer;
 }
 
 .carrusel-apaga{
@@ -321,6 +331,7 @@ table{
 #carrusel>span{
 	margin:0 !important;
 	padding:0 !important;
+	cursor:pointer;
 }
 #carrusel>span:not(.recorre)>img{width:107px !important;height:107px !important;}
 #descripcionCarta{

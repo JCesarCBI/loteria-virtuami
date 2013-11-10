@@ -6,7 +6,7 @@
 						
 						<div id="datosCarta" class="six columns">
 							<h2 id="nombreCarta"></h2>
-							<hr class="linea3"></hr>
+							<hr class="linea3">
 							<p id="descripcionCarta">
 								<div class="Div-vacio"></div>
 							</p>

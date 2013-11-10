@@ -135,7 +135,7 @@ function validaPaso1(){
 	if($("#usuario_contrasena").val() != ""){
 		passLleno = true;
 		if($("#usuario_contrasena").val().length < 6){
-			var label = $("<label>").text("Tu contraseña debe tener al menos 6 caracteres").attr("id","passLong").attr("class", "error ");
+			var label = $("<label>").text("Por seguridad, tu contraseña debe contar con al menos 6 caracteres").attr("id","passLong").attr("class", "error ");
 			$("#usuario_contrasena").after(label)
 			passLong = false;
 		}else{

@@ -10,10 +10,10 @@
 	max-height: auto;
 	margin-bottom:7%;
 }
-#formularioIsesion, #formularioRegistro{
+#formularioIsesion, #formularioRegistro, #formalarioRecuperarContrasena{
 	margin-top:50px;
 }
-#formularioIsesion img, #formularioRegistro img{
+#formularioIsesion img, #formularioRegistro img, #formalarioRecuperarContrasena img{
 	margin-top:-60px;
 	margin-bottom:20px;
 }
@@ -125,35 +125,4 @@ input[type="text"], input[type="email"], input[type="password"]{
 
 #usuario_correo_recuperarContrena{
 	margin-top:40px;
-}
-
-#formalarioRecuperarContrasena{
-	background-color:#333;
-	position: absolute;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	-moz-box-shadow: 0 0 300px rgba(0, 0, 0, 1);
-	-webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-	-moz-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	-webkit-transition: all 0.3s ease-out;
-	padding:40px;
-	width:50%;
-	height:auto;
-	left:25%;
-	top:10%;
-	position: fixed;
-	z-index:4;
-}
-
-.close{
-	background: url(../img/close.png) no-repeat left top;
-	height: 32px;
-	width: 32px;
-	position: absolute;
-	top: -15px;
-	right: -15px;
-	cursor:pointer;
 }

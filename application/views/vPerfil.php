@@ -51,9 +51,9 @@
 			<div id="cajaHija" class="twelve columns">
 				<div class="two columns"></div>
 				<ul class="navegacion ten columns">
-					<li id="" class="three column"><a href="<?= base_url()?>index.php/cJuego/opcionesJuego"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
+					<li class="three column"><a href="<?= base_url()?>index.php/cJuego/opcionesJuego"><img src="<?= base_url()?>media/img/_j.jpg">uego</a></li>
 					<li id="nav-informacion" class="three column"><img src="<?= base_url()?>media/img/_i.jpg">nformación</li>
-					<li id="nav-estadistica"class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
+					<li id="nav-estadistica" class="three column"><img src="<?= base_url()?>media/img/_e.jpg">stadísticas</li>
 					<li id="nav-galeria" class="three column"><img src="<?= base_url()?>media/img/_g.jpg">alería</li>
 				</ul>
 				<div id="foto-nombreUsr" class="twelve columns">
@@ -69,11 +69,10 @@
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
-						<input id="id_avatar" name="id_avatarIcn" type="hidden" value="<?= $idAvatar ?>"/>
-										
+						<!-- <input id="id_avatarIcn" name="id_avatarIcn" type="hidden" value="<?= $idAvatar ?>"/> -->										
 						<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr?>"/>
 						
-						
+						<!-- primera columna -->
 						<div id="c1" class="four columns">
 							<center><img id="logoLoteria" src="<?= base_url()?>media/img/logo_loteria.png" /></center>
 							<center><input type="button" id="editarFoto" value="Editar foto" class="six columns centered"/></center>
@@ -101,6 +100,7 @@
 
 						</div>
 						
+						<!-- segunda columna -->
 						<div id="c2" class="four columns">
 							<input type="hidden" value="<?= $idUsr?>" name="idUsuario"/>
 
@@ -124,6 +124,7 @@
 							<label>Sexo</label>
 						</div>
 						
+						<!-- tercera columna -->
 						<div id="c3" class="four columns"> 
 				        	<?php echo form_dropdown('usuario_edad', $Edades, $edad, 'id=usuario_edad'); ?>
 							<label>Edad</label>
@@ -142,11 +143,11 @@
 						    <div id="prof-admin">
 								<div id="area" class="">
 							        <input class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
-									<label for="usuario_area">Área</label>
+									<label for="usuario_area">*Área</label>
 							    </div>
 								<div id="cargo" class="">
 									<input class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
-									<label for="usuario_cargo">Cargo</label>
+									<label for="usuario_cargo">*Cargo</label>
 								</div>
 							</div>
 

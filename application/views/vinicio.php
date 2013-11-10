@@ -17,17 +17,6 @@
 		<div class="twelve sombra2"></div>
 		<div id="cajaMadre" class="twelve columns">
 			<div id="cajaHija" class="twelve columns">
-
-			<!-- RECUPERARA CONTRASEÑA						 -->
-			<div id="formalarioRecuperarContrasena">
-				<form method="post" action="<?=base_url()?>index.php/cLogin/recuperarContrasena">
-					<label class="labelRegistro">Ingresa tu correo con el que registraste para que se haga envío de tu contraseña</label>
-					<input id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" type="email" required>
-					<center><input type="submit" id="recuperarCBtn" class="boton centered"></center>
-				</form>	
-				<a class="close"></a>
-			</div>
-				<!-- <div class="one columns"></div> -->
 				<div id="seccion-informacion" class="five columns ">
 					<center><img src="<?= base_url() ?>media/img/logo_loteria.png" /></center>
 					<div class="twelve columns" id="texto">
@@ -132,6 +121,19 @@
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="recuperaContrasena-boton" value="Recuperar contraseña"></span><hr class="linea3">
 				                <span class="twelve columns"><input class="six columns boton centered" type="button" id="irRegistro" value="Registro"></span></center>
 				           	</form>
+						</div>
+						
+						<!-- RECUPERAR CONTRASEÑA						 -->
+						<div id="formalarioRecuperarContrasena">
+							<center id=""><img src="<?= base_url()?>media/img/i_recuperar.jpg"/></center>
+							<form method="post" action="<?=base_url()?>index.php/cLogin/recuperarContrasena">
+								<label class="labelRegistro">Introduce tu correo te enviaremos tus datos de acceso</label>
+								<input id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" type="email" required>
+								<center><input type="submit" id="recuperarCBtn" class="six columns boton centered" value="Enviar"></center><hr class="linea3">
+								<center><input type="button" id="iSesionC" class="six columns boton centered" value="Iniciar sesión"></center>
+
+							</form>	
+							<!-- <a class="close"></a> -->
 						</div>
 					</div> <!--seccion formularios-->
 				<div class="one columns"></div>

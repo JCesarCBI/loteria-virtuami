@@ -57,11 +57,13 @@ $(document).ready(function() {
 	
 	//Muestra la sección para recuperar contraseña
 	$("#recuperaContrasena-boton").click(function(){
-		$("#formalarioRecuperarContrasena").show();
+		muestraRecuperaContrasenaForm();
 	})
-	$(".close").click(function(){
-		$("#formalarioRecuperarContrasena").hide();
+	
+	$("#iSesionC").click(function(){
+		muestraIsesionForm();
 	})
+
 });
 
 
@@ -85,7 +87,7 @@ function validaLoginUsr(){
 
 function muestraPaso1(){
 	document.getElementById('vid').pause()	
-	$("#botones, #video,#formularioIsesion, #paso2, #paso3").hide();
+	$("#botones, #video,#formularioIsesion, #paso2, #paso3, #formalarioRecuperarContrasena").hide();
 	$("#formularioRegistro, #paso1, #sig1").show();
 }
 
@@ -100,7 +102,7 @@ function muestraPaso3(){
 }
 function muestraIsesionForm(){
 	document.getElementById('vid').pause()	
-	$("#botones, #video, #formularioRegistro").hide();
+	$("#botones, #video, #formularioRegistro, #formalarioRecuperarContrasena").hide();
 	$("#formularioIsesion").show();
 }
 
