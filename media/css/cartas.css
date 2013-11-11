@@ -9,6 +9,17 @@ body {
   min-height: 100%;
 }
 
+.sombra1{
+box-shadow: 100px 0px 600px 50px #000000;
+-moz-box-shadow: 100px 0px 600px 50px #000000;
+-webkit-box-shadow: 100px 0px 600px 50px #000000;
+}
+.sombra2{
+box-shadow: 50px 8px 300px 120px #000000;
+-moz-box-shadow: 50px 8px 300px 120px #000000;
+-webkit-box-shadow: 50px 8px 300px 120px #000000;
+}
+
 .tGabriela{
 	font-family:Gabriela;
 }
