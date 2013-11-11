@@ -78,7 +78,38 @@ function ajax_validarRespuesta(id, respuesta) {
 }
 
 
-//Esta funcion se encarga de escribir la rima del elemento
+function ajax_guardaScorePierde(score, edoPartida){
+	var oFortuna=document.getElementById('oFortuna').value;
+	var salinasEE=document.getElementById('salinasEE').value;
+	var cthuluEE=document.getElementById('cthuluEE').value;
+
+
+	var url = base + 'index.php/cJuego/guardarScorePerdida/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
+	
+	$.ajax({
+
+		url : url,
+		async : false,
+		dataType:"json",
+		success : function(data) {
+			
+			var trofeosAux =data.trofeos;
+			var cartasAux = data.cartas;
+			
+				$('#trofeo').html("");
+				$('#carta').html("");
+
+		},
+
+		error : function() {
+			alert('Error')
+		}
+	});
+
+}
+
+
+
 function ajax_guardaScore(score, edoPartida) {
 	var oFortuna=document.getElementById('oFortuna').value;
 	var salinasEE=document.getElementById('salinasEE').value;

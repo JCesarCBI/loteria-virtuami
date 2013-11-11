@@ -22,7 +22,7 @@ function hojaResultados(puntos){
 	
 	
 	if ((estadoPartida=="3" || estadoPartida=="4")) {
-		ajax_guardaScore(0, estadoPartida);
+		ajax_guardaScorePierde(0, estadoPartida);
 		
 	} else{		
 		if ((document.getElementById('seguro').value==0)) {
