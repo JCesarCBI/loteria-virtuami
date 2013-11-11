@@ -256,5 +256,21 @@
 			$query = $this->db->count_all_results();
 			return $query;
 		}
+
+		public function getTotalPuntos($idUsr)
+		{
+			$this->db->SELECT('scoreTotal');
+			$this->db->FROM('jugador');
+			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->LIMIT(1);
+			
+			$query = $this->db->get();
+			
+			if ($query->num_rows()!=0) {
+				return $query->result_array();
+			} else {
+				FALSE;
+			}
+		}
 	}
 ?>
