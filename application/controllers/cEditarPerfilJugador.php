@@ -214,9 +214,7 @@ class CEditarPerfilJugador extends CI_Controller {
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
 				$this->load->view('vEstadisticas', $datosPerfilOrdenados);
 				$this->load->view('vGaleria', $datosPerfilOrdenados);
-				// echo "<pre>";
-				// print_r($datosPerfilOrdenados);
-				// echo "</pre>";
+				
 				
 			}
 		}
@@ -253,9 +251,7 @@ class CEditarPerfilJugador extends CI_Controller {
 		//Apartir de aquí se hacen validaciones de los datos a actualizar //
 		public function actualizarDatos(){
 		
- 			// echo "<pre>";
-			// print_r($_POST);
-			// echo "</pre>";
+ 			
 		 	
 		 	//----------------------------------------------Comienza UPDATE-------------------------
 			$this->form_validation->set_rules('usuario_nombre', 'Usuario', 'trim|required|min_length[5]|max_length[25]|xss_clean');//minimo 5 max 25
@@ -283,14 +279,14 @@ class CEditarPerfilJugador extends CI_Controller {
         		$nuevo['idAvatar']=$_POST['id_avatar'];
         		$nuevo['cargo']= $_POST['usuario_area'];
         		$nuevo['area']= $_POST['usuario_cargo'];
-				$nuevo['contrasena']=$_POST['usuario_contrasenaActual'];
+				$nuevo['contrasena']=$_POST['usuario_contrasena'];
 			
 				
 			
 			
 			$actuales=$this->mdatosperfil->getDatosUsuario($nuevo['idUsr']);
 		
-			
+	
 			$this->analizarDatos($nuevo, $actuales);
 		
 				
@@ -301,8 +297,8 @@ class CEditarPerfilJugador extends CI_Controller {
 			
 			else{
 				
-				echo"ERROR NO ANALIZO...";
-				//$datos=$this->session->all_userdata();
+				
+				
 				$idJue = $this->session->userdata('idJuego');
 				 $idUser= $this->session->userdata('idUsuario');
 				
