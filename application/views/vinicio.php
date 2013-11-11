@@ -127,7 +127,7 @@
 						<div id="formalarioRecuperarContrasena">
 							<center id=""><img src="<?= base_url()?>media/img/i_recuperar.jpg"/></center>
 							<form method="post" action="<?=base_url()?>index.php/cLogin/recuperarContrasena">
-								<label class="labelRegistro">Introduce tu correo te enviaremos tus datos de acceso</label>
+								<label class="labelRegistro">Introduce tu correo y te enviaremos tus datos de acceso</label>
 								<input id="usuario_correo_recuperarContrena" name="usuario_correo_recuperarContrena" type="email" required>
 								<center><input type="submit" id="recuperarCBtn" class="six columns boton centered" value="Enviar"></center><hr class="linea3">
 								<center><input type="button" id="iSesionC" class="six columns boton centered" value="Iniciar sesión"></center>

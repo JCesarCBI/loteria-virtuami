@@ -115,6 +115,15 @@
 				<?= $estadisticas['ultimoScore']['record']?>
 			</p>
 		</div><hr class="linea3">
+		<div id="puntTotal" class="twelve column">
+			<p class="TseccionesEst">
+				Puntuación total:
+			</p>
+			<p id="puntosT">
+				<?php print_r($estadisticas['puntuacionTotal'][0]['scoreTotal'])?>
+			</p>
+			
+		</div>
 		<div id="rankingS" class="twelve columns">
 			<p class="TseccionesEst">Ranking</p>
 			<table id="tablaRanking" class="twelve columns">

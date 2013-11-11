@@ -86,7 +86,7 @@
 								<label id="closeGaleriaEditarFoto" href="#"></label>
 							</div>
 							<center id="guardaCambios"> 
-								<input class="six columns centered" type="submit" id="BtnGuardaCambios" value="Guardar cambios"><br>
+								<input class="six columns centered" type="submit" id="BtnGuardaCambios" value="Guardar"><br>
 								<input class="six columns centered" type="button" id="cancelarGuardaCambios" value="Cancelar">
 							</center>
 							<center id="editarSeccion"> <!--Editar información-->
@@ -143,11 +143,11 @@
 						    <div id="prof-admin">
 								<div id="area" class="">
 							        <input class="lateral vacio tercero" type="text" id="usuario_area" name="usuario_area" placeholder="* área" value="<?=$area?>">
-									<label for="usuario_area">*Área</label>
+									<label>Área</label>
 							    </div>
 								<div id="cargo" class="">
 									<input class="lateral vacio tercero" type="text" id="usuario_cargo" name="usuario_cargo" placeholder="* cargo" value="<?=$cargo?>">
-									<label for="usuario_cargo">*Cargo</label>
+									<label>Cargo</label>
 								</div>
 							</div>
 

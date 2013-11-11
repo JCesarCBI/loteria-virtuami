@@ -1,7 +1,9 @@
+body{
+	font-size:15px;
+}
 /*------------------------------------------------------------------------------------------------------------*/
 											/*Información */
-											
-/*.header{height:50px; margin-bottom:30px; margin-left:1%;}*/
+																	
 select{margin-bottom:10px; height:35px}
 .underline{ border-bottom: solid 2px #fff; color:#FFF;}
 .hilera{
@@ -63,6 +65,9 @@ form > hr {
 	float:left !important;
 }
 
+#nombreUsuario h1{
+	font-family:'Gabriela';
+}
 #guardaCambios{margin-top:120px;}
 #editarSeccion{margin-top:220px;}
 #BtnGuardaCambios, #cancelarGuardaCambios{height:40px;}
@@ -71,19 +76,21 @@ form > hr {
 
 /*Clase para pasar de formulario a tarjeta*/
 input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"]:disabled, select:disabled{
+	-webkit-appearance: none;
+	-moz-appearance:none;
 	background:#17343c !important;
 	border:none;
 	font-size:20px !important;
 	color:#fff !important;
 	height:40px !important;
 	border-bottom: 3px solid #fff;
-	-webkit-appearance: none;
-	-moz-appearance:none;
     text-indent: 0.01px;
     text-overflow: '';
-	text-align:center;
+	/*text-align:center;*/
 	cursor: auto;
 }
+
+
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus{
 	border:2px solid #078d7b;
 	color: #fff;
@@ -109,16 +116,15 @@ input[type="text"], input[type="password"], input[type="email"], select{
 	color:#000;
 	border:2px solid #FFF;
 	cursor: pointer;
-	
 }
 
-#c2 > label, #c3>label, #alumno>label, #prof-admin>label{text-align:center;}
+#c2 > label, #c3>label, #alumno>label, #prof-admin>div>label{text-align:center;}
 
 /*------------------------------------------------------------------------------------------------------------*/
 											/*Estadísticas */
 #rTder, #rTizq{
 	cursor:pointer;
-	margin-top:20%;
+	margin-top:200px;
 }										
 #rTizq{
 	float:left;
@@ -175,7 +181,16 @@ h2{color:#fff;}
 #ranking{
 	margin-top:40px;
 	margin-bottom:50px;
-	/*border-left:3px solid #fff;*/
+}
+#puntTotal{
+	border-bottom:3px solid #fff;
+	margin-bottom:20px;
+}
+#puntosT{
+	color:#EE4036;
+	text-align:center;
+	font-weight:bold;
+	font-size:30px;
 }
 .trofeo-chico{width:40px; height:40px; cursor:pointer;}
 .trofeo-grande{	opacity:1;}
@@ -285,6 +300,7 @@ table{
 	position: absolute;
 	top: -15px;
 	right: -15px;
+	cursor:pointer;
 }	
 
 
@@ -292,7 +308,7 @@ table{
 /*------------------------------------------------------------------------------------------------------------*/
 											/*GALERÍA */
 						
-#nombreCarta{color:#fff; font-size:43px; font-weight:bold; text-shadow:1px 1px 3px #000;}
+#nombreCarta{color:#fff; font-size:43px; font-weight:bold; text-shadow:1px 1px 3px #000; font-family: 'Gabriela';}
 #imgCarta{width:450px;height:450px; padding:5px}
 .borde-amarillo{
 	border: 5px solid #eeb81c;

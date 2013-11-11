@@ -129,13 +129,11 @@ function inicio(){
 }
 
 function jugar(){
-	$("#cConfiguracion").css("height","100%");
 	$("#tipoJuego, #nivelJuego, #modalidadJuego, #tipo, #nivelc, #modalidadc").hide();
 	$("#jugar").show();
 	tiempo("#jugar","magictime swashIn");
 }
 function elijeTipoJuego(){
-	$("#cConfiguracion").css("height","auto");
 	$("#nivelJuego, #modalidadJuego, #jugar, #nivelc, #modalidadc").hide();
 	$("#tipo, #tipoJuego").show();
 	tiempo("#tipo","magictime swashIn");
@@ -196,6 +194,4 @@ function tiempo(x,y) {
 } 
 function tiempo2(x,y) {
 	$(x).addClass(y);
-	// var wait = window.setTimeout( function(){
-		// $(x).removeClass("nada")}, 1500 );
 } 
