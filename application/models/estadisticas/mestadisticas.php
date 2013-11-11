@@ -257,11 +257,12 @@
 			return $query;
 		}
 
-		public function getTotalPuntos($idUsr)
+		public function getTotalPuntos($idUsr, $idJuego)
 		{
 			$this->db->SELECT('scoreTotal');
 			$this->db->FROM('jugador');
 			$this->db->WHERE('idUsr', $idUsr);
+			$this->db->WHERE('idJuego', $idJuego);
 			$this->db->LIMIT(1);
 			
 			$query = $this->db->get();
