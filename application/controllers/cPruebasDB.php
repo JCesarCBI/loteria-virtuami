@@ -39,7 +39,7 @@
 					echo $aleatorio;
 					
 					if ($idUser != 0) {
-						$datos = $this->mestadisticas->getTotalPuntos($idUser);
+						$datos = $this->mestadisticas->getTotalPuntos($idUser, $idJuego);
 						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
 						// $datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();
