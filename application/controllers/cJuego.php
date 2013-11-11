@@ -128,6 +128,14 @@ class CJuego extends CI_Controller {
 		}
 	}
 
+	public function guardarScorePerdida($record, $idEdoPartida, $cthulu, $ofortuna, $tinieblas){
+		$record = 0;
+		$this->mscore->setScore($score, $record, $idEdoPartida);
+		$datos['cartas'] = -1;
+		$datos['trofeos'] = -1;
+		echo json_encode($datos);
+	}
+
 	public function guardarScore($record, $idEdoPartida, $cthulu, $ofortuna, $tinieblas){
 		$idUsr = $this->session->userdata('idUsuario');
 		$ganado = -1;
