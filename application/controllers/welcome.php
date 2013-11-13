@@ -10,6 +10,7 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function index(){
+		header( 'Content-Type: text/html;charset=utf-8' );
 		if (($this->agent->is_mobile())) {
 			$datos['mensaje'] = "La aplicación no ha sido optimizada para dispositivos móviles, por lo que aún no está disponible por esta vía. Por favor, ingresa de nuevo desde tu computadora. Atentamente, Coordinación de Educación Virtual, Universidad Autónoma Metropolitana Unidad Iztapalapa.";
 			$datos['depuracion'] = " ";

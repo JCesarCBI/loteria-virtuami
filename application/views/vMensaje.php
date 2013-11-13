@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+	<META http-equiv=Content-Type content="text/html; charset=utf-8">
 	<head>
 	    <!-- aqui pondremos el contenido html -->
 	</head>
