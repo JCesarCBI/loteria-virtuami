@@ -46,7 +46,6 @@ class CEditarPerfilJugador extends CI_Controller {
 						unset($trofeosJugador[$i]);
 					}
 					$trofeosJugador = $aux;
-					
 					//Verificamos si el jugador ha ganado o no trofeos
 					if($trofeosJugador == FALSE){ //Si el usuario no ha ganado ningún trofeo
 						//Se agrega el edo de no ganado a todos los trofeos
@@ -69,7 +68,6 @@ class CEditarPerfilJugador extends CI_Controller {
 							}else{
 								$trof['Estado'] =0; //Trofeo no ganado
 							}
-
 							$trofeos[$i] = $trof; //Se "actualiza" el arreglo
 						}
 						//Una vez agregado el estado a todos los trofeos, se agregan
@@ -118,21 +116,21 @@ class CEditarPerfilJugador extends CI_Controller {
 				if ($auxiliar) {
 					$datosPerfilOrdenados['estadisticas']['ranking'] = $auxiliar;
 				} else {
-					$datosPerfilOrdenados['estadisticas']['ranking'] = -1;
+					$datosPerfilOrdenados['estadisticas']['ranking'] = 0;
 				}
 				//Datos de la ultima partida jugada por el usuario
 				$auxiliar =  $this->mestadisticas->getUltimoScore($idUsuario);
 				if ($auxiliar) {
 					$datosPerfilOrdenados['estadisticas']['ultimoScore'] = $auxiliar[0];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['ultimoScore'] = -1;
+					$datosPerfilOrdenados['estadisticas']['ultimoScore'] = 0;
 				}				
 				//Mejor puntuacion en una partida
 				$auxiliar =  $this->mestadisticas->getMejorPuntuacion($idUsuario);
 				if ($auxiliar) {
 					$datosPerfilOrdenados['estadisticas']['mejorScore'] = $auxiliar[0]["record"];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['mejorScore'] = -1;
+					$datosPerfilOrdenados['estadisticas']['mejorScore'] = 0;
 				}
 				$datosPerfilOrdenados['estadisticas']['numPartidas'] = 0;
 				//Numero de partidas ganadas en modo básico
@@ -141,7 +139,7 @@ class CEditarPerfilJugador extends CI_Controller {
 					$datosPerfilOrdenados['estadisticas']['basicoGanados'] = $auxiliar;
 					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['basicoGanados'] = -1;
+					$datosPerfilOrdenados['estadisticas']['basicoGanados'] = 0;
 				}
 				//Numero de partidas ganadas en modo avanzado
 				$auxiliar =  $this->mestadisticas->getAvanzadoGanadas($idUsuario);
@@ -149,7 +147,7 @@ class CEditarPerfilJugador extends CI_Controller {
 					$datosPerfilOrdenados['estadisticas']['avanzadoGanados'] = $auxiliar;
 					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['avanzadoGanados'] = -1;
+					$datosPerfilOrdenados['estadisticas']['avanzadoGanados'] = 0;
 				}
 				//Numero de partidas ganadas en modo experto
 				$auxiliar =  $this->mestadisticas->getExpertoGanadas($idUsuario);
@@ -157,7 +155,7 @@ class CEditarPerfilJugador extends CI_Controller {
 					$datosPerfilOrdenados['estadisticas']['expertoGanados'] = $auxiliar;
 					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['expertoGanados'] = -1;
+					$datosPerfilOrdenados['estadisticas']['expertoGanados'] = 0;
 				}				
 				//Numero de partidas perdidas
 				$auxiliar =  $this->mestadisticas->getPartidasPerdidas($idUsuario);
@@ -165,8 +163,16 @@ class CEditarPerfilJugador extends CI_Controller {
 					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = $auxiliar;
 					$datosPerfilOrdenados['estadisticas']['numPartidas'] = $auxiliar + $datosPerfilOrdenados['estadisticas']['numPartidas'];
 				} else {
-					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = -1;
-				}			
+					$datosPerfilOrdenados['estadisticas']['partidasPerdidas'] = 0;
+				}
+				//Puntuacion total
+				$auxiliar = $this->mestadisticas->getTotalPuntos($idUsuario, $idJuego);
+				if($auxiliar){
+					$datosPerfilOrdenados['estadisticas']['puntuacionTotal'] = $auxiliar;
+				}else{
+					$datosPerfilOrdenados['estadisticas']['puntuacionTotal'] = 0;
+				}
+							
 				//Datos para la galeria de cartas
 				$idGaleria = $this->mestadisticas->getGaleria($idUsuario,1);
 				$mazoCartas = $this->mestadisticas->getCartas();
@@ -175,7 +181,6 @@ class CEditarPerfilJugador extends CI_Controller {
 					unset($idGaleria[$key]);
 				}
 				$idGaleria = $auxIdGaleria;
-				
 				if($idGaleria != FALSE){
 					foreach ($mazoCartas as $i=>$key) {
 						if(array_search($key['idCarta'], $idGaleria)){
