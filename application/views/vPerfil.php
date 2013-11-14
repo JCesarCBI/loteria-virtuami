@@ -38,6 +38,7 @@
 	</head>
 	<body>
 		<script>		
+			
 			<?php
 				$js_array = json_encode($trofeos);
 				echo "var trofeos = ". $js_array . ";\n";
@@ -69,7 +70,6 @@
 					<form class="columns twelve" id="cjInformacion" action="<?=base_url()?>index.php/cEditarPerfilJugador/actualizarDatos" method="post">
 						<hr><hr>
 						<input id="id_avatar" name="id_avatar" type="hidden" value="<?= $idAvatar ?>"/>
-						<!-- <input id="id_avatarIcn" name="id_avatarIcn" type="hidden" value="<?= $idAvatar ?>"/> -->										
 						<input id="usuario_id" name="usuario_id" type="hidden" value="<?= $idUsr?>"/>
 						
 						<!-- primera columna -->

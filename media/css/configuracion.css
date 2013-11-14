@@ -12,6 +12,7 @@ label{font-weight:bold;}
 	height:350px;
 	background:#e52526;
 	background-image:url("../img/j_mosaico.png") !important;
+	background-size:100%;
 	border:1px solid #fff;
 }
 .bloqueado{

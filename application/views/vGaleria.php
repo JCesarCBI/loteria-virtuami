@@ -11,10 +11,7 @@
 								<div class="Div-vacio"></div>
 							</p>
 							<div class="six columns" id="incarat"></div>
-							<!-- <div class="six columns" id="masInfoCarta"></div> -->
 							<hr class="linea3"><hr class="linea3">
-							<!-- <input type="hidden" value="1" id="numRima"/>
-							<input type="hidden" value="3" id="totalRima"/> -->
 						</div>
 					</div>
 					<div class="twelve columns">
@@ -22,7 +19,6 @@
 							<center><img class="centered" src="<?= base_url() ?>media/img/logo_loteria.png"/></center>
 						</span>
 						<div class="ten columns" id="carrusel">
-							<!-- <input id="carrusel-inicio" type="hidden" value="1"><input id="carrusel-final" type="hidden" value="5"> -->
 							<span id="carrusel-ant"  class="one columns recorre"><img src="<?=base_url()?>media/img/fg_izq.png"></span>
 							<?php 
 								foreach ($galeriaCartas as $imagen) {

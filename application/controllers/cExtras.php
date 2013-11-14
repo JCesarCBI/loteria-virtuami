@@ -9,6 +9,7 @@ class CExtras extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('usuario/mdatosperfil');
 		$this->load->model('estadisticas/mestadisticas');
+		$this->load->model('usuario/mextra');
 		
 		if (($this->session->userdata('logeado') != 1)) {
 			exit("Acceso denegado 403, pedir vista al equipo de diseño");
@@ -26,5 +27,10 @@ class CExtras extends CI_Controller {
 		$contrasenaUsuario = $this->mdatosperfil->getContrasena($datos[1]);//"a1b1c2d3"; //suponiendo que se recibe esto del modelo
 		$contrasenaUsuario = $contrasenaUsuario[0]["contrasena"];
 		echo json_encode(strcmp($contrasenaUsuario, $datos[0]));	
+	}
+	
+	public function traeUrlAvatar($idImg){
+		$urlAvatarI = $this->mextra->traeUrlAvatarIcon($idImg);
+		echo json_encode($urlAvatarI[0]);
 	}
 }

@@ -1,5 +1,4 @@
 <div id="barraUsuario" class="twelve columns header sombra2">
-	<!-- <img src="<?= base_url() ?><?= $icnAvatar ?>" title="avatar"/> -->
 	<span id="menu" class="eleven columns ocultaMenu">
 		<ul id="dropdown">
 		  <li><a href="#" id="usuario"><?= $nombreUsr ?></a></li>

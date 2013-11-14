@@ -2,7 +2,7 @@ $(document).ready(function() {
 	inicio();
 	muestraPerfil();
 	eligeTipoUsuario();
-
+	
 	$("#usuario_comunidadUniversitaria").change(function(){	eligeTipoUsuario();	});
 	$("#usuario_gradoActivo").change(function(){ evaluaGradoActivo(); });
 	
@@ -326,11 +326,23 @@ function muestraPerfil(){
 }
 
 function cambiaImagenFoto(idImagen, urlImagenG){
-	// console.log(idImagen)
 	urlG = base+urlImagenG;
 	$(".foto").prop('src',urlG);
-	// $("#avatarIcn > img").prop('src',urlG);
+	traeUrlAvatar(idImagen);
 	$("#id_avatar").val(idImagen);	
+}
+
+function traeUrlAvatar(idImagen){
+	$.ajax({
+		url: base+'index.php/cExtras/traeUrlAvatar/'+idImagen,
+		dataType: "json",
+		type: "POST",
+		async:true,
+		success:function(url){
+			$("#avatarIcn > img").prop('src',base+url.icnAvatar);
+			console.log(url.icnAvatar);			
+		}
+	});	
 }
 
 function muestraInfoTrofeo(idTrofeo){
