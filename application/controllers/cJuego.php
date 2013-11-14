@@ -130,6 +130,11 @@ class CJuego extends CI_Controller {
 
 	public function guardarScorePerdida($record, $idEdoPartida, $cthulu, $ofortuna, $tinieblas){
 		$record = 0;
+		$score = array('idPartida' => $this->session->userdata('idPartida') ,
+						'idNivel' =>  $this->session->userdata('idNivel'),
+						'idModalidad' => $this->session->userdata('idModalidad'),
+						'idUsr' => $this->session->userdata('idUsuario'),
+						'idJuego' => $this->session->userdata('idJuego'));
 		$this->mscore->setScore($score, $record, $idEdoPartida);
 		$datos['cartas'] = -1;
 		$datos['trofeos'] = -1;
