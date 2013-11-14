@@ -83,18 +83,13 @@ function ajax_guardaScorePierde(score, edoPartida){
 	var salinasEE=document.getElementById('salinasEE').value;
 	var cthuluEE=document.getElementById('cthuluEE').value;
 
-
 	var url = base + 'index.php/cJuego/guardarScorePerdida/' + score+'/'+edoPartida+'/'+cthuluEE+'/'+oFortuna+'/'+salinasEE;
 	
 	$.ajax({
 
 		url : url,
 		async : false,
-		dataType:"json",
-		success : function(data) {
-			
-			var trofeosAux =data.trofeos;
-			var cartasAux = data.cartas;
+		success : function() {
 			
 				$('#trofeo').html("");
 				$('#carta').html("");
@@ -175,7 +170,7 @@ function ajax_guardaScore(score, edoPartida) {
 		},
 
 		error : function() {
-			alert('Error')
+			//alert('Error Guarda score')
 		}
 	});
 

@@ -348,8 +348,7 @@ function pintaPuntos() {
 
 }
 function pierdeNoLoteria(cartaActual){
-		
-		
+				
 		cartaActual=parseInt(cartaActual)
 		carta=parseInt(document.getElementById('bonusCartasRestantes').value);
 		
@@ -359,7 +358,7 @@ function pierdeNoLoteria(cartaActual){
 		loteria();
 
 	} else{
-		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 10000);
+		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 5000);
 		
 	};
 	
@@ -379,6 +378,7 @@ function cartasLoteria(indice){
 		if (arreglo.length==17) {
 			marcaBtonLoteria();
 			//alert(document.getElementById('cartaClickPlantilla').value);	
+			alert("Entrará al pierde no loteria");
 			pierdeNoLoteria(document.getElementById('bonusCartasRestantes').value);
 		};	
 	};

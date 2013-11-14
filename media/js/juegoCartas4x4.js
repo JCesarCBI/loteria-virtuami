@@ -369,7 +369,7 @@ function pierdeNoLoteria(cartaActual){
 		loteria();
 
 	} else{
-		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 10000);
+		NoClickLoteria=setTimeout("pierdeNoLoteria("+carta+")", 5000);
 		
 	};
 	
@@ -545,7 +545,8 @@ function loteria(){
 	
 	if (cartas == 4) {
 		
-		if (estadoPartida!=2) {
+		if ((estadoPartida!=2) && (document.getElementById('PierdeNC').value == 0)) {
+
 			document.getElementById('estadoPartida').value=1;
 		};
 		
