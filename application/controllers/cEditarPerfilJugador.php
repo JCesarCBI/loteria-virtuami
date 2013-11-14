@@ -207,8 +207,10 @@ class CEditarPerfilJugador extends CI_Controller {
 					
 				}
 				$datos['idUsr'] = $this->session->userdata('idUsuario');
-				$datos['nombreUsr'] = $this->session->userdata('usuario');
-				$datos['icnAvatar'] = $this->session->userdata('avatar');
+				$datos['nombreUsr'] = $this->session->userdata('usuario');								
+				$consulta=$this->mdatosperfil->getDatosUsuario($datos['idUsr']);				
+				$ava=$consulta[0]['icnAvatar'];				
+				$datos['icnAvatar']=$ava;
 				$datos['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 				$datosPerfilOrdenados['barraUsuario'] = $this->load->view('barraUsuario', $datos, TRUE);
 				$this->load->view('vPerfil', $datosPerfilOrdenados);
