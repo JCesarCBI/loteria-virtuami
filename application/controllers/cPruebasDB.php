@@ -16,7 +16,7 @@
 				}
 				
 				public function getDatos(){
-					$idUser = 1;
+					$idUser = 3;
 					$idJuego = 1;
 					$idPartida = 1; 		//1 Completa | 2 Rapida
 					$idNivel = 1; 			//1 Basico| 2 Intermedio | 3 Avanzado| 4 Experto
@@ -39,7 +39,7 @@
 					echo $aleatorio;
 					
 					if ($idUser != 0) {
-						$datos = $this->mestadisticas->getTotalPuntos($idUser, $idJuego);
+						$datos = $this->mestadisticas->getBasicoGanadas($idUser);
 						// $datos = $this->mscore->setScore($score, $record, $idEstadoPartida);
 						// $datos = $this->mscore->getScoreTotal($idUser, $idJuego);
 						// $datos = $this->mtrofeo->getEasterEggs();

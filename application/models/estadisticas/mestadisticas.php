@@ -208,12 +208,14 @@
 		
 		public function getBasicoGanadas($idUsr)
 		{
+			$ganado = array(1,2);
 			$this->db->SELECT('record.record');
 			$this->db->FROM('score');
 			$this->db->JOIN('record','record.idScore = score.idScore');
 			$this->db->WHERE('score.idUsr',$idUsr);
 			$this->db->WHERE('score.idNivel', 1);
-			$this->db->WHERE('record.idEstadoPartida',1);
+			$this->db->WHERE_IN('record.idEstadoPartida',$ganado);
+			// $this->db->OR_WHERE('record.idEstadoPartida',2);
 			
 			$query = $this->db->count_all_results();
 			return $query;
@@ -221,12 +223,13 @@
 
 		public function getAvanzadoGanadas($idUsr)
 		{
+			$ganado = array(1,2);
 			$this->db->SELECT('record.record');
 			$this->db->FROM('score');
 			$this->db->JOIN('record','record.idScore = score.idScore');
 			$this->db->WHERE('score.idUsr',$idUsr);
 			$this->db->WHERE('score.idNivel', 3);
-			$this->db->WHERE('record.idEstadoPartida',1);
+			$this->db->WHERE_IN('record.idEstadoPartida',$ganado);
 			
 			$query = $this->db->count_all_results();
 			return $query;
@@ -234,12 +237,13 @@
 		
 		public function getExpertoGanadas($idUsr)
 		{
+			$ganado = array(1,2);
 			$this->db->SELECT('record.record');
 			$this->db->FROM('score');
 			$this->db->JOIN('record','record.idScore = score.idScore');
 			$this->db->WHERE('score.idUsr',$idUsr);
 			$this->db->WHERE('score.idNivel', 4);
-			$this->db->WHERE('record.idEstadoPartida',1);
+			$this->db->WHERE_IN('record.idEstadoPartida',$ganado);
 			
 			$query = $this->db->count_all_results();
 			return $query;
