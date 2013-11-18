@@ -5,6 +5,7 @@
 			parent::__construct();
 		}
 		
+		// Obtiene el path de la imagen icono del avatar de la base de datos, de no encontrar el avatar devuelve un FALSE.
 		function traeUrlAvatarIcon($idAvatar){
 			$this->db->SELECT('icnAvatar');
 			$this->db->FROM('avatar');

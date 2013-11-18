@@ -8,6 +8,7 @@
 			parent::__construct();
 		}
 		
+		//Obtiene todos los trofeos que tiene el jugador en su vitrina, de no tener ninguno regresa un FALSE.
 		public function getTrofeos($idUsr, $idJuego){
 			$this->db->SELECT('trofeo.idTrofeo');
 			$this->db->FROM('vitrina');
@@ -28,6 +29,7 @@
 			}
 		}
 		
+		//Obtiene todos los trofeos almacenados en la base de datos.
 		public function getTodosTrofeos()
 		{
 			$this->db->SELECT('*');
@@ -42,16 +44,13 @@
 			}
 		}
 		
+		//Obtiene todas las cartas almacenadas en la base de datos.
 		public function getCartas()
 		{
 			$this->db->SELECT('idCarta, nombre, descripcion, imgMazo, imgPlantilla, imgGaleria');
 			$this->db->FROM('carta');
 			
 			$query = $this->db->get();
-			//Trata de acomodar los arreglos de manera que estos lleven
-			//en el índice, el ID del dato que almacenan
-			//De esa manera, la información que le das a controladres es más ordenada 
-			//Y ellos se ahorran ese trabajo
 			if ($query->num_rows()!=0) {
 				foreach ($query->result_array() as $value) {
 					$cartas[$value['idCarta']] = $value;
@@ -62,6 +61,8 @@
 			}
 		}
 		
+		
+		//Obtiene todos los avatares almacenados en la base de datos.
 		public function getAvatar()
 		{
 			$this->db->SELECT('*');
@@ -80,6 +81,7 @@
 			
 		}
 		
+		//Obtiene la galería por jugador almacenada en la base de datos.
 		public function getGaleria($idUsr, $idJuego)
 		{
 			$this->db->SELECT('idCarta');
@@ -88,11 +90,6 @@
 			$this->db->WHERE('idJuego', $idJuego);
 			
 			$query = $this->db->get();
-			
-			//Cuando sólo tengas que regresar un array con un único dato (como en este caso, 
-			//Que únicamente tenías que regresar los idCarta, limpia el arreglo para que no
-			//mandes arreglos de arreglos y le ahorres trabajo a los controladores).
-			//Hice una corrección similar en getTrofeos
 			if ($query->num_rows()!=0) {
 				foreach ($query->result_array() as $key => $value) {
 					$galeria[$key] = $value['idCarta'];
@@ -103,6 +100,7 @@
 			}
 		}
 		
+		//Obtiene las rimas ligadas a cada carta.
 		public function getRima($idCarta)
 		{
 			$this->db->SELECT('*');
@@ -121,6 +119,7 @@
 			}
 		}
 		
+		// Verifica que el nombre del usuario ya exista en la base de datos, si existe regresa un TRUE de lo contrario regresa un FALSE.
 		public function getExisteUsuario($idUsr)
 		{
 			$this->db->SELECT('idUsr');
@@ -137,6 +136,7 @@
 			}
 		}
 		
+		// Actualiza los datos personales del jugados en la base de datos.
 		public function setActualizaUsuario($idUser, $data)
 		{
 			if ($this->getExisteUsuario($idUser)==TRUE) {
@@ -149,6 +149,7 @@
 			
 		}
 		
+		//Obtiene la lista  de los 3 primeros jugadores con mayor número de puntos totales en el juego.
 		public function getRanking()
 		{
 			$this->db->SELECT('usuario.nombreUsr, jugador.scoreTotal');
@@ -166,6 +167,7 @@
 			}
 		}
 		
+		//Obtiene la configuración de la última partida jugada por el jugador
 		public function getUltimoScore($idUsr)
 		{		
 			$this->db->SELECT('partida.partida, nivel.nivel, modalidad.modalidad, record.record');
@@ -188,6 +190,7 @@
 			}
 		}
 		
+		//Obtiene la mejor puntuación obtenida por el jugador en todo el juego.
 		public function getMejorPuntuacion($idUsr)
 		{
 			$this->db->SELECT('record.record');
@@ -206,6 +209,7 @@
 			}
 		}
 		
+		//Obtiene el número total de partidas ganadas y perfectas en nivel básico por jugador.
 		public function getBasicoGanadas($idUsr)
 		{
 			$ganado = array(1,2);
@@ -220,7 +224,8 @@
 			$query = $this->db->count_all_results();
 			return $query;
 		}
-
+		
+		//Obtiene el número total de partidas ganadas y perfectas en nivel avanzado por jugador.
 		public function getAvanzadoGanadas($idUsr)
 		{
 			$ganado = array(1,2);
@@ -235,6 +240,7 @@
 			return $query;
 		}
 		
+		//Obtiene el número total de partidas ganadas y perfectas en nivel experto por jugador.
 		public function getExpertoGanadas($idUsr)
 		{
 			$ganado = array(1,2);
@@ -249,6 +255,7 @@
 			return $query;
 		}
 
+		//Obtiene el número total de partidas pedidas en todo el juego por jugador.
 		public function getPartidasPerdidas($idUsr)
 		{
 			$this->db->SELECT('record.record');
@@ -261,6 +268,7 @@
 			return $query;
 		}
 
+		//Obtiene el score total del jugador de no encontrarlo regresa un FALSE.
 		public function getTotalPuntos($idUsr, $idJuego)
 		{
 			$this->db->SELECT('scoreTotal');

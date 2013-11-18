@@ -8,6 +8,7 @@
 			parent::__construct();
 		}
 		
+		//Obtiene todos los atributos de las cartas de la base de datos. El audio que se obtiene es el nombre de la carta.
 		public function getMazoCarta()
 			{
 			$query = $this->db->query('
@@ -27,6 +28,8 @@
 				return FALSE;
 			}
 		}
+			
+		//Obtiene todos los atributos de las cartas de la base de datos. El audio que se obtiene es de la frase ligada a la carta.
 		public function getMazoFrase()
 		{
 			$query = $this->db->query('
@@ -47,6 +50,7 @@
 			}
 		}
 		
+		//Obtiene todas las frases almacenadas en la base de datos.
 		public function getFrase()
 		{
 			$this->db->SELECT('*');
@@ -61,6 +65,7 @@
 			}
 		}
 		
+		//Obtiene todas las cartas junto a su frase relacionada desde la base de datos.
 		public function getCartas()
 		{
 			$this->db->SELECT('carta.*, frase.frase');
@@ -76,6 +81,7 @@
 			}
 		}
 		
+		//Asigna una carta al jugar en su galería.
 		public function setGaleria($idUser, $idJuego, $idCarta)
 		{
 			$galeria = array(	'idUsr' => $idUser,

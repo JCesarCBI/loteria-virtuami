@@ -8,6 +8,7 @@
 			parent::__construct();
 		}
 		
+		//Obtiene todos los tipos de partida almacenados en la base de datos.
 		public function getPartida()
 		{
 			$this->db->SELECT('*');
@@ -22,6 +23,7 @@
 			}
 		}
 		
+		//Obtiene todos los niveles almacenados en la base de datos.
 		public function getNivel()
 		{
 			$this->db->SELECT('*');
@@ -36,6 +38,7 @@
 			}
 		}
 		
+		//Obtiene todas las modalidades almacenadas en la base de datos.
 		public function getModalidad($value='')
 		{
 			$this->db->SELECT('*');

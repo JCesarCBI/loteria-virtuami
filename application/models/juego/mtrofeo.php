@@ -8,7 +8,7 @@
 			parent::__construct();
 		}
 		
-		//Función que obtiene el numero de partidas ganadas/perdidas/perfectas por usuario
+		//Obtiene el número total de partidas ganadas/perdidas/perfectas por el usuario.
 		public function getConstancia($idUsr, $idJuego, $idEstPartida)
 		{
 			$this->db->SELECT('record.idRecord');
@@ -34,7 +34,7 @@
 			return $query;
 		}
 		
-		//Funcion que obtiene el numero de trofeos de tipo Easter Eggs
+		//Obtiene el número total de trofeos de la clase easter eggs.
 		public function getEasterEggs()
 		{
 			$this->db->SELECT('idTrofeo');
@@ -45,7 +45,7 @@
 			return $query;
 		}
 		
-		//Función que obtiene el numero total de trofeos
+		//Obtiene el número total de trofeos.
 		public function getNumeroTrofeos()
 		{
 			$this->db->SELECT('idTrofeo');
@@ -55,7 +55,7 @@
 			return $query;
 		}
 		
-		//Funcion que devuelve verdadero si eres acredor al trofeo leyenda (Total de trofeos - easter eggs + 1)
+		//Devuelve verdadero si eres acredor al trofeo leyenda (Total de trofeos - easter eggs + 1)
 		public function getLeyenda($idUsr, $idJuego)
 		{
 			$easterEggs = $this->getEasterEggs() + 1;
@@ -76,6 +76,7 @@
 			}
 		}
 		
+		//Devuelve TRUE si el jugador ha ganado una partida en la Modalidad y Nivel, de lo contrario regresa un FALSE. Esta función es auxiliar para la función getLododeMar.
 		public function getGane($idUsr, $idJuego, $idModalidad, $idNivel)
 		{
 			$this->db->SELECT('idScore');
@@ -97,6 +98,7 @@
 			}
 		}
 		
+		//Devuelve TRUE si eres acreedor al trofeo lobo de mar y un FALSE de lo contrario.
 		public function getLobodeMar($idUsr, $idJuego, $idModalidad, $idNivel)
 		{
 			//----------Modalidad Juego Libre----------
@@ -308,7 +310,8 @@
 				}	
 			}
 		}
-				
+	
+		//Agrega un trofeo a la vitrina del jugador a la base de datos.	
 		public function setTrofeo($idUsr, $idJuego, $idTrofeo)
 		{
 			$trofeo = array(

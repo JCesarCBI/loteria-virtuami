@@ -8,7 +8,7 @@ class Mregistro extends CI_Model {
 			parent::__construct();
 		}
 	
-	//Tipo de Usuario
+	//: Obtiene la lista de los diferentes tipos de usuarios agregados a la base de datos, de estar vacía esta lista devuelve un mensaje de advertencia.
 	public function getTipoUsuario()
 	{
 		$this->db->SELECT('*');
@@ -27,7 +27,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Division
+	//Obtiene la lista de las diferentes divisiones agregadas a la base de datos, de estar vacía esta lista devuelve un mensaje de advertencia.
 	public function getDivision()
 	{
 		$this->db->SELECT('*');
@@ -46,7 +46,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Grado activo (Licenciatura/Posgrado)
+	//Obtiene la lista de las diferentes grados activos (Licenciatura y Posgrado) a la base de datos, de estar vacía esta lista devuelve un mensaje de advertencia.
 	public function getGradoActivo()
 	{
 		$this->db->SELECT('*');
@@ -65,7 +65,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Grado máximo de estudios
+	//Obtiene la lista de las diferentes grados a nivel posgrado a la base de datos, de estar vacía esta lista devuelve un mensaje de advertencia.
 	public function getGradoPosgrado()
 	{
 		$this->db->SELECT('*');
@@ -84,7 +84,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Validación de usuario
+	//Verifica que el nombre del usuario ya exista en la base de datos, si existe regresa un TRUE de lo contrario regresa un FALSE.
 	public function getExisteUsuario($nombreUsr)
 	{
 		$this->db->SELECT('idUsr');
@@ -118,7 +118,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 		
-	//Agrega un nuevo usuario/jugador
+	//Agrega un nuevo usuario a la base de datos, agrega como jugador al juego de lotería con el identificador de usuario otorgado en la tabla de usuarios y además registra 3 cartas aleatorias a la galería del usuario.
 	public function setAgregarUsuario($datos)
 	{
 		$idJuego = 1;
@@ -149,7 +149,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
-	//Obtiene el codigo de activacion
+	//Obtiene el código de activación de la cuenta del usuario mediante su id, de no encontrar el usuario o el código de activación devuelve un FALSE.
 	public function getCodigoActivacion($idUsr)
 	{
 		$this->db->SELECT('nombreUsr, correo, contrasena, codigoActivacion');
@@ -166,6 +166,7 @@ class Mregistro extends CI_Model {
 		}
 	}
 	
+	//Devuelve un arreglo de tres identificadores de  cartas de la base de datos sin repetir para asignarlos al registro del usuario.
 	public function getRandomCarta()
 	{
 		$num = Array();

@@ -9,6 +9,7 @@
 			parent::__construct();
 		}
 		
+		// Obtiene todos los datos personales del jugador, de no encontrar al jugador devuelve un FALSE.
 		function getDatosUsuario($idUsr){
 			$this->db->SELECT('usuario.idUsr, usuario.nombreUsr, usuario.nombre, 
 								usuario.aPaterno, usuario.aMaterno, usuario.sexo, 
@@ -29,6 +30,7 @@
 			}
 		}
 		
+		// Obtiene la contraseña del jugador de la base de datos, de no encontrar al jugador devuelve un FALSE.		
 		public function getContrasena($idUsr)
 		{
 			$this->db->SELECT('nombreUsr, contrasena');
@@ -44,7 +46,8 @@
 				return FALSE;
 			}
 		}
-		
+				
+		// Actualiza los datos personales del jugador en la base de datos.
 		public function setActualizaUsuario($idUsr, $usuario)
 		{
 			$this->db->where('idUsr', $idUsr);
