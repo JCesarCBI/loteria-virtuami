@@ -1,0 +1,1 @@
+Nuestra versión didáctica podrá jugarse de distinta manera e incorporará diferentes lecciones para que el usuario pueda practicarlas. A continuación se definen los conceptos principales sobre estas maneras de jugar y de configurar la partida.
